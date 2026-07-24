@@ -1,0 +1,198 @@
+tenant_name,apartment_code,bed_code,monthly_rental,billing_month,electricity,total_due,paid_amount,balance_due,payment_status
+Aakanksha Rajhans,B12,C2,14500.00,null,null,0,0,0,pending
+Aarathi Nambiar,B24,B1,13500.00,Mar-26,1612,0,20250,0,partial
+Abdulkasim Fayas Sathik Batcha,B41,C2,14500.00,null,null,36315,36316,0,paid
+Abdulkasim Fayas Sathik Batcha,B41,C2,null,null,null,null,1000,1,partial
+Abhilash V,A44,B1,15500.00,Mar-26,2170,0,23250,0,partial
+Abhishek Chauthe,A24,B1,13500.00,Mar-26,980,0,20250,0,partial
+Abhishek Kumar Jha,A11,C2,14500.00,Mar-26,1178,0,21750,0,partial
+Aditi Shrivastava,B24,C1,14500.00,Mar-26,1612,0,21750,0,partial
+Aditya Bissa,A44,C2,null,null,null,null,1000,0,partial
+Aditya Das,C21,C1,14500.00,null,null,0,27000,21750,partial
+Aditya Srinivas A,A44,D1,24000.00,Mar-26,2170,0,36000,27930,partial
+Aiswaryaa Krishnasamy Thandapani,C43,B2,15500.00,null,null,27250,27750,0,paid
+Akarsh Shrivatsava,A24,C2,14500.00,Mar-26,1519,0,21750,0,partial
+Akshay Verma,A41,B3,13500.00,Mar-26,1395,0,20250,0,partial
+Akshayaa M,B24,B3,13500.00,Mar-26,1612,0,20250,0,partial
+Aleena Renny Philip,B44,B2,null,null,null,null,1000,0,partial
+Aleena Renny Philip,B44,B2,13500.00,null,null,34750,34750,0,paid
+Amala Menon,D21,A1,25500.00,Mar-26,1519,0,37500,0,partial
+Aman Agarwala,B31,B2,14500.00,Mar-26,589,0,21750,0,partial
+Ammu Mariam Thomas,B12,B2,null,null,null,0,1000,0,partial
+Annamalai Perikaruppan,B11,C1,null,null,null,null,1000,0,partial
+Annamalai Perikaruppan,B11,B2,null,null,null,0,1000,0,partial
+Antara Chakraverty,A12,A1,19500.00,Mar-26,868,0,29250,0,partial
+Anudatt Sunith,A44,C1,14500.00,Mar-26,2170,0,21750,0,partial
+Anup Easo Varghese,C21,D1,25500.00,Mar-26,1147,0,38250,0,partial
+Anupam Singh,B32,C2,14500.00,null,null,31638,31637,1,partial
+Anupam Varma,B42,B2,15500.00,null,null,0,0,0,pending
+Ardra John,C34,B2,15500.00,Mar-26,806,0,23250,0,partial
+Arindrajit Kundu,B42,C1,13500.00,Mar-26,1922,0,20250,0,partial
+Arockiasathish S,B11,B2,15500.00,null,null,30750,24250,6500,partial
+Arun Er,C44,A1,19500.00,Mar-26,2015,0,27750,0,partial
+Arun Prasad,C31,D1,25500.00,Mar-26,1240,0,38250,0,partial
+Arunima Shandilya,B24,A1,19500.00,Mar-26,1612,0,27000,0,partial
+Aryananda V,B43,C2,14500.00,null,null,24200,24200,0,paid
+Ashmita Baidya,D41,C2,14500.00,Mar-26,1984,0,21750,0,partial
+Aswin s,A41,A1,19500.00,null,null,44850,44850,0,paid
+Atharva Vaishampayan,B33,B2,15500.00,Mar-26,1302,0,23250,0,partial
+Avilekh Gautam,C41,A1,19000.00,Mar-26,1891,0,28500,0,partial
+Babu Abraham,B31,B1,14500.00,Mar-26,589,0,21750,0,partial
+Benentia Alice Sanjana N,D12,B2,15500.00,Mar-26,1116,0,23250,0,partial
+Bhumika KR,B12,A1,null,null,null,0,1000,0,partial
+Bhumika KR,B12,A1,19500.00,null,null,46605,46605,0,paid
+Chaman Jain,B33,C1,null,null,null,0,1000,0,partial
+Chandni S,B22,B1,14500.00,Mar-26,992,0,21750,0,partial
+Crescent P,B41,B2,15500.00,null,null,0,0,0,pending
+Dena Dinesh M M,A44,B2,15500.00,Mar-26,2170,0,23250,0,partial
+Dev Bhasin,A24,B3,13500.00,Mar-26,1519,0,21750,0,partial
+Dev Sakaria,C41,B2,15500.00,Mar-26,1891,0,23250,0,partial
+Devashish Dewangan,A23,A1,19500.00,null,null,0,0,0,pending
+Dhivya Parthasarathy,D11,D2,13000.00,null,null,0,18000,476,partial
+Dhyey Jakhariya,A41,B1,13500.00,null,null,34750,34750,0,paid
+Divyaratna Joshi,C21,A1,19500.00,null,null,0,0,0,pending
+Diya Suresh,B43,A1,19500.00,Mar-26,1550,0,29250,2000,partial
+Dr RAM SHIROMANI,A23,C1,14500.00,Mar-26,432,25557,23250,16080,partial
+Drishti Sudhakar,B22,B2,15500.00,Mar-26,992,0,23250,0,partial
+Dudala Sai Sujay,C11,C2,14500.00,null,null,37250,22750,14500,partial
+Ebrahim Marakkar,A41,B2,13500.00,Mar-26,1395,0,27750,0,partial
+Fathima Nazrin,C42,C2,14500.00,null,null,0,0,0,pending
+Fathima Nazrin,C42,B1,15500.00,null,null,39750,24100,15650,partial
+Firoz Uddin Gauhar,C41,C1,null,null,null,null,1000,0,partial
+Firoz Uddin Gauhar,C41,C1,14500.00,null,null,37250,37250,0,paid
+Ganesh Selvam,C44,C1,14500.00,Mar-26,2015,0,21750,0,partial
+GD Harsha,C24,B2,null,null,null,null,1000,13065,partial
+GD Harsha,C24,B2,13500.00,null,null,34315,34312,0,partial
+Gitansh Anand,B34,A1,19500.00,null,null,47150,47150,0,paid
+Gouri Renjith,B43,C1,14500.00,null,null,24200,24200,0,paid
+Harikrishnan P,B11,B1,14500.00,Mar-26,2108,0,21750,0,partial
+Harish Kumar M,B14,C1,13500.00,Mar-26,899,0,20250,0,partial
+Harissh G,A41,C1,14500.00,Mar-26,1395,0,21750,0,partial
+Harrsha T,C24,C1,13500.00,Mar-26,1612,0,20250,0,partial
+Harshanand S V,C44,B1,15500.00,null,null,39750,39750,0,paid
+Harshil Arora,C11,A1,19500.00,null,null,49750,30250,19500,partial
+Himika Bhagwat,A12,C1,14500.00,Mar-26,868,0,21750,0,partial
+Indira Ch,B12,C1,12600.00,Mar-26,2728,0,12000,0,partial
+Iravati Datta,B44,C1,13500.00,Mar-26,2790,0,20250,0,partial
+Ishan Dubey,B42,B1,15500.00,null,null,29934,29934,0,paid
+Jaishnu Biradha,C12,D1,14500.00,null,null,0,0,0,pending
+Jawahar Muthuramu,A44,A1,null,null,null,0,1000,0,partial
+Jayachandran R,C41,B1,null,null,null,0,1000,0,partial
+Jayagowri Karthikeyan,C24,C2,13500.00,Mar-26,1612,0,20250,0,partial
+Joan Betcy B,D41,B2,15500.00,null,null,0,23250,0,partial
+Joel Shajan,A11,B1,15500.00,Mar-26,1178,0,23250,0,partial
+Jomon P A,A23,B2,15500.00,null,null,29934,29934,0,paid
+Kaarthika,C43,C2,13500.00,Mar-26,2945,0,20250,0,partial
+Kanishka Prasath Kumar,D11,C2,15500.00,null,null,38717,38717,0,paid
+Karthick Prasanna Cr,A11,B2,15500.00,Mar-26,1178,0,23250,0,partial
+Karthikesan E,A23,B1,15500.00,Mar-26,2232,0,23250,0,partial
+Karthikeyan Ramakrishnan,A44,B1,null,null,null,0,1000,0,partial
+Keerthiga K,C12,C2,13500.00,null,null,0,0,0,pending
+Khushboo Sahani,C34,C2,13500.00,Mar-26,806,0,20250,0,partial
+Kiran Tr,C21,C2,13500.00,Mar-26,1147,0,20250,0,partial
+Krishanu Kashyap,A23,C2,13500.00,Mar-26,2232,0,20250,0,partial
+Krishnan D,B14,A1,19500.00,Mar-26,899,0,28500,0,partial
+Krithiga Nagarajan,D21,B2,14500.00,Mar-26,1519,0,21750,0,partial
+Krithika Vjk,D12,A1,19500.00,Mar-26,1116,0,28500,0,partial
+Kumaraswamy K,B14,B1,0.00,Mar-26,899,0,13000,0.06,partial
+Kurian Benoy,D15,A1,25500.00,null,null,76904,76903,1,partial
+Likhitha Naga Vigneswari Satuluri,C42,C2,14500.00,null,null,28299,28298,1,partial
+Maria Navin Mazhuvancherry,C43,A1,19500.00,null,null,0,0,0,pending
+Marina Johnson,C12,A1,19500.00,Mar-26,1333,0,29250,0,partial
+Martin Rodgers,B13,C2,13500.00,Mar-26,1333,0,20250,0,partial
+Mihir Patil,C11,B2,15500.00,null,null,39750,24250,15500,partial
+Mithil Mohan,C44,C2,14500.00,null,null,35317,37250,0,paid
+Mohamed Saif,B32,B1,14500.00,Mar-26,2077,0,21750,0,partial
+Mohammad Nauman Shahid,C41,C2,null,null,null,null,1000,14500,partial
+Mokana Ranee S,D41,C1,14500.00,null,null,33867,33867,0,paid
+Muthumari Chandran,A12,B2,15500.00,null,null,39750,39750,0,paid
+Naga Raja Kurakula,B11,C2,13500.00,Mar-26,2108,0,20250,0,partial
+Nandana Chitbabu,B24,B2,13500.00,null,null,34750,34750,0,paid
+Narendhren Rr,B14,C2,14500.00,Mar-26,899,0,21750,0,partial
+Narmada Vaman,A12,B1,null,null,null,null,1000,0,partial
+Naveen Joseph,C31,B1,13600.00,Mar-26,1240,0,13000,0,partial
+Nikhil Gupta,B33,B1,15500.00,Mar-26,1302,0,23250,0,partial
+Nilofar Althaf,B44,B3,null,null,null,null,1000,13500,partial
+Nilofar Althaf,B44,B3,13500.00,null,null,34750,34750,0,paid
+Nirmal R,C41,C2,14500.00,null,null,29767,37267,0,paid
+Nirmal R,C41,A1,19500.00,null,null,0,0,0,pending
+Nirmala A,C34,B1,13600.00,Mar-26,806,0,13000,0,partial
+Nivetha Marimuthu,B12,B1,13600.00,Mar-26,2728,0,20400,0,partial
+Oviya P,C12,B1,15500.00,null,null,28750,28750,0,paid
+Oviya S,C43,B1,14500.00,Mar-26,2945,0,21750,0,partial
+Pakhi Mujmer,D12,C1,14500.00,null,null,0,0,0,pending
+Pakhi Mujmer,B44,B1,null,null,null,0,1000,0,partial
+Parv Aggarwal,A24,B2,13500.00,Mar-26,1519,0,21750,0,partial
+Piyush Malhotra,B13,C1,13500.00,Mar-26,1333,0,20250,0,partial
+Praful Harikumar,B41,B1,15500.00,null,null,0,0,0,pending
+Pranav Purkar,B34,B1,15500.00,Mar-26,2232,0,23250,0,partial
+Pranav Vitthalrao Kadam,C11,B1,15500.00,null,null,39750,24250,15500,partial
+Pranesh S A,A41,C2,14500.00,null,null,31170,31169,1,partial
+Prateek Sharma,C41,D1,24000.00,Mar-26,1891,0,42000,42000.27,partial
+PRAVEEN J,B11,C1,null,null,null,0,1000,0,partial
+Prem Chippada,B34,C2,13500.00,Mar-26,1008,0,20250,0,partial
+Priyesh Govind,B31,C2,15500.00,Mar-26,589,0,23250,0,partial
+Putta Bulli Venkata Ajay,A11,A1,19500.00,Mar-26,1178,0,29250,0,partial
+Rajaseethala A,B22,C1,13500.00,Mar-26,352,0,21750,0,partial
+Rajesh Anandh,B11,A1,19500.00,Mar-26,2108,0,29250,0,partial
+Rakesh Ravi,B13,B2,15500.00,null,null,31250,31250,0,paid
+Ram Roshan Ramanathan,B13,B1,14500.00,Mar-26,1333,0,21750,0,partial
+Rama D,C34,A1,19500.00,Mar-26,676,0,29250,0,partial
+Ranjan Rai,B41,D1,24000.00,Mar-26,1674,0,36000,0,partial
+Ranna R,B33,A1,19000.00,Mar-26,1302,0,28500,0,partial
+Ravi S,B14,B2,0.00,Mar-26,638,0,13000,0,partial
+Rishita Tulsyan,C24,B3,13000.00,Mar-26,1612,0,19500,0,partial
+Ritika Rajesh,B44,B1,13500.00,null,null,26912,26911,1,partial
+Roshana S V,D21,C3,13000.00,Mar-26,1519,0,19500,0,partial
+Ruth Sylvia A C,D12,B1,15500.00,Mar-26,1116,0,23250,0,partial
+Sai Krishna Kuppili,A41,D2,15500.00,null,null,0,0,0,pending
+Sai Krishna Kuppili,B34,C1,14500.00,null,null,26025,26024,1,partial
+Sai Krishna Kuppili,A41,D2,15500.00,null,null,0,0,0,pending
+Sai Priya Thamodaran,D41,B1,15500.00,Mar-26,1984,0,23250,0,partial
+Sairam Ct,B13,A1,19000.00,Mar-26,1333,0,28500,0,partial
+Saket Jaiswal,A41,D2,15500.00,null,null,33550,33550,0,paid
+Sanath Baburam,B42,A1,19500.00,null,null,39000,38633,0,partial
+Sathiyan Gopalan,C31,B2,14500.00,Mar-26,1240,0,21750,0,partial
+Sathyasai Regalla,C21,B1,15500.00,Mar-26,1147,0,23250,0,partial
+Senthilkumar S,B31,C1,15500.00,Mar-26,589,0,23250,0,partial
+Shabana Roshan,C24,B1,13500.00,null,null,22150,22150,0,paid
+Shaily Mogari,D21,B1,15500.00,Mar-26,1519,0,23250,0,partial
+Shakthi Bharathi S,C12,C3,13500.00,null,null,22121,22121,0,paid
+Sharanya Goswami,B44,A1,19500.00,null,null,41950,41950,0,paid
+Sharon Swetha,D21,C1,13000.00,null,null,0,19500,0,partial
+Shreya Agrawal,D12,C2,14500.00,Mar-26,1116,0,21750,0,partial
+Shrinethra Mugundan,D11,D3,null,null,null,0,1000,0,partial
+Shubhashish,B42,C2,12600.00,Mar-26,1922,0,13000,0,partial
+Sneh Pratap,B43,B1,15500.00,Mar-26,1550,0,23250,0,partial
+Soham Pradhan,A24,A1,19500.00,null,null,48500,48500,0,paid
+Sourabh Dandare,B34,B2,15500.00,Mar-26,2232,0,23250,0,partial
+Sreyashi Chowdhury,D41,A1,18300.00,null,null,0,13000,0,partial
+Sruthi Pitchika,C42,C1,14500.00,Mar-26,2046,0,21750,0,partial
+Suha Sajad,C43,C1,14500.00,null,null,35317,35316,0,partial
+Suhani Mehrotra,B22,C2,14500.00,Mar-26,992,0,21750,0,partial
+Suhani Srivastava,C12,C1,13500.00,Mar-26,1333,0,21750,1630,partial
+suseela j,B44,C2,14500.00,null,null,34912,34911,1,partial
+Suvetha V,D11,D1,13000.00,Mar-26,2077,0,11000,15540,partial
+Tanisha Choudhary,A12,C2,14500.00,Mar-26,868,0,21750,0,partial
+Tanusha C Karlekar,D11,B1,25500.00,Mar-26,2077,0,38250,0,partial
+Tarunya Venkat,C42,C2,null,null,null,null,0,0,partial
+Tarunya Venkat,C42,A1,19500.00,null,null,0,0,0,pending
+Tarunya Venkat,B44,C2,null,null,null,null,1000,0,partial
+Tejun Verma,B32,A1,19500.00,Mar-26,2077,0,29250,0,partial
+Thilak S,A44,A1,19500.00,null,null,35912,35911,1,partial
+Thota Sharanya,C12,B2,15500.00,null,null,37167,37167,0,paid
+Tushar Singh,B11,D1,25500.00,Mar-26,2108,0,38250,0,partial
+Umasai Kumar Torikonda,B32,C1,12600.00,Mar-26,2077,0,18900,0,partial
+Uttkarsh Uttkarsh,C11,C1,null,null,null,0,1000,0,partial
+Vaishnavi Prabha Chettiar,A12,B1,15500.00,null,null,37250,37250,0,paid
+Varsha Darshini S M,D21,C2,13000.00,Mar-26,1519,0,19500,0,partial
+Varun Katiyar,A24,C1,14500.00,null,null,25167,25167,0,paid
+Venkat Karthik Mukidichetti,C44,B2,15500.00,Mar-26,2015,0,23250,0,partial
+Vijay Babu Kumaresan,B41,A1,19500.00,Mar-26,1674,0,29250,0,partial
+Vijayasekar P,A41,D1,14500.00,Mar-26,1395,0,21750,0,partial
+Vikas Tanwar,C11,C1,null,null,null,0,1000,0,partial
+Vishal Mohanasundraam,B41,B1,15500.00,null,null,0,0,0,pending
+Yaduraj P,B32,B2,14500.00,Mar-26,469,0,21750,0,partial
+Yash Jamuar,C31,A1,19500.00,Mar-26,760,0,29250,0,partial
+Yash Sharma,A11,C1,14500.00,Mar-26,1178,0,21750,0,partial
+Yashwanthi V,B22,A1,19000.00,Mar-26,992,0,28500,0,partial

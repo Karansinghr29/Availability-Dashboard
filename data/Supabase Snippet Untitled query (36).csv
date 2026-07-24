@@ -1,0 +1,209 @@
+apartment_code,bed_code,bed_type,current_tenant,tenant_phone,occupancy_status,staying_status,move_in_date,notice_date,monthly_rental
+A11,A1,Single,Putta Bulli Venkata Ajay,7519998888,Occupied,Staying,2026-02-01,null,19500.00
+A11,B1,Double,Joel Shajan,9061834615,Occupied,Staying,2025-08-15,null,15500.00
+A11,B2,Double,Karthick Prasanna Cr,9750783112,Occupied,Staying,2026-02-22,null,15500.00
+A11,C1,Double,Yash Sharma,6395877792,Occupied,Staying,2026-02-01,null,14500.00
+A11,C2,Double,Abhishek Kumar Jha,9334118844,Occupied,Staying,2026-03-01,null,14500.00
+A12,A1,Single,Antara Chakraverty,9701343973,Occupied,Staying,2025-12-22,null,19500.00
+A12,B1,Double,Narmada Vaman,9884537002,Occupied,Cancelled,null,null,null
+A12,B1,Double,Vaishnavi Prabha Chettiar,9288000601,Occupied,On-Notice,2026-05-06,2026-06-20,15500.00
+A12,B2,Double,Muthumari Chandran,6361024592,Occupied,Staying,2026-07-01,null,15500.00
+A12,C1,Double,Himika Bhagwat,7987731381,Occupied,Staying,2025-08-05,null,14500.00
+A12,C2,Double,Tanisha Choudhary,9399540630,Occupied,Staying,2025-08-04,null,14500.00
+A23,A1,Single,Devashish Dewangan,8819980007,Occupied,Staying,2026-07-17,null,19500.00
+A23,B1,Double,Karthikesan E,6385932825,Occupied,Staying,2025-12-08,null,15500.00
+A23,B2,Double,Jomon P A,8884395666,Occupied,Staying,2026-04-20,null,15500.00
+A23,C1,Double,Dr RAM SHIROMANI,8840367322,Occupied,Staying,2026-03-26,null,14500.00
+A23,C2,Double,Krishanu Kashyap,9365258004,Occupied,Staying,2024-06-06,null,13500.00
+A24,A1,Single,Soham Pradhan,9875367211,Occupied,Staying,2026-06-01,null,19500.00
+A24,B1,Triple,Abhishek Chauthe,7420918471,Occupied,Staying,2026-03-12,null,13500.00
+A24,B2,Triple,Parv Aggarwal,7015215583,Occupied,Staying,2025-09-28,null,13500.00
+A24,B3,Triple,Dev Bhasin,6395305011,Occupied,Staying,2025-09-28,null,13500.00
+A24,C1,Double,Varun Katiyar,8080439478,Occupied,Staying,2026-04-26,null,14500.00
+A24,C2,Double,Akarsh Shrivatsava,7303746144,Occupied,On-Notice,2026-01-17,2026-07-10,14500.00
+A41,A1,Single,Aswin s,9496713532,Occupied,Staying,2026-06-07,null,19500.00
+A41,B1,Triple,Dhyey Jakhariya,9428285432,Occupied,Staying,2026-07-01,null,13500.00
+A41,B2,Triple,Ebrahim Marakkar,8921554575,Occupied,Staying,2025-10-01,null,13500.00
+A41,B3,Triple,Akshay Verma,9317013199,Occupied,Staying,2025-07-06,null,13500.00
+A41,C1,Double,Harissh G,9486266172,Occupied,Staying,2025-08-24,null,14500.00
+A41,C2,Double,Pranesh S A,8838187804,Occupied,Staying,2026-07-14,null,14500.00
+A41,D1,Double,Vijayasekar P,9686568995,Occupied,Staying,2024-04-02,null,14500.00
+A41,D2,Double,Sai Krishna Kuppili,8008318162,Occupied,Cancelled,null,null,15500.00
+A41,D2,Double,Saket Jaiswal,7890707326,Occupied,Staying,2026-06-13,null,15500.00
+A41,D2,Double,Sai Krishna Kuppili,8008318162,Occupied,Cancelled,null,null,15500.00
+A44,A1,Single,Jawahar Muthuramu,9626779144,Occupied,Cancelled,2026-05-15,null,null
+A44,A1,Single,Thilak S,9626125544,Occupied,Staying,2026-05-23,null,19500.00
+A44,B1,Double,Karthikeyan Ramakrishnan,8754473092,Occupied,Booked,2026-08-01,null,null
+A44,B1,Double,Abhilash V,9526517709,Occupied,On-Notice,2025-07-08,2026-06-15,15500.00
+A44,B2,Double,Dena Dinesh M M,9150912795,Occupied,Staying,2025-07-26,null,15500.00
+A44,C1,Double,Anudatt Sunith,9892808551,Occupied,Staying,2025-10-18,null,14500.00
+A44,C2,Double,Aditya Bissa,8619256651,Occupied,Cancelled,null,null,null
+A44,D1,Single,Aditya Srinivas A,7382982202,Occupied,Staying,2025-01-12,null,24000.00
+B11,A1,Single,Rajesh Anandh,8056323274,Occupied,Staying,2025-08-26,null,19500.00
+B11,B1,Double,Harikrishnan P,7825835134,Occupied,Staying,2024-04-14,null,14500.00
+B11,B2,Double,Arockiasathish S,9944595525,Occupied,Staying,2026-07-19,null,15500.00
+B11,B2,Double,Annamalai Perikaruppan,6383239454,Occupied,Cancelled,2026-06-08,null,null
+B11,C1,Double,Annamalai Perikaruppan,6383239454,Occupied,Cancelled,null,null,null
+B11,C1,Double,PRAVEEN J,8940530074,Occupied,Cancelled,2026-06-01,null,null
+B11,C2,Double,Naga Raja Kurakula,9611689018,Occupied,Staying,2024-05-01,null,13500.00
+B11,D1,Single,Tushar Singh,8826233456,Occupied,Staying,2025-06-15,null,25500.00
+B12,A1,Single,Bhumika KR,9686419269,Occupied,Cancelled,2026-05-06,null,null
+B12,A1,Single,Bhumika KR,9686419269,Occupied,Staying,2026-05-06,null,19500.00
+B12,B1,Double,Nivetha Marimuthu,6379141715,Occupied,Staying,2023-10-01,null,13600.00
+B12,B2,Double,Ammu Mariam Thomas,9384198902,Occupied,Booked,2026-07-23,null,null
+B12,C1,Double,Indira Ch,9676133876,Occupied,Staying,2022-10-15,null,12600.00
+B12,C2,Double,Aakanksha Rajhans,8700126391,Occupied,Staying,2026-05-23,null,14500.00
+B13,A1,Single,Sairam Ct,8754706523,Occupied,Staying,2024-07-17,null,19000.00
+B13,B1,Double,Ram Roshan Ramanathan,9844285300,Occupied,Staying,2024-09-01,null,14500.00
+B13,B2,Double,Rakesh Ravi,8940524599,Occupied,Staying,2026-07-18,null,15500.00
+B13,C1,Double,Piyush Malhotra,9878719281,Occupied,Staying,2025-03-05,null,13500.00
+B13,C2,Double,Martin Rodgers,7691972967,Occupied,Staying,2024-12-01,null,13500.00
+B14,A1,Single,Krishnan D,9489119275,Occupied,Staying,2025-12-21,null,19500.00
+B14,B1,Double,Kumaraswamy K,9945667271,Occupied,Staying,2021-12-17,null,0.00
+B14,B2,Double,Ravi S,7259111259,Occupied,Staying,2021-12-05,null,0.00
+B14,C1,Double,Harish Kumar M,9164596531,Occupied,Staying,2025-02-03,null,13500.00
+B14,C2,Double,Narendhren Rr,7598837702,Occupied,Staying,2026-01-17,null,14500.00
+B22,A1,Single,Yashwanthi V,8524077996,Occupied,Staying,2025-04-08,null,19000.00
+B22,B1,Double,Chandni S,9566880670,Occupied,Staying,2025-01-05,null,14500.00
+B22,B2,Double,Drishti Sudhakar,9008715609,Occupied,Staying,2025-09-02,null,15500.00
+B22,C1,Double,Rajaseethala A,8903022866,Occupied,Staying,2025-02-18,null,13500.00
+B22,C2,Double,Suhani Mehrotra,8003374402,Occupied,Staying,2025-08-02,null,14500.00
+B24,A1,Single,Arunima Shandilya,9064213834,Occupied,Staying,2026-01-31,null,19500.00
+B24,B1,Triple,Aarathi Nambiar,8281636022,Occupied,Staying,2026-02-15,null,13500.00
+B24,B2,Triple,Nandana Chitbabu,8939193221,Occupied,On-Notice,2026-04-01,2026-06-30,13500.00
+B24,B3,Triple,Akshayaa M,6383703881,Occupied,Staying,2025-06-24,null,13500.00
+B24,C1,Double,Aditi Shrivastava,9302348921,Occupied,Staying,2026-01-11,null,14500.00
+B24,C2,Double,null,null,Vacant,null,null,null,null
+B31,B1,Double,Babu Abraham,9745476832,Occupied,Staying,2025-04-03,null,14500.00
+B31,B2,Double,Aman Agarwala,9123790151,Occupied,Staying,2024-10-20,null,14500.00
+B31,C1,Double,Senthilkumar S,9840206824,Occupied,Staying,2025-05-26,null,15500.00
+B31,C2,Double,Priyesh Govind,8943150415,Occupied,Staying,2026-01-07,null,15500.00
+B32,A1,Single,Tejun Verma,8299263415,Occupied,Staying,2025-11-08,null,19500.00
+B32,B1,Double,Mohamed Saif,6383334714,Occupied,Staying,2025-03-08,null,14500.00
+B32,B2,Double,Yaduraj P,7012274764,Occupied,Staying,2024-05-01,null,14500.00
+B32,C1,Double,Umasai Kumar Torikonda,8328692755,Occupied,On-Notice,2023-10-08,2026-07-02,12600.00
+B32,C2,Double,Anupam Singh,7970350604,Occupied,Staying,2026-07-13,null,14500.00
+B33,A1,Single,Ranna R,9480666996,Occupied,Staying,2025-02-03,null,19000.00
+B33,B1,Double,Nikhil Gupta,9981963636,Occupied,Staying,2026-02-09,null,15500.00
+B33,B2,Double,Atharva Vaishampayan,9175146054,Occupied,Staying,2026-02-09,null,15500.00
+B33,C1,Double,Chaman Jain,8925309775,Occupied,Cancelled,2026-05-06,null,null
+B33,C2,Double,null,null,Vacant,null,null,null,null
+B34,A1,Single,Gitansh Anand,7014608981,Occupied,Staying,2026-04-05,null,19500.00
+B34,B1,Double,Pranav Purkar,7972958126,Occupied,Staying,2026-01-10,null,15500.00
+B34,B2,Double,Sourabh Dandare,8103666900,Occupied,Staying,2026-01-10,null,15500.00
+B34,C1,Double,Sai Krishna Kuppili,8008318162,Occupied,On-Notice,2026-05-25,2026-07-07,14500.00
+B34,C2,Double,Prem Chippada,7799044133,Occupied,Staying,2024-10-27,null,13500.00
+B41,A1,Single,Vijay Babu Kumaresan,9500485978,Occupied,Staying,2025-05-05,null,19500.00
+B41,B1,Double,Praful Harikumar,7994232243,Occupied,Staying,2026-07-22,null,15500.00
+B41,B1,Double,Vishal Mohanasundraam,9566670950,Occupied,Cancelled,null,null,15500.00
+B41,B2,Double,Crescent P,7356015199,Occupied,Staying,2026-07-22,null,15500.00
+B41,C1,Double,null,null,Vacant,null,null,null,null
+B41,C2,Double,Abdulkasim Fayas Sathik Batcha,8438713402,Occupied,Cancelled,null,null,null
+B41,C2,Double,Abdulkasim Fayas Sathik Batcha,8438713402,Occupied,Staying,2026-05-03,null,14500.00
+B41,D1,Single,Ranjan Rai,9845894839,Occupied,Staying,2025-01-17,null,24000.00
+B42,A1,Single,Sanath Baburam,9483924968,Occupied,On-Notice,2026-04-16,2026-07-18,19500.00
+B42,B1,Double,Ishan Dubey,9399949737,Occupied,Staying,2026-06-20,null,15500.00
+B42,B2,Double,Anupam Varma,9380343467,Occupied,Staying,2026-07-01,null,15500.00
+B42,C1,Double,Arindrajit Kundu,8420790792,Occupied,Staying,2025-04-01,null,13500.00
+B42,C2,Double,Shubhashish,9990043174,Occupied,Staying,2022-02-28,null,12600.00
+B43,A1,Single,Diya Suresh,6282303424,Occupied,Staying,2025-12-09,null,19500.00
+B43,B1,Double,Sneh Pratap,9810031629,Occupied,Staying,2026-01-08,null,15500.00
+B43,B2,Double,null,null,Vacant,null,null,null,null
+B43,C1,Double,Gouri Renjith,8111001922,Occupied,Staying,2026-06-28,null,14500.00
+B43,C2,Double,Aryananda V,8921451401,Occupied,Staying,2026-06-28,null,14500.00
+B44,A1,Single,Sharanya Goswami,9321379691,Occupied,On-Notice,2026-06-13,2026-07-11,19500.00
+B44,B1,Triple,Ritika Rajesh,7993021046,Occupied,Staying,2026-07-19,null,13500.00
+B44,B1,Triple,Pakhi Mujmer,9753975154,Occupied,Cancelled,2026-04-01,null,null
+B44,B2,Triple,Aleena Renny Philip,7045630938,Occupied,Staying,2026-05-01,null,13500.00
+B44,B2,Triple,Aleena Renny Philip,7045630938,Occupied,Cancelled,null,null,null
+B44,B3,Triple,Nilofar Althaf,8281897275,Occupied,Staying,2026-05-01,null,13500.00
+B44,B3,Triple,Nilofar Althaf,8281897275,Occupied,Cancelled,null,null,null
+B44,C1,Double,Iravati Datta,8900531947,Occupied,Staying,2025-02-04,null,13500.00
+B44,C2,Double,suseela j,9791082117,Occupied,Staying,2026-07-06,null,14500.00
+B44,C2,Double,Tarunya Venkat,9910446247,Occupied,Cancelled,null,null,null
+B44,C2,Double,Tarunya Venkat,9910446247,Occupied,Cancelled,null,null,null
+C11,A1,Single,Harshil Arora,7838777130,Occupied,Staying,2026-07-01,null,19500.00
+C11,B1,Double,Pranav Vitthalrao Kadam,7218767500,Occupied,Staying,2026-07-01,null,15500.00
+C11,B2,Double,Mihir Patil,9689910636,Occupied,Staying,2026-07-01,null,15500.00
+C11,C1,Double,Vikas Tanwar,7404923150,Occupied,Cancelled,2026-07-01,null,null
+C11,C1,Double,Uttkarsh Uttkarsh,9140321340,Occupied,Booked,2026-07-15,null,null
+C11,C2,Double,Dudala Sai Sujay,8978093748,Occupied,Staying,2026-07-01,null,14500.00
+C12,A1,Single,Marina Johnson,9496440939,Occupied,Staying,2025-06-01,null,19500.00
+C12,B1,Double,Oviya P,7397763477,Occupied,Staying,2026-05-23,null,15500.00
+C12,B2,Double,Thota Sharanya,7047619700,Occupied,Staying,2026-06-06,null,15500.00
+C12,C1,Triple,Suhani Srivastava,6307771873,Occupied,Staying,2026-02-01,null,13500.00
+C12,C2,Triple,Keerthiga K,6369353526,Occupied,Staying,2026-07-01,null,13500.00
+C12,C3,Triple,Shakthi Bharathi S,6385282444,Occupied,Staying,2026-05-30,null,13500.00
+C12,D1,Double,Jaishnu Biradha,8293070386,Occupied,Staying,2026-07-19,null,14500.00
+C12,D2,Double,null,null,Vacant,null,null,null,null
+C21,A1,Single,Divyaratna Joshi,9021423703,Occupied,Staying,2026-07-22,null,19500.00
+C21,B1,Double,Sathyasai Regalla,9491646202,Occupied,Staying,2025-12-06,null,15500.00
+C21,B2,Double,null,null,Vacant,null,null,null,null
+C21,C1,Double,Aditya Das,8969904257,Occupied,Staying,2026-01-10,null,14500.00
+C21,C2,Double,Kiran Tr,8289916141,Occupied,Staying,2025-02-09,null,13500.00
+C21,D1,Single,Anup Easo Varghese,9663677032,Occupied,Staying,2026-01-14,null,25500.00
+C24,B1,Triple,Shabana Roshan,8610294490,Occupied,Staying,2026-06-29,null,13500.00
+C24,B2,Triple,GD Harsha,9345485252,Occupied,Cancelled,null,null,null
+C24,B2,Triple,GD Harsha,9345485252,Occupied,Staying,2026-05-02,null,13500.00
+C24,B3,Triple,Rishita Tulsyan,8303553581,Occupied,On-Notice,2025-01-12,2026-07-21,13000.00
+C24,C1,Double,Harrsha T,9176526121,Occupied,Staying,2024-08-04,null,13500.00
+C24,C2,Double,Jayagowri Karthikeyan,7604957249,Occupied,Staying,2025-01-19,null,13500.00
+C31,A1,Single,Yash Jamuar,7042124865,Occupied,Staying,2026-03-13,null,19500.00
+C31,B1,Double,Naveen Joseph,9895434090,Occupied,Staying,2022-09-15,null,13600.00
+C31,B2,Double,Sathiyan Gopalan,9715741456,Occupied,Staying,2024-06-12,null,14500.00
+C31,C1,Double,null,null,Vacant,null,null,null,null
+C31,C2,Double,null,null,Vacant,null,null,null,null
+C31,D1,Single,Arun Prasad,9037080043,Occupied,Staying,2026-02-14,null,25500.00
+C34,A1,Single,Rama D,9840497197,Occupied,Staying,2026-03-06,null,19500.00
+C34,B1,Double,Nirmala A,9894210931,Occupied,Staying,2023-11-27,null,13600.00
+C34,B2,Double,Ardra John,9495351673,Occupied,Staying,2025-12-15,null,15500.00
+C34,C1,Double,null,null,Vacant,null,null,null,null
+C34,C2,Double,Khushboo Sahani,8416928356,Occupied,Staying,2024-04-06,null,13500.00
+C41,A1,Single,Avilekh Gautam,9864056999,Occupied,On-Notice,2024-10-01,2026-07-09,19000.00
+C41,A1,Single,Nirmal R,8903560368,Occupied,Booked,null,null,19500.00
+C41,B1,Double,Jayachandran R,9994188070,Occupied,Booked,2026-08-01,null,null
+C41,B2,Double,Dev Sakaria,9901753839,Occupied,On-Notice,2026-03-01,2026-06-30,15500.00
+C41,C1,Double,Firoz Uddin Gauhar,9990291532,Occupied,Staying,2026-05-01,null,14500.00
+C41,C1,Double,Firoz Uddin Gauhar,9990291532,Occupied,Cancelled,null,null,null
+C41,C2,Double,Mohammad Nauman Shahid,8178817442,Occupied,Cancelled,null,null,null
+C41,C2,Double,Nirmal R,8903560368,Occupied,On-Notice,2026-07-17,2026-07-17,14500.00
+C41,D1,Single,Prateek Sharma,8657428129,Occupied,On-Notice,2024-05-01,2026-07-16,24000.00
+C42,A1,Single,Tarunya Venkat,9910446247,Occupied,Staying,2026-07-01,null,19500.00
+C42,B1,Double,Fathima Nazrin,9497822280,Occupied,On-Notice,2026-07-01,2026-07-09,15500.00
+C42,B2,Double,null,null,Vacant,null,null,null,null
+C42,C1,Double,Sruthi Pitchika,8500840279,Occupied,On-Notice,2025-11-02,2026-06-06,14500.00
+C42,C2,Double,Likhitha Naga Vigneswari Satuluri,8143428893,Occupied,On-Notice,2026-05-18,2026-06-06,14500.00
+C42,C2,Double,Fathima Nazrin,9497822280,Occupied,Booked,null,null,14500.00
+C43,A1,Single,Maria Navin Mazhuvancherry,9746331490,Occupied,Staying,2026-06-01,null,19500.00
+C43,B1,Double,Oviya S,9489770434,Occupied,Staying,2024-02-01,null,14500.00
+C43,B2,Double,Aiswaryaa Krishnasamy Thandapani,8056785038,Occupied,Staying,2026-05-26,null,15500.00
+C43,C1,Double,Suha Sajad,7025567000,Occupied,Staying,2026-04-05,null,14500.00
+C43,C2,Double,Kaarthika,7063909473,Occupied,Staying,2024-02-01,null,13500.00
+C44,A1,Single,Arun Er,8848039369,Occupied,Staying,2025-11-01,null,19500.00
+C44,B1,Double,Harshanand S V,8072300795,Occupied,Staying,2026-06-01,null,15500.00
+C44,B2,Double,Venkat Karthik Mukidichetti,9035146326,Occupied,Staying,2025-05-05,null,15500.00
+C44,C1,Double,Ganesh Selvam,9500164128,Occupied,Staying,2025-08-17,null,14500.00
+C44,C2,Double,Mithil Mohan,9747034470,Occupied,Staying,2026-04-05,null,14500.00
+D11,B1,Single,Tanusha C Karlekar,6361733988,Occupied,Staying,2025-07-16,null,25500.00
+D11,C1,Double,null,null,Vacant,null,null,null,null
+D11,C2,Double,Kanishka Prasath Kumar,9345404795,Occupied,Staying,2026-06-03,null,15500.00
+D11,D1,Triple,Suvetha V,9003628960,Occupied,Staying,2022-11-19,null,13000.00
+D11,D2,Triple,Dhivya Parthasarathy,9894180746,Occupied,Staying,2023-11-09,null,13000.00
+D11,D3,Triple,Shrinethra Mugundan,8220484522,Occupied,Booked,2026-07-03,null,null
+D12,A1,Single,Krithika Vjk,6385187569,Occupied,Staying,2026-02-12,null,19500.00
+D12,B1,Double,Ruth Sylvia A C,9003533736,Occupied,Staying,2025-09-09,null,15500.00
+D12,B2,Double,Benentia Alice Sanjana N,8072684579,Occupied,Staying,2025-05-01,null,15500.00
+D12,C1,Double,Pakhi Mujmer,9753975154,Occupied,Staying,2026-05-17,null,14500.00
+D12,C2,Double,Shreya Agrawal,7978369240,Occupied,On-Notice,2026-02-01,2026-07-07,14500.00
+D15,A1,Executive,Kurian Benoy,9400125402,Occupied,Staying,2026-05-04,null,25500.00
+D21,A1,Single,Amala Menon,9072868795,Occupied,Staying,2025-12-14,null,25500.00
+D21,B1,Double,Shaily Mogari,9131192773,Occupied,Staying,2025-07-16,null,15500.00
+D21,B2,Double,Krithiga Nagarajan,9629622572,Occupied,Staying,2024-06-08,null,14500.00
+D21,C1,Triple,Sharon Swetha,8610106393,Occupied,Staying,2025-01-01,null,13000.00
+D21,C2,Triple,Varsha Darshini S M,9659379514,Occupied,Staying,2025-01-01,null,13000.00
+D21,C3,Triple,Roshana S V,9629446866,Occupied,Staying,2025-01-01,null,13000.00
+D41,A1,Single,Sreyashi Chowdhury,9790453258,Occupied,Staying,2023-07-10,null,18300.00
+D41,B1,Double,Sai Priya Thamodaran,9360059029,Occupied,Staying,2025-11-09,null,15500.00
+D41,B2,Double,Joan Betcy B,9080155826,Occupied,Staying,2025-06-07,null,15500.00
+D41,C1,Double,Mokana Ranee S,8903513516,Occupied,Staying,2026-06-08,null,14500.00
+D41,C2,Double,Ashmita Baidya,8927329721,Occupied,Staying,2025-07-11,null,14500.00

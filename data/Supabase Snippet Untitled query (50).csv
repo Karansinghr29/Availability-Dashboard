@@ -1,0 +1,400 @@
+property_name,apartment_code,bed_code,bed_type,gender_allowed,toilet_type,current_rate,occupancy_status,tenant_id,current_tenant,tenant_phone,staying_status,move_in_date,notice_date,estimated_exit_date,monthly_rental,payment_status,balance_due
+Vista Heights,A11,A1,Single,male,Attached,25500.00,Occupied,38305983-db92-2c3c-7949-96f7ca7833eb,Putta Bulli Venkata Ajay,7519998888,Staying,2026-02-01,null,null,19500.00,partial,0
+Vista Heights,A11,A1,Single,male,Common,19500.00,Occupied,38305983-db92-2c3c-7949-96f7ca7833eb,Putta Bulli Venkata Ajay,7519998888,Staying,2026-02-01,null,null,19500.00,partial,0
+Vista Heights,A11,B1,Double,male,Attached,15500.00,Occupied,11e96dd2-92f4-f793-56db-439d5b3de156,Joel Shajan,9061834615,Staying,2025-08-15,null,null,15500.00,partial,0
+Vista Heights,A11,B1,Double,male,Common,14500.00,Occupied,11e96dd2-92f4-f793-56db-439d5b3de156,Joel Shajan,9061834615,Staying,2025-08-15,null,null,15500.00,partial,0
+Vista Heights,A11,B2,Double,male,Attached,15500.00,Occupied,f59fa4ad-6dca-c7e7-d459-5326609a6412,Karthick Prasanna Cr,9750783112,Staying,2026-02-22,null,null,15500.00,partial,0
+Vista Heights,A11,B2,Double,male,Common,14500.00,Occupied,f59fa4ad-6dca-c7e7-d459-5326609a6412,Karthick Prasanna Cr,9750783112,Staying,2026-02-22,null,null,15500.00,partial,0
+Vista Heights,A11,C1,Double,male,Attached,15500.00,Occupied,89d188b4-94a9-2f97-e068-155ed8ec3f5e,Yash Sharma,6395877792,Staying,2026-02-01,null,null,14500.00,partial,0
+Vista Heights,A11,C1,Double,male,Common,14500.00,Occupied,89d188b4-94a9-2f97-e068-155ed8ec3f5e,Yash Sharma,6395877792,Staying,2026-02-01,null,null,14500.00,partial,0
+Vista Heights,A11,C2,Double,male,Common,14500.00,Occupied,8334eb99-0bc0-3c80-9ff8-83bea3d7b5ef,Abhishek Kumar Jha,9334118844,Staying,2026-03-01,null,null,14500.00,partial,0
+Vista Heights,A11,C2,Double,male,Attached,15500.00,Occupied,8334eb99-0bc0-3c80-9ff8-83bea3d7b5ef,Abhishek Kumar Jha,9334118844,Staying,2026-03-01,null,null,14500.00,partial,0
+Vista Heights,A12,A1,Single,female,Attached,25500.00,Occupied,22b0be2d-52c5-1127-642d-4f1083b404ca,Antara Chakraverty,9701343973,Staying,2025-12-22,null,null,19500.00,partial,0
+Vista Heights,A12,A1,Single,female,Common,19500.00,Occupied,22b0be2d-52c5-1127-642d-4f1083b404ca,Antara Chakraverty,9701343973,Staying,2025-12-22,null,null,19500.00,partial,0
+Vista Heights,A12,B1,Double,female,Common,14500.00,Occupied,9fd15f79-3f68-411c-a282-24af6ade0fdb,Shreya Singh,9757062440,Booked,2026-07-27,null,null,null,partial,0
+Vista Heights,A12,B1,Double,female,Common,14500.00,Occupied,44bf5771-a669-438c-a190-88aab999cfae,Vaishnavi Prabha Chettiar,9288000601,On-Notice,2026-05-06,2026-06-20,2026-07-25,15500.00,paid,0
+Vista Heights,A12,B1,Double,female,Common,14500.00,Occupied,15ff5934-5a4f-43fb-8bf6-4d798bd6a28b,Narmada Vaman,9884537002,Cancelled,null,null,null,null,partial,0
+Vista Heights,A12,B1,Double,female,Attached,15500.00,Occupied,44bf5771-a669-438c-a190-88aab999cfae,Vaishnavi Prabha Chettiar,9288000601,On-Notice,2026-05-06,2026-06-20,2026-07-25,15500.00,paid,0
+Vista Heights,A12,B1,Double,female,Attached,15500.00,Occupied,15ff5934-5a4f-43fb-8bf6-4d798bd6a28b,Narmada Vaman,9884537002,Cancelled,null,null,null,null,partial,0
+Vista Heights,A12,B1,Double,female,Attached,15500.00,Occupied,9fd15f79-3f68-411c-a282-24af6ade0fdb,Shreya Singh,9757062440,Booked,2026-07-27,null,null,null,partial,0
+Vista Heights,A12,B2,Double,female,Common,14500.00,Occupied,1b1e4294-4ed3-42e4-b820-7c443e8ddfcf,Muthumari Chandran,6361024592,Staying,2026-07-01,null,null,15500.00,paid,0
+Vista Heights,A12,B2,Double,female,Attached,15500.00,Occupied,1b1e4294-4ed3-42e4-b820-7c443e8ddfcf,Muthumari Chandran,6361024592,Staying,2026-07-01,null,null,15500.00,paid,0
+Vista Heights,A12,C1,Double,female,Common,14500.00,Occupied,83f51f9d-9d36-eda9-e7fb-5b1badbbd5d9,Himika Bhagwat,7987731381,Staying,2025-08-05,null,null,14500.00,partial,0
+Vista Heights,A12,C1,Double,female,Attached,15500.00,Occupied,83f51f9d-9d36-eda9-e7fb-5b1badbbd5d9,Himika Bhagwat,7987731381,Staying,2025-08-05,null,null,14500.00,partial,0
+Vista Heights,A12,C2,Double,female,Common,14500.00,Occupied,f2a00e3d-de04-40a3-6f41-a3ebfcab4a3c,Tanisha Choudhary,9399540630,Staying,2025-08-04,null,null,14500.00,partial,0
+Vista Heights,A12,C2,Double,female,Attached,15500.00,Occupied,f2a00e3d-de04-40a3-6f41-a3ebfcab4a3c,Tanisha Choudhary,9399540630,Staying,2025-08-04,null,null,14500.00,partial,0
+Vista Heights,A22,A1,Single,male,Attached,25500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,A1,Single,male,Common,19500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,B1,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,B1,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,B2,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,B2,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,C1,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,C1,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,C2,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A22,C2,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,A23,A1,Single,male,Common,19500.00,Occupied,d926094a-e5b5-4bc7-af79-7f822211d3f3,Devashish Dewangan,8819980007,Staying,2026-07-17,null,null,19500.00,pending,0
+Vista Heights,A23,A1,Single,male,Attached,25500.00,Occupied,d926094a-e5b5-4bc7-af79-7f822211d3f3,Devashish Dewangan,8819980007,Staying,2026-07-17,null,null,19500.00,pending,0
+Vista Heights,A23,B1,Double,male,Common,14500.00,Occupied,21e237d1-286e-324e-0cef-45725d629768,Karthikesan E,6385932825,Staying,2025-12-08,null,null,15500.00,partial,0
+Vista Heights,A23,B1,Double,male,Attached,15500.00,Occupied,21e237d1-286e-324e-0cef-45725d629768,Karthikesan E,6385932825,Staying,2025-12-08,null,null,15500.00,partial,0
+Vista Heights,A23,B2,Double,male,Common,14500.00,Occupied,5527e05d-475b-45ed-a6f4-284340eed262,Jomon P A,8884395666,Staying,2026-04-20,null,null,15500.00,paid,0
+Vista Heights,A23,B2,Double,male,Attached,15500.00,Occupied,5527e05d-475b-45ed-a6f4-284340eed262,Jomon P A,8884395666,Staying,2026-04-20,null,null,15500.00,paid,0
+Vista Heights,A23,C1,Double,male,Common,14500.00,Occupied,d751c131-c1c9-4f5c-88f8-7e4c6cb710b3,Dr RAM SHIROMANI,8840367322,Staying,2026-03-26,null,null,14500.00,partial,16080
+Vista Heights,A23,C1,Double,male,Attached,15500.00,Occupied,d751c131-c1c9-4f5c-88f8-7e4c6cb710b3,Dr RAM SHIROMANI,8840367322,Staying,2026-03-26,null,null,14500.00,partial,16080
+Vista Heights,A23,C2,Double,male,Attached,15500.00,Occupied,77dd12b8-a20b-05c8-2372-79ba1b1624a9,Krishanu Kashyap,9365258004,Staying,2024-06-06,null,null,13500.00,partial,0
+Vista Heights,A23,C2,Double,male,Common,14500.00,Occupied,77dd12b8-a20b-05c8-2372-79ba1b1624a9,Krishanu Kashyap,9365258004,Staying,2024-06-06,null,null,13500.00,partial,0
+Vista Heights,A24,A1,Single,male,Common,19500.00,Occupied,1bc75090-ac1a-44a6-bb22-f211aca7c760,Soham Pradhan,9875367211,Staying,2026-06-01,null,null,19500.00,paid,0
+Vista Heights,A24,A1,Single,male,Attached,25500.00,Occupied,1bc75090-ac1a-44a6-bb22-f211aca7c760,Soham Pradhan,9875367211,Staying,2026-06-01,null,null,19500.00,paid,0
+Vista Heights,A24,B1,Triple,male,Attached,13500.00,Occupied,a6037691-771e-8146-3714-f9dedb8acbcc,Abhishek Chauthe,7420918471,Staying,2026-03-12,null,null,13500.00,partial,0
+Vista Heights,A24,B2,Triple,male,Attached,13500.00,Occupied,d6d33436-345a-e39c-9f8d-91c76dca514e,Parv Aggarwal,7015215583,Staying,2025-09-28,null,null,13500.00,partial,0
+Vista Heights,A24,B3,Triple,male,Attached,13500.00,Occupied,11316c38-dc08-4983-3588-fcadd88bd5d2,Dev Bhasin,6395305011,Staying,2025-09-28,null,null,13500.00,partial,0
+Vista Heights,A24,C1,Double,male,Common,14500.00,Occupied,b3002707-86e9-43d5-956d-cf108fb6a23f,Varun Katiyar,8080439478,Staying,2026-04-26,null,null,14500.00,paid,0
+Vista Heights,A24,C1,Double,male,Attached,15500.00,Occupied,b3002707-86e9-43d5-956d-cf108fb6a23f,Varun Katiyar,8080439478,Staying,2026-04-26,null,null,14500.00,paid,0
+Vista Heights,A24,C2,Double,male,Common,14500.00,Occupied,83af11b3-a274-7404-3265-ec658f74f8cf,Akarsh Shrivatsava,7303746144,On-Notice,2026-01-17,2026-07-10,2026-08-09,14500.00,partial,0
+Vista Heights,A24,C2,Double,male,Attached,15500.00,Occupied,83af11b3-a274-7404-3265-ec658f74f8cf,Akarsh Shrivatsava,7303746144,On-Notice,2026-01-17,2026-07-10,2026-08-09,14500.00,partial,0
+Vista Heights,A41,A1,Single,male,Common,19500.00,Occupied,f70ae790-e17b-aca8-a21a-82ddd895450b,Aswin s,9496713532,Staying,2026-06-07,null,null,19500.00,paid,0
+Vista Heights,A41,A1,Single,male,Attached,25500.00,Occupied,f70ae790-e17b-aca8-a21a-82ddd895450b,Aswin s,9496713532,Staying,2026-06-07,null,null,19500.00,paid,0
+Vista Heights,A41,B1,Triple,male,Attached,13500.00,Occupied,01af6f97-6cb1-4799-9476-493b8af42437,Dhyey Jakhariya,9428285432,Staying,2026-07-01,null,null,13500.00,paid,0
+Vista Heights,A41,B2,Triple,male,Attached,13500.00,Occupied,3e50af3d-452f-d098-b3bc-3c2a64576d55,Ebrahim Marakkar,8921554575,Staying,2025-10-01,null,null,13500.00,partial,0
+Vista Heights,A41,B3,Triple,male,Attached,13500.00,Occupied,1d4c0119-5151-7a5b-2266-f16e44f67157,Akshay Verma,9317013199,Staying,2025-07-06,null,null,13500.00,partial,0
+Vista Heights,A41,C1,Double,male,Common,14500.00,Occupied,cda37b51-1bbc-af0d-a560-49af88fdc751,Harissh G,9486266172,Staying,2025-08-24,null,null,14500.00,partial,0
+Vista Heights,A41,C1,Double,male,Attached,15500.00,Occupied,cda37b51-1bbc-af0d-a560-49af88fdc751,Harissh G,9486266172,Staying,2025-08-24,null,null,14500.00,partial,0
+Vista Heights,A41,C2,Double,male,Attached,15500.00,Occupied,961c950e-debe-4dd2-8e5f-08bf92bda977,Pranesh S A,8838187804,Staying,2026-07-14,null,null,14500.00,partial,1
+Vista Heights,A41,C2,Double,male,Common,14500.00,Occupied,961c950e-debe-4dd2-8e5f-08bf92bda977,Pranesh S A,8838187804,Staying,2026-07-14,null,null,14500.00,partial,1
+Vista Heights,A41,D1,Double,male,Attached,15500.00,Occupied,cd2c3f97-4df7-b32f-d0c0-12031beae516,Vijayasekar P,9686568995,Staying,2024-04-02,null,null,14500.00,partial,0
+Vista Heights,A41,D1,Double,male,Common,14500.00,Occupied,cd2c3f97-4df7-b32f-d0c0-12031beae516,Vijayasekar P,9686568995,Staying,2024-04-02,null,null,14500.00,partial,0
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,e0174322-3fb7-483f-91a0-61b903ae3e49,Saket Jaiswal,7890707326,Staying,2026-06-13,null,null,15500.00,paid,0
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,e0174322-3fb7-483f-91a0-61b903ae3e49,Saket Jaiswal,7890707326,Staying,2026-06-13,null,null,15500.00,paid,0
+Vista Heights,A44,A1,Single,male,Common,19500.00,Occupied,f91c2854-a88b-4630-b2a6-c48401e4dd14,Thilak S,9626125544,Staying,2026-05-23,null,null,19500.00,partial,1
+Vista Heights,A44,A1,Single,male,Common,19500.00,Occupied,083cff9b-ad02-40b0-93b8-969ab0460ee6,Jawahar Muthuramu,9626779144,Cancelled,2026-05-15,null,null,null,partial,0
+Vista Heights,A44,A1,Single,male,Attached,25500.00,Occupied,083cff9b-ad02-40b0-93b8-969ab0460ee6,Jawahar Muthuramu,9626779144,Cancelled,2026-05-15,null,null,null,partial,0
+Vista Heights,A44,A1,Single,male,Attached,25500.00,Occupied,f91c2854-a88b-4630-b2a6-c48401e4dd14,Thilak S,9626125544,Staying,2026-05-23,null,null,19500.00,partial,1
+Vista Heights,A44,B1,Double,male,Common,14500.00,Occupied,3b27dc97-dafa-0480-7b61-5549a3ea7eee,Abhilash V,9526517709,On-Notice,2025-07-08,2026-06-15,2026-07-24,15500.00,partial,0
+Vista Heights,A44,B1,Double,male,Common,14500.00,Occupied,1870394c-0b26-4010-85ca-50f7ba65ec6c,Karthikeyan Ramakrishnan,8754473092,Booked,2026-08-01,null,null,null,partial,0
+Vista Heights,A44,B1,Double,male,Attached,15500.00,Occupied,1870394c-0b26-4010-85ca-50f7ba65ec6c,Karthikeyan Ramakrishnan,8754473092,Booked,2026-08-01,null,null,null,partial,0
+Vista Heights,A44,B1,Double,male,Attached,15500.00,Occupied,3b27dc97-dafa-0480-7b61-5549a3ea7eee,Abhilash V,9526517709,On-Notice,2025-07-08,2026-06-15,2026-07-24,15500.00,partial,0
+Vista Heights,A44,B2,Double,male,Common,14500.00,Occupied,5e901269-d116-cf62-7661-df859f5b02dc,Dena Dinesh M M,9150912795,Staying,2025-07-26,null,null,15500.00,partial,0
+Vista Heights,A44,B2,Double,male,Attached,15500.00,Occupied,5e901269-d116-cf62-7661-df859f5b02dc,Dena Dinesh M M,9150912795,Staying,2025-07-26,null,null,15500.00,partial,0
+Vista Heights,A44,C1,Double,male,Attached,15500.00,Occupied,8123af5e-305b-80f8-20db-4d54b7f628c7,Anudatt Sunith,9892808551,Staying,2025-10-18,null,null,14500.00,partial,0
+Vista Heights,A44,C1,Double,male,Common,14500.00,Occupied,8123af5e-305b-80f8-20db-4d54b7f628c7,Anudatt Sunith,9892808551,Staying,2025-10-18,null,null,14500.00,partial,0
+Vista Heights,A44,C2,Double,male,Common,14500.00,Occupied,1261d726-9481-43dd-bac5-f1b158c8ab32,Aditya Bissa,8619256651,Cancelled,null,null,null,null,partial,0
+Vista Heights,A44,C2,Double,male,Attached,15500.00,Occupied,1261d726-9481-43dd-bac5-f1b158c8ab32,Aditya Bissa,8619256651,Cancelled,null,null,null,null,partial,0
+Vista Heights,A44,D1,Single,male,Common,19500.00,Occupied,86cd2239-fa55-0389-437e-e8fd505dc931,Aditya Srinivas A,7382982202,Staying,2025-01-12,null,null,24000.00,partial,27930
+Vista Heights,A44,D1,Single,male,Attached,25500.00,Occupied,86cd2239-fa55-0389-437e-e8fd505dc931,Aditya Srinivas A,7382982202,Staying,2025-01-12,null,null,24000.00,partial,27930
+Vista Heights,B11,A1,Single,male,Common,19500.00,Occupied,2c1980eb-be51-916e-8f61-1e8fe83afb0c,Rajesh Anandh,8056323274,Staying,2025-08-26,null,null,19500.00,partial,0
+Vista Heights,B11,A1,Single,male,Attached,25500.00,Occupied,2c1980eb-be51-916e-8f61-1e8fe83afb0c,Rajesh Anandh,8056323274,Staying,2025-08-26,null,null,19500.00,partial,0
+Vista Heights,B11,B1,Double,male,Common,14500.00,Occupied,61031b0a-ef18-26aa-64b7-d412d7b3d276,Harikrishnan P,7825835134,Staying,2024-04-14,null,null,14500.00,partial,0
+Vista Heights,B11,B1,Double,male,Attached,15500.00,Occupied,61031b0a-ef18-26aa-64b7-d412d7b3d276,Harikrishnan P,7825835134,Staying,2024-04-14,null,null,14500.00,partial,0
+Vista Heights,B11,B2,Double,male,Attached,15500.00,Occupied,6e52de53-d0e1-4fff-871f-36aa18ac4720,Arockiasathish S,9944595525,Staying,2026-07-19,null,null,15500.00,partial,6500
+Vista Heights,B11,B2,Double,male,Attached,15500.00,Occupied,ec54c666-5b64-42fd-9eb8-880606816c1e,Annamalai Perikaruppan,6383239454,Cancelled,2026-06-08,null,null,null,partial,0
+Vista Heights,B11,B2,Double,male,Common,14500.00,Occupied,ec54c666-5b64-42fd-9eb8-880606816c1e,Annamalai Perikaruppan,6383239454,Cancelled,2026-06-08,null,null,null,partial,0
+Vista Heights,B11,B2,Double,male,Common,14500.00,Occupied,6e52de53-d0e1-4fff-871f-36aa18ac4720,Arockiasathish S,9944595525,Staying,2026-07-19,null,null,15500.00,partial,6500
+Vista Heights,B11,C1,Double,male,Attached,15500.00,Occupied,e85daa48-7686-4c0f-afdb-f0bba0670510,PRAVEEN J,8940530074,Cancelled,2026-06-01,null,null,null,partial,0
+Vista Heights,B11,C1,Double,male,Common,14500.00,Occupied,e85daa48-7686-4c0f-afdb-f0bba0670510,PRAVEEN J,8940530074,Cancelled,2026-06-01,null,null,null,partial,0
+Vista Heights,B11,C1,Double,male,Common,14500.00,Occupied,ec54c666-5b64-42fd-9eb8-880606816c1e,Annamalai Perikaruppan,6383239454,Cancelled,null,null,null,null,partial,0
+Vista Heights,B11,C1,Double,male,Attached,15500.00,Occupied,ec54c666-5b64-42fd-9eb8-880606816c1e,Annamalai Perikaruppan,6383239454,Cancelled,null,null,null,null,partial,0
+Vista Heights,B11,C2,Double,male,Attached,15500.00,Occupied,6dd50e39-9843-4442-cc09-3b49fbe97fb9,Naga Raja Kurakula,9611689018,Staying,2024-05-01,null,null,13500.00,partial,0
+Vista Heights,B11,C2,Double,male,Common,14500.00,Occupied,6dd50e39-9843-4442-cc09-3b49fbe97fb9,Naga Raja Kurakula,9611689018,Staying,2024-05-01,null,null,13500.00,partial,0
+Vista Heights,B11,D1,Single,male,Common,19500.00,Occupied,ec6bd398-2413-2c67-18db-10bdd92ee4f9,Tushar Singh,8826233456,Staying,2025-06-15,null,null,25500.00,partial,0
+Vista Heights,B11,D1,Single,male,Attached,25500.00,Occupied,ec6bd398-2413-2c67-18db-10bdd92ee4f9,Tushar Singh,8826233456,Staying,2025-06-15,null,null,25500.00,partial,0
+Vista Heights,B12,A1,Single,female,Attached,25500.00,Occupied,2ba81159-3fd3-401a-b806-4cf09e7dce86,Bhumika KR,9686419269,Staying,2026-05-06,null,null,19500.00,paid,0
+Vista Heights,B12,A1,Single,female,Attached,25500.00,Occupied,2ba81159-3fd3-401a-b806-4cf09e7dce86,Bhumika KR,9686419269,Cancelled,2026-05-06,null,null,null,partial,0
+Vista Heights,B12,A1,Single,female,Common,19500.00,Occupied,2ba81159-3fd3-401a-b806-4cf09e7dce86,Bhumika KR,9686419269,Cancelled,2026-05-06,null,null,null,partial,0
+Vista Heights,B12,A1,Single,female,Common,19500.00,Occupied,2ba81159-3fd3-401a-b806-4cf09e7dce86,Bhumika KR,9686419269,Staying,2026-05-06,null,null,19500.00,paid,0
+Vista Heights,B12,B1,Double,female,Attached,15500.00,Occupied,cf1318a5-0564-4af6-d90e-c3e76de1ef08,Nivetha Marimuthu,6379141715,Staying,2023-10-01,null,null,13600.00,partial,0
+Vista Heights,B12,B1,Double,female,Common,14500.00,Occupied,cf1318a5-0564-4af6-d90e-c3e76de1ef08,Nivetha Marimuthu,6379141715,Staying,2023-10-01,null,null,13600.00,partial,0
+Vista Heights,B12,B2,Double,female,Common,14500.00,Occupied,0366c854-a2dd-42cd-b83a-7a0affb3fa85,Ammu Mariam Thomas,9384198902,Booked,2026-07-23,null,null,null,partial,0
+Vista Heights,B12,B2,Double,female,Attached,15500.00,Occupied,0366c854-a2dd-42cd-b83a-7a0affb3fa85,Ammu Mariam Thomas,9384198902,Booked,2026-07-23,null,null,null,partial,0
+Vista Heights,B12,C1,Double,female,Attached,15500.00,Occupied,49355947-7605-ec5f-7d81-a6597f38d76b,Indira Ch,9676133876,Staying,2022-10-15,null,null,12600.00,partial,0
+Vista Heights,B12,C1,Double,female,Common,14500.00,Occupied,49355947-7605-ec5f-7d81-a6597f38d76b,Indira Ch,9676133876,Staying,2022-10-15,null,null,12600.00,partial,0
+Vista Heights,B12,C2,Double,female,Attached,15500.00,Occupied,79d4d3fe-73c5-a965-030f-c60220ee20cb,Aakanksha Rajhans,8700126391,Staying,2026-05-23,null,null,14500.00,pending,0
+Vista Heights,B12,C2,Double,female,Common,14500.00,Occupied,79d4d3fe-73c5-a965-030f-c60220ee20cb,Aakanksha Rajhans,8700126391,Staying,2026-05-23,null,null,14500.00,pending,0
+Vista Heights,B13,A1,Single,male,Common,19500.00,Occupied,be84008a-74d3-3cc1-6fd6-bcef998f7bff,Sairam Ct,8754706523,Staying,2024-07-17,null,null,19000.00,partial,0
+Vista Heights,B13,A1,Single,male,Attached,25500.00,Occupied,be84008a-74d3-3cc1-6fd6-bcef998f7bff,Sairam Ct,8754706523,Staying,2024-07-17,null,null,19000.00,partial,0
+Vista Heights,B13,B1,Double,male,Attached,15500.00,Occupied,22a9494d-0e02-6fba-4aee-7947f1e6110b,Ram Roshan Ramanathan,9844285300,Staying,2024-09-01,null,null,14500.00,partial,0
+Vista Heights,B13,B1,Double,male,Common,14500.00,Occupied,22a9494d-0e02-6fba-4aee-7947f1e6110b,Ram Roshan Ramanathan,9844285300,Staying,2024-09-01,null,null,14500.00,partial,0
+Vista Heights,B13,B2,Double,male,Common,14500.00,Occupied,918b6526-10a3-4e0e-b3d8-7862211d2485,Rakesh Ravi,8940524599,Staying,2026-07-18,null,null,15500.00,paid,0
+Vista Heights,B13,B2,Double,male,Attached,15500.00,Occupied,918b6526-10a3-4e0e-b3d8-7862211d2485,Rakesh Ravi,8940524599,Staying,2026-07-18,null,null,15500.00,paid,0
+Vista Heights,B13,C1,Double,male,Common,14500.00,Occupied,03ce56c0-8798-b95d-7125-311b80363e74,Piyush Malhotra,9878719281,Staying,2025-03-05,null,null,13500.00,partial,0
+Vista Heights,B13,C1,Double,male,Attached,15500.00,Occupied,03ce56c0-8798-b95d-7125-311b80363e74,Piyush Malhotra,9878719281,Staying,2025-03-05,null,null,13500.00,partial,0
+Vista Heights,B13,C2,Double,male,Common,14500.00,Occupied,510cd475-6538-7d02-413c-1a0f553ba4e6,Martin Rodgers,7691972967,Staying,2024-12-01,null,null,13500.00,partial,0
+Vista Heights,B13,C2,Double,male,Attached,15500.00,Occupied,510cd475-6538-7d02-413c-1a0f553ba4e6,Martin Rodgers,7691972967,Staying,2024-12-01,null,null,13500.00,partial,0
+Vista Heights,B14,A1,Single,male,Attached,25500.00,Occupied,011b7d1c-5697-5394-c05b-fa0473640657,Krishnan D,9489119275,Staying,2025-12-21,null,null,19500.00,partial,0
+Vista Heights,B14,A1,Single,male,Common,19500.00,Occupied,011b7d1c-5697-5394-c05b-fa0473640657,Krishnan D,9489119275,Staying,2025-12-21,null,null,19500.00,partial,0
+Vista Heights,B14,B1,Double,male,Attached,15500.00,Occupied,950dd22f-78fa-d205-48b3-fe5a5cc7438e,Kumaraswamy K,9945667271,Staying,2021-12-17,null,null,0.00,partial,0.06
+Vista Heights,B14,B1,Double,male,Common,14500.00,Occupied,950dd22f-78fa-d205-48b3-fe5a5cc7438e,Kumaraswamy K,9945667271,Staying,2021-12-17,null,null,0.00,partial,0.06
+Vista Heights,B14,B2,Double,male,Attached,15500.00,Occupied,4628a4bf-d4c5-9e5d-471c-271b9f3e7d03,Ravi S,7259111259,Staying,2021-12-05,null,null,0.00,partial,0
+Vista Heights,B14,B2,Double,male,Common,14500.00,Occupied,4628a4bf-d4c5-9e5d-471c-271b9f3e7d03,Ravi S,7259111259,Staying,2021-12-05,null,null,0.00,partial,0
+Vista Heights,B14,C1,Double,male,Common,14500.00,Occupied,1287ac56-adee-78b5-6a6b-56b3e8dd7d48,Harish Kumar M,9164596531,Staying,2025-02-03,null,null,13500.00,partial,0
+Vista Heights,B14,C1,Double,male,Attached,15500.00,Occupied,1287ac56-adee-78b5-6a6b-56b3e8dd7d48,Harish Kumar M,9164596531,Staying,2025-02-03,null,null,13500.00,partial,0
+Vista Heights,B14,C2,Double,male,Attached,15500.00,Occupied,1fc0c3bb-f35c-8d5d-a4fa-a9c1723cd8ab,Narendhren Rr,7598837702,Staying,2026-01-17,null,null,14500.00,partial,0
+Vista Heights,B14,C2,Double,male,Common,14500.00,Occupied,1fc0c3bb-f35c-8d5d-a4fa-a9c1723cd8ab,Narendhren Rr,7598837702,Staying,2026-01-17,null,null,14500.00,partial,0
+Vista Heights,B22,A1,Single,female,Common,19500.00,Occupied,2b785f57-1c4f-d4a8-d486-b69e7b2db5bc,Yashwanthi V,8524077996,Staying,2025-04-08,null,null,19000.00,partial,0
+Vista Heights,B22,A1,Single,female,Attached,25500.00,Occupied,2b785f57-1c4f-d4a8-d486-b69e7b2db5bc,Yashwanthi V,8524077996,Staying,2025-04-08,null,null,19000.00,partial,0
+Vista Heights,B22,B1,Double,female,Attached,15500.00,Occupied,f284b25b-d762-1399-a12e-ba7ffa6b6f97,Chandni S,9566880670,Staying,2025-01-05,null,null,14500.00,partial,0
+Vista Heights,B22,B1,Double,female,Common,14500.00,Occupied,f284b25b-d762-1399-a12e-ba7ffa6b6f97,Chandni S,9566880670,Staying,2025-01-05,null,null,14500.00,partial,0
+Vista Heights,B22,B2,Double,female,Attached,15500.00,Occupied,b4a50439-db13-dc26-d980-eb079b321460,Drishti Sudhakar,9008715609,Staying,2025-09-02,null,null,15500.00,partial,0
+Vista Heights,B22,B2,Double,female,Common,14500.00,Occupied,b4a50439-db13-dc26-d980-eb079b321460,Drishti Sudhakar,9008715609,Staying,2025-09-02,null,null,15500.00,partial,0
+Vista Heights,B22,C1,Double,female,Common,14500.00,Occupied,5fee0a79-3970-704a-2332-f7c7598e86c1,Rajaseethala A,8903022866,Staying,2025-02-18,null,null,13500.00,partial,0
+Vista Heights,B22,C1,Double,female,Attached,15500.00,Occupied,5fee0a79-3970-704a-2332-f7c7598e86c1,Rajaseethala A,8903022866,Staying,2025-02-18,null,null,13500.00,partial,0
+Vista Heights,B22,C2,Double,female,Attached,15500.00,Occupied,c675e97a-0958-0695-90b3-49311eec8fd7,Suhani Mehrotra,8003374402,Staying,2025-08-02,null,null,14500.00,partial,0
+Vista Heights,B22,C2,Double,female,Common,14500.00,Occupied,c675e97a-0958-0695-90b3-49311eec8fd7,Suhani Mehrotra,8003374402,Staying,2025-08-02,null,null,14500.00,partial,0
+Vista Heights,B24,A1,Single,female,Attached,25500.00,Occupied,1a171004-7682-1c39-e6a2-758b668c33b0,Arunima Shandilya,9064213834,Staying,2026-01-31,null,null,19500.00,partial,0
+Vista Heights,B24,A1,Single,female,Common,19500.00,Occupied,1a171004-7682-1c39-e6a2-758b668c33b0,Arunima Shandilya,9064213834,Staying,2026-01-31,null,null,19500.00,partial,0
+Vista Heights,B24,B1,Triple,female,Attached,13500.00,Occupied,43774f3c-9ce6-fc78-7857-b8607c3e1966,Aarathi Nambiar,8281636022,Staying,2026-02-15,null,null,13500.00,partial,0
+Vista Heights,B24,B2,Triple,female,Attached,13500.00,Occupied,d2449d75-0593-4deb-a6c2-fae99fc83ab0,Nandana Chitbabu,8939193221,On-Notice,2026-04-01,2026-06-30,2026-07-31,13500.00,paid,0
+Vista Heights,B24,B3,Triple,female,Attached,13500.00,Occupied,be68c44d-d4d2-478a-7b1e-c9c3fefac406,Akshayaa M,6383703881,Staying,2025-06-24,null,null,13500.00,partial,0
+Vista Heights,B24,C1,Double,female,Common,14500.00,Occupied,c3c77367-5f51-f7a7-e667-0e3480f53751,Aditi Shrivastava,9302348921,Staying,2026-01-11,null,null,14500.00,partial,0
+Vista Heights,B24,C1,Double,female,Attached,15500.00,Occupied,c3c77367-5f51-f7a7-e667-0e3480f53751,Aditi Shrivastava,9302348921,Staying,2026-01-11,null,null,14500.00,partial,0
+Vista Heights,B24,C2,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B24,C2,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B31,B1,Double,male,Common,14500.00,Occupied,b0a6f0b5-9fd8-112e-2bfa-24fa8a25779b,Babu Abraham,9745476832,Staying,2025-04-03,null,null,14500.00,partial,0
+Vista Heights,B31,B1,Double,male,Attached,15500.00,Occupied,b0a6f0b5-9fd8-112e-2bfa-24fa8a25779b,Babu Abraham,9745476832,Staying,2025-04-03,null,null,14500.00,partial,0
+Vista Heights,B31,B2,Double,male,Common,14500.00,Occupied,c2329858-525d-2f70-5e31-bf9a8358eb3e,Aman Agarwala,9123790151,Staying,2024-10-20,null,null,14500.00,partial,0
+Vista Heights,B31,B2,Double,male,Attached,15500.00,Occupied,c2329858-525d-2f70-5e31-bf9a8358eb3e,Aman Agarwala,9123790151,Staying,2024-10-20,null,null,14500.00,partial,0
+Vista Heights,B31,C1,Double,male,Attached,15500.00,Occupied,417cb75b-9992-4df9-28ae-ad4d2313621f,Senthilkumar S,9840206824,Staying,2025-05-26,null,null,15500.00,partial,0
+Vista Heights,B31,C1,Double,male,Common,14500.00,Occupied,417cb75b-9992-4df9-28ae-ad4d2313621f,Senthilkumar S,9840206824,Staying,2025-05-26,null,null,15500.00,partial,0
+Vista Heights,B31,C2,Double,male,Attached,15500.00,Occupied,82be44de-b1d6-4e48-e6bb-33ec98b83c7d,Priyesh Govind,8943150415,Staying,2026-01-07,null,null,15500.00,partial,0
+Vista Heights,B31,C2,Double,male,Common,14500.00,Occupied,82be44de-b1d6-4e48-e6bb-33ec98b83c7d,Priyesh Govind,8943150415,Staying,2026-01-07,null,null,15500.00,partial,0
+Vista Heights,B32,A1,Single,male,Attached,25500.00,Occupied,4f75b0ca-7bed-c37c-cfd4-1e361a1bb6d4,Tejun Verma,8299263415,Staying,2025-11-08,null,null,19500.00,partial,0
+Vista Heights,B32,A1,Single,male,Common,19500.00,Occupied,4f75b0ca-7bed-c37c-cfd4-1e361a1bb6d4,Tejun Verma,8299263415,Staying,2025-11-08,null,null,19500.00,partial,0
+Vista Heights,B32,B1,Double,male,Attached,15500.00,Occupied,55ca6f7c-112a-ec33-7c1c-987508bc9e41,Mohamed Saif,6383334714,Staying,2025-03-08,null,null,14500.00,partial,0
+Vista Heights,B32,B1,Double,male,Common,14500.00,Occupied,55ca6f7c-112a-ec33-7c1c-987508bc9e41,Mohamed Saif,6383334714,Staying,2025-03-08,null,null,14500.00,partial,0
+Vista Heights,B32,B2,Double,male,Common,14500.00,Occupied,b19dfc6c-a5d5-734c-3d3d-6389c281b3bb,Yaduraj P,7012274764,Staying,2024-05-01,null,null,14500.00,partial,0
+Vista Heights,B32,B2,Double,male,Attached,15500.00,Occupied,b19dfc6c-a5d5-734c-3d3d-6389c281b3bb,Yaduraj P,7012274764,Staying,2024-05-01,null,null,14500.00,partial,0
+Vista Heights,B32,C1,Double,male,Common,14500.00,Occupied,855f3f6a-72ae-46f4-4cc2-a9a0d5df5b70,Umasai Kumar Torikonda,8328692755,On-Notice,2023-10-08,2026-07-02,2026-08-09,12600.00,partial,0
+Vista Heights,B32,C1,Double,male,Attached,15500.00,Occupied,855f3f6a-72ae-46f4-4cc2-a9a0d5df5b70,Umasai Kumar Torikonda,8328692755,On-Notice,2023-10-08,2026-07-02,2026-08-09,12600.00,partial,0
+Vista Heights,B32,C2,Double,male,Common,14500.00,Occupied,71492154-2bd6-41d1-b8b8-3acec9cedd1f,Anupam Singh,7970350604,Staying,2026-07-13,null,null,14500.00,partial,1
+Vista Heights,B32,C2,Double,male,Attached,15500.00,Occupied,71492154-2bd6-41d1-b8b8-3acec9cedd1f,Anupam Singh,7970350604,Staying,2026-07-13,null,null,14500.00,partial,1
+Vista Heights,B33,A1,Single,male,Common,19500.00,Occupied,e17238d1-34ce-0cbb-4dc0-f65e60ff52f7,Ranna R,9480666996,Staying,2025-02-03,null,null,19000.00,partial,0
+Vista Heights,B33,A1,Single,male,Attached,25500.00,Occupied,e17238d1-34ce-0cbb-4dc0-f65e60ff52f7,Ranna R,9480666996,Staying,2025-02-03,null,null,19000.00,partial,0
+Vista Heights,B33,B1,Double,male,Attached,15500.00,Occupied,87a1e515-e2e0-110f-05d1-04f5a83c066a,Nikhil Gupta,9981963636,Staying,2026-02-09,null,null,15500.00,partial,0
+Vista Heights,B33,B1,Double,male,Common,14500.00,Occupied,87a1e515-e2e0-110f-05d1-04f5a83c066a,Nikhil Gupta,9981963636,Staying,2026-02-09,null,null,15500.00,partial,0
+Vista Heights,B33,B2,Double,male,Common,14500.00,Occupied,630c8120-bdbc-832c-24ca-aca9e6b49891,Atharva Vaishampayan,9175146054,Staying,2026-02-09,null,null,15500.00,partial,0
+Vista Heights,B33,B2,Double,male,Attached,15500.00,Occupied,630c8120-bdbc-832c-24ca-aca9e6b49891,Atharva Vaishampayan,9175146054,Staying,2026-02-09,null,null,15500.00,partial,0
+Vista Heights,B33,C1,Double,male,Attached,15500.00,Occupied,cebf32f4-3855-47cb-849b-815d2a2b5228,Chaman Jain,8925309775,Cancelled,2026-05-06,null,null,null,partial,0
+Vista Heights,B33,C1,Double,male,Common,14500.00,Occupied,cebf32f4-3855-47cb-849b-815d2a2b5228,Chaman Jain,8925309775,Cancelled,2026-05-06,null,null,null,partial,0
+Vista Heights,B33,C2,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B33,C2,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B34,A1,Single,male,Common,19500.00,Occupied,1dc2bdca-ae79-4cd5-9d74-961c02cce282,Gitansh Anand,7014608981,Staying,2026-04-05,null,null,19500.00,paid,0
+Vista Heights,B34,A1,Single,male,Attached,25500.00,Occupied,1dc2bdca-ae79-4cd5-9d74-961c02cce282,Gitansh Anand,7014608981,Staying,2026-04-05,null,null,19500.00,paid,0
+Vista Heights,B34,B1,Double,male,Attached,15500.00,Occupied,d77b5c1e-605d-6795-5eee-1e2f9b83e069,Pranav Purkar,7972958126,Staying,2026-01-10,null,null,15500.00,partial,0
+Vista Heights,B34,B1,Double,male,Common,14500.00,Occupied,d77b5c1e-605d-6795-5eee-1e2f9b83e069,Pranav Purkar,7972958126,Staying,2026-01-10,null,null,15500.00,partial,0
+Vista Heights,B34,B2,Double,male,Attached,15500.00,Occupied,d497808b-36e2-ea42-d247-85b4e409078c,Sourabh Dandare,8103666900,Staying,2026-01-10,null,null,15500.00,partial,0
+Vista Heights,B34,B2,Double,male,Common,14500.00,Occupied,d497808b-36e2-ea42-d247-85b4e409078c,Sourabh Dandare,8103666900,Staying,2026-01-10,null,null,15500.00,partial,0
+Vista Heights,B34,C1,Double,male,Common,14500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,On-Notice,2026-05-25,2026-07-07,2026-08-05,14500.00,partial,1
+Vista Heights,B34,C1,Double,male,Attached,15500.00,Occupied,edee54e5-b970-ea10-551f-b156c26d8f0a,Sai Krishna Kuppili,8008318162,On-Notice,2026-05-25,2026-07-07,2026-08-05,14500.00,partial,1
+Vista Heights,B34,C2,Double,male,Common,14500.00,Occupied,9653a402-ff75-bbdf-8cc6-1cb0ca01f233,Prem Chippada,7799044133,Staying,2024-10-27,null,null,13500.00,partial,0
+Vista Heights,B34,C2,Double,male,Attached,15500.00,Occupied,9653a402-ff75-bbdf-8cc6-1cb0ca01f233,Prem Chippada,7799044133,Staying,2024-10-27,null,null,13500.00,partial,0
+Vista Heights,B41,A1,Single,male,Attached,25500.00,Occupied,af12a12c-92bf-088b-3073-292fe4dfc478,Vijay Babu Kumaresan,9500485978,Staying,2025-05-05,null,null,19500.00,partial,0
+Vista Heights,B41,A1,Single,male,Common,19500.00,Occupied,af12a12c-92bf-088b-3073-292fe4dfc478,Vijay Babu Kumaresan,9500485978,Staying,2025-05-05,null,null,19500.00,partial,0
+Vista Heights,B41,B1,Double,male,Attached,15500.00,Occupied,de481a65-2fb4-4974-b7db-0ec990ea852d,Vishal Mohanasundraam,9566670950,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,B41,B1,Double,male,Common,14500.00,Occupied,9eb73523-a830-4796-9317-1a3f4e9e7254,Praful Harikumar,7994232243,Staying,2026-07-22,null,null,15500.00,pending,0
+Vista Heights,B41,B1,Double,male,Attached,15500.00,Occupied,9eb73523-a830-4796-9317-1a3f4e9e7254,Praful Harikumar,7994232243,Staying,2026-07-22,null,null,15500.00,pending,0
+Vista Heights,B41,B1,Double,male,Common,14500.00,Occupied,de481a65-2fb4-4974-b7db-0ec990ea852d,Vishal Mohanasundraam,9566670950,Cancelled,null,null,null,15500.00,pending,0
+Vista Heights,B41,B2,Double,male,Common,14500.00,Occupied,c2f58086-b0e6-4083-b634-acc444ebc69f,Crescent P,7356015199,Staying,2026-07-22,null,null,15500.00,pending,0
+Vista Heights,B41,B2,Double,male,Attached,15500.00,Occupied,c2f58086-b0e6-4083-b634-acc444ebc69f,Crescent P,7356015199,Staying,2026-07-22,null,null,15500.00,pending,0
+Vista Heights,B41,C1,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B41,C1,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B41,C2,Double,male,Attached,15500.00,Occupied,d8c4b3c5-9b2a-4c6e-b1e8-0a98c9175234,Abdulkasim Fayas Sathik Batcha,8438713402,Staying,2026-05-03,null,null,14500.00,paid,0
+Vista Heights,B41,C2,Double,male,Common,14500.00,Occupied,d8c4b3c5-9b2a-4c6e-b1e8-0a98c9175234,Abdulkasim Fayas Sathik Batcha,8438713402,Cancelled,null,null,null,null,partial,1
+Vista Heights,B41,C2,Double,male,Common,14500.00,Occupied,d8c4b3c5-9b2a-4c6e-b1e8-0a98c9175234,Abdulkasim Fayas Sathik Batcha,8438713402,Staying,2026-05-03,null,null,14500.00,paid,0
+Vista Heights,B41,C2,Double,male,Attached,15500.00,Occupied,d8c4b3c5-9b2a-4c6e-b1e8-0a98c9175234,Abdulkasim Fayas Sathik Batcha,8438713402,Cancelled,null,null,null,null,partial,1
+Vista Heights,B41,D1,Single,male,Attached,25500.00,Occupied,238b347e-e7e9-b1a3-31a8-a2f8fed99f55,Ranjan Rai,9845894839,Staying,2025-01-17,null,null,24000.00,partial,0
+Vista Heights,B41,D1,Single,male,Common,19500.00,Occupied,238b347e-e7e9-b1a3-31a8-a2f8fed99f55,Ranjan Rai,9845894839,Staying,2025-01-17,null,null,24000.00,partial,0
+Vista Heights,B42,A1,Single,male,Attached,25500.00,Occupied,8e39a9bd-3317-b2a6-22a6-16fa4cab9632,Sanath Baburam,9483924968,On-Notice,2026-04-16,2026-07-18,2026-08-17,19500.00,partial,0
+Vista Heights,B42,A1,Single,male,Common,19500.00,Occupied,8e39a9bd-3317-b2a6-22a6-16fa4cab9632,Sanath Baburam,9483924968,On-Notice,2026-04-16,2026-07-18,2026-08-17,19500.00,partial,0
+Vista Heights,B42,B1,Double,male,Attached,15500.00,Occupied,06061874-ce68-4008-82f6-50ace2ba4bf4,Ishan Dubey,9399949737,Staying,2026-06-20,null,null,15500.00,paid,0
+Vista Heights,B42,B1,Double,male,Common,14500.00,Occupied,06061874-ce68-4008-82f6-50ace2ba4bf4,Ishan Dubey,9399949737,Staying,2026-06-20,null,null,15500.00,paid,0
+Vista Heights,B42,B2,Double,male,Attached,15500.00,Occupied,2d700a6b-44c4-438b-841f-febe1b2c47a7,Anupam Varma,9380343467,Staying,2026-07-01,null,null,15500.00,pending,0
+Vista Heights,B42,B2,Double,male,Common,14500.00,Occupied,2d700a6b-44c4-438b-841f-febe1b2c47a7,Anupam Varma,9380343467,Staying,2026-07-01,null,null,15500.00,pending,0
+Vista Heights,B42,C1,Double,male,Common,14500.00,Occupied,e6dde6a9-4da9-d1a2-802a-faf5db207e8e,Arindrajit Kundu,8420790792,Staying,2025-04-01,null,null,13500.00,partial,0
+Vista Heights,B42,C1,Double,male,Attached,15500.00,Occupied,e6dde6a9-4da9-d1a2-802a-faf5db207e8e,Arindrajit Kundu,8420790792,Staying,2025-04-01,null,null,13500.00,partial,0
+Vista Heights,B42,C2,Double,male,Attached,15500.00,Occupied,df5ea39c-c069-5211-271d-f0d3831adefa,Shubhashish,9990043174,Staying,2022-02-28,null,null,12600.00,partial,0
+Vista Heights,B42,C2,Double,male,Common,14500.00,Occupied,df5ea39c-c069-5211-271d-f0d3831adefa,Shubhashish,9990043174,Staying,2022-02-28,null,null,12600.00,partial,0
+Vista Heights,B43,A1,Single,female,Attached,25500.00,Occupied,c02eb961-2471-c285-9c28-fb9a12aaf70a,Diya Suresh,6282303424,Staying,2025-12-09,null,null,19500.00,partial,2000
+Vista Heights,B43,A1,Single,female,Common,19500.00,Occupied,c02eb961-2471-c285-9c28-fb9a12aaf70a,Diya Suresh,6282303424,Staying,2025-12-09,null,null,19500.00,partial,2000
+Vista Heights,B43,B1,Double,female,Common,14500.00,Occupied,73715344-908a-b7fa-00cc-34358ffb16f0,Sneh Pratap,9810031629,Staying,2026-01-08,null,null,15500.00,partial,0
+Vista Heights,B43,B1,Double,female,Attached,15500.00,Occupied,73715344-908a-b7fa-00cc-34358ffb16f0,Sneh Pratap,9810031629,Staying,2026-01-08,null,null,15500.00,partial,0
+Vista Heights,B43,B2,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B43,B2,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,B43,C1,Double,female,Attached,15500.00,Occupied,2a00764b-10fd-4f2c-84a8-b611cf9b893a,Gouri Renjith,8111001922,Staying,2026-06-28,null,null,14500.00,paid,0
+Vista Heights,B43,C1,Double,female,Common,14500.00,Occupied,2a00764b-10fd-4f2c-84a8-b611cf9b893a,Gouri Renjith,8111001922,Staying,2026-06-28,null,null,14500.00,paid,0
+Vista Heights,B43,C2,Double,female,Attached,15500.00,Occupied,1604768e-85d5-4c44-882a-b748eddc1f37,Aryananda V,8921451401,Staying,2026-06-28,null,null,14500.00,paid,0
+Vista Heights,B43,C2,Double,female,Common,14500.00,Occupied,1604768e-85d5-4c44-882a-b748eddc1f37,Aryananda V,8921451401,Staying,2026-06-28,null,null,14500.00,paid,0
+Vista Heights,B44,A1,Single,female,Attached,25500.00,Occupied,696a4512-7d08-4e23-a774-91ee1afc42d1,Sharanya Goswami,9321379691,On-Notice,2026-06-13,2026-07-11,2026-08-10,19500.00,paid,0
+Vista Heights,B44,A1,Single,female,Common,19500.00,Occupied,696a4512-7d08-4e23-a774-91ee1afc42d1,Sharanya Goswami,9321379691,On-Notice,2026-06-13,2026-07-11,2026-08-10,19500.00,paid,0
+Vista Heights,B44,B1,Triple,female,Attached,13500.00,Occupied,7949646a-1455-41bc-9b8a-d19f84772bbb,Ritika Rajesh,7993021046,Staying,2026-07-19,null,null,13500.00,partial,1
+Vista Heights,B44,B1,Triple,female,Attached,13500.00,Occupied,8709ca2e-a8a6-48a4-b8ce-e813c4796ab9,Pakhi Mujmer,9753975154,Cancelled,2026-04-01,null,null,null,partial,0
+Vista Heights,B44,B2,Triple,female,Attached,13500.00,Occupied,c49181cd-07c5-4c6a-a996-4146d002c886,Aleena Renny Philip,7045630938,Staying,2026-05-01,null,null,13500.00,paid,0
+Vista Heights,B44,B2,Triple,female,Attached,13500.00,Occupied,c49181cd-07c5-4c6a-a996-4146d002c886,Aleena Renny Philip,7045630938,Cancelled,null,null,null,null,partial,0
+Vista Heights,B44,B3,Triple,female,Attached,13500.00,Occupied,a467df39-5ec5-465e-a471-e2b54be7bc71,Nilofar Althaf,8281897275,Cancelled,null,null,null,null,partial,13500
+Vista Heights,B44,B3,Triple,female,Attached,13500.00,Occupied,a467df39-5ec5-465e-a471-e2b54be7bc71,Nilofar Althaf,8281897275,Staying,2026-05-01,null,null,13500.00,paid,0
+Vista Heights,B44,C1,Double,female,Common,14500.00,Occupied,bdcc24e3-6077-3ea9-b25e-2747d0f07be7,Iravati Datta,8900531947,Staying,2025-02-04,null,null,13500.00,partial,0
+Vista Heights,B44,C1,Double,female,Attached,15500.00,Occupied,bdcc24e3-6077-3ea9-b25e-2747d0f07be7,Iravati Datta,8900531947,Staying,2025-02-04,null,null,13500.00,partial,0
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Cancelled,null,null,null,null,partial,0
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Cancelled,null,null,null,null,partial,0
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,7976ec26-6b18-471f-96d3-aa39a03abac8,suseela j,9791082117,Staying,2026-07-06,null,null,14500.00,partial,1
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,7976ec26-6b18-471f-96d3-aa39a03abac8,suseela j,9791082117,Staying,2026-07-06,null,null,14500.00,partial,1
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Cancelled,null,null,null,null,partial,0
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Cancelled,null,null,null,null,partial,0
+Vista Heights,C11,A1,Single,male,Attached,25500.00,Occupied,d4890451-59e6-45f4-a75f-b2199aa5a3a7,Harshil Arora,7838777130,Staying,2026-07-01,null,null,19500.00,partial,19500
+Vista Heights,C11,A1,Single,male,Common,19500.00,Occupied,d4890451-59e6-45f4-a75f-b2199aa5a3a7,Harshil Arora,7838777130,Staying,2026-07-01,null,null,19500.00,partial,19500
+Vista Heights,C11,B1,Double,male,Attached,15500.00,Occupied,30f37c32-22c8-495f-9468-246790e56559,Pranav Vitthalrao Kadam,7218767500,Staying,2026-07-01,null,null,15500.00,partial,15500
+Vista Heights,C11,B1,Double,male,Common,14500.00,Occupied,30f37c32-22c8-495f-9468-246790e56559,Pranav Vitthalrao Kadam,7218767500,Staying,2026-07-01,null,null,15500.00,partial,15500
+Vista Heights,C11,B2,Double,male,Common,14500.00,Occupied,41a311d7-b970-4e78-a30e-a633fc4e5f2f,Mihir Patil,9689910636,Staying,2026-07-01,null,null,15500.00,partial,15500
+Vista Heights,C11,B2,Double,male,Attached,15500.00,Occupied,41a311d7-b970-4e78-a30e-a633fc4e5f2f,Mihir Patil,9689910636,Staying,2026-07-01,null,null,15500.00,partial,15500
+Vista Heights,C11,C1,Double,male,Attached,15500.00,Occupied,e5e7cb26-5b8b-4848-9703-1c34eb249447,Vikas Tanwar,7404923150,Cancelled,2026-07-01,null,null,null,partial,0
+Vista Heights,C11,C1,Double,male,Common,14500.00,Occupied,6e29f80e-ffb7-4c7e-9f39-a7980c00926b,Uttkarsh Uttkarsh,9140321340,Booked,2026-07-15,null,null,null,partial,0
+Vista Heights,C11,C1,Double,male,Attached,15500.00,Occupied,6e29f80e-ffb7-4c7e-9f39-a7980c00926b,Uttkarsh Uttkarsh,9140321340,Booked,2026-07-15,null,null,null,partial,0
+Vista Heights,C11,C1,Double,male,Common,14500.00,Occupied,e5e7cb26-5b8b-4848-9703-1c34eb249447,Vikas Tanwar,7404923150,Cancelled,2026-07-01,null,null,null,partial,0
+Vista Heights,C11,C2,Double,male,Common,14500.00,Occupied,d2de48e8-0097-4d6d-8e3d-62ee7c8f2fcd,Dudala Sai Sujay,8978093748,Staying,2026-07-01,null,null,14500.00,partial,14500
+Vista Heights,C11,C2,Double,male,Attached,15500.00,Occupied,d2de48e8-0097-4d6d-8e3d-62ee7c8f2fcd,Dudala Sai Sujay,8978093748,Staying,2026-07-01,null,null,14500.00,partial,14500
+Vista Heights,C12,A1,Single,female,Attached,25500.00,Occupied,0278721a-a690-833b-298a-16a351fb7a3a,Marina Johnson,9496440939,Staying,2025-06-01,null,null,19500.00,partial,0
+Vista Heights,C12,A1,Single,female,Common,19500.00,Occupied,0278721a-a690-833b-298a-16a351fb7a3a,Marina Johnson,9496440939,Staying,2025-06-01,null,null,19500.00,partial,0
+Vista Heights,C12,B1,Double,female,Common,14500.00,Occupied,8996897f-e383-4fca-87f9-654e1b14b3c2,Oviya P,7397763477,Staying,2026-05-23,null,null,15500.00,paid,0
+Vista Heights,C12,B1,Double,female,Attached,15500.00,Occupied,8996897f-e383-4fca-87f9-654e1b14b3c2,Oviya P,7397763477,Staying,2026-05-23,null,null,15500.00,paid,0
+Vista Heights,C12,B2,Double,female,Attached,15500.00,Occupied,6d60a9d5-34ce-4336-9c23-231057dffa71,Thota Sharanya,7047619700,Staying,2026-06-06,null,null,15500.00,paid,0
+Vista Heights,C12,B2,Double,female,Common,14500.00,Occupied,6d60a9d5-34ce-4336-9c23-231057dffa71,Thota Sharanya,7047619700,Staying,2026-06-06,null,null,15500.00,paid,0
+Vista Heights,C12,C1,Triple,female,Attached,13500.00,Occupied,2ac2da6e-0954-f906-32d7-a1f55477c590,Suhani Srivastava,6307771873,Staying,2026-02-01,null,null,13500.00,partial,1630
+Vista Heights,C12,C2,Triple,female,Attached,13500.00,Occupied,1a3b6c74-26e1-7124-0b5c-7f783d71624d,Keerthiga K,6369353526,Staying,2026-07-01,null,null,13500.00,pending,0
+Vista Heights,C12,C3,Triple,female,Attached,13500.00,Occupied,1218c50c-4da4-4f61-baec-5182a25958e3,Shakthi Bharathi S,6385282444,Staying,2026-05-30,null,null,13500.00,paid,0
+Vista Heights,C12,D1,Double,female,Attached,15500.00,Occupied,5ce46f7c-d9f9-426d-be11-5e3b6a2bedb0,Jaishnu Biradha,8293070386,Staying,2026-07-19,null,null,14500.00,pending,0
+Vista Heights,C12,D1,Double,female,Common,14500.00,Occupied,5ce46f7c-d9f9-426d-be11-5e3b6a2bedb0,Jaishnu Biradha,8293070386,Staying,2026-07-19,null,null,14500.00,pending,0
+Vista Heights,C12,D2,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C12,D2,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C21,A1,Single,male,Common,19500.00,Occupied,12062e7c-25cc-4c45-8869-abf33c8a981c,Divyaratna Joshi,9021423703,Staying,2026-07-22,null,null,19500.00,pending,0
+Vista Heights,C21,A1,Single,male,Attached,25500.00,Occupied,12062e7c-25cc-4c45-8869-abf33c8a981c,Divyaratna Joshi,9021423703,Staying,2026-07-22,null,null,19500.00,pending,0
+Vista Heights,C21,B1,Double,male,Common,14500.00,Occupied,72ac33cc-b9b2-9cc4-47fd-d37096c8f30d,Sathyasai Regalla,9491646202,Staying,2025-12-06,null,null,15500.00,partial,0
+Vista Heights,C21,B1,Double,male,Attached,15500.00,Occupied,72ac33cc-b9b2-9cc4-47fd-d37096c8f30d,Sathyasai Regalla,9491646202,Staying,2025-12-06,null,null,15500.00,partial,0
+Vista Heights,C21,B2,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C21,B2,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C21,C1,Double,male,Common,14500.00,Occupied,491b8136-32a1-37c5-5253-b53ff3991d86,Aditya Das,8969904257,Staying,2026-01-10,null,null,14500.00,partial,21750
+Vista Heights,C21,C1,Double,male,Attached,15500.00,Occupied,491b8136-32a1-37c5-5253-b53ff3991d86,Aditya Das,8969904257,Staying,2026-01-10,null,null,14500.00,partial,21750
+Vista Heights,C21,C2,Double,male,Common,14500.00,Occupied,2631ddfd-660e-8719-1876-82cf88e13a60,Kiran Tr,8289916141,Staying,2025-02-09,null,null,13500.00,partial,0
+Vista Heights,C21,C2,Double,male,Attached,15500.00,Occupied,2631ddfd-660e-8719-1876-82cf88e13a60,Kiran Tr,8289916141,Staying,2025-02-09,null,null,13500.00,partial,0
+Vista Heights,C21,D1,Single,male,Common,19500.00,Occupied,9541a16d-d020-eb78-80f1-a4a2d4b7775f,Anup Easo Varghese,9663677032,Staying,2026-01-14,null,null,25500.00,partial,0
+Vista Heights,C21,D1,Single,male,Attached,25500.00,Occupied,9541a16d-d020-eb78-80f1-a4a2d4b7775f,Anup Easo Varghese,9663677032,Staying,2026-01-14,null,null,25500.00,partial,0
+Vista Heights,C24,B1,Triple,female,Attached,13500.00,Occupied,5eb9cf08-d888-4c7c-b6da-0b773bb39bba,Shabana Roshan,8610294490,Staying,2026-06-29,null,null,13500.00,paid,0
+Vista Heights,C24,B2,Triple,female,Attached,13500.00,Occupied,25ef6338-6197-45a8-82d9-ddd0a846f1b2,GD Harsha,9345485252,Cancelled,null,null,null,null,partial,13065
+Vista Heights,C24,B2,Triple,female,Attached,13500.00,Occupied,25ef6338-6197-45a8-82d9-ddd0a846f1b2,GD Harsha,9345485252,Staying,2026-05-02,null,null,13500.00,partial,0
+Vista Heights,C24,B3,Triple,female,Attached,13500.00,Occupied,23f7ef5f-6b26-a104-b616-b438d7e9243c,Rishita Tulsyan,8303553581,On-Notice,2025-01-12,2026-07-21,2026-08-21,13000.00,partial,0
+Vista Heights,C24,C1,Double,female,Common,14500.00,Occupied,38069f8b-d44e-0b86-a0d1-dafac5ae1232,Harrsha T,9176526121,Staying,2024-08-04,null,null,13500.00,partial,0
+Vista Heights,C24,C1,Double,female,Attached,15500.00,Occupied,38069f8b-d44e-0b86-a0d1-dafac5ae1232,Harrsha T,9176526121,Staying,2024-08-04,null,null,13500.00,partial,0
+Vista Heights,C24,C2,Double,female,Attached,15500.00,Occupied,31f3f7a3-5dc4-21cd-ba54-b41347a7822a,Jayagowri Karthikeyan,7604957249,Staying,2025-01-19,null,null,13500.00,partial,0
+Vista Heights,C24,C2,Double,female,Common,14500.00,Occupied,31f3f7a3-5dc4-21cd-ba54-b41347a7822a,Jayagowri Karthikeyan,7604957249,Staying,2025-01-19,null,null,13500.00,partial,0
+Vista Heights,C31,A1,Single,male,Common,19500.00,Occupied,b2f85d5d-acf9-7c53-dc5b-0d3b67b462c5,Yash Jamuar,7042124865,Staying,2026-03-13,null,null,19500.00,partial,0
+Vista Heights,C31,A1,Single,male,Attached,25500.00,Occupied,b2f85d5d-acf9-7c53-dc5b-0d3b67b462c5,Yash Jamuar,7042124865,Staying,2026-03-13,null,null,19500.00,partial,0
+Vista Heights,C31,B1,Double,male,Common,14500.00,Occupied,c09e703c-d287-38c8-d1c1-239145e17df9,Naveen Joseph,9895434090,Staying,2022-09-15,null,null,13600.00,partial,0
+Vista Heights,C31,B1,Double,male,Attached,15500.00,Occupied,c09e703c-d287-38c8-d1c1-239145e17df9,Naveen Joseph,9895434090,Staying,2022-09-15,null,null,13600.00,partial,0
+Vista Heights,C31,B2,Double,male,Attached,15500.00,Occupied,146a8458-f956-54ed-317f-b99f7d16fff8,Sathiyan Gopalan,9715741456,Staying,2024-06-12,null,null,14500.00,partial,0
+Vista Heights,C31,B2,Double,male,Common,14500.00,Occupied,146a8458-f956-54ed-317f-b99f7d16fff8,Sathiyan Gopalan,9715741456,Staying,2024-06-12,null,null,14500.00,partial,0
+Vista Heights,C31,C1,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C31,C1,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C31,C2,Double,male,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C31,C2,Double,male,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C31,D1,Single,male,Common,19500.00,Occupied,a7dadee2-80e3-eba0-084f-5f1847bb3aa4,Arun Prasad,9037080043,Staying,2026-02-14,null,null,25500.00,partial,0
+Vista Heights,C31,D1,Single,male,Attached,25500.00,Occupied,a7dadee2-80e3-eba0-084f-5f1847bb3aa4,Arun Prasad,9037080043,Staying,2026-02-14,null,null,25500.00,partial,0
+Vista Heights,C34,A1,Single,female,Common,19500.00,Occupied,a4ef95bf-1c7c-4c4d-0497-ae38085af6cc,Rama D,9840497197,Staying,2026-03-06,null,null,19500.00,partial,0
+Vista Heights,C34,A1,Single,female,Attached,25500.00,Occupied,a4ef95bf-1c7c-4c4d-0497-ae38085af6cc,Rama D,9840497197,Staying,2026-03-06,null,null,19500.00,partial,0
+Vista Heights,C34,B1,Double,female,Common,14500.00,Occupied,8aacbc78-5e56-b3c0-f8bc-fcb5490b94f3,Nirmala A,9894210931,Staying,2023-11-27,null,null,13600.00,partial,0
+Vista Heights,C34,B1,Double,female,Attached,15500.00,Occupied,8aacbc78-5e56-b3c0-f8bc-fcb5490b94f3,Nirmala A,9894210931,Staying,2023-11-27,null,null,13600.00,partial,0
+Vista Heights,C34,B2,Double,female,Attached,15500.00,Occupied,a4709d2c-85e2-3d68-7467-1eaf879ba2c9,Ardra John,9495351673,Staying,2025-12-15,null,null,15500.00,partial,0
+Vista Heights,C34,B2,Double,female,Common,14500.00,Occupied,a4709d2c-85e2-3d68-7467-1eaf879ba2c9,Ardra John,9495351673,Staying,2025-12-15,null,null,15500.00,partial,0
+Vista Heights,C34,C1,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C34,C1,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C34,C2,Double,female,Common,14500.00,Occupied,93eb3d6a-d35b-ef1f-83b8-7430b6ad1674,Khushboo Sahani,8416928356,Staying,2024-04-06,null,null,13500.00,partial,0
+Vista Heights,C34,C2,Double,female,Attached,15500.00,Occupied,93eb3d6a-d35b-ef1f-83b8-7430b6ad1674,Khushboo Sahani,8416928356,Staying,2024-04-06,null,null,13500.00,partial,0
+Vista Heights,C41,A1,Single,male,Common,19500.00,Occupied,854c86e3-8b7f-0ca8-f4ac-c6a073699611,Avilekh Gautam,9864056999,On-Notice,2024-10-01,2026-07-09,2026-08-02,19000.00,partial,0
+Vista Heights,C41,A1,Single,male,Attached,25500.00,Occupied,be2214d4-f4b5-4c51-825a-83cddbfb06f8,Nirmal R,8903560368,Booked,null,null,null,19500.00,pending,0
+Vista Heights,C41,A1,Single,male,Common,19500.00,Occupied,be2214d4-f4b5-4c51-825a-83cddbfb06f8,Nirmal R,8903560368,Booked,null,null,null,19500.00,pending,0
+Vista Heights,C41,A1,Single,male,Attached,25500.00,Occupied,854c86e3-8b7f-0ca8-f4ac-c6a073699611,Avilekh Gautam,9864056999,On-Notice,2024-10-01,2026-07-09,2026-08-02,19000.00,partial,0
+Vista Heights,C41,B1,Double,male,Common,14500.00,Occupied,25bb9427-9bb6-44a6-8a24-9566a07a856d,Jayachandran R,9994188070,Booked,2026-08-01,null,null,null,partial,0
+Vista Heights,C41,B1,Double,male,Attached,15500.00,Occupied,25bb9427-9bb6-44a6-8a24-9566a07a856d,Jayachandran R,9994188070,Booked,2026-08-01,null,null,null,partial,0
+Vista Heights,C41,B2,Double,male,Common,14500.00,Occupied,f16a668c-ea8a-b26d-9dff-4da3c53fccc7,Dev Sakaria,9901753839,On-Notice,2026-03-01,2026-06-30,2026-07-30,15500.00,partial,0
+Vista Heights,C41,B2,Double,male,Attached,15500.00,Occupied,f16a668c-ea8a-b26d-9dff-4da3c53fccc7,Dev Sakaria,9901753839,On-Notice,2026-03-01,2026-06-30,2026-07-30,15500.00,partial,0
+Vista Heights,C41,C1,Double,male,Attached,15500.00,Occupied,9e188cc2-9f75-4d15-8fa3-9348236cae71,Firoz Uddin Gauhar,9990291532,Cancelled,null,null,null,null,partial,0
+Vista Heights,C41,C1,Double,male,Attached,15500.00,Occupied,9e188cc2-9f75-4d15-8fa3-9348236cae71,Firoz Uddin Gauhar,9990291532,Staying,2026-05-01,null,null,14500.00,paid,0
+Vista Heights,C41,C1,Double,male,Common,14500.00,Occupied,9e188cc2-9f75-4d15-8fa3-9348236cae71,Firoz Uddin Gauhar,9990291532,Cancelled,null,null,null,null,partial,0
+Vista Heights,C41,C1,Double,male,Common,14500.00,Occupied,9e188cc2-9f75-4d15-8fa3-9348236cae71,Firoz Uddin Gauhar,9990291532,Staying,2026-05-01,null,null,14500.00,paid,0
+Vista Heights,C41,C2,Double,male,Attached,15500.00,Occupied,be2214d4-f4b5-4c51-825a-83cddbfb06f8,Nirmal R,8903560368,On-Notice,2026-07-17,2026-07-17,2026-08-03,14500.00,paid,0
+Vista Heights,C41,C2,Double,male,Common,14500.00,Occupied,f38ac232-fe6f-44f8-955c-18c46b4db738,Mohammad Nauman Shahid,8178817442,Cancelled,null,null,null,null,partial,14500
+Vista Heights,C41,C2,Double,male,Attached,15500.00,Occupied,f38ac232-fe6f-44f8-955c-18c46b4db738,Mohammad Nauman Shahid,8178817442,Cancelled,null,null,null,null,partial,14500
+Vista Heights,C41,C2,Double,male,Common,14500.00,Occupied,be2214d4-f4b5-4c51-825a-83cddbfb06f8,Nirmal R,8903560368,On-Notice,2026-07-17,2026-07-17,2026-08-03,14500.00,paid,0
+Vista Heights,C41,D1,Single,male,Attached,25500.00,Occupied,d257c87f-0e42-048c-8409-362e925d86fc,Prateek Sharma,8657428129,On-Notice,2024-05-01,2026-07-16,2026-08-20,24000.00,partial,42000.27
+Vista Heights,C41,D1,Single,male,Common,19500.00,Occupied,d257c87f-0e42-048c-8409-362e925d86fc,Prateek Sharma,8657428129,On-Notice,2024-05-01,2026-07-16,2026-08-20,24000.00,partial,42000.27
+Vista Heights,C42,A1,Single,female,Attached,25500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Staying,2026-07-01,null,null,19500.00,pending,0
+Vista Heights,C42,A1,Single,female,Common,19500.00,Occupied,71a9340d-9832-4609-a110-d9b5aaffc020,Tarunya Venkat,9910446247,Staying,2026-07-01,null,null,19500.00,pending,0
+Vista Heights,C42,B1,Double,female,Common,14500.00,Occupied,61492721-611b-479f-9815-e09e0d7c95fd,Fathima Nazrin,9497822280,On-Notice,2026-07-01,2026-07-09,2026-08-01,15500.00,partial,15650
+Vista Heights,C42,B1,Double,female,Attached,15500.00,Occupied,61492721-611b-479f-9815-e09e0d7c95fd,Fathima Nazrin,9497822280,On-Notice,2026-07-01,2026-07-09,2026-08-01,15500.00,partial,15650
+Vista Heights,C42,B2,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C42,B2,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,C42,C1,Double,female,Attached,15500.00,Occupied,8fd367e7-7404-4ef6-530b-a40219a48f1e,Sruthi Pitchika,8500840279,On-Notice,2025-11-02,2026-06-06,2026-08-06,14500.00,partial,0
+Vista Heights,C42,C1,Double,female,Common,14500.00,Occupied,8fd367e7-7404-4ef6-530b-a40219a48f1e,Sruthi Pitchika,8500840279,On-Notice,2025-11-02,2026-06-06,2026-08-06,14500.00,partial,0
+Vista Heights,C42,C2,Double,female,Attached,15500.00,Occupied,61492721-611b-479f-9815-e09e0d7c95fd,Fathima Nazrin,9497822280,Booked,null,null,null,14500.00,pending,0
+Vista Heights,C42,C2,Double,female,Common,14500.00,Occupied,61492721-611b-479f-9815-e09e0d7c95fd,Fathima Nazrin,9497822280,Booked,null,null,null,14500.00,pending,0
+Vista Heights,C42,C2,Double,female,Common,14500.00,Occupied,55e6e452-fae2-a5ac-3c12-21424bffbcac,Likhitha Naga Vigneswari Satuluri,8143428893,On-Notice,2026-05-18,2026-06-06,2026-07-31,14500.00,partial,1
+Vista Heights,C42,C2,Double,female,Attached,15500.00,Occupied,55e6e452-fae2-a5ac-3c12-21424bffbcac,Likhitha Naga Vigneswari Satuluri,8143428893,On-Notice,2026-05-18,2026-06-06,2026-07-31,14500.00,partial,1
+Vista Heights,C43,A1,Single,female,Common,19500.00,Occupied,080eae03-9f65-4515-aec2-8924472923dd,Maria Navin Mazhuvancherry,9746331490,Staying,2026-06-01,null,null,19500.00,pending,0
+Vista Heights,C43,A1,Single,female,Attached,25500.00,Occupied,080eae03-9f65-4515-aec2-8924472923dd,Maria Navin Mazhuvancherry,9746331490,Staying,2026-06-01,null,null,19500.00,pending,0
+Vista Heights,C43,B1,Double,female,Attached,15500.00,Occupied,18d86801-3cb7-11d4-8b9d-433429296014,Oviya S,9489770434,Staying,2024-02-01,null,null,14500.00,partial,0
+Vista Heights,C43,B1,Double,female,Common,14500.00,Occupied,18d86801-3cb7-11d4-8b9d-433429296014,Oviya S,9489770434,Staying,2024-02-01,null,null,14500.00,partial,0
+Vista Heights,C43,B2,Double,female,Attached,15500.00,Occupied,8971261e-a813-477f-94c0-0a9661dc4c34,Aiswaryaa Krishnasamy Thandapani,8056785038,Staying,2026-05-26,null,null,15500.00,paid,0
+Vista Heights,C43,B2,Double,female,Common,14500.00,Occupied,8971261e-a813-477f-94c0-0a9661dc4c34,Aiswaryaa Krishnasamy Thandapani,8056785038,Staying,2026-05-26,null,null,15500.00,paid,0
+Vista Heights,C43,C1,Double,female,Common,14500.00,Occupied,51c3d3a9-bfa0-4a8e-a687-3ef46bc022cc,Suha Sajad,7025567000,Staying,2026-04-05,null,null,14500.00,partial,0
+Vista Heights,C43,C1,Double,female,Attached,15500.00,Occupied,51c3d3a9-bfa0-4a8e-a687-3ef46bc022cc,Suha Sajad,7025567000,Staying,2026-04-05,null,null,14500.00,partial,0
+Vista Heights,C43,C2,Double,female,Attached,15500.00,Occupied,79e31f6f-69dc-a40c-27d7-3f076878f83c,Kaarthika,7063909473,Staying,2024-02-01,null,null,13500.00,partial,0
+Vista Heights,C43,C2,Double,female,Common,14500.00,Occupied,79e31f6f-69dc-a40c-27d7-3f076878f83c,Kaarthika,7063909473,Staying,2024-02-01,null,null,13500.00,partial,0
+Vista Heights,C44,A1,Single,male,Attached,25500.00,Occupied,25aa2406-e171-b558-8249-7a525d126d8f,Arun Er,8848039369,Staying,2025-11-01,null,null,19500.00,partial,0
+Vista Heights,C44,A1,Single,male,Common,19500.00,Occupied,25aa2406-e171-b558-8249-7a525d126d8f,Arun Er,8848039369,Staying,2025-11-01,null,null,19500.00,partial,0
+Vista Heights,C44,B1,Double,male,Common,14500.00,Occupied,11e59c65-004e-4eea-a733-d3a6a7c65fb1,Harshanand S V,8072300795,Staying,2026-06-01,null,null,15500.00,paid,0
+Vista Heights,C44,B1,Double,male,Attached,15500.00,Occupied,11e59c65-004e-4eea-a733-d3a6a7c65fb1,Harshanand S V,8072300795,Staying,2026-06-01,null,null,15500.00,paid,0
+Vista Heights,C44,B2,Double,male,Attached,15500.00,Occupied,1b003ea3-bdcb-0416-c3c2-8ff60f2f65f5,Venkat Karthik Mukidichetti,9035146326,Staying,2025-05-05,null,null,15500.00,partial,0
+Vista Heights,C44,B2,Double,male,Common,14500.00,Occupied,1b003ea3-bdcb-0416-c3c2-8ff60f2f65f5,Venkat Karthik Mukidichetti,9035146326,Staying,2025-05-05,null,null,15500.00,partial,0
+Vista Heights,C44,C1,Double,male,Common,14500.00,Occupied,c511ac63-cb7e-1453-92d5-ea4ffba1c360,Ganesh Selvam,9500164128,Staying,2025-08-17,null,null,14500.00,partial,0
+Vista Heights,C44,C1,Double,male,Attached,15500.00,Occupied,c511ac63-cb7e-1453-92d5-ea4ffba1c360,Ganesh Selvam,9500164128,Staying,2025-08-17,null,null,14500.00,partial,0
+Vista Heights,C44,C2,Double,male,Attached,15500.00,Occupied,f9eb9b23-5f60-4ec4-b990-8313323bb759,Mithil Mohan,9747034470,Staying,2026-04-05,null,null,14500.00,paid,0
+Vista Heights,C44,C2,Double,male,Common,14500.00,Occupied,f9eb9b23-5f60-4ec4-b990-8313323bb759,Mithil Mohan,9747034470,Staying,2026-04-05,null,null,14500.00,paid,0
+Vista Heights,D11,B1,Single,female,Attached,25500.00,Occupied,5b45a840-9d6c-242e-0e2f-2e2c972c2eec,Tanusha C Karlekar,6361733988,Staying,2025-07-16,null,null,25500.00,partial,0
+Vista Heights,D11,B1,Single,female,Common,19500.00,Occupied,5b45a840-9d6c-242e-0e2f-2e2c972c2eec,Tanusha C Karlekar,6361733988,Staying,2025-07-16,null,null,25500.00,partial,0
+Vista Heights,D11,C1,Double,female,Common,14500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,D11,C1,Double,female,Attached,15500.00,Vacant,null,null,null,null,null,null,null,null,null,null
+Vista Heights,D11,C2,Double,female,Common,14500.00,Occupied,062b56c4-c469-4ef7-b4e6-9615dd770ec9,Kanishka Prasath Kumar,9345404795,Staying,2026-06-03,null,null,15500.00,paid,0
+Vista Heights,D11,C2,Double,female,Attached,15500.00,Occupied,062b56c4-c469-4ef7-b4e6-9615dd770ec9,Kanishka Prasath Kumar,9345404795,Staying,2026-06-03,null,null,15500.00,paid,0
+Vista Heights,D11,D1,Triple,female,Attached,13500.00,Occupied,ba8dd5e0-ed0e-8b6a-7098-2732476feb31,Suvetha V,9003628960,Staying,2022-11-19,null,null,13000.00,partial,15540
+Vista Heights,D11,D2,Triple,female,Attached,13500.00,Occupied,4c4ad4c9-59bf-f152-d0ff-6502ec564cc9,Dhivya Parthasarathy,9894180746,Staying,2023-11-09,null,null,13000.00,partial,476
+Vista Heights,D11,D3,Triple,female,Attached,13500.00,Occupied,45a6242e-1317-4dfb-8a4d-ff0a57aff0b8,Shrinethra Mugundan,8220484522,Booked,2026-07-03,null,null,null,partial,0
+Vista Heights,D12,A1,Single,female,Attached,25500.00,Occupied,618f174c-7c45-cb54-907b-cacc78483918,Krithika Vjk,6385187569,Staying,2026-02-12,null,null,19500.00,partial,0
+Vista Heights,D12,A1,Single,female,Common,19500.00,Occupied,618f174c-7c45-cb54-907b-cacc78483918,Krithika Vjk,6385187569,Staying,2026-02-12,null,null,19500.00,partial,0
+Vista Heights,D12,B1,Double,female,Common,14500.00,Occupied,4505ca5d-0961-03c9-5943-ffda2a5ae270,Ruth Sylvia A C,9003533736,Staying,2025-09-09,null,null,15500.00,partial,0
+Vista Heights,D12,B1,Double,female,Attached,15500.00,Occupied,4505ca5d-0961-03c9-5943-ffda2a5ae270,Ruth Sylvia A C,9003533736,Staying,2025-09-09,null,null,15500.00,partial,0
+Vista Heights,D12,B2,Double,female,Common,14500.00,Occupied,04ba1c6f-6c06-819d-9ecc-a0c5f795b922,Benentia Alice Sanjana N,8072684579,Staying,2025-05-01,null,null,15500.00,partial,0
+Vista Heights,D12,B2,Double,female,Attached,15500.00,Occupied,04ba1c6f-6c06-819d-9ecc-a0c5f795b922,Benentia Alice Sanjana N,8072684579,Staying,2025-05-01,null,null,15500.00,partial,0
+Vista Heights,D12,C1,Double,female,Attached,15500.00,Occupied,8709ca2e-a8a6-48a4-b8ce-e813c4796ab9,Pakhi Mujmer,9753975154,Staying,2026-05-17,null,null,14500.00,pending,0
+Vista Heights,D12,C1,Double,female,Common,14500.00,Occupied,8709ca2e-a8a6-48a4-b8ce-e813c4796ab9,Pakhi Mujmer,9753975154,Staying,2026-05-17,null,null,14500.00,pending,0
+Vista Heights,D12,C2,Double,female,Attached,15500.00,Occupied,aa88d180-8c53-dbe4-70de-ecf38130d3ce,Shreya Agrawal,7978369240,On-Notice,2026-02-01,2026-07-07,2026-08-08,14500.00,partial,0
+Vista Heights,D12,C2,Double,female,Common,14500.00,Occupied,aa88d180-8c53-dbe4-70de-ecf38130d3ce,Shreya Agrawal,7978369240,On-Notice,2026-02-01,2026-07-07,2026-08-08,14500.00,partial,0
+Vista Heights,D15,A1,Executive,male,Attached,25500.00,Occupied,257579ca-bef0-99b8-f916-e518891ffdab,Kurian Benoy,9400125402,Staying,2026-05-04,null,null,25500.00,partial,1
+Vista Heights,D21,A1,Single,female,Common,19500.00,Occupied,890b32d9-f754-8150-5a18-8a21fcdf3828,Amala Menon,9072868795,Staying,2025-12-14,null,null,25500.00,partial,0
+Vista Heights,D21,A1,Single,female,Attached,25500.00,Occupied,890b32d9-f754-8150-5a18-8a21fcdf3828,Amala Menon,9072868795,Staying,2025-12-14,null,null,25500.00,partial,0
+Vista Heights,D21,B1,Double,female,Common,14500.00,Occupied,733dd472-3b1e-dd43-76e5-082ddfe66c5b,Shaily Mogari,9131192773,Staying,2025-07-16,null,null,15500.00,partial,0
+Vista Heights,D21,B1,Double,female,Attached,15500.00,Occupied,733dd472-3b1e-dd43-76e5-082ddfe66c5b,Shaily Mogari,9131192773,Staying,2025-07-16,null,null,15500.00,partial,0
+Vista Heights,D21,B2,Double,female,Attached,15500.00,Occupied,bcf8ffc1-fd5c-f6ab-0453-7a73c73786dd,Krithiga Nagarajan,9629622572,Staying,2024-06-08,null,null,14500.00,partial,0
+Vista Heights,D21,B2,Double,female,Common,14500.00,Occupied,bcf8ffc1-fd5c-f6ab-0453-7a73c73786dd,Krithiga Nagarajan,9629622572,Staying,2024-06-08,null,null,14500.00,partial,0
+Vista Heights,D21,C1,Triple,female,Attached,13500.00,Occupied,66fbcb59-3d06-d8cc-b1d5-53f38a599207,Sharon Swetha,8610106393,Staying,2025-01-01,null,null,13000.00,partial,0
+Vista Heights,D21,C2,Triple,female,Attached,13500.00,Occupied,b0348aa8-ad9f-d0dd-94e8-c71a6627c930,Varsha Darshini S M,9659379514,Staying,2025-01-01,null,null,13000.00,partial,0
+Vista Heights,D21,C3,Triple,female,Attached,13500.00,Occupied,1932ea80-c6eb-874e-eca8-12410fa7a608,Roshana S V,9629446866,Staying,2025-01-01,null,null,13000.00,partial,0
+Vista Heights,D41,A1,Single,female,Common,19500.00,Occupied,2794ccf7-4966-f00d-35d6-34ac17db73ea,Sreyashi Chowdhury,9790453258,Staying,2023-07-10,null,null,18300.00,partial,0
+Vista Heights,D41,A1,Single,female,Attached,25500.00,Occupied,2794ccf7-4966-f00d-35d6-34ac17db73ea,Sreyashi Chowdhury,9790453258,Staying,2023-07-10,null,null,18300.00,partial,0
+Vista Heights,D41,B1,Double,female,Common,14500.00,Occupied,d225973a-f437-d98e-4e24-0fb32a7bfbe8,Sai Priya Thamodaran,9360059029,Staying,2025-11-09,null,null,15500.00,partial,0
+Vista Heights,D41,B1,Double,female,Attached,15500.00,Occupied,d225973a-f437-d98e-4e24-0fb32a7bfbe8,Sai Priya Thamodaran,9360059029,Staying,2025-11-09,null,null,15500.00,partial,0
+Vista Heights,D41,B2,Double,female,Attached,15500.00,Occupied,073e4bd7-f1f1-49d3-604f-c365b9952a6c,Joan Betcy B,9080155826,Staying,2025-06-07,null,null,15500.00,partial,0
+Vista Heights,D41,B2,Double,female,Common,14500.00,Occupied,073e4bd7-f1f1-49d3-604f-c365b9952a6c,Joan Betcy B,9080155826,Staying,2025-06-07,null,null,15500.00,partial,0
+Vista Heights,D41,C1,Double,female,Common,14500.00,Occupied,07734943-434c-4c8b-b1fa-49d7c4e8a7fe,Mokana Ranee S,8903513516,Staying,2026-06-08,null,null,14500.00,paid,0
+Vista Heights,D41,C1,Double,female,Attached,15500.00,Occupied,07734943-434c-4c8b-b1fa-49d7c4e8a7fe,Mokana Ranee S,8903513516,Staying,2026-06-08,null,null,14500.00,paid,0
+Vista Heights,D41,C2,Double,female,Attached,15500.00,Occupied,8b48adf3-c14a-fa6d-9785-b4bcb35f8fbb,Ashmita Baidya,8927329721,Staying,2025-07-11,null,null,14500.00,partial,0
+Vista Heights,D41,C2,Double,female,Common,14500.00,Occupied,8b48adf3-c14a-fa6d-9785-b4bcb35f8fbb,Ashmita Baidya,8927329721,Staying,2025-07-11,null,null,14500.00,partial,0

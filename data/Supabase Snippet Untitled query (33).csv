@@ -1,0 +1,396 @@
+property_name,apartment_code,bed_code,bed_type,gender_allowed,toilet_type,current_rate,occupancy,current_tenant,onboarding_date,notice_date
+Vista Heights,A11,A1,Single,male,Attached,25500.00,Occupied,Putta Bulli Venkata Ajay,2026-02-01,null
+Vista Heights,A11,A1,Single,male,Common,19500.00,Occupied,Putta Bulli Venkata Ajay,2026-02-01,null
+Vista Heights,A11,B1,Double,male,Common,14500.00,Occupied,Joel Shajan,2025-08-15,null
+Vista Heights,A11,B1,Double,male,Attached,15500.00,Occupied,Joel Shajan,2025-08-15,null
+Vista Heights,A11,B2,Double,male,Common,14500.00,Occupied,Karthick Prasanna Cr,2026-02-22,null
+Vista Heights,A11,B2,Double,male,Attached,15500.00,Occupied,Karthick Prasanna Cr,2026-02-22,null
+Vista Heights,A11,C1,Double,male,Attached,15500.00,Occupied,Yash Sharma,2026-02-01,null
+Vista Heights,A11,C1,Double,male,Common,14500.00,Occupied,Yash Sharma,2026-02-01,null
+Vista Heights,A11,C2,Double,male,Attached,15500.00,Occupied,Abhishek Kumar Jha,2026-03-01,null
+Vista Heights,A11,C2,Double,male,Common,14500.00,Occupied,Abhishek Kumar Jha,2026-03-01,null
+Vista Heights,A12,A1,Single,female,Attached,25500.00,Occupied,Antara Chakraverty,2025-12-22,null
+Vista Heights,A12,A1,Single,female,Common,19500.00,Occupied,Antara Chakraverty,2025-12-22,null
+Vista Heights,A12,B1,Double,female,Attached,15500.00,Occupied,Narmada Vaman,null,null
+Vista Heights,A12,B1,Double,female,Attached,15500.00,Occupied,Vaishnavi Prabha Chettiar,2026-05-06,2026-06-20
+Vista Heights,A12,B1,Double,female,Common,14500.00,Occupied,Vaishnavi Prabha Chettiar,2026-05-06,2026-06-20
+Vista Heights,A12,B1,Double,female,Common,14500.00,Occupied,Narmada Vaman,null,null
+Vista Heights,A12,B2,Double,female,Common,14500.00,Occupied,Muthumari Chandran,2026-07-01,null
+Vista Heights,A12,B2,Double,female,Attached,15500.00,Occupied,Muthumari Chandran,2026-07-01,null
+Vista Heights,A12,C1,Double,female,Common,14500.00,Occupied,Himika Bhagwat,2025-08-05,null
+Vista Heights,A12,C1,Double,female,Attached,15500.00,Occupied,Himika Bhagwat,2025-08-05,null
+Vista Heights,A12,C2,Double,female,Common,14500.00,Occupied,Tanisha Choudhary,2025-08-04,null
+Vista Heights,A12,C2,Double,female,Attached,15500.00,Occupied,Tanisha Choudhary,2025-08-04,null
+Vista Heights,A22,A1,Single,male,Attached,25500.00,Vacant,null,null,null
+Vista Heights,A22,A1,Single,male,Common,19500.00,Vacant,null,null,null
+Vista Heights,A22,B1,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,A22,B1,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,A22,B2,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,A22,B2,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,A22,C1,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,A22,C1,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,A22,C2,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,A22,C2,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,A23,A1,Single,male,Attached,25500.00,Occupied,Devashish Dewangan,2026-07-17,null
+Vista Heights,A23,A1,Single,male,Common,19500.00,Occupied,Devashish Dewangan,2026-07-17,null
+Vista Heights,A23,B1,Double,male,Common,14500.00,Occupied,Karthikesan E,2025-12-08,null
+Vista Heights,A23,B1,Double,male,Attached,15500.00,Occupied,Karthikesan E,2025-12-08,null
+Vista Heights,A23,B2,Double,male,Common,14500.00,Occupied,Jomon P A,2026-04-20,null
+Vista Heights,A23,B2,Double,male,Attached,15500.00,Occupied,Jomon P A,2026-04-20,null
+Vista Heights,A23,C1,Double,male,Attached,15500.00,Occupied,Dr RAM SHIROMANI,2026-03-26,null
+Vista Heights,A23,C1,Double,male,Common,14500.00,Occupied,Dr RAM SHIROMANI,2026-03-26,null
+Vista Heights,A23,C2,Double,male,Common,14500.00,Occupied,Krishanu Kashyap,2024-06-06,null
+Vista Heights,A23,C2,Double,male,Attached,15500.00,Occupied,Krishanu Kashyap,2024-06-06,null
+Vista Heights,A24,A1,Single,male,Attached,25500.00,Occupied,Soham Pradhan,2026-06-01,null
+Vista Heights,A24,A1,Single,male,Common,19500.00,Occupied,Soham Pradhan,2026-06-01,null
+Vista Heights,A24,B1,Triple,male,Attached,13500.00,Occupied,Abhishek Chauthe,2026-03-12,null
+Vista Heights,A24,B2,Triple,male,Attached,13500.00,Occupied,Parv Aggarwal,2025-09-28,null
+Vista Heights,A24,B3,Triple,male,Attached,13500.00,Occupied,Dev Bhasin,2025-09-28,null
+Vista Heights,A24,C1,Double,male,Attached,15500.00,Occupied,Varun Katiyar,2026-04-26,null
+Vista Heights,A24,C1,Double,male,Common,14500.00,Occupied,Varun Katiyar,2026-04-26,null
+Vista Heights,A24,C2,Double,male,Common,14500.00,Occupied,Akarsh Shrivatsava,2026-01-17,2026-07-10
+Vista Heights,A24,C2,Double,male,Attached,15500.00,Occupied,Akarsh Shrivatsava,2026-01-17,2026-07-10
+Vista Heights,A41,A1,Single,male,Common,19500.00,Occupied,Aswin s,2026-06-07,null
+Vista Heights,A41,A1,Single,male,Attached,25500.00,Occupied,Aswin s,2026-06-07,null
+Vista Heights,A41,B1,Triple,male,Attached,13500.00,Occupied,Dhyey Jakhariya,2026-07-01,null
+Vista Heights,A41,B2,Triple,male,Attached,13500.00,Occupied,Ebrahim Marakkar,2025-10-01,null
+Vista Heights,A41,B3,Triple,male,Attached,13500.00,Occupied,Akshay Verma,2025-07-06,null
+Vista Heights,A41,C1,Double,male,Common,14500.00,Occupied,Harissh G,2025-08-24,null
+Vista Heights,A41,C1,Double,male,Attached,15500.00,Occupied,Harissh G,2025-08-24,null
+Vista Heights,A41,C2,Double,male,Common,14500.00,Occupied,Pranesh S A,2026-07-14,null
+Vista Heights,A41,C2,Double,male,Attached,15500.00,Occupied,Pranesh S A,2026-07-14,null
+Vista Heights,A41,D1,Double,male,Attached,15500.00,Occupied,Vijayasekar P,2024-04-02,null
+Vista Heights,A41,D1,Double,male,Common,14500.00,Occupied,Vijayasekar P,2024-04-02,null
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,Sai Krishna Kuppili,null,null
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,Saket Jaiswal,2026-06-13,null
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,Saket Jaiswal,2026-06-13,null
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,Sai Krishna Kuppili,null,null
+Vista Heights,A41,D2,Double,male,Common,14500.00,Occupied,Sai Krishna Kuppili,null,null
+Vista Heights,A41,D2,Double,male,Attached,15500.00,Occupied,Sai Krishna Kuppili,null,null
+Vista Heights,A44,A1,Single,male,Common,19500.00,Occupied,Thilak S,2026-05-23,null
+Vista Heights,A44,A1,Single,male,Attached,25500.00,Occupied,Thilak S,2026-05-23,null
+Vista Heights,A44,A1,Single,male,Common,19500.00,Occupied,Jawahar Muthuramu,2026-05-15,null
+Vista Heights,A44,A1,Single,male,Attached,25500.00,Occupied,Jawahar Muthuramu,2026-05-15,null
+Vista Heights,A44,B1,Double,male,Common,14500.00,Occupied,Abhilash V,2025-07-08,2026-06-15
+Vista Heights,A44,B1,Double,male,Attached,15500.00,Occupied,Abhilash V,2025-07-08,2026-06-15
+Vista Heights,A44,B1,Double,male,Attached,15500.00,Occupied,Karthikeyan Ramakrishnan,2026-08-01,null
+Vista Heights,A44,B1,Double,male,Common,14500.00,Occupied,Karthikeyan Ramakrishnan,2026-08-01,null
+Vista Heights,A44,B2,Double,male,Attached,15500.00,Occupied,Dena Dinesh M M,2025-07-26,null
+Vista Heights,A44,B2,Double,male,Common,14500.00,Occupied,Dena Dinesh M M,2025-07-26,null
+Vista Heights,A44,C1,Double,male,Attached,15500.00,Occupied,Anudatt Sunith,2025-10-18,null
+Vista Heights,A44,C1,Double,male,Common,14500.00,Occupied,Anudatt Sunith,2025-10-18,null
+Vista Heights,A44,C2,Double,male,Attached,15500.00,Occupied,Aditya Bissa,null,null
+Vista Heights,A44,C2,Double,male,Common,14500.00,Occupied,Aditya Bissa,null,null
+Vista Heights,A44,D1,Single,male,Common,19500.00,Occupied,Aditya Srinivas A,2025-01-12,null
+Vista Heights,A44,D1,Single,male,Attached,25500.00,Occupied,Aditya Srinivas A,2025-01-12,null
+Vista Heights,B11,A1,Single,male,Common,19500.00,Occupied,Rajesh Anandh,2025-08-26,null
+Vista Heights,B11,A1,Single,male,Attached,25500.00,Occupied,Rajesh Anandh,2025-08-26,null
+Vista Heights,B11,B1,Double,male,Attached,15500.00,Occupied,Harikrishnan P,2024-04-14,null
+Vista Heights,B11,B1,Double,male,Common,14500.00,Occupied,Harikrishnan P,2024-04-14,null
+Vista Heights,B11,B2,Double,male,Common,14500.00,Occupied,Arockiasathish S,2026-07-19,null
+Vista Heights,B11,B2,Double,male,Common,14500.00,Occupied,Annamalai Perikaruppan,2026-06-08,null
+Vista Heights,B11,B2,Double,male,Attached,15500.00,Occupied,Annamalai Perikaruppan,2026-06-08,null
+Vista Heights,B11,B2,Double,male,Attached,15500.00,Occupied,Arockiasathish S,2026-07-19,null
+Vista Heights,B11,C1,Double,male,Common,14500.00,Occupied,Annamalai Perikaruppan,null,null
+Vista Heights,B11,C1,Double,male,Attached,15500.00,Occupied,PRAVEEN J,2026-06-01,null
+Vista Heights,B11,C1,Double,male,Common,14500.00,Occupied,PRAVEEN J,2026-06-01,null
+Vista Heights,B11,C1,Double,male,Attached,15500.00,Occupied,Annamalai Perikaruppan,null,null
+Vista Heights,B11,C2,Double,male,Attached,15500.00,Occupied,Naga Raja Kurakula,2024-05-01,null
+Vista Heights,B11,C2,Double,male,Common,14500.00,Occupied,Naga Raja Kurakula,2024-05-01,null
+Vista Heights,B11,D1,Single,male,Attached,25500.00,Occupied,Tushar Singh,2025-06-15,null
+Vista Heights,B11,D1,Single,male,Common,19500.00,Occupied,Tushar Singh,2025-06-15,null
+Vista Heights,B12,A1,Single,female,Common,19500.00,Occupied,Bhumika KR,2026-05-06,null
+Vista Heights,B12,A1,Single,female,Attached,25500.00,Occupied,Bhumika KR,2026-05-06,null
+Vista Heights,B12,A1,Single,female,Common,19500.00,Occupied,Bhumika KR,2026-05-06,null
+Vista Heights,B12,A1,Single,female,Attached,25500.00,Occupied,Bhumika KR,2026-05-06,null
+Vista Heights,B12,B1,Double,female,Common,14500.00,Occupied,Nivetha Marimuthu,2023-10-01,null
+Vista Heights,B12,B1,Double,female,Attached,15500.00,Occupied,Nivetha Marimuthu,2023-10-01,null
+Vista Heights,B12,B2,Double,female,Common,14500.00,Occupied,Ammu Mariam Thomas,2026-07-23,null
+Vista Heights,B12,B2,Double,female,Attached,15500.00,Occupied,Ammu Mariam Thomas,2026-07-23,null
+Vista Heights,B12,C1,Double,female,Attached,15500.00,Occupied,Indira Ch,2022-10-15,null
+Vista Heights,B12,C1,Double,female,Common,14500.00,Occupied,Indira Ch,2022-10-15,null
+Vista Heights,B12,C2,Double,female,Common,14500.00,Occupied,Aakanksha Rajhans,2026-05-23,null
+Vista Heights,B12,C2,Double,female,Attached,15500.00,Occupied,Aakanksha Rajhans,2026-05-23,null
+Vista Heights,B13,A1,Single,male,Attached,25500.00,Occupied,Sairam Ct,2024-07-17,null
+Vista Heights,B13,A1,Single,male,Common,19500.00,Occupied,Sairam Ct,2024-07-17,null
+Vista Heights,B13,B1,Double,male,Common,14500.00,Occupied,Ram Roshan Ramanathan,2024-09-01,null
+Vista Heights,B13,B1,Double,male,Attached,15500.00,Occupied,Ram Roshan Ramanathan,2024-09-01,null
+Vista Heights,B13,B2,Double,male,Attached,15500.00,Occupied,Rakesh Ravi,2026-07-18,null
+Vista Heights,B13,B2,Double,male,Common,14500.00,Occupied,Rakesh Ravi,2026-07-18,null
+Vista Heights,B13,C1,Double,male,Attached,15500.00,Occupied,Piyush Malhotra,2025-03-05,null
+Vista Heights,B13,C1,Double,male,Common,14500.00,Occupied,Piyush Malhotra,2025-03-05,null
+Vista Heights,B13,C2,Double,male,Attached,15500.00,Occupied,Martin Rodgers,2024-12-01,null
+Vista Heights,B13,C2,Double,male,Common,14500.00,Occupied,Martin Rodgers,2024-12-01,null
+Vista Heights,B14,A1,Single,male,Attached,25500.00,Occupied,Krishnan D,2025-12-21,null
+Vista Heights,B14,A1,Single,male,Common,19500.00,Occupied,Krishnan D,2025-12-21,null
+Vista Heights,B14,B1,Double,male,Common,14500.00,Occupied,Kumaraswamy K,2021-12-17,null
+Vista Heights,B14,B1,Double,male,Attached,15500.00,Occupied,Kumaraswamy K,2021-12-17,null
+Vista Heights,B14,B2,Double,male,Attached,15500.00,Occupied,Ravi S,2021-12-05,null
+Vista Heights,B14,B2,Double,male,Common,14500.00,Occupied,Ravi S,2021-12-05,null
+Vista Heights,B14,C1,Double,male,Common,14500.00,Occupied,Harish Kumar M,2025-02-03,null
+Vista Heights,B14,C1,Double,male,Attached,15500.00,Occupied,Harish Kumar M,2025-02-03,null
+Vista Heights,B14,C2,Double,male,Common,14500.00,Occupied,Narendhren Rr,2026-01-17,null
+Vista Heights,B14,C2,Double,male,Attached,15500.00,Occupied,Narendhren Rr,2026-01-17,null
+Vista Heights,B22,A1,Single,female,Attached,25500.00,Occupied,Yashwanthi V,2025-04-08,null
+Vista Heights,B22,A1,Single,female,Common,19500.00,Occupied,Yashwanthi V,2025-04-08,null
+Vista Heights,B22,B1,Double,female,Attached,15500.00,Occupied,Chandni S,2025-01-05,null
+Vista Heights,B22,B1,Double,female,Common,14500.00,Occupied,Chandni S,2025-01-05,null
+Vista Heights,B22,B2,Double,female,Common,14500.00,Occupied,Drishti Sudhakar,2025-09-02,null
+Vista Heights,B22,B2,Double,female,Attached,15500.00,Occupied,Drishti Sudhakar,2025-09-02,null
+Vista Heights,B22,C1,Double,female,Common,14500.00,Occupied,Rajaseethala A,2025-02-18,null
+Vista Heights,B22,C1,Double,female,Attached,15500.00,Occupied,Rajaseethala A,2025-02-18,null
+Vista Heights,B22,C2,Double,female,Attached,15500.00,Occupied,Suhani Mehrotra,2025-08-02,null
+Vista Heights,B22,C2,Double,female,Common,14500.00,Occupied,Suhani Mehrotra,2025-08-02,null
+Vista Heights,B24,A1,Single,female,Common,19500.00,Occupied,Arunima Shandilya,2026-01-31,null
+Vista Heights,B24,A1,Single,female,Attached,25500.00,Occupied,Arunima Shandilya,2026-01-31,null
+Vista Heights,B24,B1,Triple,female,Attached,13500.00,Occupied,Aarathi Nambiar,2026-02-15,null
+Vista Heights,B24,B2,Triple,female,Attached,13500.00,Occupied,Nandana Chitbabu,2026-04-01,2026-06-30
+Vista Heights,B24,B3,Triple,female,Attached,13500.00,Occupied,Akshayaa M,2025-06-24,null
+Vista Heights,B24,C1,Double,female,Common,14500.00,Occupied,Aditi Shrivastava,2026-01-11,null
+Vista Heights,B24,C1,Double,female,Attached,15500.00,Occupied,Aditi Shrivastava,2026-01-11,null
+Vista Heights,B24,C2,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,B24,C2,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,B31,B1,Double,male,Common,14500.00,Occupied,Babu Abraham,2025-04-03,null
+Vista Heights,B31,B1,Double,male,Attached,15500.00,Occupied,Babu Abraham,2025-04-03,null
+Vista Heights,B31,B2,Double,male,Common,14500.00,Occupied,Aman Agarwala,2024-10-20,null
+Vista Heights,B31,B2,Double,male,Attached,15500.00,Occupied,Aman Agarwala,2024-10-20,null
+Vista Heights,B31,C1,Double,male,Common,14500.00,Occupied,Senthilkumar S,2025-05-26,null
+Vista Heights,B31,C1,Double,male,Attached,15500.00,Occupied,Senthilkumar S,2025-05-26,null
+Vista Heights,B31,C2,Double,male,Common,14500.00,Occupied,Priyesh Govind,2026-01-07,null
+Vista Heights,B31,C2,Double,male,Attached,15500.00,Occupied,Priyesh Govind,2026-01-07,null
+Vista Heights,B32,A1,Single,male,Attached,25500.00,Occupied,Tejun Verma,2025-11-08,null
+Vista Heights,B32,A1,Single,male,Common,19500.00,Occupied,Tejun Verma,2025-11-08,null
+Vista Heights,B32,B1,Double,male,Common,14500.00,Occupied,Mohamed Saif,2025-03-08,null
+Vista Heights,B32,B1,Double,male,Attached,15500.00,Occupied,Mohamed Saif,2025-03-08,null
+Vista Heights,B32,B2,Double,male,Attached,15500.00,Occupied,Yaduraj P,2024-05-01,null
+Vista Heights,B32,B2,Double,male,Common,14500.00,Occupied,Yaduraj P,2024-05-01,null
+Vista Heights,B32,C1,Double,male,Common,14500.00,Occupied,Umasai Kumar Torikonda,2023-10-08,2026-07-02
+Vista Heights,B32,C1,Double,male,Attached,15500.00,Occupied,Umasai Kumar Torikonda,2023-10-08,2026-07-02
+Vista Heights,B32,C2,Double,male,Common,14500.00,Occupied,Anupam Singh,2026-07-13,null
+Vista Heights,B32,C2,Double,male,Attached,15500.00,Occupied,Anupam Singh,2026-07-13,null
+Vista Heights,B33,A1,Single,male,Common,19500.00,Occupied,Ranna R,2025-02-03,null
+Vista Heights,B33,A1,Single,male,Attached,25500.00,Occupied,Ranna R,2025-02-03,null
+Vista Heights,B33,B1,Double,male,Common,14500.00,Occupied,Nikhil Gupta,2026-02-09,null
+Vista Heights,B33,B1,Double,male,Attached,15500.00,Occupied,Nikhil Gupta,2026-02-09,null
+Vista Heights,B33,B2,Double,male,Common,14500.00,Occupied,Atharva Vaishampayan,2026-02-09,null
+Vista Heights,B33,B2,Double,male,Attached,15500.00,Occupied,Atharva Vaishampayan,2026-02-09,null
+Vista Heights,B33,C1,Double,male,Common,14500.00,Occupied,Chaman Jain,2026-05-06,null
+Vista Heights,B33,C1,Double,male,Attached,15500.00,Occupied,Chaman Jain,2026-05-06,null
+Vista Heights,B33,C2,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,B33,C2,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,B34,A1,Single,male,Common,19500.00,Occupied,Gitansh Anand,2026-04-05,null
+Vista Heights,B34,A1,Single,male,Attached,25500.00,Occupied,Gitansh Anand,2026-04-05,null
+Vista Heights,B34,B1,Double,male,Attached,15500.00,Occupied,Pranav Purkar,2026-01-10,null
+Vista Heights,B34,B1,Double,male,Common,14500.00,Occupied,Pranav Purkar,2026-01-10,null
+Vista Heights,B34,B2,Double,male,Common,14500.00,Occupied,Sourabh Dandare,2026-01-10,null
+Vista Heights,B34,B2,Double,male,Attached,15500.00,Occupied,Sourabh Dandare,2026-01-10,null
+Vista Heights,B34,C1,Double,male,Common,14500.00,Occupied,Sai Krishna Kuppili,2026-05-25,2026-07-07
+Vista Heights,B34,C1,Double,male,Attached,15500.00,Occupied,Sai Krishna Kuppili,2026-05-25,2026-07-07
+Vista Heights,B34,C2,Double,male,Attached,15500.00,Occupied,Prem Chippada,2024-10-27,null
+Vista Heights,B34,C2,Double,male,Common,14500.00,Occupied,Prem Chippada,2024-10-27,null
+Vista Heights,B41,A1,Single,male,Attached,25500.00,Occupied,Vijay Babu Kumaresan,2025-05-05,null
+Vista Heights,B41,A1,Single,male,Common,19500.00,Occupied,Vijay Babu Kumaresan,2025-05-05,null
+Vista Heights,B41,B1,Double,male,Attached,15500.00,Occupied,Vishal Mohanasundraam,null,null
+Vista Heights,B41,B1,Double,male,Common,14500.00,Occupied,Vishal Mohanasundraam,null,null
+Vista Heights,B41,B2,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,B41,B2,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,B41,C1,Double,male,Attached,15500.00,Vacant,null,null,null
+Vista Heights,B41,C1,Double,male,Common,14500.00,Vacant,null,null,null
+Vista Heights,B41,C2,Double,male,Common,14500.00,Occupied,Abdulkasim Fayas Sathik Batcha,2026-05-03,null
+Vista Heights,B41,C2,Double,male,Attached,15500.00,Occupied,Abdulkasim Fayas Sathik Batcha,null,null
+Vista Heights,B41,C2,Double,male,Common,14500.00,Occupied,Abdulkasim Fayas Sathik Batcha,null,null
+Vista Heights,B41,C2,Double,male,Attached,15500.00,Occupied,Abdulkasim Fayas Sathik Batcha,2026-05-03,null
+Vista Heights,B41,D1,Single,male,Attached,25500.00,Occupied,Ranjan Rai,2025-01-17,null
+Vista Heights,B41,D1,Single,male,Common,19500.00,Occupied,Ranjan Rai,2025-01-17,null
+Vista Heights,B42,A1,Single,male,Attached,25500.00,Occupied,Sanath Baburam,2026-04-16,2026-07-18
+Vista Heights,B42,A1,Single,male,Common,19500.00,Occupied,Sanath Baburam,2026-04-16,2026-07-18
+Vista Heights,B42,B1,Double,male,Attached,15500.00,Occupied,Ishan Dubey,2026-06-20,null
+Vista Heights,B42,B1,Double,male,Common,14500.00,Occupied,Ishan Dubey,2026-06-20,null
+Vista Heights,B42,B2,Double,male,Attached,15500.00,Occupied,Anupam Varma,2026-07-01,null
+Vista Heights,B42,B2,Double,male,Common,14500.00,Occupied,Anupam Varma,2026-07-01,null
+Vista Heights,B42,C1,Double,male,Attached,15500.00,Occupied,Arindrajit Kundu,2025-04-01,null
+Vista Heights,B42,C1,Double,male,Common,14500.00,Occupied,Arindrajit Kundu,2025-04-01,null
+Vista Heights,B42,C2,Double,male,Common,14500.00,Occupied,Shubhashish,2022-02-28,null
+Vista Heights,B42,C2,Double,male,Attached,15500.00,Occupied,Shubhashish,2022-02-28,null
+Vista Heights,B43,A1,Single,female,Common,19500.00,Occupied,Diya Suresh,2025-12-09,null
+Vista Heights,B43,A1,Single,female,Attached,25500.00,Occupied,Diya Suresh,2025-12-09,null
+Vista Heights,B43,B1,Double,female,Common,14500.00,Occupied,Sneh Pratap,2026-01-08,null
+Vista Heights,B43,B1,Double,female,Attached,15500.00,Occupied,Sneh Pratap,2026-01-08,null
+Vista Heights,B43,B2,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,B43,B2,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,B43,C1,Double,female,Common,14500.00,Occupied,Gouri Renjith,2026-06-28,null
+Vista Heights,B43,C1,Double,female,Attached,15500.00,Occupied,Gouri Renjith,2026-06-28,null
+Vista Heights,B43,C2,Double,female,Common,14500.00,Occupied,Aryananda V,2026-06-28,null
+Vista Heights,B43,C2,Double,female,Attached,15500.00,Occupied,Aryananda V,2026-06-28,null
+Vista Heights,B44,A1,Single,female,Common,19500.00,Occupied,Sharanya Goswami,2026-06-13,2026-07-11
+Vista Heights,B44,A1,Single,female,Attached,25500.00,Occupied,Sharanya Goswami,2026-06-13,2026-07-11
+Vista Heights,B44,B1,Triple,female,Attached,13500.00,Occupied,Ritika Rajesh,2026-07-19,null
+Vista Heights,B44,B1,Triple,female,Attached,13500.00,Occupied,Pakhi Mujmer,2026-04-01,null
+Vista Heights,B44,B2,Triple,female,Attached,13500.00,Occupied,Aleena Renny Philip,2026-05-01,null
+Vista Heights,B44,B2,Triple,female,Attached,13500.00,Occupied,Aleena Renny Philip,null,null
+Vista Heights,B44,B3,Triple,female,Attached,13500.00,Occupied,Nilofar Althaf,null,null
+Vista Heights,B44,B3,Triple,female,Attached,13500.00,Occupied,Nilofar Althaf,2026-05-01,null
+Vista Heights,B44,C1,Double,female,Common,14500.00,Occupied,Iravati Datta,2025-02-04,null
+Vista Heights,B44,C1,Double,female,Attached,15500.00,Occupied,Iravati Datta,2025-02-04,null
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,Tarunya Venkat,null,null
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,suseela j,2026-07-06,null
+Vista Heights,B44,C2,Double,female,Attached,15500.00,Occupied,Tarunya Venkat,null,null
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,Tarunya Venkat,null,null
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,Tarunya Venkat,null,null
+Vista Heights,B44,C2,Double,female,Common,14500.00,Occupied,suseela j,2026-07-06,null
+Vista Heights,C11,A1,Single,male,Common,19500.00,Occupied,Harshil Arora,2026-07-01,null
+Vista Heights,C11,A1,Single,male,Attached,25500.00,Occupied,Harshil Arora,2026-07-01,null
+Vista Heights,C11,B1,Double,male,Common,14500.00,Occupied,Pranav Vitthalrao Kadam,2026-07-01,null
+Vista Heights,C11,B1,Double,male,Attached,15500.00,Occupied,Pranav Vitthalrao Kadam,2026-07-01,null
+Vista Heights,C11,B2,Double,male,Attached,15500.00,Occupied,Mihir Patil,2026-07-01,null
+Vista Heights,C11,B2,Double,male,Common,14500.00,Occupied,Mihir Patil,2026-07-01,null
+Vista Heights,C11,C1,Double,male,Common,14500.00,Occupied,Vikas Tanwar,2026-07-01,null
+Vista Heights,C11,C1,Double,male,Common,14500.00,Occupied,Uttkarsh Uttkarsh,2026-07-15,null
+Vista Heights,C11,C1,Double,male,Attached,15500.00,Occupied,Uttkarsh Uttkarsh,2026-07-15,null
+Vista Heights,C11,C1,Double,male,Attached,15500.00,Occupied,Vikas Tanwar,2026-07-01,null
+Vista Heights,C11,C2,Double,male,Attached,15500.00,Occupied,Dudala Sai Sujay,2026-07-01,null
+Vista Heights,C11,C2,Double,male,Common,14500.00,Occupied,Dudala Sai Sujay,2026-07-01,null
+Vista Heights,C12,A1,Single,female,Attached,25500.00,Occupied,Marina Johnson,2025-06-01,null
+Vista Heights,C12,A1,Single,female,Common,19500.00,Occupied,Marina Johnson,2025-06-01,null
+Vista Heights,C12,B1,Double,female,Attached,15500.00,Occupied,Oviya P,2026-05-23,null
+Vista Heights,C12,B1,Double,female,Common,14500.00,Occupied,Oviya P,2026-05-23,null
+Vista Heights,C12,B2,Double,female,Attached,15500.00,Occupied,Thota Sharanya,2026-06-06,null
+Vista Heights,C12,B2,Double,female,Common,14500.00,Occupied,Thota Sharanya,2026-06-06,null
+Vista Heights,C12,C1,Triple,female,Attached,13500.00,Occupied,Suhani Srivastava,2026-02-01,null
+Vista Heights,C12,C2,Triple,female,Attached,13500.00,Occupied,Keerthiga K,2026-07-01,null
+Vista Heights,C12,C3,Triple,female,Attached,13500.00,Occupied,Shakthi Bharathi S,2026-05-30,null
+Vista Heights,C12,D1,Double,female,Attached,15500.00,Occupied,Jaishnu Biradha,2026-07-19,null
+Vista Heights,C12,D1,Double,female,Common,14500.00,Occupied,Jaishnu Biradha,2026-07-19,null
+Vista Heights,C12,D2,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,C12,D2,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,C21,A1,Single,male,Attached,25500.00,Occupied,Divyaratna Joshi,null,null
+Vista Heights,C21,A1,Single,male,Common,19500.00,Occupied,Divyaratna Joshi,null,null
+Vista Heights,C21,B1,Double,male,Common,14500.00,Occupied,Sathyasai Regalla,2025-12-06,null
+Vista Heights,C21,B1,Double,male,Attached,15500.00,Occupied,Sathyasai Regalla,2025-12-06,null
+Vista Heights,C21,B2,Double,male,Attached,15500.00,Occupied,Divyaratna Joshi,2026-07-08,2026-07-08
+Vista Heights,C21,B2,Double,male,Common,14500.00,Occupied,Divyaratna Joshi,2026-07-08,2026-07-08
+Vista Heights,C21,C1,Double,male,Attached,15500.00,Occupied,Aditya Das,2026-01-10,null
+Vista Heights,C21,C1,Double,male,Common,14500.00,Occupied,Aditya Das,2026-01-10,null
+Vista Heights,C21,C2,Double,male,Attached,15500.00,Occupied,Kiran Tr,2025-02-09,null
+Vista Heights,C21,C2,Double,male,Common,14500.00,Occupied,Kiran Tr,2025-02-09,null
+Vista Heights,C21,D1,Single,male,Attached,25500.00,Occupied,Anup Easo Varghese,2026-01-14,null
+Vista Heights,C21,D1,Single,male,Common,19500.00,Occupied,Anup Easo Varghese,2026-01-14,null
+Vista Heights,C24,B1,Triple,female,Attached,13500.00,Occupied,Shabana Roshan,2026-06-29,null
+Vista Heights,C24,B2,Triple,female,Attached,13500.00,Occupied,GD Harsha,2026-05-02,null
+Vista Heights,C24,B2,Triple,female,Attached,13500.00,Occupied,GD Harsha,null,null
+Vista Heights,C24,B3,Triple,female,Attached,13500.00,Occupied,Rishita Tulsyan,2025-01-12,2026-07-21
+Vista Heights,C24,C1,Double,female,Attached,15500.00,Occupied,Harrsha T,2024-08-04,null
+Vista Heights,C24,C1,Double,female,Common,14500.00,Occupied,Harrsha T,2024-08-04,null
+Vista Heights,C24,C2,Double,female,Attached,15500.00,Occupied,Jayagowri Karthikeyan,2025-01-19,null
+Vista Heights,C24,C2,Double,female,Common,14500.00,Occupied,Jayagowri Karthikeyan,2025-01-19,null
+Vista Heights,C31,A1,Single,male,Common,19500.00,Occupied,Yash Jamuar,2026-03-13,null
+Vista Heights,C31,A1,Single,male,Attached,25500.00,Occupied,Yash Jamuar,2026-03-13,null
+Vista Heights,C31,B1,Double,male,Common,14500.00,Occupied,Naveen Joseph,2022-09-15,null
+Vista Heights,C31,B1,Double,male,Attached,15500.00,Occupied,Naveen Joseph,2022-09-15,null
+Vista Heights,C31,B2,Double,male,Attached,15500.00,Occupied,Sathiyan Gopalan,2024-06-12,null
+Vista Heights,C31,B2,Double,male,Common,14500.00,Occupied,Sathiyan Gopalan,2024-06-12,null
+Vista Heights,C31,C1,Double,male,Attached,15500.00,Occupied,Crescent P,2026-07-01,null
+Vista Heights,C31,C1,Double,male,Common,14500.00,Occupied,Crescent P,2026-07-01,null
+Vista Heights,C31,C2,Double,male,Attached,15500.00,Occupied,Praful Harikumar,2026-07-01,null
+Vista Heights,C31,C2,Double,male,Common,14500.00,Occupied,Praful Harikumar,2026-07-01,null
+Vista Heights,C31,D1,Single,male,Attached,25500.00,Occupied,Arun Prasad,2026-02-14,null
+Vista Heights,C31,D1,Single,male,Common,19500.00,Occupied,Arun Prasad,2026-02-14,null
+Vista Heights,C34,A1,Single,female,Attached,25500.00,Occupied,Rama D,2026-03-06,null
+Vista Heights,C34,A1,Single,female,Common,19500.00,Occupied,Rama D,2026-03-06,null
+Vista Heights,C34,B1,Double,female,Attached,15500.00,Occupied,Nirmala A,2023-11-27,null
+Vista Heights,C34,B1,Double,female,Common,14500.00,Occupied,Nirmala A,2023-11-27,null
+Vista Heights,C34,B2,Double,female,Common,14500.00,Occupied,Ardra John,2025-12-15,null
+Vista Heights,C34,B2,Double,female,Attached,15500.00,Occupied,Ardra John,2025-12-15,null
+Vista Heights,C34,C1,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,C34,C1,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,C34,C2,Double,female,Attached,15500.00,Occupied,Khushboo Sahani,2024-04-06,null
+Vista Heights,C34,C2,Double,female,Common,14500.00,Occupied,Khushboo Sahani,2024-04-06,null
+Vista Heights,C41,A1,Single,male,Attached,25500.00,Occupied,Avilekh Gautam,2024-10-01,2026-07-09
+Vista Heights,C41,A1,Single,male,Attached,25500.00,Occupied,Nirmal R,null,null
+Vista Heights,C41,A1,Single,male,Common,19500.00,Occupied,Nirmal R,null,null
+Vista Heights,C41,A1,Single,male,Common,19500.00,Occupied,Avilekh Gautam,2024-10-01,2026-07-09
+Vista Heights,C41,B1,Double,male,Attached,15500.00,Occupied,Jayachandran R,2026-08-01,null
+Vista Heights,C41,B1,Double,male,Common,14500.00,Occupied,Jayachandran R,2026-08-01,null
+Vista Heights,C41,B2,Double,male,Common,14500.00,Occupied,Dev Sakaria,2026-03-01,2026-06-30
+Vista Heights,C41,B2,Double,male,Attached,15500.00,Occupied,Dev Sakaria,2026-03-01,2026-06-30
+Vista Heights,C41,C1,Double,male,Attached,15500.00,Occupied,Firoz Uddin Gauhar,2026-05-01,null
+Vista Heights,C41,C1,Double,male,Attached,15500.00,Occupied,Firoz Uddin Gauhar,null,null
+Vista Heights,C41,C1,Double,male,Common,14500.00,Occupied,Firoz Uddin Gauhar,null,null
+Vista Heights,C41,C1,Double,male,Common,14500.00,Occupied,Firoz Uddin Gauhar,2026-05-01,null
+Vista Heights,C41,C2,Double,male,Common,14500.00,Occupied,Mohammad Nauman Shahid,null,null
+Vista Heights,C41,C2,Double,male,Attached,15500.00,Occupied,Nirmal R,2026-07-17,2026-07-17
+Vista Heights,C41,C2,Double,male,Attached,15500.00,Occupied,Mohammad Nauman Shahid,null,null
+Vista Heights,C41,C2,Double,male,Common,14500.00,Occupied,Nirmal R,2026-07-17,2026-07-17
+Vista Heights,C41,D1,Single,male,Attached,25500.00,Occupied,Prateek Sharma,2024-05-01,2026-07-16
+Vista Heights,C41,D1,Single,male,Common,19500.00,Occupied,Prateek Sharma,2024-05-01,2026-07-16
+Vista Heights,C42,A1,Single,female,Attached,25500.00,Occupied,Tarunya Venkat,2026-07-01,null
+Vista Heights,C42,A1,Single,female,Common,19500.00,Occupied,Tarunya Venkat,2026-07-01,null
+Vista Heights,C42,B1,Double,female,Common,14500.00,Occupied,Fathima Nazrin,2026-07-01,2026-07-09
+Vista Heights,C42,B1,Double,female,Attached,15500.00,Occupied,Fathima Nazrin,2026-07-01,2026-07-09
+Vista Heights,C42,B2,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,C42,B2,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,C42,C1,Double,female,Attached,15500.00,Occupied,Sruthi Pitchika,2025-11-02,2026-06-06
+Vista Heights,C42,C1,Double,female,Common,14500.00,Occupied,Sruthi Pitchika,2025-11-02,2026-06-06
+Vista Heights,C42,C2,Double,female,Common,14500.00,Occupied,Likhitha Naga Vigneswari Satuluri,2026-05-18,2026-06-06
+Vista Heights,C42,C2,Double,female,Common,14500.00,Occupied,Fathima Nazrin,null,null
+Vista Heights,C42,C2,Double,female,Attached,15500.00,Occupied,Likhitha Naga Vigneswari Satuluri,2026-05-18,2026-06-06
+Vista Heights,C42,C2,Double,female,Attached,15500.00,Occupied,Fathima Nazrin,null,null
+Vista Heights,C43,A1,Single,female,Attached,25500.00,Occupied,Maria Navin Mazhuvancherry,2026-06-01,null
+Vista Heights,C43,A1,Single,female,Common,19500.00,Occupied,Maria Navin Mazhuvancherry,2026-06-01,null
+Vista Heights,C43,B1,Double,female,Common,14500.00,Occupied,Oviya S,2024-02-01,null
+Vista Heights,C43,B1,Double,female,Attached,15500.00,Occupied,Oviya S,2024-02-01,null
+Vista Heights,C43,B2,Double,female,Common,14500.00,Occupied,Aiswaryaa Krishnasamy Thandapani,2026-05-26,null
+Vista Heights,C43,B2,Double,female,Attached,15500.00,Occupied,Aiswaryaa Krishnasamy Thandapani,2026-05-26,null
+Vista Heights,C43,C1,Double,female,Common,14500.00,Occupied,Suha Sajad,2026-04-05,null
+Vista Heights,C43,C1,Double,female,Attached,15500.00,Occupied,Suha Sajad,2026-04-05,null
+Vista Heights,C43,C2,Double,female,Attached,15500.00,Occupied,Kaarthika,2024-02-01,null
+Vista Heights,C43,C2,Double,female,Common,14500.00,Occupied,Kaarthika,2024-02-01,null
+Vista Heights,C44,A1,Single,male,Attached,25500.00,Occupied,Arun Er,2025-11-01,null
+Vista Heights,C44,A1,Single,male,Common,19500.00,Occupied,Arun Er,2025-11-01,null
+Vista Heights,C44,B1,Double,male,Attached,15500.00,Occupied,Harshanand S V,2026-06-01,null
+Vista Heights,C44,B1,Double,male,Common,14500.00,Occupied,Harshanand S V,2026-06-01,null
+Vista Heights,C44,B2,Double,male,Attached,15500.00,Occupied,Venkat Karthik Mukidichetti,2025-05-05,null
+Vista Heights,C44,B2,Double,male,Common,14500.00,Occupied,Venkat Karthik Mukidichetti,2025-05-05,null
+Vista Heights,C44,C1,Double,male,Attached,15500.00,Occupied,Ganesh Selvam,2025-08-17,null
+Vista Heights,C44,C1,Double,male,Common,14500.00,Occupied,Ganesh Selvam,2025-08-17,null
+Vista Heights,C44,C2,Double,male,Attached,15500.00,Occupied,Mithil Mohan,2026-04-05,null
+Vista Heights,C44,C2,Double,male,Common,14500.00,Occupied,Mithil Mohan,2026-04-05,null
+Vista Heights,D11,B1,Single,female,Attached,25500.00,Occupied,Tanusha C Karlekar,2025-07-16,null
+Vista Heights,D11,B1,Single,female,Common,19500.00,Occupied,Tanusha C Karlekar,2025-07-16,null
+Vista Heights,D11,C1,Double,female,Attached,15500.00,Vacant,null,null,null
+Vista Heights,D11,C1,Double,female,Common,14500.00,Vacant,null,null,null
+Vista Heights,D11,C2,Double,female,Common,14500.00,Occupied,Kanishka Prasath Kumar,2026-06-03,null
+Vista Heights,D11,C2,Double,female,Attached,15500.00,Occupied,Kanishka Prasath Kumar,2026-06-03,null
+Vista Heights,D11,D1,Triple,female,Attached,13500.00,Occupied,Suvetha V,2022-11-19,null
+Vista Heights,D11,D2,Triple,female,Attached,13500.00,Occupied,Dhivya Parthasarathy,2023-11-09,null
+Vista Heights,D11,D3,Triple,female,Attached,13500.00,Occupied,Shrinethra Mugundan,2026-07-03,null
+Vista Heights,D12,A1,Single,female,Common,19500.00,Occupied,Krithika Vjk,2026-02-12,null
+Vista Heights,D12,A1,Single,female,Attached,25500.00,Occupied,Krithika Vjk,2026-02-12,null
+Vista Heights,D12,B1,Double,female,Attached,15500.00,Occupied,Ruth Sylvia A C,2025-09-09,null
+Vista Heights,D12,B1,Double,female,Common,14500.00,Occupied,Ruth Sylvia A C,2025-09-09,null
+Vista Heights,D12,B2,Double,female,Common,14500.00,Occupied,Benentia Alice Sanjana N,2025-05-01,null
+Vista Heights,D12,B2,Double,female,Attached,15500.00,Occupied,Benentia Alice Sanjana N,2025-05-01,null
+Vista Heights,D12,C1,Double,female,Common,14500.00,Occupied,Pakhi Mujmer,2026-05-17,null
+Vista Heights,D12,C1,Double,female,Attached,15500.00,Occupied,Pakhi Mujmer,2026-05-17,null
+Vista Heights,D12,C2,Double,female,Attached,15500.00,Occupied,Shreya Agrawal,2026-02-01,2026-07-07
+Vista Heights,D12,C2,Double,female,Common,14500.00,Occupied,Shreya Agrawal,2026-02-01,2026-07-07
+Vista Heights,D15,A1,Executive,male,Attached,25500.00,Occupied,Kurian Benoy,2026-05-04,null
+Vista Heights,D21,A1,Single,female,Common,19500.00,Occupied,Amala Menon,2025-12-14,null
+Vista Heights,D21,A1,Single,female,Attached,25500.00,Occupied,Amala Menon,2025-12-14,null
+Vista Heights,D21,B1,Double,female,Common,14500.00,Occupied,Shaily Mogari,2025-07-16,null
+Vista Heights,D21,B1,Double,female,Attached,15500.00,Occupied,Shaily Mogari,2025-07-16,null
+Vista Heights,D21,B2,Double,female,Attached,15500.00,Occupied,Krithiga Nagarajan,2024-06-08,null
+Vista Heights,D21,B2,Double,female,Common,14500.00,Occupied,Krithiga Nagarajan,2024-06-08,null
+Vista Heights,D21,C1,Triple,female,Attached,13500.00,Occupied,Sharon Swetha,2025-01-01,null
+Vista Heights,D21,C2,Triple,female,Attached,13500.00,Occupied,Varsha Darshini S M,2025-01-01,null
+Vista Heights,D21,C3,Triple,female,Attached,13500.00,Occupied,Roshana S V,2025-01-01,null
+Vista Heights,D41,A1,Single,female,Common,19500.00,Occupied,Sreyashi Chowdhury,2023-07-10,null
+Vista Heights,D41,A1,Single,female,Attached,25500.00,Occupied,Sreyashi Chowdhury,2023-07-10,null
+Vista Heights,D41,B1,Double,female,Common,14500.00,Occupied,Sai Priya Thamodaran,2025-11-09,null
+Vista Heights,D41,B1,Double,female,Attached,15500.00,Occupied,Sai Priya Thamodaran,2025-11-09,null
+Vista Heights,D41,B2,Double,female,Attached,15500.00,Occupied,Joan Betcy B,2025-06-07,null
+Vista Heights,D41,B2,Double,female,Common,14500.00,Occupied,Joan Betcy B,2025-06-07,null
+Vista Heights,D41,C1,Double,female,Attached,15500.00,Occupied,Mokana Ranee S,2026-06-08,null
+Vista Heights,D41,C1,Double,female,Common,14500.00,Occupied,Mokana Ranee S,2026-06-08,null
+Vista Heights,D41,C2,Double,female,Common,14500.00,Occupied,Ashmita Baidya,2025-07-11,null
+Vista Heights,D41,C2,Double,female,Attached,15500.00,Occupied,Ashmita Baidya,2025-07-11,null
