@@ -1,6 +1,7 @@
 # Data files
 Data/
-*.csv
+# Ignore only large/raw data
+Data/raw/
 
 # Python cache
 __pycache__/
@@ -15,7 +16,3 @@ venv/
 
 # Jupyter
 .ipynb_checkpoints/
-
-# Generated outputs (optional)
-outputs/*.csv
-outputs/*.xlsx
