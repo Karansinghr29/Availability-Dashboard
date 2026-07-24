@@ -214,7 +214,7 @@ def _beds_master_rate_lookup() -> dict:
         return {}
     if raw is None or raw.empty:
         return {}
-    resolved, _ = resolve_beds_master(raw)
+    resolved, _ = resolve_beds_master(raw, bed_map=loader.bed_map())
     if resolved is None or resolved.empty:
         return {}
     out: dict = {}

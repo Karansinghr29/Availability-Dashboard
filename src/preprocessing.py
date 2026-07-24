@@ -518,42 +518,56 @@ def _toilet_type_preference(value) -> int:
     return 2
 
 
-def _pick_duplicate_bed_row(group: pd.DataFrame) -> pd.Series:
+def _pick_duplicate_bed_row(group: pd.DataFrame, bedmap_rate=None) -> pd.Series:
     """Choose one beds_master row for a duplicate apartment+bed key.
 
-    Rules (Vishful-aligned asking rent):
-      1. Prefer Common toilet_type over Attached.
-      2. Among Common rows, keep the latest valid row (highest source order).
-      3. If no Common row, use Attached (latest valid).
-      4. Otherwise fall back to the latest valid row of any toilet type.
+    Selects the row that represents the ACTIVE / current bed used by Vishful:
+      1. **Bed Map** — the row whose ``current_rate`` equals the live Bed Map rate
+         (the active bed_rates record the Vishful application shows). Preferred
+         whenever the Bed Map value is available.
+      2. **Effective dates** — if the source carries ``from_date`` / ``to_date``,
+         the row active today (from_date <= today AND (to_date null OR >= today)).
+      3. **Fallback** — the latest valid source row (highest source order).
+    Toilet-type is NEVER used to pick the rate.
     """
     g = group
-    toilet_pref = g["toilet_type"].map(_toilet_type_preference)
-    common = g.loc[toilet_pref == 0]
-    attached = g.loc[toilet_pref == 1]
-    if not common.empty:
-        pool = common
-    elif not attached.empty:
-        pool = attached
-    else:
-        pool = g
+    pool = g
 
-    # Valid = has a numeric current_rate when any rate exists in the pool.
+    if bedmap_rate is not None and not (
+        isinstance(bedmap_rate, float) and pd.isna(bedmap_rate)
+    ):
+        # 1. Match the live Bed Map active rate.
+        rate = pd.to_numeric(g["current_rate"], errors="coerce")
+        match = g.loc[(rate - float(bedmap_rate)).abs() <= 0.5]
+        if not match.empty:
+            pool = match
+    elif {"from_date", "to_date"}.issubset(g.columns):
+        # 2. Bed Map unavailable -> active bed_rates row by effective dates.
+        today = pd.Timestamp.today().normalize()
+        fd = pd.to_datetime(g["from_date"], errors="coerce")
+        td = pd.to_datetime(g["to_date"], errors="coerce")
+        active = g.loc[(fd.isna() | (fd <= today)) & (td.isna() | (td >= today))]
+        if not active.empty:
+            pool = active
+
+    # 3. Latest valid source row within the selected pool (final tiebreak).
     has_rate = pool["current_rate"].notna()
     if has_rate.any():
         pool = pool.loc[has_rate]
-
-    # Latest = last occurrence in the source export (original row order).
     return pool.loc[pool["_src_order"].idxmax()]
 
 
-def resolve_beds_master(raw: Optional[pd.DataFrame]) -> tuple[pd.DataFrame, dict]:
+def resolve_beds_master(
+    raw: Optional[pd.DataFrame], bed_map: Optional[pd.DataFrame] = None
+) -> tuple[pd.DataFrame, dict]:
     """Normalize beds_master, report duplicate keys, return one row per bed.
 
-    Duplicate ``apartment_code + bed_code`` rows are always reported. Conflicting
-    gender/status/toilet values are listed. When duplicates are rate-catalog
-    forks (Common vs Attached), resolution prefers Common so asking rent matches
-    Vishful; among the preferred toilet class the latest valid source row wins.
+    Duplicate ``apartment_code + bed_code`` rows are always reported. For each
+    duplicate the ACTIVE/current bed is selected: the row matching the live
+    ``bed_map`` rate when available, else the effective-date-active row
+    (from_date/to_date), else the latest valid source row. Toilet-type preference
+    is not used. ``bed_map`` is the DataLoader Bed Map (``apartment_code`` /
+    ``bed_code`` / ``bed_rate``); when None the date/latest fallbacks apply.
     """
     report = {
         "beds_loaded": 0,
@@ -568,6 +582,23 @@ def resolve_beds_master(raw: Optional[pd.DataFrame]) -> tuple[pd.DataFrame, dict
     report["rows_before_resolve"] = int(len(master))
     if master.empty:
         return master, report
+
+    # Live Bed Map active rate per APT|BED (drives duplicate selection).
+    bedmap_rate: Dict[str, float] = {}
+    if (
+        bed_map is not None
+        and isinstance(bed_map, pd.DataFrame)
+        and not bed_map.empty
+        and "bed_rate" in bed_map.columns
+    ):
+        for _, _br in bed_map.iterrows():
+            _a = str(_br.get("apartment_code") or "").strip().upper()
+            _b = str(_br.get("bed_code") or "").strip().upper()
+            _rt = _br.get("bed_rate")
+            if _a and _b and _rt is not None and not (
+                isinstance(_rt, float) and pd.isna(_rt)
+            ):
+                bedmap_rate[f"{_a}|{_b}"] = float(_rt)
 
     master = master.copy()
     master["_key"] = _beds_master_key(master)
@@ -624,10 +655,10 @@ def resolve_beds_master(raw: Optional[pd.DataFrame]) -> tuple[pd.DataFrame, dict
             )
     report["conflict_keys"] = conflict_keys
 
-    # One row per apartment+bed: Common over Attached; latest valid within class.
+    # One row per apartment+bed: active Bed Map rate -> effective dates -> latest.
     picked = [
-        _pick_duplicate_bed_row(g)
-        for _, g in master.groupby("_key", sort=True)
+        _pick_duplicate_bed_row(g, bedmap_rate.get(key))
+        for key, g in master.groupby("_key", sort=True)
     ]
     resolved = pd.DataFrame(picked).reset_index(drop=True)
     resolved = resolved.drop(columns=["_key", "_src_order"], errors="ignore")
@@ -636,9 +667,9 @@ def resolve_beds_master(raw: Optional[pd.DataFrame]) -> tuple[pd.DataFrame, dict
     resolved = resolved[keep_cols].copy()
     report["rows_after_resolve"] = int(len(resolved))
     report["resolve_note"] = (
-        "Duplicate apartment+bed rows (Common vs Attached rate catalog) resolve "
-        "by preferring Common, then Attached; within that class the latest "
-        "valid source row is kept. keep='last' is not used."
+        "Duplicate apartment+bed rows resolve to the row matching the live Bed Map "
+        "active rate; else the effective-date-active row (from_date/to_date); else "
+        "the latest valid source row. Toilet-type preference is not used."
     )
     return resolved.reset_index(drop=True), report
 
@@ -957,7 +988,7 @@ def build_room_inventory(
     if current_occupancy is None:
         current_occupancy = _optional_current_occupancy()
 
-    master_resolved, master_report = resolve_beds_master(beds_master)
+    master_resolved, master_report = resolve_beds_master(beds_master, bed_map=bed_map)
     # Occupancy holds after master resolve so Cancelled+Occupied can defer to Q33.
     held_from_occupancy = _held_bed_keys_from_occupancy(
         current_occupancy, beds_master=master_resolved
