@@ -1,0 +1,58 @@
+{
+  "_regenerated_utc": "2026-07-23 09:12:59Z",
+  "_generator": "src/_audit_datasources.py",
+  "_note": "Reflects current DataLoader sources (Q35/Q42+Q32/Q37/Q50/Q56).",
+  "total_recommendation_cards_checked": 35,
+  "scenarios": [
+    {
+      "name": "city=Chennai|gender=Male|bed=None",
+      "cards": 4,
+      "detected_state": "Tamil Nadu",
+      "pool_has_same_state": true
+    },
+    {
+      "name": "city=Chennai|gender=Female|bed=None",
+      "cards": 5,
+      "detected_state": "Tamil Nadu",
+      "pool_has_same_state": true
+    },
+    {
+      "name": "city=Kerala|gender=Male|bed=Double",
+      "cards": 4,
+      "detected_state": "Kerala",
+      "pool_has_same_state": true
+    },
+    {
+      "name": "city=Tamil Nadu|gender=Male|bed=None",
+      "cards": 4,
+      "detected_state": "Tamil Nadu",
+      "pool_has_same_state": true
+    },
+    {
+      "name": "city=West Bengal|gender=Male|bed=None",
+      "cards": 4,
+      "detected_state": "West Bengal",
+      "pool_has_same_state": true
+    },
+    {
+      "name": "city=Mumbai|gender=Female|bed=None",
+      "cards": 5,
+      "detected_state": "Maharashtra",
+      "pool_has_same_state": false
+    },
+    {
+      "name": "city=Bangalore|gender=Male|bed=Single",
+      "cards": 4,
+      "detected_state": "Karnataka",
+      "pool_has_same_state": false
+    },
+    {
+      "name": "city=Delhi|gender=None|bed=None",
+      "cards": 5,
+      "detected_state": "Delhi",
+      "pool_has_same_state": false
+    }
+  ],
+  "inventory_rooms": 112,
+  "verdict": "Regenerated smoke check (observational; no failures asserted)."
+}

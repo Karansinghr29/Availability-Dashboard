@@ -1,0 +1,11 @@
+# Core (Phase 1)
+pandas>=2.0
+numpy>=1.24
+
+# Future database integration (Phase 2) — data_loader.py only
+# SQLAlchemy>=2.0
+# psycopg2-binary>=2.9
+# supabase>=2.0
+
+# Dashboard (Phase 7) — display only
+streamlit>=1.30

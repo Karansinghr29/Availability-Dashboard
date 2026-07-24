@@ -1,0 +1,294 @@
+{
+  "_regenerated_utc": "2026-07-23 09:12:59Z",
+  "_generator": "src/_audit_datasources.py",
+  "_note": "Reflects current DataLoader sources (Q35/Q42+Q32/Q37/Q50/Q56).",
+  "data_dir": "D:\\data science\\Availability  Analysis\\Data",
+  "primary_source_by_table": {
+    "tenants": "Supabase Snippet Untitled query (32).csv",
+    "bookings": "Supabase Snippet Untitled query (35).csv",
+    "invoices": "Supabase Snippet Untitled query (38).csv",
+    "payments": "Supabase Snippet Untitled query (40).csv",
+    "electricity_bills": "Supabase Snippet Untitled query (51).csv",
+    "electricity_readings": "Supabase Snippet Untitled query (52).csv",
+    "beds_master": "Supabase Snippet Untitled query (37).csv",
+    "current_occupancy": "Supabase Snippet Untitled query (50).csv",
+    "billing_snapshot": "Supabase Snippet Untitled query (39).csv",
+    "tenant_master": "Supabase Snippet Untitled query (42).csv",
+    "apartment_master": "Supabase Snippet Untitled query (45).csv",
+    "beds_master_uuid": "Supabase Snippet Untitled query (43).csv",
+    "transfers": "Supabase Snippet Untitled query (56).csv"
+  },
+  "tables": {
+    "tenants": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (32).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (32).csv",
+          "last_modified": "2026-07-22 12:58:24",
+          "size_bytes": 114099
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (32).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 1022,
+      "first_apartment_codes": [
+        "null",
+        "null",
+        "null"
+      ]
+    },
+    "bookings": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (31).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (31).csv",
+          "last_modified": "2026-07-22 12:58:23",
+          "size_bytes": 239421
+        },
+        {
+          "filename": "Supabase Snippet Untitled query (35).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (35).csv",
+          "last_modified": "2026-07-23 11:10:20",
+          "size_bytes": 188162
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (35).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 1174,
+      "first_apartment_codes": [
+        "C41",
+        "C42",
+        "C41"
+      ]
+    },
+    "maintenance": {
+      "discovered_files": [],
+      "primary_file": null,
+      "secondary_files_backfill": [],
+      "load_error": "no source file",
+      "rows": 0,
+      "first_apartment_codes": []
+    },
+    "invoices": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (38).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (38).csv",
+          "last_modified": "2026-07-23 11:10:20",
+          "size_bytes": 2850884
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (38).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 6717,
+      "first_apartment_codes": []
+    },
+    "payments": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (40).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (40).csv",
+          "last_modified": "2026-07-23 13:27:12",
+          "size_bytes": 2377955
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (40).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 7847,
+      "first_apartment_codes": []
+    },
+    "electricity_bills": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (51).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (51).csv",
+          "last_modified": "2026-07-23 13:27:25",
+          "size_bytes": 21596
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (51).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 70,
+      "first_apartment_codes": []
+    },
+    "electricity_readings": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (52).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (52).csv",
+          "last_modified": "2026-07-23 13:27:32",
+          "size_bytes": 12430
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (52).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 35,
+      "first_apartment_codes": []
+    },
+    "beds_master": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (33).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (33).csv",
+          "last_modified": "2026-07-22 12:58:25",
+          "size_bytes": 36142
+        },
+        {
+          "filename": "Supabase Snippet Untitled query (37).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (37).csv",
+          "last_modified": "2026-07-23 11:10:22",
+          "size_bytes": 16239
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (37).csv",
+      "secondary_files_backfill": [
+        "Supabase Snippet Untitled query (33).csv"
+      ],
+      "load_error": null,
+      "rows": 359,
+      "first_apartment_codes": [
+        "A11",
+        "A11",
+        "A11"
+      ]
+    },
+    "current_occupancy": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (34).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (34).csv",
+          "last_modified": "2026-07-22 12:58:26",
+          "size_bytes": 31794
+        },
+        {
+          "filename": "Supabase Snippet Untitled query (36).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (36).csv",
+          "last_modified": "2026-07-23 11:10:20",
+          "size_bytes": 17129
+        },
+        {
+          "filename": "Supabase Snippet Untitled query (50).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (50).csv",
+          "last_modified": "2026-07-23 13:27:22",
+          "size_bytes": 67102
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (50).csv",
+      "secondary_files_backfill": [
+        "Supabase Snippet Untitled query (36).csv"
+      ],
+      "load_error": null,
+      "rows": 399,
+      "first_apartment_codes": [
+        "A11",
+        "A11",
+        "A11"
+      ]
+    },
+    "billing_snapshot": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (39).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (39).csv",
+          "last_modified": "2026-07-23 11:10:21",
+          "size_bytes": 12242
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (39).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 197,
+      "first_apartment_codes": [
+        "B12",
+        "B24",
+        "B41"
+      ]
+    },
+    "tenant_master": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (42).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (42).csv",
+          "last_modified": "2026-07-23 13:27:18",
+          "size_bytes": 617131
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (42).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 1009,
+      "first_apartment_codes": []
+    },
+    "apartment_master": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (45).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (45).csv",
+          "last_modified": "2026-07-23 13:27:31",
+          "size_bytes": 13343
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (45).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 41,
+      "first_apartment_codes": [
+        "A11",
+        "A12",
+        "A22"
+      ]
+    },
+    "beds_master_uuid": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (43).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (43).csv",
+          "last_modified": "2026-07-23 13:27:23",
+          "size_bytes": 33446
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (43).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 192,
+      "first_apartment_codes": []
+    },
+    "transfers": {
+      "discovered_files": [
+        {
+          "filename": "Supabase Snippet Untitled query (56).csv",
+          "absolute_path": "D:\\data science\\Availability  Analysis\\Data\\Supabase Snippet Untitled query (56).csv",
+          "last_modified": "2026-07-23 13:27:29",
+          "size_bytes": 15308
+        }
+      ],
+      "primary_file": "Supabase Snippet Untitled query (56).csv",
+      "secondary_files_backfill": [],
+      "load_error": null,
+      "rows": 24,
+      "first_apartment_codes": []
+    },
+    "assets": {
+      "discovered_files": [],
+      "primary_file": null,
+      "secondary_files_backfill": [],
+      "load_error": "no source file",
+      "rows": 0,
+      "first_apartment_codes": []
+    },
+    "expenses": {
+      "discovered_files": [],
+      "primary_file": null,
+      "secondary_files_backfill": [],
+      "load_error": "no source file",
+      "rows": 0,
+      "first_apartment_codes": []
+    }
+  }
+}

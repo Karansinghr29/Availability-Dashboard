@@ -1,0 +1,21 @@
+# Data files
+Data/
+*.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment files
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated outputs (optional)
+outputs/*.csv
+outputs/*.xlsx

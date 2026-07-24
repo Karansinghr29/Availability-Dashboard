@@ -1,0 +1,4 @@
+{
+  "_comment": "Temporary override only. Prefer beds_master.bed_status (Not-Active) for Inactive detection. Keep this list empty when the bed master is loaded. Add apartment codes here only as an emergency override.",
+  "inactive_apartment_codes": []
+}
