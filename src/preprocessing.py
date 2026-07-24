@@ -558,9 +558,8 @@ def _pick_duplicate_bed_row(group: pd.DataFrame, bedmap_rate=None) -> pd.Series:
 
 
 def resolve_beds_master(
-    raw: Optional[pd.DataFrame],
-    bed_map: Optional[pd.DataFrame] = None,
-):
+    raw: Optional[pd.DataFrame], bed_map: Optional[pd.DataFrame] = None
+) -> tuple[pd.DataFrame, dict]:
     """Normalize beds_master, report duplicate keys, return one row per bed.
 
     Duplicate ``apartment_code + bed_code`` rows are always reported. For each
