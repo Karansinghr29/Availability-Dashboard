@@ -35,7 +35,6 @@ from inventory_views import (
 from roommate_matching import (
     STATIC_CITY_STATE,
     _states_of,
-    aggregate_apartment_occupant_field,
     assert_candidates_match_customer_gender,
     customer_match_label,
     ensure_gender_allowed_column,
@@ -87,17 +86,12 @@ def _enrich_display_metadata(
     for _, rec in out.iterrows():
         key = (str(rec["apartment_code"]), str(rec["room_code"]))
         room = inv_by_room.get(key)
+        # ROOM-level occupants ONLY — the same dataset used by same_state_roommate
+        # and the card's "Current Occupant States". No apartment-aggregate fallback:
+        # same-state matching is a room concept, so Occupant States, Same-state
+        # roommate and Similarity must all reflect the same room (never claim a
+        # same-state occupant the room does not actually have).
         room_states = _states_of(room["occupant_states"]) if room is not None else []
-        occupied = int(room["occupied_beds"]) if room is not None else 0
-
-        # Room first; if occupied but demographics missing, use apartment aggregate.
-        if occupied > 0 and not room_states:
-            room_states = aggregate_apartment_occupant_field(
-                inv, rec["apartment_code"], "occupant_states"
-            )
-
-        if occupied <= 0 and not room_states:
-            room_states = []
 
         states_list.append(occupants_state_summary(room_states))
         similarity_list.append(customer_match_label(room_states, customer_state))
