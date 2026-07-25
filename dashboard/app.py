@@ -461,8 +461,25 @@ def page_recommendation():
         if not state_counts.empty:
             st.dataframe(state_counts, use_container_width=True, hide_index=True)
 
-    # No same-state match → explain, still show fallback recommendations.
-    if state and not has_same_state_vacant_rooms(inv, state):
+    # Fallback explanation — one clear message for why these cards are shown.
+    req_bt = rec.attrs.get("bed_type_requested")
+    bt_fallback = rec.attrs.get("bed_type_fallback")
+    bt_shown = rec.attrs.get("bed_type_shown")
+    same_in_result = rec.attrs.get("same_state_in_result")
+    if bt_fallback and req_bt:
+        # Priority 3: requested bed type has no vacancy -> any available type.
+        st.warning(
+            f"No {req_bt} beds are currently vacant. "
+            f"Showing the best available {bt_shown} beds."
+        )
+    elif req_bt and state and not same_in_result and not rec.empty:
+        # Priority 2: requested type available, but no same-state roommate.
+        st.warning(
+            f"No {req_bt} beds with {state} roommates are available. "
+            f"Showing the best available {req_bt} beds."
+        )
+    elif state and not has_same_state_vacant_rooms(inv, state):
+        # Any-bed-type query with no same-state roommate anywhere.
         st.warning(
             f"No active vacant room currently has roommates from **{state}**."
         )

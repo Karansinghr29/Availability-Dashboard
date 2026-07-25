@@ -186,24 +186,52 @@ def recommend_rooms(
 
     assert_candidates_match_customer_gender(candidates, gender)
 
-    # Step 5 — ranking (bed-type + location/same-state + sort). Unchanged logic.
-    result = rank_recommendations(
-        candidates,
-        state=state,
-        apartment_metrics=_apartment_metrics(eligible),
-        bed_type=bed_type,
-        budget=None,  # Budget removed from Customer Recommendation UI.
-        customer_gender=gender,
-        customer_occupation=occupation,
-        customer_age=age,
-        use_compatibility_in_ranking=use_compatibility_in_ranking,
-        top_n=top_n,
-    )
+    # Step 5 — ranking (bed-type filter -> same-state tier -> historical need).
+    # Ranking/scoring is unchanged; only the fallback AFTER filtering changes below.
+    apt_metrics = _apartment_metrics(eligible)
+
+    def _rank(bt):
+        return rank_recommendations(
+            candidates,
+            state=state,
+            apartment_metrics=apt_metrics,
+            bed_type=bt,
+            budget=None,  # Budget removed from Customer Recommendation UI.
+            customer_gender=gender,
+            customer_occupation=occupation,
+            customer_age=age,
+            use_compatibility_in_ranking=use_compatibility_in_ranking,
+            top_n=top_n,
+        )
+
+    # Priority 1 (same-state + requested type) and Priority 2 (requested type only,
+    # historical order) both come from ranking the requested-bed-type pool.
+    result = _rank(bed_type)
+
+    # Priority 3 (fallback after filtering): the requested bed type has NO vacancy
+    # at all -> relax the bed-type filter and show ANY available type (same-state
+    # tier + historical order preserved). No scoring change; only the filter relaxed.
+    bed_type_fallback = False
+    bed_type_shown = None
+    if bed_type and (result is None or result.empty):
+        result = _rank(None)
+        if result is not None and not result.empty:
+            bed_type_fallback = True
+            bed_type_shown = ", ".join(
+                sorted(str(x) for x in result["bed_type"].dropna().unique())
+            )
+
     result = _enrich_display_metadata(result, room_inventory, state)
 
     # Final safety: cards must never show conflicting Gender Allowed.
     if result is not None and not result.empty and gender:
         assert_candidates_match_customer_gender(result, gender)
+
+    same_state_in_result = bool(
+        result is not None
+        and not result.empty
+        and (result["same_state_roommate"].astype(str) == "Yes").any()
+    )
 
     result.attrs["detected_state"] = state
     result.attrs["query"] = {
@@ -215,6 +243,11 @@ def recommend_rooms(
     result.attrs["candidate_rooms_after_inactive_filter"] = len(eligible)
     result.attrs["active_vacant_rooms"] = before_gender
     result.attrs["candidate_rooms_after_gender_filter"] = len(candidates)
+    # Fallback signalling for the dashboard message (display only).
+    result.attrs["bed_type_requested"] = bed_type
+    result.attrs["bed_type_fallback"] = bed_type_fallback
+    result.attrs["bed_type_shown"] = bed_type_shown
+    result.attrs["same_state_in_result"] = same_state_in_result
     return result
 
 

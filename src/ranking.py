@@ -84,26 +84,19 @@ def _first_available_bed(cell) -> Optional[str]:
 
 
 def _apply_bed_type_filter(pool: pd.DataFrame, requested: Optional[str]):
-    """Return (filtered_pool, mode) where mode in {'any','exact','nearest'}."""
+    """Return (filtered_pool, mode). STRICT per-type filter.
+
+    The requested bed type is matched EXACTLY — Single -> only Single, Double ->
+    only Double, Triple -> only Triple. There is no nearest-type fallback: if the
+    requested type has no available rooms, an empty pool is returned (the customer
+    sees no cards rather than a different type). ``None`` / "Any" -> all rooms.
+    """
     if not requested:
         return pool, "any"
     req = normalize_text(requested)
     work = pool.copy()
     work["_bt"] = work["bed_type"].map(normalize_text)
-
-    if (work["_bt"] == req).any():
-        return work[work["_bt"] == req], "exact"
-
-    req_ord = _BED_TYPE_ORDINAL.get(req)
-    avail_types = [t for t in work["_bt"].dropna().unique()]
-    if req_ord is None or not avail_types:
-        return work, "any"
-    # Nearest by |size difference|; tie -> smaller (step down, usually cheaper).
-    nearest = sorted(
-        avail_types, key=lambda t: (abs(_BED_TYPE_ORDINAL.get(t, 999) - req_ord),
-                                    _BED_TYPE_ORDINAL.get(t, 999))
-    )[0]
-    return work[work["_bt"] == nearest], "nearest"
+    return work[work["_bt"] == req], "exact"
 
 
 def _same_state_note(same_state: bool, customer_state: Optional[str]) -> str:
@@ -224,17 +217,41 @@ def rank_recommendations(
     pool["_recent_fill"] = pool["recent_fill_rate"].fillna(-1)
     pool["_vac"] = pool["average_vacancy_days_recent"].fillna(float("inf"))
 
-    # Active ranking: tier -> occupancy -> demand -> budget -> recent tie-breaks.
-    # Revenue is excluded; budget is the final tie-breaker. Compatibility is
-    # inserted right after occupancy ONLY when explicitly enabled (future toggle).
-    sort_by = ["_tier", "_biz_occ"]
-    sort_asc = [True, True]
+    # Business-need signals for the AFTER-same-state group (tier 2), derived from
+    # HISTORICAL data (not current occupancy): rooms that historically stay vacant
+    # longer are prioritised, so filling them improves business performance.
+    pool["_hist_occ"] = pd.to_numeric(
+        pool["historical_occupancy_pct"], errors="coerce"
+    ).fillna(0.0)
+    pool["_hist_vac"] = pd.to_numeric(
+        pool["average_vacancy_days_recent"], errors="coerce"
+    ).fillna(-1.0)
+    pool["_rent"] = pd.to_numeric(pool["current_rent"], errors="coerce").fillna(
+        float("inf")
+    )
+
+    # Tier 1 (same-state) — UNCHANGED ranking: apartment occupancy (lowest first)
+    # -> [compatibility] -> demand -> budget -> recent tie-breaks.
+    t1_by = ["_biz_occ"]
+    t1_asc = [True]
     if use_compatibility_in_ranking:
-        sort_by.append("_compat")
-        sort_asc.append(False)
-    sort_by += ["_demand", "_budget_dist", "_recent_occ", "_recent_fill", "_vac"]
-    sort_asc += [False, True, False, False, True]
-    pool = pool.sort_values(by=sort_by, ascending=sort_asc).reset_index(drop=True)
+        t1_by.append("_compat")
+        t1_asc.append(False)
+    t1_by += ["_demand", "_budget_dist", "_recent_occ", "_recent_fill", "_vac"]
+    t1_asc += [False, True, False, False, True]
+
+    # Tier 2 (non-same-state) — HISTORICAL business need:
+    #   1. lowest historical occupancy
+    #   2. highest historical vacancy (longest average vacancy)
+    #   3. demand score (tie-breaker only)
+    #   4. lower rent (final tie-breaker)
+    t2_by = ["_hist_occ", "_hist_vac", "_demand", "_rent"]
+    t2_asc = [True, False, False, True]
+
+    tier1 = pool[pool["_tier"] == 1].sort_values(by=t1_by, ascending=t1_asc)
+    tier2 = pool[pool["_tier"] == 2].sort_values(by=t2_by, ascending=t2_asc)
+    # Priority 1 (all same-state rooms) before Priority 2 (business-need order).
+    pool = pd.concat([tier1, tier2]).reset_index(drop=True)
 
     medians = {
         "apt_occ": pool["apartment_occupancy_pct"].median(),
