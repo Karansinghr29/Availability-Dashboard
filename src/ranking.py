@@ -120,12 +120,21 @@ def _build_reason(row, *, medians, budget, bed_mode, requested_bed_type,
         if row["apartment_occupancy_pct"] <= medians["apt_occ"]:
             parts.append("Lowest-occupancy apartment")
     else:
-        # Priority 2 — lowest-occupancy fallback; do NOT pretend same-state.
+        # Priority 2 — business-need explanation from recent-baseline occupancy
+        # (same 2025+ window as Demand). Rooms that stay emptier on that
+        # baseline are labelled higher business priority.
         note = _same_state_note(False, customer_state)
         if note:
             parts.append(note)
-        if row["current_occupancy_pct"] <= medians["room_occ"]:
-            parts.append("Low occupancy room")
+        hist_occ = row.get("historical_occupancy_pct")
+        if pd.notna(hist_occ):
+            hop = float(hist_occ)
+            if hop < 70:
+                parts.append("High business priority (difficult to fill on recent baseline)")
+            elif hop <= 85:
+                parts.append("Medium business priority")
+            else:
+                parts.append("Low business priority")
 
     # Compatibility is display-only unless explicitly enabled in ranking.
     if (compatibility_in_ranking
@@ -142,7 +151,11 @@ def _build_reason(row, *, medians, budget, bed_mode, requested_bed_type,
         rent = float(row["current_rent"])
         parts.append("Budget match" if rent <= float(budget) else "Slightly above budget")
 
-    if pd.notna(row.get("demand_score")) and row["demand_score"] >= medians["demand"]:
+    # Demand is a tie-breaker only — mention it just for the same-state group,
+    # never as a Priority-2 justification.
+    if (row["_same_state"]
+            and pd.notna(row.get("demand_score"))
+            and row["demand_score"] >= medians["demand"]):
         parts.append("High demand score")
 
     return " + ".join(parts) if parts else "Available room"
@@ -217,18 +230,15 @@ def rank_recommendations(
     pool["_recent_fill"] = pool["recent_fill_rate"].fillna(-1)
     pool["_vac"] = pool["average_vacancy_days_recent"].fillna(float("inf"))
 
-    # Business-need signals for the AFTER-same-state group (tier 2), derived from
-    # HISTORICAL data (not current occupancy): rooms that historically stay vacant
-    # longer are prioritised, so filling them improves business performance.
+    # Business-need signals for the AFTER-same-state group (tier 2).
+    # historical_occupancy_pct is the recent baseline (2025+ → as_of), same
+    # window as Demand — pre-2025 history is excluded from this ordering.
     pool["_hist_occ"] = pd.to_numeric(
         pool["historical_occupancy_pct"], errors="coerce"
     ).fillna(0.0)
     pool["_hist_vac"] = pd.to_numeric(
         pool["average_vacancy_days_recent"], errors="coerce"
     ).fillna(-1.0)
-    pool["_rent"] = pd.to_numeric(pool["current_rent"], errors="coerce").fillna(
-        float("inf")
-    )
 
     # Tier 1 (same-state) — UNCHANGED ranking: apartment occupancy (lowest first)
     # -> [compatibility] -> demand -> budget -> recent tie-breaks.
@@ -240,13 +250,12 @@ def rank_recommendations(
     t1_by += ["_demand", "_budget_dist", "_recent_occ", "_recent_fill", "_vac"]
     t1_asc += [False, True, False, False, True]
 
-    # Tier 2 (non-same-state) — HISTORICAL business need:
-    #   1. lowest historical occupancy
-    #   2. highest historical vacancy (longest average vacancy)
-    #   3. demand score (tie-breaker only)
-    #   4. lower rent (final tie-breaker)
-    t2_by = ["_hist_occ", "_hist_vac", "_demand", "_rent"]
-    t2_asc = [True, False, False, True]
+    # Tier 2 (non-same-state) — recent-baseline business need (no rent tie-break):
+    #   1. lowest  historical_occupancy_pct (2025+ window)
+    #   2. highest average_vacancy_days_recent
+    #   3. highest demand_score (tie-breaker only)
+    t2_by = ["_hist_occ", "_hist_vac", "_demand"]
+    t2_asc = [True, False, False]
 
     tier1 = pool[pool["_tier"] == 1].sort_values(by=t1_by, ascending=t1_asc)
     tier2 = pool[pool["_tier"] == 2].sort_values(by=t2_by, ascending=t2_asc)

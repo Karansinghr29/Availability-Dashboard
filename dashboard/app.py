@@ -188,6 +188,19 @@ def _to_float(value):
         return None
 
 
+def _business_priority(hist_occ) -> str:
+    """Display-only business priority from historical occupancy (does NOT affect
+    ranking). <70% -> High, 70-85% -> Medium, >85% -> Low."""
+    v = _to_float(hist_occ)
+    if v is None:
+        return "⚪ Unknown"
+    if v < 70:
+        return "🔴 High"
+    if v <= 85:
+        return "🟡 Medium"
+    return "🟢 Low"
+
+
 def _kpi_dict(summary: pd.DataFrame | None) -> dict:
     if summary is None or summary.empty:
         return {}
@@ -566,6 +579,10 @@ def page_recommendation():
                 m1, m2 = st.columns(2)
                 m1.metric("Occupancy", f"{row['current_occupancy_pct']}%")
                 m2.metric("Demand", f"{row['demand_score']}")
+                _hist_occ = src.get("historical_occupancy_pct") if src is not None else None
+                st.markdown(
+                    f"**Business Priority:** {_business_priority(_hist_occ)}"
+                )
                 st.markdown(f"**Why:** {row['reason']}")
 
 

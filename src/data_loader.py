@@ -108,20 +108,27 @@ _COLUMN_ALIASES: Dict[str, Dict[str, str]] = {
     "beds_master": {
         # Production export uses Occupied/Vacant in `occupancy`.
         "occupancy": "bed_lifecycle_status",
+        # Q74 catalog uses `status` (Live / Not-Active) instead of bed_status.
+        "status": "bed_status",
     },
 }
 
 # When several CSVs classify to the same logical table, pick ONE primary source.
-# Prefer Vishful production exports (Q35–Q39). Older Q31/Q33/Q34 are fallback
-# only for missing *columns* — never concatenated as extra rows.
+# Prefer current Vishful production exports (Q73/Q74/Q68/…). Older snapshots are
+# fallback only for missing *columns* — never concatenated as extra rows.
 _PRIMARY_CSV_MARKERS: Dict[str, frozenset] = {
-    # Query (50)/(36): live Occupied/Vacant + current stay (Vishful occupancy).
-    # tenant_id is the discriminator that makes the fuller Q50 snapshot win over Q36.
+    # Q68 (and Q50): live Occupied/Vacant + current stay.
     "current_occupancy": frozenset({"occupancy_status", "current_tenant", "tenant_id"}),
-    # Query (35): allotment / booking history (exit_date + tenant_id).
-    "bookings": frozenset({"tenant_id", "exit_date"}),
-    # Query (37): bed master with Active/Not Active bed_status.
-    "beds_master": frozenset({"bed_status", "toilet_type", "current_rate"}),
+    # Q73 bookings: text keys + actual_exit_date (legacy Q35 used exit_date).
+    "bookings": frozenset({"tenant_id", "actual_exit_date", "apartment_code", "bed_type"}),
+    # Q74 beds catalog: rate + from_date (legacy Q37 used bed_status).
+    "beds_master": frozenset({"current_rate", "toilet_type", "from_date", "apartment_code"}),
+    # Q76 tenant allocation backfill (merged into tenant_master by phone).
+    "tenants": frozenset({"tenant_id", "allotment_created_at", "apartment_code"}),
+    # Q67 UUID bed bridge (floor_number distinguishes from Q74 rate catalog).
+    "beds_master_uuid": frozenset({"apartment_id", "bed_lifecycle_status", "id", "floor_number"}),
+    # Q71 apartment master: prefer pure apartment rows (no bed_code mega-joins).
+    "apartment_master": frozenset({"eb_meter_number", "apartment_code", "floor_number", "size_sqft"}),
     # Query (38): invoice ledger.
     "invoices": frozenset({"allotment_id", "organization_id", "rent_amount"}),
 }
@@ -133,21 +140,22 @@ _COLUMN_FALLBACK_TABLES = frozenset({"current_occupancy", "beds_master"})
 
 
 TABLE_REGISTRY: Dict[str, TableSpec] = {
-    # Production tenants (query 32): thinner profile; no id / DOB / rating.
+    # Production tenants allocation backfill (Q76 primary; legacy Q32 fallback).
+    # Demographics (city/gender/state) live on tenant_master (Q66) and are merged
+    # by phone inside DataLoader.tenants().
     "tenants": TableSpec(
         name="tenants",
         signature=frozenset(
             {
                 "full_name",
                 "phone",
-                "gender",
-                "city",
-                "state",
                 "property_name",
                 "apartment_code",
                 "bed_code",
-                "staying_status",
                 "monthly_rental",
+                "onboarding_date",
+                "notice_date",
+                "actual_exit_date",
             }
         ),
         primary_key=None,
@@ -157,11 +165,12 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
             "notice_date",
             "actual_exit_date",
             "created_at",
+            "allotment_created_at",
             "date_of_joining",
         ),
         numeric_columns=("age", "tenant_rating", "pincode", "monthly_rental"),
         min_match=0.7,
-        description="Tenant profiles: identity, home city/state, current allocation.",
+        description="Tenant allocation backfill (Q76); city/state come from tenant_master.",
     ),
     # Production bookings: prefer Vishful Q35 (tenant_id + exit_date).
     # Legacy Q31 (booking_id + actual_exit_date) is column-fallback only.
@@ -322,8 +331,8 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
         required=False,
         description="Electricity meter readings per apartment.",
     ),
-    # Production beds master: prefer Vishful Q37 (bed_status Active/Not Active).
-    # Legacy Q33 supplies occupancy Occupied/Vacant as column fallback only.
+    # Production beds master: prefer Vishful Q74 (status Live/Not-Active + rates).
+    # Legacy Q37/Q33 supply column fallback only when Q74 lacks a field.
     "beds_master": TableSpec(
         name="beds_master",
         signature=frozenset(
@@ -334,20 +343,26 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
                 "gender_allowed",
                 "toilet_type",
                 "current_rate",
-                # bed_status keeps the real catalog (Q37) at 1.0 while pushing the
-                # full occupancy snapshot (Q50, no bed_status) below current_occupancy
-                # so Q50 is classified as occupancy, not a bed master.
+                # Q37 used bed_status; Q74 uses status (aliased to bed_status on load).
+                # Scoring treats either token as a match in _discover.
                 "bed_status",
             }
         ),
         primary_key=None,  # never silent-dedupe; preprocessing validates keys
-        date_columns=("onboarding_date", "notice_date", "created_at", "updated_at"),
+        date_columns=(
+            "onboarding_date",
+            "notice_date",
+            "created_at",
+            "updated_at",
+            "from_date",
+            "to_date",
+        ),
         numeric_columns=("current_rate", "monthly_rate"),
         min_match=0.85,
         required=False,
         description=(
-            "Official bed inventory master (Vishful Q37 primary; Q33 fallback "
-            "for missing columns such as occupancy)."
+            "Official bed inventory master (Vishful Q74 primary; Q37/Q33 column "
+            "fallback only)."
         ),
     ),
     # Production live occupancy: prefer Vishful Q36 (current_tenant).
@@ -515,6 +530,99 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
         required=False,
         description="Bed/room transfer history (Vishful Q56): old_bed_id -> new_bed_id.",
     ),
+    # ================================================================= #
+    # Normalized DB export (Q81-Q86). These UUID-keyed relational tables
+    # are JOINED inside DataLoader to reconstruct the flattened logical
+    # tables (bookings / beds_master / current_occupancy). Downstream code
+    # never sees them directly — it keeps consuming the same accessors.
+    # ================================================================= #
+    # Q81 allotments: the booking/stay event log keyed by UUIDs. Replaces the
+    # flattened bookings export (legacy Q35/Q73). No text codes / names here —
+    # apartment_code, bed_code, bed_type and tenant name are joined in.
+    "allotments": TableSpec(
+        name="allotments",
+        signature=frozenset(
+            {
+                "tenant_id",
+                "apartment_id",
+                "bed_id",
+                "booking_date",
+                "onboarding_date",
+                "estimated_exit_date",
+                "actual_exit_date",
+                "staying_status",
+                "monthly_rental",
+                "deposit_paid",
+            }
+        ),
+        primary_key="id",  # allotment id is unique; safe to dedupe defensively
+        date_columns=(
+            "booking_date",
+            "onboarding_date",
+            "estimated_exit_date",
+            "actual_exit_date",
+            "notice_date",
+            "expected_payment_date",
+            "created_at",
+        ),
+        numeric_columns=(
+            "monthly_rental",
+            "deposit_paid",
+            "discount",
+            "onboarding_charges",
+            "prorated_rent",
+            "total_due",
+            "paid_amount",
+            "balance_due",
+            "processing_fee",
+            "expected_stay_days",
+        ),
+        min_match=0.8,
+        required=False,
+        description="Allotments (Vishful Q81): UUID booking/stay event log; source of reconstructed bookings.",
+    ),
+    # Q84 effective-dated bed rate card, keyed by (property_id, bed_type, toilet_type)
+    # with from_date/to_date windows. Supplies current_rate for reconstructed beds_master.
+    "bed_rates": TableSpec(
+        name="bed_rates",
+        signature=frozenset(
+            {
+                "id",
+                "property_id",
+                "bed_type",
+                "toilet_type",
+                "monthly_rate",
+                "from_date",
+                "to_date",
+            }
+        ),
+        primary_key="id",
+        date_columns=("from_date", "to_date", "created_at"),
+        numeric_columns=("monthly_rate",),
+        min_match=0.85,
+        required=False,
+        description="Effective-dated bed rate card (Vishful Q84): active rate per bed_type+toilet_type.",
+    ),
+    # Q86 property master (one row per property). Supplies property_name for the
+    # reconstructed bookings frame.
+    "property_master": TableSpec(
+        name="property_master",
+        signature=frozenset(
+            {
+                "id",
+                "property_name",
+                "address",
+                "city",
+                "state",
+                "code",
+            }
+        ),
+        primary_key="id",
+        date_columns=("created_at", "start_date"),
+        min_match=0.8,
+        required=False,
+        description="Property master (Vishful Q86): property_id -> property_name/address.",
+    ),
     # ---- recognised but NOT part of the Phase-1 business scope ----
     "assets": TableSpec(
         name="assets",
@@ -558,8 +666,9 @@ def _default_data_dir() -> Path:
 
     Search order (first match with recognisable data wins):
       1. AVAILABILITY_DATA_DIR environment variable
-      2. <project>/data
-      3. the project's parent directory (the exports currently live one level up)
+      2. the project's parent directory when it holds current Vishful exports
+         (Q66–Q76 live one level up under ``Data\\``)
+      3. <project>/data (packaged / older snapshot)
       4. the project directory itself
     """
     project_root = Path(__file__).resolve().parents[1]  # .../Availability_AI
@@ -569,19 +678,38 @@ def _default_data_dir() -> Path:
     if env_dir:
         candidates.append(Path(env_dir))
 
+    parent = project_root.parent
+    packaged = project_root / "data"
+
+    # Prefer the live export folder when the Q73–Q76 replacement set is present.
+    def _has_current_exports(path: Path) -> bool:
+        return path.is_dir() and (path / "Supabase Snippet Untitled query (73).csv").exists()
+
+    if _has_current_exports(parent):
+        candidates.append(parent)
     candidates.extend(
         [
-            project_root / "data",
-            project_root.parent,  # workspace root where the CSVs currently sit
+            packaged,
+            parent,
             project_root,
         ]
     )
 
+    # Deduplicate while preserving order.
+    seen = set()
+    ordered: List[Path] = []
     for cand in candidates:
+        key = str(cand.resolve()) if cand.exists() else str(cand)
+        if key in seen:
+            continue
+        seen.add(key)
+        ordered.append(cand)
+
+    for cand in ordered:
         if cand.is_dir() and any(cand.glob("*.csv")):
             return cand
     # Fall back to the conventional data folder even if empty.
-    return project_root / "data"
+    return packaged
 
 
 # --------------------------------------------------------------------------- #
@@ -632,13 +760,13 @@ class DataLoader:
 
     # Convenience accessors (stable across the CSV -> DB migration).
     def tenants(self) -> pd.DataFrame:
-        """Authoritative tenant table: Q42 identity + Q32 location backfill.
+        """Authoritative tenant table: Q66 identity + Q76 allocation backfill.
 
-        ``tenant_master`` (Vishful Q42) is the identity source (stable ``tenant_id`` +
-        demographics). The legacy ``tenants`` export (Q32) backfills home ``city`` /
-        ``state`` and current allocation columns ONLY where Q42 is missing. Falls back
-        to whichever source exists, so behaviour is unchanged when only Q32 is present
-        (backward compatible). Result is a column superset of the old ``tenants`` frame.
+        ``tenant_master`` (Vishful Q66) is the identity source (stable ``tenant_id`` +
+        demographics). The allocation export (Q76; legacy Q32) backfills home ``city`` /
+        ``state`` and current allocation columns ONLY where the master is missing.
+        Falls back to whichever source exists. Result is a column superset of the
+        old ``tenants`` frame.
         """
         master = None
         try:
@@ -714,12 +842,15 @@ class DataLoader:
     def bookings(self) -> pd.DataFrame:
         """Return bookings with production-schema gaps filled for the pipeline.
 
-        Primary source: Vishful Q35 (``exit_date`` → ``actual_exit_date``).
-        Legacy Q31 is used only to backfill columns absent on Q35 — never as
-        extra history rows. ``tenant_name`` is aliased to ``full_name``.
+        Primary source: Vishful Q73 (``actual_exit_date``; legacy Q35 ``exit_date``
+        is aliased to ``actual_exit_date``). Older snapshots are column-fallback
+        only — never extra history rows. ``tenant_name`` → ``full_name``.
         ``bed_type`` is attached from beds_master / current_occupancy when needed.
         """
-        df = self.load("bookings")
+        if self._db_export_present():
+            df = self._reconstruct_bookings()
+        else:
+            df = self.load("bookings")
         return self._ensure_bookings_pipeline_schema(df)
 
     def maintenance(self) -> pd.DataFrame:
@@ -740,21 +871,26 @@ class DataLoader:
     def beds_master(self) -> pd.DataFrame:
         """Official bed master (gender policy, status, toilet, rate).
 
-        Primary source: Vishful Q37 (``bed_status`` Active / Not Active).
-        Legacy Q33 backfills missing columns only (e.g. Occupied/Vacant
-        ``occupancy`` → ``bed_lifecycle_status``). If ``bed_status`` is still
+        Primary source: Vishful Q74 (``status`` Live / Not-Active → ``bed_status``).
+        Legacy Q37/Q33 backfill missing columns only. If ``bed_status`` is still
         missing after that, Not-Active values may be filled from Backup_old
         query (8).
         """
+        if self._db_export_present():
+            # Q83 status is complete (Live / Not-Active / In-Progress) — no legacy
+            # Backup_old bed_status fallback needed.
+            return self._reconstruct_beds_master()
         return self._apply_bed_status_fallback(self.load("beds_master"))
 
     def current_occupancy(self) -> pd.DataFrame:
         """Live bed occupancy snapshot (recommendation occupancy source).
 
-        Primary source: Vishful Q36 (``occupancy_status`` + ``current_tenant``).
-        Legacy Q34 backfills missing columns only — occupancy *rows* always
-        come from Q36 so AI matches the Vishful application.
+        Primary source: Vishful Q68 (``occupancy_status`` + ``current_tenant``).
+        Older occupancy snapshots backfill missing columns only — occupancy
+        *rows* always come from the primary so AI matches the Vishful application.
         """
+        if self._db_export_present():
+            return self._reconstruct_current_occupancy()
         return self.load("current_occupancy")
 
     def billing_snapshot(self) -> pd.DataFrame:
@@ -762,40 +898,62 @@ class DataLoader:
         return self.load("billing_snapshot")
 
     def bed_map(self) -> pd.DataFrame:
-        """THE single current-occupancy source: live per-bed status from Vishful.
+        """THE single current-occupancy source: live per-bed status.
 
-        Reads the newest ``bed-map-*.csv`` export (production bed roster). One row
-        per bed with the app's live ``Status``. This is the authoritative CURRENT
-        occupancy layer — every page's occupancy is derived from it (via
+        When the normalized DB export (Q81-Q86) is present it is generated
+        entirely from the database (``_reconstruct_bed_map``) — no external
+        bed-map CSV is read, matching the production application which derives
+        availability from the normalized tables. Only when the DB export is
+        absent does this fall back to the newest ``bed-map-*.csv`` snapshot.
+
+        One row per bed with the app's live ``Status``. This is the authoritative
+        CURRENT occupancy layer — every page's occupancy is derived from it (via
         ``build_room_inventory`` / ``detect_blocked_rooms``); historical analytics
-        stay on Q35/Q42/Q56/revenue.
+        stay on bookings / tenants / transfers / revenue.
 
         Columns
         -------
         apartment_code, bed_code, bed_status (raw: vacant/occupied/booked/notice/…),
         is_available (True only when status == 'vacant'), days_vacant (numeric or NaN),
-        current_tenant, bed_rate (numeric or NaN).
+        current_tenant, bed_rate (numeric or NaN), bed_type.
 
-        Returns an empty stable-schema frame when no bed-map file exists, so callers
-        fall back to the Q35∪Q50 reconstruction (backward compatible).
+        Returns an empty stable-schema frame when no source exists, so callers
+        fall back to the bookings∪occupancy reconstruction (backward compatible).
         """
         cols = [
             "apartment_code", "bed_code", "bed_status", "is_available",
-            "days_vacant", "current_tenant", "bed_rate",
+            "days_vacant", "current_tenant", "bed_rate", "bed_type",
         ]
         cache_key = "_bed_map"
         if cache_key in self._cache:
             return self._cache[cache_key]
 
+        # Production path: derive the bed-map from the normalized DB export.
+        if self._db_export_present():
+            out = self._reconstruct_bed_map()
+            self._cache[cache_key] = out
+            return out
+
         data_dir = Path(self.data_dir) if self.data_dir else _default_data_dir()
-        files = sorted(data_dir.glob("bed-map-*.csv"))
-        if not files:
-            logger.info("No bed-map-*.csv found under %s; occupancy falls back to reconstruction.", data_dir)
+        candidates: List[Path] = list(data_dir.glob("bed-map-*.csv"))
+        # Q75-style Supabase exports are not named bed-map-*.csv.
+        bed_map_markers = {"Apartment", "Bed", "Status", "Days Vacant"}
+        for fp in data_dir.glob("*.csv"):
+            if fp in candidates:
+                continue
+            header_cols = self._csv_header_columns(fp)
+            if bed_map_markers.issubset(header_cols):
+                candidates.append(fp)
+        if not candidates:
+            logger.info(
+                "No bed-map source found under %s; occupancy falls back to reconstruction.",
+                data_dir,
+            )
             empty = pd.DataFrame(columns=cols)
             self._cache[cache_key] = empty
             return empty
-        # Newest export wins (date in filename, then mtime).
-        fp = max(files, key=lambda p: (p.name, p.stat().st_mtime))
+        # Newest export wins (mtime, then name).
+        fp = max(candidates, key=lambda p: (p.stat().st_mtime, p.name))
 
         raw = pd.read_csv(fp, dtype=str, keep_default_na=False)
         raw.columns = [c.strip() for c in raw.columns]
@@ -829,8 +987,12 @@ class DataLoader:
                 }
             )
         out = pd.DataFrame(rows, columns=cols)
-        logger.info("Loaded bed-map source %s (%d beds; %d vacant).",
-                    fp.name, len(out), int(out["is_available"].sum()) if not out.empty else 0)
+        logger.info(
+            "Loaded bed-map source %s (%d beds; %d vacant).",
+            fp.name,
+            len(out),
+            int(out["is_available"].sum()) if not out.empty else 0,
+        )
         self._cache[cache_key] = out
         return out
 
@@ -845,6 +1007,457 @@ class DataLoader:
     def beds_master_uuid(self) -> pd.DataFrame:
         """Bed master keyed by apartment_id (Vishful Q43): bed id + lifecycle."""
         return self.load("beds_master_uuid")
+
+    # ------------------------------------------------------------------ #
+    # Normalized DB export (Q81-Q86) — raw accessors + JOIN reconstruction
+    # ------------------------------------------------------------------ #
+
+    def allotments(self) -> pd.DataFrame:
+        """Raw allotments (Vishful Q81): UUID booking/stay event log."""
+        return self.load("allotments")
+
+    def bed_rates(self) -> pd.DataFrame:
+        """Raw effective-dated bed rate card (Vishful Q84)."""
+        return self.load("bed_rates")
+
+    def property_master(self) -> pd.DataFrame:
+        """Raw property master (Vishful Q86)."""
+        return self.load("property_master")
+
+    def _db_export_present(self) -> bool:
+        """True when the normalized DB export (Q81-Q86) is the live source.
+
+        Reconstruction takes over the flattened accessors (bookings /
+        beds_master / current_occupancy) only when the three structural
+        exports are all discoverable: allotments (Q81), the UUID bed catalog
+        (Q83) and the apartment master (Q85). Otherwise the loader falls back
+        to the legacy flattened CSV path — behaviour is unchanged without them.
+        """
+        if self.source != "csv":
+            return False
+        if "_db_export_present" in self._maps:
+            return bool(self._maps["_db_export_present"])
+        mapping = self._discover()
+        present = all(
+            mapping.get(name) for name in ("allotments", "beds_master_uuid", "apartment_master")
+        )
+        self._maps["_db_export_present"] = present
+        logger.info("Normalized DB export (Q81-Q86) present = %s", present)
+        return present
+
+    def _uuid_bridges(self) -> Dict[str, pd.DataFrame]:
+        """Cached lookup frames that translate UUID keys to text/business fields.
+
+        Returns a dict with keys ``apartments`` (apartment_id -> apartment_code /
+        gender_allowed / property_id / status), ``beds`` (bed_id -> apartment_id /
+        bed_code / bed_type / toilet_type / status / bed_lifecycle_status),
+        ``tenants`` (tenant_id -> full_name / phone) and ``properties``
+        (property_id -> property_name). Each is empty-safe.
+        """
+        if "_uuid_bridges" in self._maps:
+            return self._maps["_uuid_bridges"]
+
+        def _safe(name: str) -> pd.DataFrame:
+            try:
+                df = self.load(name)
+            except FileNotFoundError:
+                return pd.DataFrame()
+            return df if df is not None else pd.DataFrame()
+
+        apts = _safe("apartment_master")
+        beds = _safe("beds_master_uuid")
+        tens = _safe("tenant_master")
+        props = _safe("property_master")
+
+        def _cols(df, cols):
+            keep = [c for c in cols if c in df.columns]
+            return df[keep].copy() if keep and not df.empty else pd.DataFrame(columns=cols)
+
+        bridges = {
+            "apartments": _cols(
+                apts, ["id", "apartment_code", "gender_allowed", "property_id", "status"]
+            ),
+            "beds": _cols(
+                beds,
+                [
+                    "id",
+                    "apartment_id",
+                    "bed_code",
+                    "bed_type",
+                    "toilet_type",
+                    "status",
+                    "bed_lifecycle_status",
+                ],
+            ),
+            "tenants": _cols(tens, ["id", "full_name", "phone"]),
+            "properties": _cols(props, ["id", "property_name"]),
+        }
+        self._maps["_uuid_bridges"] = bridges
+        return bridges
+
+    def _active_bed_rate_map(self, as_of: Optional[pd.Timestamp] = None) -> Dict[tuple, float]:
+        """Active monthly rate per (property_id, bed_type, toilet_type) from Q84.
+
+        Picks the rate row whose ``from_date`` <= as_of <= ``to_date`` (nulls are
+        open-ended). When several qualify the latest ``from_date`` wins; when none
+        qualify the latest ``from_date`` overall is used so a rate is always found.
+        Keys are lower-cased on bed_type/toilet_type for a case-robust join.
+        """
+        if "_bed_rate_map" in self._maps:
+            return self._maps["_bed_rate_map"]
+
+        out: Dict[tuple, float] = {}
+        try:
+            rates = self.load("bed_rates")
+        except FileNotFoundError:
+            rates = None
+        if rates is None or rates.empty:
+            self._maps["_bed_rate_map"] = out
+            return out
+
+        as_of = pd.Timestamp(as_of).normalize() if as_of is not None else pd.Timestamp.today().normalize()
+
+        def _norm(v) -> str:
+            return str(v).strip().lower() if v is not None and not (isinstance(v, float) and pd.isna(v)) else ""
+
+        r = rates.copy()
+        r["_pid"] = r.get("property_id", pd.Series(index=r.index, dtype=object)).map(
+            lambda v: str(v).strip() if pd.notna(v) else ""
+        )
+        r["_bt"] = r.get("bed_type", pd.Series(index=r.index, dtype=object)).map(_norm)
+        r["_tt"] = r.get("toilet_type", pd.Series(index=r.index, dtype=object)).map(_norm)
+        fd = pd.to_datetime(r.get("from_date"), errors="coerce")
+        td = pd.to_datetime(r.get("to_date"), errors="coerce")
+
+        for key, g in r.groupby(["_pid", "_bt", "_tt"], sort=False):
+            gi = g.index
+            g_fd = fd.loc[gi]
+            g_td = td.loc[gi]
+            active = g.loc[(g_fd.isna() | (g_fd <= as_of)) & (g_td.isna() | (g_td >= as_of))]
+            pool = active if not active.empty else g
+            # latest from_date within the chosen pool
+            pool_fd = fd.loc[pool.index]
+            pick_idx = pool_fd.idxmax() if pool_fd.notna().any() else pool.index[-1]
+            rate = pd.to_numeric(r.loc[pick_idx, "monthly_rate"], errors="coerce")
+            if pd.notna(rate):
+                out[key] = float(rate)
+        self._maps["_bed_rate_map"] = out
+        return out
+
+    def _reconstruct_bookings(self) -> pd.DataFrame:
+        """Flattened bookings frame (legacy Q35 schema) from Q81 joins.
+
+        Q81 allotments ⋈ Q85 (apartment_code) ⋈ Q83 (bed_code, bed_type)
+        ⋈ Q82 (full_name, phone) ⋈ Q86 (property_name). Preserves the
+        allotment event log 1:1 — no rows added or dropped.
+        """
+        al = self.load("allotments").copy()
+        if al.empty:
+            return al
+        b = self._uuid_bridges()
+
+        def _left(df, bridge, on_left, on_right, renames):
+            if bridge.empty or on_left not in df.columns or on_right not in bridge.columns:
+                for tgt in renames.values():
+                    if tgt not in df.columns:
+                        df[tgt] = pd.NA
+                return df
+            add = bridge.rename(columns={on_right: on_left, **renames})
+            add = add[[on_left] + list(renames.values())].drop_duplicates(on_left, keep="last")
+            return df.merge(add, on=on_left, how="left")
+
+        al = _left(al, b["apartments"], "apartment_id", "id", {"apartment_code": "apartment_code"})
+        al = _left(al, b["beds"], "bed_id", "id", {"bed_code": "bed_code", "bed_type": "bed_type"})
+        al = _left(al, b["tenants"], "tenant_id", "id", {"full_name": "full_name", "phone": "phone"})
+        al = _left(al, b["properties"], "property_id", "id", {"property_name": "property_name"})
+        # tenant_name mirror kept for any legacy consumer / alias parity.
+        al["tenant_name"] = al["full_name"]
+        return al.reset_index(drop=True)
+
+    def _reconstruct_beds_master(self) -> pd.DataFrame:
+        """Flattened beds_master frame (legacy Q37 schema) from Q83 joins.
+
+        Q83 beds ⋈ Q85 (apartment_code, gender_allowed) ⋈ Q84 (active rate ->
+        current_rate). One row per physical bed. ``bed_status`` = the bed's own
+        Q83 status, forced to Not-Active when its apartment is Not-Active so
+        inactive apartments (e.g. A22) stay Inactive downstream exactly as the
+        legacy Backup_old bed_status fallback did.
+        """
+        beds = self.load("beds_master_uuid").copy()
+        if beds.empty:
+            return beds
+        b = self._uuid_bridges()
+        apts = b["apartments"]
+
+        # The beds_master_uuid logical table may resolve to a pre-enriched bed
+        # view that already carries apartment_code / gender_allowed / property_id.
+        # Drop those so the apartment master (Q85) is the single authority for
+        # them and the join never produces _x/_y suffix collisions.
+        beds = beds.drop(
+            columns=[c for c in ("apartment_code", "gender_allowed", "property_id") if c in beds.columns],
+            errors="ignore",
+        )
+        if not apts.empty and "apartment_id" in beds.columns:
+            add = apts.rename(columns={"id": "apartment_id"})
+            keep = [c for c in ["apartment_id", "apartment_code", "gender_allowed", "property_id", "status"] if c in add.columns]
+            add = add[keep].rename(columns={"status": "_apt_status"}).drop_duplicates("apartment_id", keep="last")
+            beds = beds.merge(add, on="apartment_id", how="left")
+        for col in ("apartment_code", "gender_allowed", "property_id", "_apt_status"):
+            if col not in beds.columns:
+                beds[col] = pd.NA
+
+        # bed_status: bed's own Q83 status, downgraded to Not-Active for
+        # Not-Active apartments (all their beds are inactive).
+        def _is_not_active(v) -> bool:
+            return str(v).strip().lower().replace(" ", "-") in {"not-active", "inactive", "disabled", "blocked"}
+
+        bed_status = beds.get("status", pd.Series(index=beds.index, dtype=object))
+        beds["bed_status"] = [
+            "Not-Active" if _is_not_active(aps) else (str(bs).strip() if pd.notna(bs) else pd.NA)
+            for bs, aps in zip(bed_status, beds["_apt_status"])
+        ]
+
+        # current_rate from the active Q84 rate card by property+bed_type+toilet.
+        rate_map = self._active_bed_rate_map()
+
+        def _rate(pid, bt, tt):
+            key = (
+                str(pid).strip() if pd.notna(pid) else "",
+                str(bt).strip().lower() if pd.notna(bt) else "",
+                str(tt).strip().lower() if pd.notna(tt) else "",
+            )
+            return rate_map.get(key, pd.NA)
+
+        beds["current_rate"] = [
+            _rate(p, bt, tt)
+            for p, bt, tt in zip(beds["property_id"], beds.get("bed_type"), beds.get("toilet_type"))
+        ]
+        beds["current_rate"] = pd.to_numeric(beds["current_rate"], errors="coerce")
+        return beds.reset_index(drop=True)
+
+    # Stay statuses that mean the bed is currently HELD (occupied/reserved).
+    _OPEN_STAY_STATUSES = frozenset({"staying", "on-notice", "notice", "booked"})
+
+    def _reconstruct_current_occupancy(self) -> pd.DataFrame:
+        """Flattened live-occupancy snapshot (legacy Q50 schema) from Q81.
+
+        An open allotment (``actual_exit_date`` is null AND ``staying_status`` in
+        Staying / On-Notice / Booked) marks its bed Occupied; every other Q83 bed
+        is Vacant. This is the FALLBACK occupancy layer — the live bed-map
+        (``bed_map()``) still overrides it inside ``build_room_inventory`` when
+        present. Not part of Q81-Q86, so with no bed-map this Q81 derivation is
+        what every page consumes.
+        """
+        try:
+            al = self.load("allotments").copy()
+        except FileNotFoundError:
+            al = pd.DataFrame()
+        beds = self._reconstruct_beds_master()
+        if beds.empty:
+            return pd.DataFrame(
+                columns=[
+                    "apartment_code", "bed_code", "bed_type", "occupancy_status",
+                    "staying_status", "current_tenant", "monthly_rental", "move_in_date",
+                ]
+            )
+
+        # Held bed_ids from open allotments.
+        held_ids: Dict[str, dict] = {}
+        if not al.empty:
+            b = self._uuid_bridges()
+            tmap = {}
+            if not b["tenants"].empty:
+                tmap = dict(zip(b["tenants"]["id"].astype(str), b["tenants"]["full_name"]))
+            exit_null = al["actual_exit_date"].isna() if "actual_exit_date" in al.columns else pd.Series(True, index=al.index)
+            stay = al.get("staying_status", pd.Series(index=al.index, dtype=object)).map(
+                lambda v: str(v).strip().lower() if pd.notna(v) else ""
+            )
+            open_mask = exit_null & stay.isin(self._OPEN_STAY_STATUSES)
+            for _, row in al.loc[open_mask].iterrows():
+                bid = str(row.get("bed_id")).strip() if pd.notna(row.get("bed_id")) else ""
+                if not bid:
+                    continue
+                held_ids[bid] = {
+                    "staying_status": row.get("staying_status"),
+                    "current_tenant": tmap.get(str(row.get("tenant_id")).strip()),
+                    "monthly_rental": row.get("monthly_rental"),
+                    "move_in_date": row.get("onboarding_date"),
+                }
+
+        beds_uuid = self.load("beds_master_uuid")
+        # Rebuild bed_id alongside apartment_code/bed_code to test held membership.
+        bu = beds_uuid[["id", "apartment_id", "bed_code"]].rename(columns={"id": "bed_id"})
+        apts = self._uuid_bridges()["apartments"]
+        if not apts.empty:
+            bu = bu.merge(
+                apts.rename(columns={"id": "apartment_id"})[["apartment_id", "apartment_code"]],
+                on="apartment_id",
+                how="left",
+            )
+        rows = []
+        for _, r in bu.iterrows():
+            bid = str(r.get("bed_id")).strip() if pd.notna(r.get("bed_id")) else ""
+            info = held_ids.get(bid)
+            rows.append(
+                {
+                    "apartment_code": r.get("apartment_code"),
+                    "bed_code": r.get("bed_code"),
+                    "occupancy_status": "Occupied" if info else "Vacant",
+                    "staying_status": info.get("staying_status") if info else pd.NA,
+                    "current_tenant": info.get("current_tenant") if info else pd.NA,
+                    "monthly_rental": info.get("monthly_rental") if info else pd.NA,
+                    "move_in_date": info.get("move_in_date") if info else pd.NaT,
+                }
+            )
+        occ = pd.DataFrame(rows)
+        # attach bed_type from the reconstructed beds master. Dedupe on the
+        # bed key first so a duplicate source bed code (e.g. A34|TS2) can't
+        # fan the snapshot out to extra rows.
+        bt = beds[["apartment_code", "bed_code", "bed_type"]].drop_duplicates(
+            ["apartment_code", "bed_code"], keep="first"
+        )
+        occ = occ.merge(bt, on=["apartment_code", "bed_code"], how="left")
+        return occ.reset_index(drop=True)
+
+    def _reconstruct_bed_map(self, as_of: Optional[pd.Timestamp] = None) -> pd.DataFrame:
+        """Generate the live bed-map ENTIRELY from the normalized DB export.
+
+        One row per Q83 bed. No external CSV is read. Fields:
+
+        * ``bed_status`` = Q83 ``bed_lifecycle_status`` (occupied / vacant /
+          notice / booked) — the live per-bed status the production app derives.
+        * ``is_available`` = True only when status == 'vacant'.
+        * ``current_tenant`` = full_name (Q82) of the bed's current open Q81
+          allotment (actual_exit_date null AND staying_status in Staying /
+          On-Notice / Booked); null when the bed is vacant.
+        * ``bed_rate`` = active Q84 rate for (property_id, bed_type, toilet_type).
+        * ``days_vacant`` = (as_of - latest actual_exit_date among the bed's Q81
+          allotments) for vacant beds; NaN for held beds or beds never occupied.
+        * ``apartment_code`` (Q85), ``bed_code`` / ``bed_type`` (Q83).
+
+        ``as_of`` defaults to today (live). Passing a date reproduces the map as
+        of that day (used by validation to align with a dated snapshot).
+        """
+        cols = [
+            "apartment_code", "bed_code", "bed_status", "is_available",
+            "days_vacant", "current_tenant", "bed_rate", "bed_type",
+        ]
+        try:
+            beds = self.load("beds_master_uuid").copy()
+        except FileNotFoundError:
+            beds = pd.DataFrame()
+        if beds is None or beds.empty:
+            return pd.DataFrame(columns=cols)
+
+        as_of = pd.Timestamp(as_of).normalize() if as_of is not None else pd.Timestamp.today().normalize()
+        bridges = self._uuid_bridges()
+        apts = bridges["apartments"]
+        tmap = {}
+        if not bridges["tenants"].empty:
+            tmap = dict(zip(bridges["tenants"]["id"].astype(str), bridges["tenants"]["full_name"]))
+        rate_map = self._active_bed_rate_map(as_of)
+
+        # apartment_code + property_id per bed (authoritative from Q85).
+        beds = beds.drop(
+            columns=[c for c in ("apartment_code", "property_id") if c in beds.columns],
+            errors="ignore",
+        )
+        if not apts.empty and "apartment_id" in beds.columns:
+            add = apts.rename(columns={"id": "apartment_id"})
+            keep = [c for c in ["apartment_id", "apartment_code", "property_id"] if c in add.columns]
+            beds = beds.merge(add[keep].drop_duplicates("apartment_id", keep="last"), on="apartment_id", how="left")
+        for col in ("apartment_code", "property_id"):
+            if col not in beds.columns:
+                beds[col] = pd.NA
+
+        # Per bed_id from Q81: open (live) stay statuses, current occupant, last exit.
+        # Availability is derived from Q81 open allotments — the same authority as
+        # _reconstruct_current_occupancy — NOT from Q83 bed_lifecycle_status, which
+        # disagrees with Q81/live for ~15 beds. Dead stays (Cancelled/Exited) never
+        # hold a bed.
+        open_status: Dict[str, set] = {}
+        current_tenant: Dict[str, object] = {}
+        last_exit: Dict[str, pd.Timestamp] = {}
+        # Occupant precedence: the person physically there wins over an incoming
+        # booking (Staying > On-Notice > Booked).
+        _rank = {"staying": 3, "on-notice": 2, "notice": 2, "booked": 1}
+        _best_rank: Dict[str, tuple] = {}
+        try:
+            al = self.load("allotments")
+        except FileNotFoundError:
+            al = pd.DataFrame()
+        if al is not None and not al.empty and "bed_id" in al.columns:
+            stay = al.get("staying_status", pd.Series(index=al.index, dtype=object)).map(
+                lambda v: str(v).strip().lower() if pd.notna(v) else ""
+            )
+            exitd = al["actual_exit_date"] if "actual_exit_date" in al.columns else pd.Series(pd.NaT, index=al.index)
+            onboard = al["onboarding_date"] if "onboarding_date" in al.columns else pd.Series(pd.NaT, index=al.index)
+            open_mask = exitd.isna() & stay.isin(self._OPEN_STAY_STATUSES)
+            for idx in al.index[open_mask]:
+                bid = str(al.at[idx, "bed_id"]).strip() if pd.notna(al.at[idx, "bed_id"]) else ""
+                if not bid:
+                    continue
+                st = stay.at[idx]
+                open_status.setdefault(bid, set()).add(st)
+                ob = onboard.at[idx]
+                ob_key = ob if pd.notna(ob) else pd.Timestamp.min
+                cand = (_rank.get(st, 0), ob_key)
+                if bid not in _best_rank or cand > _best_rank[bid]:
+                    _best_rank[bid] = cand
+                    current_tenant[bid] = tmap.get(str(al.at[idx, "tenant_id"]).strip())
+            # latest exit per bed (days_vacant of vacant beds).
+            ex_idx = al.index[exitd.notna()]
+            if len(ex_idx):
+                ex = pd.DataFrame({"bid": al.loc[ex_idx, "bed_id"].astype(str).values,
+                                   "ex": exitd.loc[ex_idx].values})
+                last_exit = ex.groupby("bid")["ex"].max().to_dict()
+
+        def _norm(v) -> str:
+            return str(v).strip().lower() if pd.notna(v) else ""
+
+        def _status_from_open(s: set) -> str:
+            if "on-notice" in s and "booked" in s:
+                return "notice-booked"
+            if "on-notice" in s or "notice" in s:
+                return "notice"
+            if "booked" in s:
+                return "booked"
+            if "staying" in s:
+                return "occupied"
+            return "vacant"
+
+        rows = []
+        for _, r in beds.iterrows():
+            bid = str(r.get("id")).strip() if pd.notna(r.get("id")) else ""
+            status = _status_from_open(open_status.get(bid, set()))
+            is_vac = status == "vacant"
+            dv = pd.NA
+            if is_vac:
+                le = last_exit.get(bid)
+                if le is not None and pd.notna(le):
+                    dv = (as_of - pd.Timestamp(le).normalize()).days
+            pid = str(r.get("property_id")).strip() if pd.notna(r.get("property_id")) else ""
+            rate = rate_map.get((pid, _norm(r.get("bed_type")), _norm(r.get("toilet_type"))), pd.NA)
+            rows.append(
+                {
+                    "apartment_code": r.get("apartment_code"),
+                    "bed_code": r.get("bed_code"),
+                    "bed_status": status,
+                    "is_available": is_vac,
+                    "days_vacant": pd.to_numeric(dv, errors="coerce"),
+                    "current_tenant": (pd.NA if is_vac else current_tenant.get(bid)),
+                    "bed_rate": pd.to_numeric(rate, errors="coerce"),
+                    "bed_type": r.get("bed_type"),
+                }
+            )
+        out = pd.DataFrame(rows, columns=cols)
+        out = out[out["apartment_code"].notna() & out["bed_code"].notna()].reset_index(drop=True)
+        logger.info(
+            "Generated bed-map from Q81-Q86 (%d beds; %d vacant).",
+            len(out),
+            int(out["is_available"].sum()) if not out.empty else 0,
+        )
+        return out
 
     def _bed_id_to_text_key(self) -> Dict[str, tuple]:
         """Map bed UUID -> (apartment_code, bed_code) via Q43 beds + Q45 apartments.
@@ -1211,9 +1824,24 @@ class DataLoader:
             cols = set(header.columns)
             best_name, best_score = None, 0.0
             for name, spec in TABLE_REGISTRY.items():
-                overlap = len(spec.signature & cols) / len(spec.signature)
+                scored_cols = set(cols)
+                # Q74 ships `status` (Live/Not-Active); treat as bed_status for match.
+                if name == "beds_master" and "status" in scored_cols:
+                    scored_cols = scored_cols | {"bed_status"}
+                overlap = len(spec.signature & scored_cols) / len(spec.signature)
                 if overlap > best_score:
                     best_name, best_score = name, overlap
+            # Text-key bed catalog (apartment_code + current_rate) must not be
+            # swallowed by beds_master_uuid (which also matches Q74 strongly).
+            if (
+                best_name == "beds_master_uuid"
+                and {"apartment_code", "current_rate", "toilet_type"}.issubset(cols)
+            ):
+                bm_cols = set(cols) | ({"bed_status"} if "status" in cols else set())
+                bm_spec = TABLE_REGISTRY["beds_master"]
+                bm_score = len(bm_spec.signature & bm_cols) / len(bm_spec.signature)
+                if bm_score >= bm_spec.min_match:
+                    best_name, best_score = "beds_master", bm_score
             if best_name and best_score >= TABLE_REGISTRY[best_name].min_match:
                 mapping.setdefault(best_name, []).append(fp)
                 logger.info("Classified %s -> %s (%.0f%%)", fp.name, best_name, best_score * 100)
@@ -1278,6 +1906,12 @@ class DataLoader:
             for _score, _, fp in scored[1:]:
                 if fp.resolve() == primary.resolve():
                     continue
+                # Skip mega-join dumps (Q69) that share bed columns but are not
+                # a beds catalog — they would stamp allotment fields onto rows.
+                if table == "beds_master":
+                    cols = self._csv_header_columns(fp)
+                    if {"booking_date", "staying_status", "tenant_id"}.issubset(cols):
+                        continue
                 selected.append(fp)
                 logger.info(
                     "%s secondary (column backfill only): %s",

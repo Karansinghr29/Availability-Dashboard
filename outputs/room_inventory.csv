@@ -1,113 +1,113 @@
 apartment_code,room_code,bed_type,capacity,occupied_beds,available_beds,available_bed_codes,current_occupancy_pct,current_revenue,current_rent,recent_occupancy_pct,recent_revenue,recent_vacancy_events,recent_refills,recent_fill_rate,average_vacancy_days_recent,historical_occupancy_pct,historical_revenue,occupant_states,occupant_genders,occupant_occupations,occupant_ages,gender_allowed,bed_status,bed_lifecycle_status,toilet_type,current_rate,bed_codes,lifecycle_status,demand_score
-A11,A11-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,230617.61,1,1,1.0,0.0,100.0,230617.61,,male,student,23.3,Male,Active,occupied,Common,19500.0,A1,Active,82.61
-A11,A11-B,Double,2,2,0,,100.0,31000.0,15500.0,93.91,337598.55,1,1,1.0,41.0,93.91,337598.55,,male; male,student; student,25.7; 29.8,Male,Active,occupied,Attached,15500.0,B1; B2,Active,76.37
-A11,A11-C,Double,2,2,0,,100.0,29000.0,14500.0,93.75,321534.17,2,2,1.0,18.0,93.75,321534.17,,male; male,student; student,24.3,Male,Active,occupied,Common,14500.0,C1; C2,Active,80.14
-A12,A12-A,Single,1,1,0,,100.0,19500.0,19500.0,93.03,196665.57,1,1,1.0,23.0,93.03,196665.57,,female,student,28.4,Female,Active,occupied,Common,19500.0,A1,Active,74.84
-A12,A12-B,Double,2,2,0,,100.0,31000.0,15500.0,88.54,326396.19,6,6,1.0,13.8,88.54,326396.19,Maharashtra; Tamil Nadu,female; female,student; student,21.0; 29.0,Female,Active,occupied,Attached,15500.0,B1; B2,Active,79.38
-A12,A12-C,Double,2,2,0,,100.0,29000.0,14500.0,99.86,346304.2,0,0,,,99.86,346304.2,,female; female,student; student,22.8; 23.5,Female,Active,occupied,Common,14500.0,C1; C2,Active,61.37
-A22,A22-A,Single,1,0,1,A1,0.0,0.0,19500.0,23.94,54451.38,2,1,0.5,8.0,23.94,54451.38,,,,,Male,Not-Active,vacant,Common,19500.0,A1,Inactive,37.78
-A22,A22-B,Double,2,0,2,B1; B2,0.0,0.0,15500.0,42.46,154796.32,2,0,0.0,,42.46,154796.32,,,,,Male,Not-Active,vacant,Mixed,15500.0,B1; B2,Inactive,23.69
-A22,A22-C,Double,2,0,2,C1; C2,0.0,0.0,14500.0,42.6,145285.81,2,0,0.0,,42.6,145285.81,,,,,Male,Not-Active,vacant,Common,14500.0,C1; C2,Inactive,23.42
-A23,A23-A,Single,1,1,0,,100.0,19500.0,19500.0,99.48,365013.14,2,2,1.0,1.5,94.25,714175.43,Chhattisgarh,male,student,29.0,Male,Active,occupied,Common,19500.0,A1,Active,86.58
-A23,A23-B,Double,2,2,0,,100.0,31000.0,15500.0,97.75,552398.16,3,3,1.0,8.7,89.81,1038975.03,Kerala,male; male,student; student,22.0; 55.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,90.83
-A23,A23-C,Double,2,2,0,,100.0,28000.0,14500.0,91.54,476675.43,2,2,1.0,49.0,87.15,933948.75,Tamil Nadu,male; male,student; student,29.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,78.66
-A24,A24-A,Single,1,1,0,,100.0,19500.0,19500.0,56.48,208787.78,3,3,1.0,59.7,44.43,366573.59,West Bengal,male,student,24.0,Male,Active,occupied,Common,19500.0,A1,Active,56.27
-A24,A24-B,Triple,3,3,0,,100.0,40500.0,13500.0,67.65,519825.89,11,11,1.0,37.3,79.85,1289126.15,,male; male; male,student; student; student,22.9; 23.5; 27.5,Male,Active,occupied,Attached,13500.0,B1; B2; B3,Active,74.44
-A24,A24-C,Double,2,2,0,,100.0,29000.0,14500.0,66.67,367739.82,8,8,1.0,15.4,64.47,637030.22,Maharashtra,male; male,student; student,24.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,73.26
-A41,A41-A,Single,1,1,0,,100.0,19500.0,19500.0,90.67,331849.54,3,3,1.0,32.0,92.51,497256.9,,male,student,16.0,Male,Active,occupied,Common,19500.0,A1,Active,76.82
-A41,A41-B,Triple,3,3,0,,100.0,40500.0,13500.0,99.65,758097.9,6,6,1.0,2.3,98.87,1098045.34,Gujarat,female; male; male,student; student; student,28.2; 42.3; 24.0,Male,Active,occupied,Attached,13500.0,B1; B2; B3,Active,99.45
-A41,A41-C,Double,2,2,0,,100.0,29000.0,14500.0,97.75,531537.45,6,6,1.0,5.0,98.12,768363.99,Tamil Nadu,male; male,student; student,23.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,90.84
-A41,A41-D,Double,2,2,0,,100.0,30000.0,15500.0,98.01,551987.52,4,4,1.0,3.2,97.42,803022.34,West Bengal,male; male,student; student,21.0,Male,Active,occupied,Attached,15500.0,D1; D2,Active,91.94
-A44,A44-A,Single,1,1,0,,100.0,19500.0,19500.0,83.94,257358.74,3,3,1.0,50.0,62.22,375197.11,Tamil Nadu,male,student,22.0,Male,Active,occupied,Common,19500.0,A1,Active,68.74
-A44,A44-B,Double,2,2,0,,100.0,15500.0,15500.0,96.29,555272.67,2,2,1.0,15.0,82.4,1038357.42,Tamil Nadu,male; male,student; student,24.7; 27.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,89.25
-A44,A44-C,Double,2,1,1,C2,50.0,14500.0,14500.0,79.62,427431.01,6,5,0.833,42.4,70.08,819244.42,,male,student,23.9,Male,Active,occupied,Common,14500.0,C1; C2,Active,70.19
-A44,A44-D,Single,1,1,0,,100.0,24000.0,25500.0,100.0,460446.78,1,1,1.0,0.0,91.98,906701.71,,male,student,,Male,Active,occupied,Attached,25500.0,D1,Active,90.18
-B11,B11-A,Single,1,1,0,,100.0,19500.0,19500.0,92.92,341507.88,2,2,1.0,20.5,95.8,776028.25,,male,student,28.5,Male,Active,occupied,Common,19500.0,A1,Active,80.05
-B11,B11-B,Double,2,2,0,,100.0,30000.0,15500.0,100.0,546205.65,4,4,1.0,5.8,97.9,1171402.76,Tamil Nadu,male; male,student; student,31.2; 31.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,91.91
-B11,B11-C,Double,2,1,1,C1,50.0,13500.0,14500.0,97.24,480338.37,4,3,0.75,19.7,92.63,1033820.63,,male,student,51.1,Male,Active,occupied,Common,14500.0,C1; C2,Active,79.95
-B11,B11-D,Single,1,1,0,,100.0,25500.0,25500.0,100.0,496616.29,3,3,1.0,0.3,100.0,1064290.41,,male,student,33.9,Male,Active,occupied,Attached,25500.0,D1,Active,91.32
-B12,B12-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,357900.79,2,2,1.0,12.0,99.77,754993.43,Karnataka,female,student,26.0,Female,Active,occupied,Common,19500.0,A1,Active,84.53
-B12,B12-B,Double,2,2,0,,100.0,13600.0,15500.0,98.79,522582.13,1,1,1.0,14.0,94.69,1129448.09,Kerala,female; female,student; student,18.0,Female,Active,occupied,Attached,15500.0,B1; B2,Active,89.18
-B12,B12-C,Double,2,2,0,,100.0,27100.0,14500.0,81.69,409950.72,3,3,1.0,56.3,91.76,1019697.77,,female; female,student; student,23.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,71.84
-B13,B13-A,Single,1,1,0,,100.0,19000.0,19500.0,100.0,361399.47,0,0,,,100.0,668239.16,,male,student,,Male,Active,occupied,Common,19500.0,A1,Active,61.92
-B13,B13-B,Double,2,2,0,,100.0,30000.0,15500.0,93.26,521649.15,6,5,0.833,18.8,90.46,997660.97,Tamil Nadu,male; male,student; student,28.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,82.25
-B13,B13-C,Double,2,2,0,,100.0,27000.0,14500.0,100.0,525098.55,2,1,0.5,5.0,99.01,1117874.51,,male; male,student; student,27.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,78.87
-B14,B14-A,Single,1,1,0,,100.0,19500.0,19500.0,91.71,338370.57,4,4,1.0,15.0,80.76,661034.82,,male,student,46.2,Male,Active,occupied,Common,19500.0,A1,Active,80.59
-B14,B14-B,Double,2,2,0,,100.0,0.0,15500.0,100.0,0.0,0,0,,,100.0,0.0,,male; male,student; student,,Male,Active,occupied,Attached,15500.0,B1; B2,Active,50.0
-B14,B14-C,Double,2,2,0,,100.0,28000.0,14500.0,95.16,499178.71,2,2,1.0,12.5,94.5,1078827.2,,male; male,student; student,,Male,Active,occupied,Common,14500.0,C1; C2,Active,87.5
-B22,B22-A,Single,1,1,0,,100.0,19000.0,19500.0,88.6,320203.68,1,1,1.0,5.0,91.42,618252.3,,female,student,24.2,Female,Active,occupied,Common,19500.0,A1,Active,80.87
-B22,B22-B,Double,2,2,0,,100.0,30000.0,15500.0,100.0,571994.09,5,5,1.0,3.6,94.32,987473.72,,female; female,student; student,30.0; 22.8,Female,Active,occupied,Attached,15500.0,B1; B2,Active,93.18
-B22,B22-C,Double,2,2,0,,100.0,28000.0,14500.0,97.15,512007.23,3,3,1.0,11.0,96.23,932145.2,,female; female,student; student,30.2; 23.1,Female,Active,occupied,Common,14500.0,C1; C2,Active,88.86
-B24,B24-A,Single,1,1,0,,100.0,19500.0,19500.0,55.61,206274.64,2,2,1.0,41.0,63.11,469609.07,,female,student,22.0,Female,Active,occupied,Common,19500.0,A1,Active,59.45
-B24,B24-B,Triple,3,3,0,,100.0,40500.0,13500.0,87.28,660742.44,10,10,1.0,23.3,76.23,1248111.04,Tamil Nadu,female; female; female,student; student; student,22.8; 23.8; 24.0,Female,Active,occupied,Attached,13500.0,B1; B2; B3,Active,88.2
-B24,B24-C,Double,2,1,1,C2,50.0,14500.0,14500.0,89.03,474572.93,7,6,0.857,23.0,92.56,947575.56,,female,student,21.6,Female,Active,occupied/vacant,Common,14500.0,C1; C2,Active,79.11
-B31,B31-B,Double,2,2,0,,100.0,29000.0,15500.0,99.91,551133.38,1,1,1.0,1.0,99.92,620680.03,,male; male,student; student,23.8; 57.8,Male,Active,occupied,Attached,15500.0,B1; B2,Active,92.96
-B31,B31-C,Double,2,2,0,,100.0,31000.0,15500.0,92.57,535446.78,4,4,1.0,15.0,90.95,589750.33,,male; male,student; student,55.2; 43.0,Male,Active,occupied,Attached,15500.0,C1; C2,Active,87.37
-B32,B32-A,Single,1,1,0,,100.0,19500.0,19500.0,93.26,171682.0,1,1,1.0,39.0,97.02,171682.0,,male,student,28.7,Male,Active,occupied,Common,19500.0,A1,Active,71.06
-B32,B32-B,Double,2,2,0,,100.0,29000.0,15500.0,99.4,548275.3,1,1,1.0,7.0,96.22,1118610.38,,male; male,student; student,42.2,Male,Active,occupied,Attached,15500.0,B1; B2,Active,91.56
-B32,B32-C,Double,2,2,0,,100.0,27100.0,14500.0,97.15,496432.33,3,3,1.0,11.0,98.89,1045302.23,Bihar,male; male,student; student,30.2; 25.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,88.35
-B33,B33-A,Single,1,1,0,,100.0,19000.0,19500.0,100.0,368889.62,1,1,1.0,0.0,98.17,787079.5,,male,student,,Male,Active,occupied,Common,19500.0,A1,Active,87.16
-B33,B33-B,Double,2,2,0,,100.0,31000.0,15500.0,78.67,453958.61,8,8,1.0,28.1,85.15,1034099.87,,male; male,student; student,22.8; 22.5,Male,Active,occupied,Attached,15500.0,B1; B2,Active,77.64
-B33,B33-C,Double,2,0,2,C1; C2,0.0,0.0,14500.0,98.36,478380.42,11,10,0.909,5.8,97.79,1067401.45,,,,,Male,Active,occupied/vacant,Common,14500.0,C1; C2,Active,86.86
-B34,B34-A,Single,1,1,0,,100.0,19500.0,19500.0,68.57,249770.04,2,2,1.0,91.0,61.07,498025.62,Rajasthan,male,student,25.0,Male,Active,occupied,Common,19500.0,A1,Active,55.67
-B34,B34-B,Double,2,2,0,,100.0,31000.0,15500.0,86.61,494839.03,5,5,1.0,31.0,94.01,1154737.19,,male; male,student; student,26.0; 25.5,Male,Active,occupied,Attached,15500.0,B1; B2,Active,81.05
-B34,B34-C,Double,2,2,0,,100.0,28000.0,14500.0,98.19,510758.87,2,2,1.0,10.5,97.6,1109743.76,,male; male,student; student,29.9,Male,Active,occupied,Common,14500.0,C1; C2,Active,89.26
-B41,B41-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,367825.23,1,1,1.0,0.0,96.26,776028.25,,male,student,40.0,Male,Active,occupied,Common,19500.0,A1,Active,87.13
-B41,B41-B,Double,2,2,0,,100.0,31000.0,15500.0,85.49,489914.59,9,9,1.0,21.2,91.91,1136251.64,Kerala,male; male,student; student,22.0; 23.0,Male,Active,occupied/vacant,Attached,15500.0,B1; B2,Active,82.37
-B41,B41-C,Double,2,1,1,C1,50.0,14500.0,14500.0,77.81,415193.82,6,5,0.833,45.6,77.82,894227.99,Tamil Nadu,male,student,26.0,Male,Active,occupied/vacant,Common,14500.0,C1; C2,Active,68.59
-B41,B41-D,Single,1,1,0,,100.0,24000.0,25500.0,100.0,471484.89,1,1,1.0,0.0,98.02,1012352.17,,male,student,,Male,Active,occupied,Attached,25500.0,D1,Active,90.55
-B42,B42-A,Single,1,1,0,,100.0,19500.0,19500.0,93.09,342657.69,4,4,1.0,10.0,94.96,771849.54,,male,student,,Male,Active,occupied,Common,19500.0,A1,Active,82.13
-B42,B42-B,Double,2,2,0,,100.0,31000.0,15500.0,99.05,521008.54,3,3,1.0,3.7,95.42,994149.15,Chhattisgarh; Karnataka,male; male,student; student,22.0; 21.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,91.17
-B42,B42-C,Double,2,2,0,,100.0,26100.0,14500.0,100.0,499168.86,1,1,1.0,0.0,99.69,1095640.6,,male; male,student; student,31.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,91.46
-B43,B43-A,Single,1,1,0,,100.0,19500.0,19500.0,98.27,362335.74,5,5,1.0,2.4,89.54,731429.04,,female,student,24.1,Female,Active,occupied,Common,19500.0,A1,Active,85.93
-B43,B43-B,Double,2,1,1,B2,50.0,15500.0,15500.0,94.21,542132.06,8,7,0.875,8.4,95.15,1179517.08,,female,student,23.3,Female,Active,occupied/vacant,Attached,15500.0,B1; B2,Active,86.26
-B43,B43-C,Double,2,2,0,,100.0,29000.0,14500.0,86.44,325213.53,6,6,1.0,26.2,88.21,570200.39,Kerala,female; female,student; student,18.0; 17.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,76.31
-B44,B44-A,Single,1,1,0,,100.0,19500.0,19500.0,84.8,307756.24,3,3,1.0,29.7,90.31,723774.64,Tamil Nadu,female,student,19.0,Female,Active,occupied,Common,19500.0,A1,Active,74.53
-B44,B44-B,Triple,3,3,0,,100.0,40500.0,13500.0,83.77,639635.35,8,8,1.0,13.4,69.49,1228975.03,Kerala; Maharashtra; Telangana,female; female; female,student; student; student,20.0; 19.0; 19.0,Female,Active,occupied,Attached,13500.0,B1; B2; B3,Active,88.22
-B44,B44-C,Double,2,2,0,,100.0,28000.0,14500.0,79.27,414701.05,4,4,1.0,63.0,86.95,983794.35,Andhra Pradesh,female; female,student; student,50.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,69.93
-C11,C11-A,Single,1,1,0,,100.0,19500.0,19500.0,63.04,231143.23,4,4,1.0,53.5,80.61,650262.81,Delhi,male,student,23.0,Male,Active,occupied,Common,19500.0,A1,Active,60.34
-C11,C11-B,Double,2,2,0,,100.0,31000.0,15500.0,98.1,565177.4,4,4,1.0,5.5,94.92,1184474.38,Maharashtra,male; male,student; student,25.0; 27.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,91.97
-C11,C11-C,Double,2,2,0,,100.0,14500.0,14500.0,100.0,524310.12,5,5,1.0,1.8,94.05,1075249.67,Andhra Pradesh; Uttar Pradesh,male; male,student; student,23.0; 19.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,91.95
-C12,C12-A,Single,1,1,0,,100.0,19500.0,19500.0,96.2,354697.77,2,2,1.0,11.0,96.18,782066.36,,female,student,34.0,Female,Active,occupied,Common,19500.0,A1,Active,83.36
-C12,C12-B,Double,2,2,0,,100.0,31000.0,15500.0,75.47,424211.56,5,5,1.0,56.8,75.47,424211.56,Tamil Nadu; West Bengal,female; female,student; student,25.0; 20.0,Female,Active,occupied,Attached,15500.0,B1; B2,Active,70.17
-C12,C12-C,Triple,3,3,0,,100.0,40500.0,13500.0,96.6,704057.16,7,7,1.0,10.7,95.37,1498702.37,Tamil Nadu,female; female; female,student; student; student,21.8; 21.0; 27.7,Female,Active,occupied,Attached,13500.0,C1; C2; C3,Active,95.07
-C12,C12-D,Double,2,1,1,D2,50.0,14500.0,14500.0,57.77,310857.42,10,9,0.9,51.7,57.77,310857.42,West Bengal,female,student,21.0,Female,Active,occupied/vacant,Common,14500.0,D1; D2,Active,59.08
-C21,C21-A,Single,1,1,0,,100.0,19500.0,19500.0,81.17,299540.08,4,4,1.0,27.2,71.83,588101.18,Tamil Nadu,male,student,20.0,Male,Active,occupied,Common,19500.0,A1,Active,73.54
-C21,C21-B,Double,2,1,1,B2,50.0,15500.0,15500.0,58.38,328488.83,4,3,0.75,43.7,74.47,898134.03,,male,student,32.1,Male,Active,occupied,Attached,15500.0,B1; B2,Active,57.63
-C21,C21-C,Double,2,2,0,,100.0,28000.0,14500.0,81.87,427168.2,1,1,1.0,132.0,80.53,919211.56,,male; male,student; student,31.7; 25.9,Male,Active,occupied,Common,14500.0,C1; C2,Active,58.13
-C21,C21-D,Single,1,1,0,,100.0,25500.0,25500.0,93.96,449852.17,3,3,1.0,11.7,89.39,944201.71,,male,student,45.4,Male,Active,occupied,Attached,25500.0,D1,Active,85.63
-C24,C24-B,Triple,3,3,0,,100.0,40000.0,13500.0,91.08,683262.16,8,8,1.0,54.4,91.76,939931.01,Tamil Nadu,female; female; female,student; student; student,16.8; 25.0; 22.0,Female,Active,occupied,Attached,13500.0,B1; B2; B3,Active,84.3
-C24,C24-C,Double,2,2,0,,100.0,27000.0,14500.0,100.0,551264.78,1,0,0.0,,100.0,750837.71,,female; female,student; student,,Female,Active,occupied,Common,14500.0,C1; C2,Active,55.68
-C31,C31-A,Single,1,1,0,,100.0,19500.0,19500.0,68.57,251806.83,5,5,1.0,38.4,80.08,646905.39,,male,student,,Male,Active,occupied,Common,19500.0,A1,Active,65.7
-C31,C31-B,Double,2,2,0,,100.0,28100.0,15500.0,100.0,534490.8,0,0,,,97.4,1167030.22,,male; male,student; student,48.6,Male,Active,occupied,Attached,15500.0,B1; B2,Active,67.63
-C31,C31-C,Double,2,0,2,C1; C2,0.0,0.0,14500.0,69.08,361793.69,8,6,0.75,56.0,79.89,826606.44,,,,,Male,Active,occupied,Common,14500.0,C1; C2,Active,59.91
-C31,C31-D,Single,1,1,0,,100.0,25500.0,25500.0,100.0,515883.71,4,4,1.0,1.5,100.0,1189996.71,,male,student,42.8,Male,Active,occupied,Attached,25500.0,D1,Active,91.73
-C34,C34-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,430863.99,4,4,1.0,2.0,82.1,615555.19,,female,student,46.0,Female,Active,occupied,Common,19500.0,A1,Active,88.83
-C34,C34-B,Double,2,2,0,,100.0,29100.0,15500.0,99.4,538745.07,1,1,1.0,7.0,95.88,1154027.6,,female; female,student; student,28.6,Female,Active,occupied,Attached,15500.0,B1; B2,Active,91.24
-C34,C34-C,Double,2,1,1,C1,50.0,13500.0,14500.0,92.23,477233.9,3,2,0.667,28.0,89.24,1011113.67,,female,student,,Female,Active,occupied/vacant,Common,14500.0,C1; C2,Active,74.56
-C41,C41-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,361399.47,0,0,,,98.1,515571.62,Tamil Nadu,male,student,27.0,Male,Active,occupied,Common,19500.0,A1,Active,61.92
-C41,C41-B,Double,2,2,0,,100.0,15500.0,15500.0,86.18,493002.63,5,5,1.0,28.0,83.24,691639.29,Tamil Nadu,male; male,student; student,24.1; 40.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,81.41
-C41,C41-C,Double,2,2,0,,100.0,29000.0,14500.0,69.69,372486.86,7,7,1.0,44.4,76.64,574720.76,Delhi; Tamil Nadu,male; male,student; student,22.0; 27.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,68.91
-C41,C41-D,Single,1,1,0,,100.0,24000.0,25500.0,100.0,456504.6,0,0,,,99.88,672536.14,,male,student,,Male,Active,occupied,Attached,25500.0,D1,Active,65.05
-C42,C42-A,Single,1,1,0,,100.0,19500.0,19500.0,93.26,331576.87,3,3,1.0,13.0,92.63,716934.95,Haryana,female,student,21.0,Female,Active,occupied,Common,19500.0,A1,Active,81.26
-C42,C42-B,Double,2,1,1,B2,50.0,15500.0,15500.0,86.7,476622.86,6,5,0.833,18.8,86.94,1018567.67,Kerala,female,student,19.0,Female,Active,occupied/vacant,Attached,15500.0,B1; B2,Active,78.61
-C42,C42-C,Double,2,2,0,,100.0,29000.0,14500.0,84.54,449392.25,3,3,1.0,59.7,80.9,915919.84,Kerala,male; female,student; student,19.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,73.43
-C43,C43-A,Single,1,1,0,,100.0,19500.0,19500.0,90.16,327907.36,2,2,1.0,28.5,92.5,636139.95,Kerala,female,student,,Female,Active,occupied,Common,19500.0,A1,Active,77.18
-C43,C43-B,Double,2,2,0,,100.0,30000.0,15500.0,99.4,550542.05,1,1,1.0,7.0,94.92,1107828.52,Puducherry,female; female,student; student,31.0,Female,Active,occupied,Attached,15500.0,B1; B2,Active,91.63
-C43,C43-C,Double,2,2,0,,100.0,28000.0,14500.0,84.46,443298.29,3,3,1.0,50.0,89.76,980726.02,Kerala,female; female,student; student,24.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,75.04
-C44,C44-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,452447.44,4,4,1.0,14.8,99.45,683318.0,,male,student,40.2,Male,Active,occupied,Common,19500.0,A1,Active,87.12
-C44,C44-B,Double,2,2,0,,100.0,31000.0,15500.0,99.22,564339.68,2,2,1.0,4.0,90.07,1043147.17,Tamil Nadu,male; male,student; student,23.0,Male,Active,occupied,Attached,15500.0,B1; B2,Active,92.6
-C44,C44-C,Double,2,2,0,,100.0,29000.0,14500.0,85.92,468971.75,4,4,1.0,3.5,80.97,886626.15,Puducherry,male; male,student; student,35.6; 22.0,Male,Active,occupied,Common,14500.0,C1; C2,Active,85.17
-D11,D11-B,Single,1,1,0,,100.0,25500.0,25500.0,96.03,457243.76,3,3,1.0,7.7,90.58,943708.94,,female,student,28.3,Female,Active,occupied,Attached,25500.0,B1,Active,87.32
-D11,D11-C,Double,2,1,1,C1,50.0,15500.0,15500.0,85.06,465006.57,4,3,0.75,53.3,92.86,1118242.44,Tamil Nadu,female,student,20.0,Female,Active,occupied/vacant,Attached,15500.0,C1; C2,Active,69.08
-D11,D11-D,Triple,3,3,0,,100.0,26000.0,13500.0,82.9,603646.52,4,4,1.0,74.2,84.5,1406964.52,Tamil Nadu,female; female; female,student; student; student,27.9; 29.8; 18.0,Female,Active,occupied,Attached,13500.0,D1; D2; D3,Active,75.23
-D12,D12-A,Single,1,1,0,,100.0,19500.0,19500.0,85.32,312992.77,3,3,1.0,28.3,92.1,626031.54,,female,student,25.9,Female,Active,occupied,Common,19500.0,A1,Active,75.14
-D12,D12-B,Double,2,2,0,,100.0,31000.0,15500.0,99.65,575558.48,4,4,1.0,1.2,96.7,1018912.61,,female; female,student; student,24.8; 46.3,Female,Active,occupied,Attached,15500.0,B1; B2,Active,93.64
-D12,D12-C,Double,2,2,0,,100.0,29000.0,14500.0,86.96,460496.06,5,5,1.0,30.2,88.63,863515.11,Madhya Pradesh,female; female,student; student,22.0; 24.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,80.18
-D15,D15-A,Executive,1,1,0,,100.0,25500.0,25500.0,100.0,76231.93,0,0,,,100.0,76231.93,,male,student,,Male,Active,occupied,Attached,25500.0,A1,Active,52.51
-D21,D21-A,Single,1,1,0,,100.0,25500.0,25500.0,97.75,457687.25,1,1,1.0,13.0,89.01,758869.91,,female,student,27.6,Female,Active,occupied,Attached,25500.0,A1,Active,86.89
-D21,D21-B,Double,2,2,0,,100.0,30000.0,15500.0,98.53,558163.6,3,3,1.0,19.0,94.65,966511.17,,female; female,student; student,25.1,Female,Active,occupied,Attached,15500.0,B1; B2,Active,89.33
-D21,D21-C,Triple,3,3,0,,100.0,39000.0,13500.0,100.0,741819.97,0,0,,,100.0,741819.97,,female; female; female,student; student; student,23.2,Female,Active,occupied,Attached,13500.0,C1; C2; C3,Active,74.46
-D41,D41-A,Single,1,1,0,,100.0,18300.0,19500.0,100.0,348084.76,0,0,,,98.17,773120.89,,female,student,,Female,Active,occupied,Common,19500.0,A1,Active,61.48
-D41,D41-B,Double,2,2,0,,100.0,31000.0,15500.0,94.82,548061.76,5,5,1.0,8.8,94.54,1176678.71,,female; female,student; student,26.8; 24.6,Female,Active,occupied,Attached,15500.0,B1; B2,Active,89.7
-D41,D41-C,Double,2,2,0,,100.0,29000.0,14500.0,93.26,503153.75,4,4,1.0,11.8,90.57,1052230.62,Tamil Nadu,female; female,student; student,25.9; 28.0,Female,Active,occupied,Common,14500.0,C1; C2,Active,87.14
+A11,A11-A,Single,1,1,0,,100.0,19500.0,19500.0,100.0,235101.84,1,1,1.0,0.0,100.0,235101.84,,male,student,23.3,Male,Live,occupied,Common,19500.0,A1,Active,82.66
+A11,A11-B,Double,2,2,0,,100.0,31000.0,15500.0,94.03,344727.33,1,1,1.0,41.0,94.03,344727.33,,male; male,student; student,25.7; 29.8,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,76.51
+A11,A11-C,Double,2,2,0,,100.0,29000.0,15500.0,93.87,328203.02,2,2,1.0,18.0,93.87,328203.02,,male; male,student; student,24.3,Male,Live,occupied,Attached,15500.0,C1; C2,Active,80.28
+A12,A12-A,Single,1,1,0,,100.0,19500.0,25500.0,93.18,201149.8,1,1,1.0,23.0,93.18,201149.8,,female,student,28.4,Female,Live,occupied,Attached,25500.0,A1,Active,74.97
+A12,A12-B,Double,2,2,0,,100.0,31000.0,15500.0,88.62,333015.77,7,7,1.0,12.0,88.62,333015.77,Maharashtra; Tamil Nadu,female; female,student; student,29.0; 22.0,Female,Live,occupied,Attached,15500.0,B1; B2,Active,79.86
+A12,A12-C,Double,2,2,0,,100.0,29000.0,15500.0,99.87,352973.06,0,0,,,99.87,352973.06,,female; female,student; student,22.9; 23.5,Female,Live,occupied,Attached,15500.0,C1; C2,Active,61.46
+A22,A22-A,Single,1,0,1,A1,0.0,0.0,19500.0,23.48,54451.38,2,1,0.5,8.0,23.48,54451.38,,,,,Male,Not-Active,vacant,Common,19500.0,A1,Inactive,37.76
+A22,A22-B,Double,2,0,2,B1; B2,0.0,0.0,15500.0,41.64,154796.32,2,0,0.0,,41.64,154796.32,,,,,Male,Not-Active,vacant,Mixed,15500.0,B1; B2,Inactive,23.48
+A22,A22-C,Double,2,0,2,C1; C2,0.0,0.0,15500.0,41.78,145285.81,2,0,0.0,,41.78,145285.81,,,,,Male,Not-Active,notice/vacant,Mixed,15500.0,C1; C2,Inactive,23.21
+A23,A23-A,Single,1,1,0,,100.0,19500.0,19500.0,99.49,369497.37,2,2,1.0,1.5,99.49,369497.37,Chhattisgarh,male,student,29.0,Male,Live,occupied,Common,19500.0,A1,Active,86.59
+A23,A23-B,Double,2,2,0,,100.0,31000.0,15500.0,97.78,559526.94,3,3,1.0,8.7,97.78,559526.94,Kerala,male; male,student; student,22.0; 55.0,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,90.85
+A23,A23-C,Double,2,2,0,,100.0,28000.0,15500.0,91.64,483114.32,2,2,1.0,49.0,91.64,483114.32,Tamil Nadu,male; male,student; student,29.0,Male,Live,occupied,Attached,15500.0,C1; C2,Active,78.73
+A24,A24-A,Single,1,1,0,,100.0,19500.0,25500.0,57.0,213272.01,3,3,1.0,59.7,57.0,213272.01,West Bengal,male,student,24.0,Male,Live,occupied,Attached,25500.0,A1,Active,56.59
+A24,A24-B,Triple,3,3,0,,100.0,40500.0,13500.0,68.03,529139.29,11,11,1.0,37.3,68.03,529139.29,,male; male; male,student; student; student,22.9; 23.5; 27.5,Male,Live,occupied,Attached,13500.0,B1; B2; B3,Active,74.73
+A24,A24-C,Double,2,2,0,,100.0,29000.0,15500.0,67.06,374408.67,8,8,1.0,15.4,67.06,374408.67,Maharashtra,male; male,student; student,24.0,Male,Live,notice/occupied,Mixed,15500.0,C1; C2,Active,73.52
+A41,A41-A,Single,1,1,0,,100.0,19500.0,25500.0,90.78,336333.77,3,3,1.0,32.0,90.78,336333.77,,male,student,16.0,Male,Live,occupied,Attached,25500.0,A1,Active,76.88
+A41,A41-B,Triple,3,3,0,,100.0,40500.0,13500.0,99.66,767411.3,6,6,1.0,2.3,99.66,767411.3,Gujarat,female; male; male,student; student; student,28.2; 42.3; 24.0,Male,Live,occupied,Attached,13500.0,B1; B2; B3,Active,99.45
+A41,A41-C,Double,2,2,0,,100.0,29000.0,15500.0,97.78,538206.31,6,6,1.0,5.0,97.78,538206.31,Tamil Nadu,male; male,student; student,23.0,Male,Live,occupied,Mixed,15500.0,C1; C2,Active,90.86
+A41,A41-D,Double,2,2,0,,100.0,30000.0,15500.0,98.04,558886.33,4,4,1.0,3.2,98.04,558886.33,West Bengal,male; male,student; student,21.0,Male,Live,occupied,Mixed,15500.0,D1; D2,Active,91.96
+A44,A44-A,Single,1,1,0,,100.0,19500.0,19500.0,85.32,261842.97,3,3,1.0,50.0,85.32,261842.97,Tamil Nadu,male,student,22.0,Male,Live,occupied,Common,19500.0,A1,Active,69.26
+A44,A44-B,Double,2,2,0,,100.0,15500.0,15500.0,96.93,562401.45,2,2,1.0,15.0,96.93,562401.45,Tamil Nadu,male; male,student; student,24.7; 27.0,Male,Live,notice/occupied,Mixed,15500.0,B1; B2,Active,89.48
+A44,A44-C,Double,2,2,0,,100.0,14500.0,14500.0,79.27,430765.44,6,5,0.833,42.4,79.27,430765.44,,male,student,23.9,Male,Live,occupied/vacant,Common,14500.0,C1; C2,Active,70.06
+A44,A44-D,Single,1,1,0,,100.0,24000.0,19500.0,100.0,465965.83,1,1,1.0,0.0,100.0,465965.83,,male,student,,Male,Live,occupied,Common,19500.0,D1,Active,90.18
+B11,B11-A,Single,1,1,0,,100.0,19500.0,19500.0,93.0,345992.12,2,2,1.0,20.5,93.0,345992.12,,male,student,28.6,Male,Live,occupied,Common,19500.0,A1,Active,80.1
+B11,B11-B,Double,2,2,0,,100.0,30000.0,15500.0,100.0,553104.47,4,4,1.0,5.8,100.0,553104.47,Tamil Nadu,male; male,student; student,31.2; 31.0,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,91.92
+B11,B11-C,Double,2,2,0,,100.0,13500.0,15500.0,97.27,483442.84,4,3,0.75,19.7,97.27,483442.84,,male,student,51.1,Male,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,79.88
+B11,B11-D,Single,1,1,0,,100.0,25500.0,19500.0,100.0,502480.29,3,3,1.0,0.3,100.0,502480.29,,male,student,33.9,Male,Live,occupied,Common,19500.0,D1,Active,91.31
+B12,B12-A,Single,1,1,0,,100.0,19500.0,25500.0,100.0,362385.02,2,2,1.0,12.0,100.0,362385.02,Karnataka,female,student,26.0,Female,Live,occupied,Attached,25500.0,A1,Active,84.53
+B12,B12-B,Double,2,2,0,,100.0,29100.0,15500.0,98.81,534875.16,1,1,1.0,14.0,98.81,534875.16,Kerala,female; female,student; student,18.0,Female,Live,occupied,Attached,15500.0,B1; B2,Active,89.38
+B12,B12-C,Double,2,2,0,,100.0,27100.0,14500.0,81.91,416182.65,3,3,1.0,56.3,81.91,416182.65,,female; female,student; student,23.0,Female,Live,occupied,Common,14500.0,C1; C2,Active,71.98
+B13,B13-A,Single,1,1,0,,100.0,19000.0,25500.0,100.0,365768.73,0,0,,,100.0,365768.73,,male,student,,Male,Live,occupied,Attached,25500.0,A1,Active,61.92
+B13,B13-B,Double,2,2,0,,100.0,30000.0,15500.0,93.26,528038.76,7,6,0.857,15.8,93.26,528038.76,Andhra Pradesh,male; male,student; student,26.0,Male,Live,occupied/vacant,Attached,15500.0,B1; B2,Active,83.43
+B13,B13-C,Double,2,2,0,,100.0,27000.0,15500.0,100.0,531307.49,2,1,0.5,5.0,100.0,531307.49,,male; male,student; student,27.1,Male,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,78.86
+B14,B14-A,Single,1,1,0,,100.0,19500.0,19500.0,91.81,342854.8,4,4,1.0,15.0,91.81,342854.8,,male,student,46.2,Male,Live,occupied,Common,19500.0,A1,Active,80.65
+B14,B14-B,Double,2,2,0,,100.0,0.0,15500.0,100.0,0.0,0,0,,,100.0,0.0,,male; male,student; student,,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,50.0
+B14,B14-C,Double,2,2,0,,100.0,28000.0,15500.0,95.22,505617.61,2,2,1.0,12.5,95.22,505617.61,,male; male,student; student,,Male,Live,occupied,Mixed,15500.0,C1; C2,Active,87.54
+B22,B22-A,Single,1,1,0,,100.0,19000.0,25500.0,88.74,324572.93,1,1,1.0,5.0,88.74,324572.93,,female,student,24.2,Female,Live,occupied,Attached,25500.0,A1,Active,80.95
+B22,B22-B,Double,2,2,0,,100.0,30000.0,14500.0,100.0,578892.9,5,5,1.0,3.6,100.0,578892.9,,female; female,student; student,30.0; 22.8,Female,Live,occupied,Common,14500.0,B1; B2,Active,93.18
+B22,B22-C,Double,2,2,0,,100.0,28000.0,15500.0,97.18,518446.12,3,3,1.0,11.0,97.18,518446.12,,female; female,student; student,30.2; 23.1,Female,Live,occupied,Attached,15500.0,C1; C2,Active,88.88
+B24,B24-A,Single,1,1,0,,100.0,19500.0,25500.0,56.14,210758.87,2,2,1.0,41.0,56.14,210758.87,,female,student,22.0,Female,Live,occupied,Attached,25500.0,A1,Active,59.77
+B24,B24-B,Triple,3,3,0,,100.0,40500.0,13500.0,87.43,670055.85,10,10,1.0,23.3,87.43,670055.85,Tamil Nadu,female; female; female,student; student; student,22.9; 23.8; 24.0,Female,Live,notice/occupied,Attached,13500.0,B1; B2; B3,Active,88.31
+B24,B24-C,Double,2,2,0,,100.0,14500.0,15500.0,89.08,477907.36,7,7,1.0,22.1,89.08,477907.36,Delhi,female; female,student; student,21.6; 23.0,Female,Live,occupied/vacant,Attached,15500.0,C1; C2,Active,82.82
+B31,B31-B,Double,2,2,0,,100.0,29000.0,15500.0,99.91,557802.23,1,1,1.0,1.0,99.91,557802.23,,male; male,student; student,23.8; 57.8,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,92.95
+B31,B31-C,Double,2,2,0,,100.0,31000.0,15500.0,92.66,542575.56,4,4,1.0,15.0,92.66,542575.56,,male; male,student; student,55.2; 43.0,Male,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,87.44
+B32,B32-A,Single,1,1,0,,100.0,19500.0,19500.0,93.34,176166.23,1,1,1.0,39.0,93.34,176166.23,,male,student,28.7,Male,Live,occupied,Common,19500.0,A1,Active,71.18
+B32,B32-B,Double,2,2,0,,100.0,29000.0,15500.0,99.4,554944.15,1,1,1.0,7.0,99.4,554944.15,,male; male,student; student,42.2,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,91.56
+B32,B32-C,Double,2,2,0,,100.0,27100.0,15500.0,97.18,502664.26,3,3,1.0,11.0,97.18,502664.26,Bihar,male; male,student; student,30.2; 25.0,Male,Live,notice/occupied,Mixed,15500.0,C1; C2,Active,88.37
+B33,B33-A,Single,1,1,0,,100.0,19000.0,19500.0,100.0,373258.87,1,1,1.0,0.0,100.0,373258.87,,male,student,,Male,Live,occupied,Common,19500.0,A1,Active,87.16
+B33,B33-B,Double,2,2,0,,100.0,31000.0,15500.0,78.92,461087.39,8,8,1.0,28.1,78.92,461087.39,,male; male,student; student,22.8; 22.5,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,77.81
+B33,B33-C,Double,2,1,1,C2,50.0,0.0,14500.0,97.78,478380.42,11,10,0.909,5.8,97.78,478380.42,,,,,Male,Live,vacant,Common,14500.0,C1; C2,Active,86.49
+B34,B34-A,Single,1,1,0,,100.0,19500.0,19500.0,68.94,254254.27,2,2,1.0,91.0,68.94,254254.27,Rajasthan,male,student,25.0,Male,Live,occupied,Common,19500.0,A1,Active,55.9
+B34,B34-B,Double,2,2,0,,100.0,31000.0,15500.0,86.77,501967.81,5,5,1.0,31.0,86.77,501967.81,,male; male,student; student,25.5; 26.0,Male,Live,occupied,Attached,15500.0,B1; B2,Active,81.16
+B34,B34-C,Double,2,2,0,,100.0,28000.0,15500.0,98.21,517197.77,2,2,1.0,10.5,98.21,517197.77,,male; male,student; student,29.9,Male,Live,notice/occupied,Attached,15500.0,C1; C2,Active,89.28
+B41,B41-A,Single,1,1,0,,100.0,19500.0,25500.0,100.0,372309.46,1,1,1.0,0.0,100.0,372309.46,,male,student,40.1,Male,Live,occupied,Attached,25500.0,A1,Active,87.13
+B41,B41-B,Double,2,2,0,,100.0,31000.0,15500.0,85.67,497043.36,9,9,1.0,21.2,85.67,497043.36,Kerala,male; male,student; student,23.0; 22.0,Male,Live,occupied,Attached,15500.0,B1; B2,Active,82.5
+B41,B41-C,Double,2,1,1,C1,50.0,14500.0,15500.0,77.47,418528.25,6,5,0.833,45.6,77.47,418528.25,Tamil Nadu,male,student,26.0,Male,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,68.46
+B41,B41-D,Single,1,1,0,,100.0,24000.0,19500.0,100.0,477003.94,1,1,1.0,0.0,100.0,477003.94,,male,student,,Male,Live,occupied,Common,19500.0,D1,Active,90.54
+B42,B42-A,Single,1,1,0,,100.0,19500.0,19500.0,93.17,347141.92,4,4,1.0,10.0,93.17,347141.92,,male,student,,Male,Live,notice,Common,19500.0,A1,Active,82.18
+B42,B42-B,Double,2,2,0,,100.0,31000.0,15500.0,99.06,528137.32,3,3,1.0,3.7,99.06,528137.32,Chhattisgarh; Karnataka,male; male,student; student,22.0; 21.0,Male,Live,occupied,Attached,15500.0,B1; B2,Active,91.2
+B42,B42-C,Double,2,2,0,,100.0,26100.0,15500.0,100.0,505170.83,1,1,1.0,0.0,100.0,505170.83,,male; male,student; student,31.0,Male,Live,occupied,Attached,15500.0,C1; C2,Active,91.46
+B43,B43-A,Single,1,1,0,,100.0,19500.0,19500.0,98.29,366819.97,5,5,1.0,2.4,98.29,366819.97,,female,student,24.2,Female,Live,occupied,Common,19500.0,A1,Active,85.94
+B43,B43-B,Double,2,2,0,,100.0,15500.0,15500.0,94.37,545696.45,8,8,1.0,9.1,94.37,545696.45,Karnataka,female; female,student; student,23.3; 20.0,Female,Live,notice/vacant,Mixed,15500.0,B1; B2,Active,89.21
+B43,B43-C,Double,2,2,0,,100.0,29000.0,15500.0,86.6,331882.39,6,6,1.0,26.2,86.6,331882.39,Kerala,female; female,student; student,18.0; 17.0,Female,Live,occupied,Mixed,15500.0,C1; C2,Active,76.47
+B44,B44-A,Single,1,1,0,,100.0,0.0,25500.0,84.64,301990.8,4,4,1.0,22.8,84.64,301990.8,Karnataka,female,student,44.0,Female,Live,vacant,Attached,25500.0,A1,Active,75.5
+B44,B44-B,Triple,3,3,0,,100.0,40500.0,13500.0,84.36,648948.75,8,8,1.0,13.4,84.36,648948.75,Kerala; Maharashtra; Telangana,female; female; female,student; student; student,19.0; 20.0; 19.0,Female,Live,occupied,Attached,13500.0,B1; B2; B3,Active,88.49
+B44,B44-C,Double,2,2,0,,100.0,28000.0,14500.0,79.52,421139.95,4,4,1.0,63.0,79.52,421139.95,Andhra Pradesh,female; female,student; student,50.0,Female,Live,occupied,Common,14500.0,C1; C2,Active,70.1
+C11,C11-A,Single,1,1,0,,100.0,19500.0,19500.0,63.48,235627.46,4,4,1.0,53.5,63.48,235627.46,Delhi,male,student,23.0,Male,Live,vacant,Common,19500.0,A1,Active,60.61
+C11,C11-B,Double,2,2,0,,100.0,31000.0,15500.0,98.12,572306.18,4,4,1.0,5.5,98.12,572306.18,Maharashtra,male; male,student; student,25.0; 27.0,Male,Live,occupied,Mixed,15500.0,B1; B2,Active,91.99
+C11,C11-C,Double,2,2,0,,100.0,29000.0,14500.0,100.0,537171.48,5,5,1.0,1.8,100.0,537171.48,Andhra Pradesh; Uttar Pradesh,male; male,student; student,23.0; 19.0,Male,Live,occupied,Common,14500.0,C1; C2,Active,92.16
+C12,C12-A,Single,1,1,0,,100.0,19500.0,25500.0,96.25,359182.0,2,2,1.0,11.0,96.25,359182.0,,female,student,34.0,Female,Live,occupied,Attached,25500.0,A1,Active,83.39
+C12,C12-B,Double,2,2,0,,100.0,31000.0,15500.0,75.77,431340.34,5,5,1.0,56.8,75.77,431340.34,Tamil Nadu; West Bengal,female; female,student; student,25.0; 20.0,Female,Live,occupied,Mixed,15500.0,B1; B2,Active,70.38
+C12,C12-C,Triple,3,3,0,,100.0,40500.0,13500.0,96.64,713370.57,7,7,1.0,10.7,96.64,713370.57,Tamil Nadu,female; female; female,student; student; student,21.8; 21.0; 27.8,Female,Live,occupied,Attached,13500.0,C1; C2; C3,Active,95.12
+C12,C12-D,Double,2,2,0,,100.0,29000.0,15500.0,59.56,324671.48,10,10,1.0,48.2,59.56,324671.48,Kerala; West Bengal,female; female,student; student,22.0; 21.0,Female,Live,occupied,Mixed,15500.0,D1; D2,Active,63.24
+C21,C21-A,Single,1,1,0,,100.0,19500.0,19500.0,81.4,304024.31,4,4,1.0,27.2,81.4,304024.31,Tamil Nadu,male,student,20.0,Male,Live,occupied,Common,19500.0,A1,Active,73.68
+C21,C21-B,Double,2,2,0,,100.0,15500.0,15500.0,59.04,332053.22,4,4,1.0,35.2,59.04,332053.22,Tamil Nadu,male; male,student; student,32.1; 30.0,Male,Live,occupied/vacant,Attached,15500.0,B1; B2,Active,65.77
+C21,C21-C,Double,2,2,0,,100.0,28000.0,15500.0,82.08,433607.1,1,1,1.0,132.0,82.08,433607.1,,male; male,student; student,31.7; 25.9,Male,Live,occupied,Attached,15500.0,C1; C2,Active,58.27
+C21,C21-D,Single,1,1,0,,100.0,25500.0,19500.0,94.03,455716.16,3,3,1.0,11.7,94.03,455716.16,,male,student,45.4,Male,Live,occupied,Common,19500.0,D1,Active,85.68
+C24,C24-B,Triple,3,3,0,,100.0,40000.0,13500.0,91.18,692460.58,8,8,1.0,54.4,91.18,692460.58,Tamil Nadu,female; female; female,student; student; student,16.8; 25.0; 22.0,Female,Live,notice/occupied,Attached,13500.0,B1; B2; B3,Active,84.37
+C24,C24-C,Double,2,2,0,,100.0,27000.0,15500.0,100.0,557473.72,1,0,0.0,,100.0,557473.72,,female; female,student; student,,Female,Live,occupied/vacant,Attached,15500.0,C1; C2,Active,55.66
+C31,C31-A,Single,1,1,0,,100.0,19500.0,25500.0,68.94,256291.06,5,5,1.0,38.4,68.94,256291.06,,male,student,,Male,Live,occupied,Attached,25500.0,A1,Active,65.93
+C31,C31-B,Double,2,2,0,,100.0,28100.0,14500.0,100.0,540952.69,0,0,,,100.0,540952.69,,male; male,student; student,48.6,Male,Live,occupied,Common,14500.0,B1; B2,Active,67.62
+C31,C31-C,Double,2,0,2,C1; C2,0.0,0.0,14500.0,68.26,361793.69,8,6,0.75,56.0,68.26,361793.69,,,,,Male,Live,vacant,Common,14500.0,C1; C2,Active,59.56
+C31,C31-D,Single,1,1,0,,100.0,25500.0,19500.0,100.0,521747.7,4,4,1.0,1.5,100.0,521747.7,,male,student,42.9,Male,Live,occupied,Common,19500.0,D1,Active,91.71
+C34,C34-A,Single,1,1,0,,100.0,19500.0,25500.0,100.0,435348.23,4,4,1.0,2.0,100.0,435348.23,,female,student,46.0,Female,Live,occupied,Attached,25500.0,A1,Active,88.8
+C34,C34-B,Double,2,2,0,,100.0,29100.0,15500.0,99.4,545436.93,1,1,1.0,7.0,99.4,545436.93,,female; female,student; student,28.6,Female,Live,occupied/vacant,Mixed,15500.0,B1; B2,Active,91.25
+C34,C34-C,Double,2,1,1,C1,50.0,13500.0,15500.0,91.72,480338.37,3,2,0.667,28.0,91.72,480338.37,,female,student,,Female,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,74.31
+C41,C41-A,Single,1,1,0,,100.0,19500.0,25500.0,100.0,365768.73,0,0,,,100.0,365768.73,Tamil Nadu,male,student,27.0,Male,Live,booked,Attached,25500.0,A1,Active,61.92
+C41,C41-B,Double,2,2,0,,100.0,31000.0,15500.0,88.65,505732.59,5,5,1.0,26.2,88.65,505732.59,Tamil Nadu,male; male,student; student,24.1; 28.0,Male,Live,occupied/vacant,Mixed,15500.0,B1; B2,Active,82.8
+C41,C41-C,Double,2,2,0,,100.0,29000.0,15500.0,70.05,379155.72,7,7,1.0,44.4,70.05,379155.72,Delhi; Tamil Nadu,male; male,student; student,22.0; 27.0,Male,Live,notice/occupied,Mixed,15500.0,C1; C2,Active,69.16
+C41,C41-D,Single,1,1,0,,100.0,24000.0,19500.0,100.0,462023.65,0,0,,,100.0,462023.65,,male,student,,Male,Live,notice,Common,19500.0,D1,Active,65.05
+C42,C42-A,Single,1,1,0,,100.0,19500.0,19500.0,93.34,336061.1,3,3,1.0,13.0,93.34,336061.1,Haryana,female,student,21.0,Female,Live,occupied,Common,19500.0,A1,Active,81.31
+C42,C42-B,Double,2,1,1,B2,50.0,15500.0,15500.0,86.26,480187.25,6,5,0.833,18.8,86.26,480187.25,Kerala,female,student,19.0,Female,Live,notice/vacant,Attached,15500.0,B1; B2,Active,78.42
+C42,C42-C,Double,2,2,0,,100.0,29000.0,15500.0,84.73,456061.1,3,3,1.0,59.7,84.73,456061.1,Kerala,male; female,student; student,19.0,Female,Live,booked/vacant,Mixed,15500.0,C1; C2,Active,73.56
+C43,C43-A,Single,1,1,0,,100.0,0.0,19500.0,90.27,332391.59,2,2,1.0,28.5,90.27,332391.59,Delhi,female,student,24.0,Female,Live,notice,Common,19500.0,A1,Active,77.25
+C43,C43-B,Double,2,2,0,,100.0,30000.0,15500.0,99.4,557440.87,1,1,1.0,7.0,99.4,557440.87,Puducherry,female; female,student; student,31.0,Female,Live,occupied,Attached,15500.0,B1; B2,Active,91.64
+C43,C43-C,Double,2,2,0,,100.0,28000.0,15500.0,84.64,449737.19,3,3,1.0,50.0,84.64,449737.19,Kerala,female; female,student; student,24.0,Female,Live,occupied,Mixed,15500.0,C1; C2,Active,75.16
+C44,C44-A,Single,1,1,0,,100.0,19500.0,25500.0,100.0,456931.67,4,4,1.0,14.8,100.0,456931.67,,male,student,40.2,Male,Live,occupied,Attached,25500.0,A1,Active,87.08
+C44,C44-B,Double,2,2,0,,100.0,31000.0,14500.0,99.23,571468.46,2,2,1.0,4.0,99.23,571468.46,Tamil Nadu,male; male,student; student,23.0,Male,Live,occupied,Common,14500.0,B1; B2,Active,92.61
+C44,C44-C,Double,2,2,0,,100.0,29000.0,15500.0,86.09,475640.6,4,4,1.0,3.5,86.09,475640.6,Puducherry,male; male,student; student,35.6; 22.0,Male,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,85.29
+D11,D11-B,Single,1,1,0,,100.0,25500.0,19500.0,96.08,463107.75,3,3,1.0,7.7,96.08,463107.75,,female,student,28.3,Female,Live,occupied,Common,19500.0,B1,Active,87.35
+D11,D11-C,Double,2,1,1,C1,50.0,15500.0,15500.0,84.64,468570.96,4,3,0.75,53.3,84.64,468570.96,Tamil Nadu,female,student,20.0,Female,Live,occupied/vacant,Mixed,15500.0,C1; C2,Active,68.9
+D11,D11-D,Triple,3,3,0,,100.0,26000.0,13500.0,83.11,609625.49,4,4,1.0,74.2,83.11,609625.49,Tamil Nadu,female; female; female,student; student; student,27.9; 29.8; 18.0,Female,Live,occupied/vacant,Attached,13500.0,D1; D2; D3,Active,75.29
+D12,D12-A,Single,1,1,0,,100.0,19500.0,25500.0,85.49,317477.0,3,3,1.0,28.3,85.49,317477.0,,female,student,25.9,Female,Live,occupied,Attached,25500.0,A1,Active,75.24
+D12,D12-B,Double,2,2,0,,100.0,31000.0,14500.0,99.66,582687.25,4,4,1.0,1.2,99.66,582687.25,,female; female,student; student,24.8; 46.3,Female,Live,occupied,Common,14500.0,B1; B2,Active,93.64
+D12,D12-C,Double,2,2,0,,100.0,29000.0,15500.0,87.12,467164.91,5,5,1.0,30.2,87.12,467164.91,Madhya Pradesh,female; female,student; student,22.1; 24.0,Female,Live,notice/occupied,Mixed,15500.0,C1; C2,Active,80.29
+D15,D15-A,Executive,1,1,0,,100.0,25500.0,25500.0,100.0,82095.93,0,0,,,100.0,82095.93,,male,student,,Male,Live,occupied,Attached,25500.0,A1,Active,52.67
+D21,D21-A,Single,1,1,0,,100.0,25500.0,25500.0,97.78,463551.25,1,1,1.0,13.0,97.78,463551.25,,female,student,27.6,Female,Live,occupied,Attached,25500.0,A1,Active,86.91
+D21,D21-B,Double,2,2,0,,100.0,30000.0,15500.0,98.55,565062.42,3,3,1.0,19.0,98.55,565062.42,,female; female,student; student,25.2,Female,Live,occupied,Mixed,15500.0,B1; B2,Active,89.34
+D21,D21-C,Triple,3,3,0,,100.0,39000.0,13500.0,100.0,750788.44,0,0,,,100.0,750788.44,,female; female; female,student; student; student,23.2,Female,Live,occupied,Attached,13500.0,C1; C2; C3,Active,74.46
+D41,D41-A,Single,1,1,0,,100.0,18300.0,19500.0,100.0,352293.04,0,0,,,100.0,352293.04,,female,student,,Female,Live,occupied,Common,19500.0,A1,Active,61.48
+D41,D41-B,Double,2,2,0,,100.0,31000.0,15500.0,94.88,555190.54,5,5,1.0,8.8,94.88,555190.54,,female; female,student; student,26.8; 24.6,Female,Live,occupied,Mixed,15500.0,B1; B2,Active,89.75
+D41,D41-C,Double,2,2,0,,100.0,29000.0,15500.0,93.34,509822.6,4,4,1.0,11.8,93.34,509822.6,Tamil Nadu,female; female,student; student,25.9; 28.0,Female,Live,occupied,Attached,15500.0,C1; C2,Active,87.2

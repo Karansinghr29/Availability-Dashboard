@@ -29,13 +29,14 @@ OCCUPIED_STATUSES = {"staying", "on-notice", "onnotice", "reserved"}
 # --------------------------------------------------------------------------- #
 # Analytics time windows (business configuration — the single place to change).
 #
-# Two baselines are used across all occupancy analytics:
-#   * HISTORICAL baseline (2023+)  -> long-term behaviour, kept for REPORTING.
-#   * RECENT operational baseline (2025+) -> used for recommendations and for
-#     blocked-room / anomaly detection, because operations stabilised in 2025.
-# Data older than the historical start is never discarded: it still informs
-# room capacity, room age and first-occupancy references — it is just not the
-# baseline for occupancy/revenue/fill-time metrics.
+#   * RECENT operational baseline (2025+) -> Demand, business priority /
+#     historical_occupancy_pct (ranking), blocked-room / anomaly detection.
+#     Pre-2025 booking history is not representative of current operations.
+#   * HISTORICAL baseline (2023+) is retained in config for occupancy_history
+#     exit-window labels and any legacy reporting that still opts into it.
+# Data older than the recent start is never discarded: it still informs room
+# capacity, room age and first-occupancy references — it is just not the
+# baseline for Demand or business-priority occupancy.
 # --------------------------------------------------------------------------- #
 HISTORICAL_BASELINE_START = pd.Timestamp("2023-01-01")
 RECENT_BASELINE_START = pd.Timestamp("2025-01-01")

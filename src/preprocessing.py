@@ -36,8 +36,8 @@ Room Master schema (one row per room, returned by build_room_inventory)
     recent_refills            int    (of those, beds a new tenant took)
     recent_fill_rate          float  (refills / vacancy_events, or NaN)
     average_vacancy_days_recent float (mean exit->refill gap, or NaN)
-    historical_occupancy_pct  float  (HISTORICAL window, default 2023+)
-    historical_revenue        float  (HISTORICAL window accrued)
+    historical_occupancy_pct  float  (business-priority occupancy; same window as Demand: 2025+)
+    historical_revenue        float  (accrued rent over the same business-priority window)
     occupant_states           list   (home states of current occupants, unique)
     occupant_genders          list   (per-occupant gender, when available)
     occupant_occupations      list   (per-occupant 'student'/'working', when available)
@@ -257,10 +257,17 @@ def _recent_demand(group: pd.DataFrame, recent_start: pd.Timestamp, as_of: pd.Ti
     return vacancy_events, refills, fill_rate, avg_vacancy
 
 
-def _minmax(series: pd.Series) -> pd.Series:
-    """Min-max scale to [0,1] across rooms. Constant/empty -> neutral 0.5."""
+def _minmax(series: pd.Series, basis: Optional[pd.Series] = None) -> pd.Series:
+    """Min-max scale to [0,1] across rooms. Constant/empty -> neutral 0.5.
+
+    ``basis`` (optional boolean mask) restricts which rows define the min/max
+    scale; every row is still scaled against that range. Used so never-booked
+    seeded rooms (no demand history) do NOT shift the demand normalisation of
+    rooms that have history — their scores stay identical.
+    """
     s = series.astype(float)
-    lo, hi = s.min(), s.max()
+    ref = s[basis] if basis is not None and basis.any() else s
+    lo, hi = ref.min(), ref.max()
     if pd.isna(lo) or pd.isna(hi) or hi == lo:
         return pd.Series(0.5, index=s.index)
     return (s - lo) / (hi - lo)
@@ -274,10 +281,17 @@ def _compute_demand_score(inv: pd.DataFrame) -> pd.Series:
       and revenue performance (recent revenue). Missing signals -> neutral 0.5.
     """
     w = DEMAND_SCORE_WEIGHTS
-    occ = _minmax(inv["recent_occupancy_pct"]).fillna(0.5)
-    fill = _minmax(inv["recent_fill_rate"]).fillna(0.5)
-    low_vac = (1 - _minmax(inv["average_vacancy_days_recent"])).fillna(0.5)
-    rev = _minmax(inv["recent_revenue"]).fillna(0.5)
+    # Normalise the demand signals over rooms WITH booking history only, so
+    # never-booked seeded rooms (A33/A34) leave existing rooms' scores unchanged.
+    basis = None
+    if "_never_booked" in inv.columns:
+        booked = ~inv["_never_booked"].astype(bool)
+        if booked.any():
+            basis = booked
+    occ = _minmax(inv["recent_occupancy_pct"], basis).fillna(0.5)
+    fill = _minmax(inv["recent_fill_rate"], basis).fillna(0.5)
+    low_vac = (1 - _minmax(inv["average_vacancy_days_recent"], basis)).fillna(0.5)
+    rev = _minmax(inv["recent_revenue"], basis).fillna(0.5)
 
     score = (
         w["recent_occupancy"] * occ
@@ -919,6 +933,99 @@ def _held_bed_keys_from_occupancy(
     return keys
 
 
+def _seed_physical_beds(
+    bookings: pd.DataFrame,
+    beds_master: Optional[pd.DataFrame],
+    bed_map: Optional[pd.DataFrame],
+) -> pd.DataFrame:
+    """Seed the room universe with physical beds that have no booking history yet.
+
+    Business enhancement: the room universe is the physical inventory (bed
+    catalog) UNIONED with booking history — not booking history alone. Newly
+    created Live apartments/beds (e.g. A33 / A34) that have never been booked
+    therefore still appear in Inventory. Beds already present in ``bookings`` are
+    left completely untouched, so all existing booking-based logic (occupancy,
+    demand, revenue, windowed metrics) is unchanged for rooms with history.
+
+    Seeded beds carry EMPTY history — no dates, no tenant, no rent — so they are
+    never ``_active`` (occupied = 0, available = live beds, occupancy = 0%). Their
+    ``current_rate`` is filled later from beds_master (Q84); a missing rate stays
+    NULL (never invented). Not-Active beds are not seeded (inactive inventory does
+    not create a new room). Days-vacant stays null via the bed-map layer.
+
+    Backward compatible: when no physical bed source is supplied (beds_master and
+    bed_map both absent/empty), the bookings frame is returned unchanged — the old
+    bookings-only universe, i.e. legacy behaviour is preserved.
+    """
+    phys = None
+    for src in (beds_master, bed_map):
+        if (
+            isinstance(src, pd.DataFrame)
+            and not src.empty
+            and {"apartment_code", "bed_code"} <= set(src.columns)
+        ):
+            phys = src.copy()
+            break
+    if phys is None:
+        return bookings
+
+    phys["apartment_code"] = phys["apartment_code"].astype("string").str.strip()
+    phys["bed_code"] = phys["bed_code"].astype("string").str.strip()
+    phys = phys[phys["apartment_code"].notna() & phys["bed_code"].notna()].copy()
+    # Inactive (Not-Active) beds never seed a NEW room.
+    if "bed_status" in phys.columns:
+        na = (
+            phys["bed_status"].astype(str).str.strip().str.lower().str.replace(" ", "-", regex=False)
+            .isin({"not-active", "inactive", "disabled", "blocked"})
+        )
+        phys = phys[~na].copy()
+    phys = phys.drop_duplicates(["apartment_code", "bed_code"], keep="first")
+    if phys.empty:
+        return bookings
+
+    existing = set(
+        zip(
+            bookings["apartment_code"].astype(str).str.strip().str.upper(),
+            bookings["bed_code"].astype(str).str.strip().str.upper(),
+        )
+    )
+    is_new = [
+        (str(a).strip().upper(), str(b).strip().upper()) not in existing
+        for a, b in zip(phys["apartment_code"], phys["bed_code"])
+    ]
+    new_beds = phys[pd.Series(is_new, index=phys.index)]
+    if new_beds.empty:
+        return bookings
+
+    bookings = bookings.copy()
+    bookings["_seeded"] = False
+    placeholder = pd.DataFrame(index=range(len(new_beds)), columns=bookings.columns)
+    placeholder["_seeded"] = True
+    placeholder["apartment_code"] = new_beds["apartment_code"].values
+    placeholder["bed_code"] = new_beds["bed_code"].values
+    if "bed_type" in bookings.columns and "bed_type" in new_beds.columns:
+        placeholder["bed_type"] = new_beds["bed_type"].values
+    # Empty history: no active stay, no tenant, no rent, no dates.
+    for col in (
+        "onboarding_date", "actual_exit_date", "booking_date",
+        "notice_date", "estimated_exit_date",
+    ):
+        if col in placeholder.columns:
+            placeholder[col] = pd.NaT
+    if "monthly_rental" in placeholder.columns:
+        placeholder["monthly_rental"] = pd.NA
+    if "staying_status" in placeholder.columns:
+        placeholder["staying_status"] = pd.NA
+
+    logger.info(
+        "Seeded %d never-booked physical beds into the room universe "
+        "(apartments: %s).",
+        len(placeholder),
+        ", ".join(sorted(new_beds["apartment_code"].dropna().unique().tolist())),
+    )
+    return pd.concat([bookings, placeholder], ignore_index=True)
+
+
 def build_room_inventory(
     bookings: pd.DataFrame,
     tenants: Optional[pd.DataFrame] = None,
@@ -931,14 +1038,15 @@ def build_room_inventory(
 ) -> pd.DataFrame:
     """Build the Room Master — the single source of truth for room identity.
 
-    Occupancy & revenue are reported over TWO windows (see utils config):
-      * historical baseline  [historical_start .. as_of]  (default 2023-01-01)
-        -> ``historical_occupancy_pct`` / ``historical_revenue`` (reporting).
-      * recent operational   [recent_start .. as_of]       (default 2025-01-01)
-        -> ``recent_occupancy_pct`` / ``recent_revenue`` (recommendations,
-        anomaly detection).
-    Data older than ``historical_start`` is NOT discarded — it still defines room
-    capacity and room age; it is simply excluded from the baseline metrics.
+    Occupancy & revenue are reported over windows (see utils config):
+      * recent / business baseline  [recent_start .. as_of]  (default 2025-01-01)
+        -> ``recent_occupancy_pct`` / ``recent_revenue`` (Demand inputs)
+        -> ``historical_occupancy_pct`` / ``historical_revenue`` (business
+           priority + tier-2 ranking — same 2025+ window; pre-2025 history is
+           not representative of current operations).
+    Data older than ``recent_start`` is NOT discarded — it still defines room
+    capacity, room age and first-occupancy references — it is simply excluded
+    from occupancy baselines used for Demand and business priority.
 
     ``beds_master`` (optional) supplies authoritative metadata:
     gender_allowed, bed_status, bed_lifecycle_status, toilet_type, current_rate.
@@ -1023,6 +1131,13 @@ def build_room_inventory(
 
     df = bookings.copy()
 
+    # --- Seed the room universe from physical inventory ----------------------
+    # Rooms come from the physical bed catalog UNIONED with booking history so
+    # newly-created Live apartments/beds with no bookings yet still appear.
+    # Beds already in bookings are untouched (existing logic unchanged). Legacy
+    # compatible: no-op when no physical bed source is available.
+    df = _seed_physical_beds(df, beds_master, bed_map)
+
     # --- Ensure correct dtypes (defensive; data_loader already coerces) ------
     for col in ("onboarding_date", "actual_exit_date", "booking_date"):
         if col in df.columns:
@@ -1100,6 +1215,11 @@ def build_room_inventory(
         bed_universe = sorted(g["bed_code"].dropna().unique().tolist())
         capacity = _resolve_capacity(g)
 
+        # A room is "never booked" when every one of its rows is a seeded
+        # physical bed (no booking history). Used only to keep demand
+        # normalisation stable — display fields are unaffected.
+        never_booked = bool(g["_seeded"].all()) if "_seeded" in g.columns else False
+
         bed_types = g["bed_type"].dropna()
         bed_type = bed_types.mode().iloc[0] if not bed_types.empty else pd.NA
         if bed_types.nunique() > 1:
@@ -1157,12 +1277,15 @@ def build_room_inventory(
         rent_rows = g[g["monthly_rental"] > 0].sort_values("onboarding_date")
         current_rent = float(rent_rows["monthly_rental"].iloc[-1]) if not rent_rows.empty else None
 
-        # Two-window baselines (older data kept only as first-occupancy reference).
-        historical_occupancy_pct, historical_revenue = _windowed_metrics(
-            g, historical_start, as_of, capacity
-        )
+        # Business-priority + Demand share the recent baseline (2025+).
+        # Pre-2025 booking history is kept for capacity/age only — not these %.
         recent_occupancy_pct, recent_revenue = _windowed_metrics(
             g, recent_start, as_of, capacity
+        )
+        # Column name retained for ranking/dashboard; value is recent-window occ.
+        historical_occupancy_pct, historical_revenue = (
+            recent_occupancy_pct,
+            recent_revenue,
         )
 
         # Recent demand indicators (vacancy/refill behaviour, 2025+).
@@ -1226,6 +1349,7 @@ def build_room_inventory(
             "toilet_type": master_fields["toilet_type"],
             "current_rate": master_fields["current_rate"],
             "bed_codes": bed_universe,
+            "_never_booked": never_booked,
         }
         record.update(_lifecycle_attrs(g))
         # beds_master bed_status / lifecycle take priority over booking attrs.
@@ -1255,7 +1379,10 @@ def build_room_inventory(
         # Label Active / Inactive / Unknown from beds_master.bed_status etc.
         inventory = annotate_lifecycle_status(inventory)
         # demand_score across the full inventory (Inactive stays labeled).
+        # Never-booked seeded rooms are excluded from the normalisation basis so
+        # rooms with history keep identical scores; drop the internal marker after.
         inventory["demand_score"] = _compute_demand_score(inventory)
+        inventory = inventory.drop(columns=["_never_booked"], errors="ignore")
 
         inactive_apts = sorted(
             {
