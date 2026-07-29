@@ -1,6 +1,7 @@
 apartment_code,lifecycle_status,estimated_revenue_loss,critical_rooms,delayed_rooms,normal_rooms,unknown_rooms,inactive_rooms,vacant_beds,avg_vacancy_days
-B33,Active,14766.75,1,0,0,0,0,1,31.0
-C34,Active,14766.75,0,1,0,0,0,1,29.0
-B41,Active,5601.18,0,0,1,0,0,1,11.0
+C34,Active,13814.06,0,1,0,0,0,1,29.0
+B11,Active,5716.16,0,0,1,0,0,1,12.0
 C42,Active,5601.18,0,0,1,0,0,1,11.0
+B41,Active,5239.82,0,0,1,0,0,1,11.0
+A44,Active,4287.12,0,0,1,0,0,1,9.0
 D11,Active,4073.59,0,0,1,0,0,1,8.0

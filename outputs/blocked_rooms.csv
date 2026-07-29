@@ -1,6 +1,7 @@
 apartment_code,room_code,bed_code,bed_type,capacity,occupied_beds,available_beds,lifecycle_status,apartment_status,current_vacant_days,expected_fill_days,vacancy_status,estimated_revenue_loss,demand_score,reason
-B33,B33-C,C2,Double,2,1,1,Active,Active,31,5.8,Critical,14766.75,86.49,Vacant 31 days (expected 6 days). Possible occupancy block. Double room partially occupied (1/2 beds). Remaining bed not filling. Revenue leakage increasing because vacancy exceeds historical refill time.
-C34,C34-C,C1,Double,2,1,1,Active,Active,29,28.0,Delayed,14766.75,74.31,Vacant 29 days (expected 28 days). Possible occupancy block. Double room partially occupied (1/2 beds). Remaining bed not filling. Revenue leakage increasing because vacancy exceeds historical refill time.
-B41,B41-C,C1,Double,2,1,1,Active,Active,11,45.6,Normal,5601.18,68.46,Vacant 11 days (within expected 46 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
-C42,C42-B,B2,Double,2,1,1,Active,Active,11,18.8,Normal,5601.18,78.42,Vacant 11 days (within expected 19 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
-D11,D11-C,C1,Double,2,1,1,Active,Active,8,53.3,Normal,4073.59,68.9,Vacant 8 days (within expected 53 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
+C34,C34-C,C1,Double,2,1,1,Active,Active,29.0,28.0,Delayed,13814.06,74.31,Vacant 29 days (expected 28 days). Possible occupancy block. Double room partially occupied (1/2 beds). Remaining bed not filling. Revenue leakage increasing because vacancy exceeds historical refill time.
+B11,B11-C,C1,Double,2,1,1,Active,Active,12.0,19.7,Normal,5716.16,79.88,Vacant 12 days (within expected 20 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
+C42,C42-B,B2,Double,2,1,1,Active,Active,11.0,18.8,Normal,5601.18,78.42,Vacant 11 days (within expected 19 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
+B41,B41-C,C1,Double,2,1,1,Active,Active,11.0,45.6,Normal,5239.82,68.46,Vacant 11 days (within expected 46 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
+A44,A44-C,C2,Double,2,1,1,Active,Active,9.0,42.4,Normal,4287.12,70.06,Vacant 9 days (within expected 42 days). Double room partially occupied (1/2 beds). Remaining bed not filling.
+D11,D11-C,C1,Double,2,1,1,Active,Active,8.0,53.3,Normal,4073.59,68.9,Vacant 8 days (within expected 53 days). Double room partially occupied (1/2 beds). Remaining bed not filling.

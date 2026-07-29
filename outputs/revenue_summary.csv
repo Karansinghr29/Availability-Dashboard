@@ -1,13 +1,13 @@
 metric,value
-total_estimated_revenue_leakage,44809.45
-total_vacant_beds,5
-total_critical_rooms,1
+total_estimated_revenue_leakage,38731.93
+total_vacant_beds,6
+total_critical_rooms,0
 total_delayed_rooms,1
-total_normal_rooms,3
+total_normal_rooms,5
 total_unknown_rooms,0
 total_inactive_rooms,0
-average_vacancy_days,18.0
-highest_loss_room,B33 / B33-C / C2
-highest_loss_room_value,14766.75
-highest_loss_apartment,B33
-highest_loss_apartment_value,14766.75
+average_vacancy_days,13.3
+highest_loss_room,C34 / C34-C / C1
+highest_loss_room_value,13814.06
+highest_loss_apartment,C34
+highest_loss_apartment_value,13814.06
