@@ -1,0 +1,21 @@
+child_table,child_column,parent_table,child_rows,fk_present,fk_missing,matched,unmatched,parent_duplicate_keys,note
+asset_allocations,asset_id,assets,1822,1822,0,1822,0,0,
+asset_allocations,apartment_id,apartments Q85,1822,1821,1,1821,0,0,
+asset_allocations,bed_id,beds Q83,1822,1223,599,1223,0,0,
+asset_master,asset_type_id,asset_types,1700,1700,0,1700,0,0,
+asset_master,supplier_id,vendors,1700,392,1308,392,0,0,
+maintenance_items,asset_type_id,asset_types,93,88,5,88,0,0,
+maintenance_items,issue_type_id,issue_types,93,93,0,93,0,0,
+maintenance_item_purchases,maintenance_item_id,items,46,46,0,46,0,0,
+ticket_logs,ticket_id,ticket header MISSING (reconstructed),6862,6862,0,6862,0,0,reconstructed universe
+ticket_resolutions,ticket_id,ticket header MISSING (reconstructed),374,374,0,374,0,0,reconstructed universe
+ticket_cost_estimates,ticket_id,ticket header MISSING (reconstructed),28,28,0,28,0,0,reconstructed universe
+ticket_purchases,ticket_id,ticket header MISSING (reconstructed),4,4,0,4,0,0,reconstructed universe
+maintenance_cost_lines,ticket_id,ticket header MISSING (reconstructed),20,20,0,20,0,0,reconstructed universe
+ticket_purchases,cost_estimate_id,cost_estimates,4,4,0,4,0,0,
+ticket_purchases,vendor_id,vendors,4,2,2,2,0,0,
+ticket_resolutions,vendor_id,vendors,374,1,373,1,0,0,
+maintenance_cost_lines,apartment_id,apartments Q85,20,20,0,20,0,0,
+maintenance_cost_lines,bed_id,beds Q83,20,20,0,20,0,0,
+maintenance_cost_lines,tenant_id,tenants Q82,20,20,0,20,0,0,
+asset_types,category_id,asset_categories MISSING,34,34,0,0,34,0,parent table absent

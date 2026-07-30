@@ -1014,6 +1014,281 @@ def page_room_search():
 
 
 # --------------------------------------------------------------------------- #
+# Page 7 — Maintenance Intelligence (Phase 2: descriptive analytics only)
+# Additive: reuses the integrated maintenance datasets. Does NOT touch any of
+# the six availability pages or their data.
+# --------------------------------------------------------------------------- #
+@st.cache_resource(show_spinner="Building maintenance model…")
+def _maintenance_base():
+    """Build the (expensive) maintenance model + filter options ONCE (cached)."""
+    from data_loader import DataLoader
+    import maintenance_analytics as MA
+
+    loader = DataLoader()
+    return loader, MA.build_base(loader)
+
+
+@st.cache_resource(show_spinner="Scoring assets…")
+def _maintenance_risk():
+    """Rule-based risk scores + dashboard aggregates, built ONCE (cached)."""
+    from data_loader import DataLoader
+    import maintenance_risk as MR
+
+    scores = MR.build_risk_scores(DataLoader())
+    return scores, MR.risk_summary(scores)
+
+
+def _dl(df: pd.DataFrame, label: str, key: str):
+    """CSV export button for one analytics table."""
+    if df is None or df.empty:
+        return
+    st.download_button(
+        "⬇ CSV",
+        df.to_csv(index=False).encode("utf-8"),
+        file_name=f"maintenance_{key}.csv",
+        mime="text/csv",
+        key=f"dl_{key}",
+    )
+
+
+def _bar(df: pd.DataFrame, index_col: str, value_col: str, caption: str, key: str = None):
+    """Labelled bar chart + CSV export, or a placeholder when empty."""
+    st.caption(caption)
+    if df is None or df.empty or index_col not in df.columns or value_col not in df.columns:
+        st.caption("_No data available._")
+        return
+    st.bar_chart(df.set_index(index_col)[value_col])
+    if key:
+        _dl(df, caption, key)
+
+
+def _table(df: pd.DataFrame, caption: str, key: str, empty_msg: str = "_No data._"):
+    """DataFrame + CSV export, or a placeholder when empty."""
+    st.caption(caption)
+    if df is None or df.empty:
+        st.caption(empty_msg)
+        return
+    st.dataframe(df, use_container_width=True, hide_index=True)
+    _dl(df, caption, key)
+
+
+def page_maintenance_intelligence():
+    import maintenance_analytics as MA
+
+    st.header("🛠 Maintenance Intelligence")
+    st.caption(
+        "Descriptive analytics from the integrated maintenance export — tickets, "
+        "assets, vendors, purchases and costs. Read-only; independent of the "
+        "availability pages."
+    )
+    try:
+        loader, base = _maintenance_base()
+    except Exception as exc:  # noqa: BLE001
+        st.error(f"Failed to build maintenance analytics: {exc}")
+        return
+    opts = base["options"]
+
+    # ---- Filters ---------------------------------------------------------- #
+    with st.expander("🔎 Filters", expanded=True):
+        f1 = st.columns(3)
+        prop = f1[0].selectbox("Property", opts["property"])
+        apt = f1[1].selectbox("Apartment", opts["apartment"])
+        atype = f1[2].selectbox("Asset Type", opts["asset_type"])
+        f2 = st.columns(3)
+        itype = f2[0].selectbox("Issue Type", opts["issue_type"])
+        vend = f2[1].selectbox("Vendor", opts["vendor"])
+        dmin, dmax = opts.get("date_min"), opts.get("date_max")
+        date_range = None
+        if dmin is not None and dmax is not None:
+            date_range = f2[2].date_input(
+                "Date Range",
+                value=(dmin.date(), dmax.date()),
+                min_value=dmin.date(),
+                max_value=dmax.date(),
+            )
+    filters = {"property": prop, "apartment": apt, "asset_type": atype,
+               "issue_type": itype, "vendor": vend}
+    if isinstance(date_range, (tuple, list)) and len(date_range) == 2:
+        filters["date_from"] = str(date_range[0])
+        filters["date_to"] = str(date_range[1])
+
+    A = MA.compute_all(loader, filters=filters, base=base)
+    k, dq = A["kpis"], A["dq"]
+
+    # ---- 1. KPI cards ----------------------------------------------------- #
+    st.subheader("1 · Key Metrics")
+    r1 = st.columns(4)
+    r1[0].metric("Total Tickets", f"{k['total_tickets']:,}")
+    r1[1].metric("Open Tickets", f"{k['open_tickets']:,}")
+    r1[2].metric("Resolved", f"{k['resolved_tickets']:,}")
+    r1[3].metric("Resolution Rate", f"{k['resolution_rate_pct']}%")
+    r2 = st.columns(4)
+    r2[0].metric("Avg Resolution (hrs)", k["avg_resolution_hours"] if k["avg_resolution_hours"] is not None else "—")
+    r2[1].metric("Total Maintenance Cost", _money(k["total_maintenance_cost"]))
+    r2[2].metric("Total Assets", f"{k['total_assets']:,}")
+    r2[3].metric("Assets In Service", f"{k['assets_in_service']:,}")
+    r3 = st.columns(4)
+    r3[0].metric("Active Vendors", f"{k['active_vendors']:,}")
+    r3[1].metric("Purchase Value", _money(k["total_purchase_value"]))
+    r3[2].metric("Low-Stock Items", f"{k['low_stock_items']:,}")
+    st.divider()
+
+    # ---- Data-quality panel (surfaced, not hidden) ----------------------- #
+    st.subheader("⚠ Data Quality")
+    st.caption("Source data gaps are shown here — not silently dropped. These "
+               "cap how far predictive analytics can go (Phase 3).")
+    d1 = st.columns(4)
+    d1[0].metric("Assets w/o Purchase Date", f"{dq['assets_without_purchase_date']:,}")
+    d1[1].metric("Assets w/o Warranty", f"{dq['assets_without_warranty']:,}")
+    d1[2].metric("Tickets w/o Apartment/Asset", f"{dq['tickets_without_apartment']:,}")
+    d1[3].metric("Tickets Unknown Type", f"{dq['tickets_unknown_type']:,}")
+    d2 = st.columns(4)
+    d2[0].metric("Invalid Vendor Names", f"{dq['invalid_vendor_count']:,}")
+    d2[1].metric("Outlier Purchase Costs", f"{dq['outlier_purchase_count']:,}")
+    if dq["invalid_vendor_names"]:
+        d2[2].caption("Invalid vendors: " + ", ".join(dq["invalid_vendor_names"][:8]))
+    with st.expander("Inspect data-quality issues"):
+        _table(dq["tables"]["assets_without_purchase_date"], "Assets missing purchase date", "dq_no_purchase_date")
+        _table(dq["tables"]["assets_without_warranty"], "Assets missing warranty", "dq_no_warranty")
+        _table(dq["tables"]["tickets_unknown_type"], "Tickets with unknown maintenance type", "dq_unknown_type")
+        _table(dq["tables"]["outlier_purchases"], "Outlier purchase costs (IQR fence)", "dq_outlier_purchases")
+    st.divider()
+
+    # ---- 2. Ticket analytics --------------------------------------------- #
+    st.subheader("2 · Ticket Analytics")
+    t = A["tickets"]
+    g = st.columns(2)
+    with g[0]:
+        _bar(t["by_status"], "status", "count", "Tickets by Current Status", "ticket_status")
+    with g[1]:
+        _bar(t["by_type"], "maintenance_type", "count", "Tickets by Maintenance Type", "ticket_type")
+    _bar(t["over_time"], "month", "tickets", "Tickets Opened per Month", "ticket_over_time")
+    g2 = st.columns(2)
+    with g2[0]:
+        _bar(t["top_apartments"], "apartment_code", "count", "Top Apartments by Ticket Count", "ticket_top_apts")
+    with g2[1]:
+        res = t["resolution"]
+        st.caption("Resolution Time")
+        rc = st.columns(3)
+        rc[0].metric("Avg (hrs)", res.get("avg_hours") if res.get("avg_hours") is not None else "—")
+        rc[1].metric("Median (hrs)", res.get("median_hours") if res.get("median_hours") is not None else "—")
+        rc[2].metric("Max (hrs)", res.get("max_hours") if res.get("max_hours") is not None else "—")
+        _table(t["resolution_by_type"], "Avg Resolution by Type", "ticket_res_by_type", "_No resolved tickets._")
+    st.divider()
+
+    # ---- 3. Asset analytics ---------------------------------------------- #
+    st.subheader("3 · Asset Analytics")
+    a = A["assets"]
+    g3 = st.columns(2)
+    with g3[0]:
+        _bar(a["by_type"], "asset_type", "count", "Assets by Type", "asset_type")
+    with g3[1]:
+        _bar(a["by_condition"], "condition", "count", "Assets by Condition", "asset_condition")
+    g4 = st.columns(2)
+    with g4[0]:
+        _bar(a["age_buckets"], "age", "count", "Asset Age Distribution", "asset_age")
+    with g4[1]:
+        _bar(a["warranty"], "warranty", "count", "Warranty Status", "asset_warranty")
+    _bar(a["by_apartment"], "apartment_code", "count", "Assets by Apartment", "asset_by_apt")
+    _table(a["service_due"], "Assets Due for Service (next 30 days / overdue)", "asset_service_due",
+           "_No assets due within 30 days (limited by available purchase dates)._")
+    st.divider()
+
+    # ---- 4. Vendor analytics --------------------------------------------- #
+    st.subheader("4 · Vendor Analytics")
+    v = A["vendors"]
+    g5 = st.columns(2)
+    with g5[0]:
+        _bar(v["spend"].head(15), "vendor_name", "total_spend", "Spend by Vendor", "vendor_spend")
+    with g5[1]:
+        _table(v["ratings"], "Vendor Ratings (master)", "vendor_ratings", "_No vendor ratings._")
+    _bar(v["tickets"].head(15), "vendor_name", "cost_lines", "Maintenance Cost Lines by Vendor", "vendor_cost_lines")
+    st.divider()
+
+    # ---- 5. Purchase & inventory analytics ------------------------------- #
+    st.subheader("5 · Purchase & Inventory Analytics")
+    p = A["purchases"]
+    g6 = st.columns(2)
+    with g6[0]:
+        _bar(p["by_item"], "item", "total_cost", "Purchase Spend by Item", "purchase_by_item")
+    with g6[1]:
+        _bar(p["by_vendor"].head(15), "vendor", "purchase_cost", "Purchase Spend by Vendor", "purchase_by_vendor")
+    _bar(p["over_time"], "month", "purchase_cost", "Purchase Spend per Month", "purchase_over_time")
+    _table(p["stock"], "Stock vs Minimum Level", "stock_levels", "_No stock data._")
+    _table(p["low_stock"], "Low-Stock Items (available < minimum)", "low_stock", "_No items below minimum stock._")
+    st.divider()
+
+    # ---- 6. Maintenance cost analytics ----------------------------------- #
+    st.subheader("6 · Maintenance Cost Analytics")
+    c = A["costs"]
+    st.metric("Total Maintenance Cost (filtered tickets)", _money(c["total"]))
+    g7 = st.columns(2)
+    with g7[0]:
+        _bar(c["by_type"], "t", "total_cost", "Cost by Maintenance Type", "cost_by_type")
+    with g7[1]:
+        _bar(c["parts_vs_labour"], "component", "cost", "Parts vs Labour Cost", "cost_parts_labour")
+    _bar(c["by_apartment"], "a", "total_cost", "Cost by Apartment", "cost_by_apt")
+    _bar(c["over_time"], "month", "cost", "Maintenance Cost per Month", "cost_over_time")
+    _table(c["per_ticket"], "Top Tickets by Cost", "cost_per_ticket", "_No ticket costs._")
+    st.caption(
+        "Note: values reflect the source export as-is; the Data Quality panel above "
+        "surfaces the known source gaps (missing dates/warranty, unknown types, "
+        "invalid vendors, outlier costs)."
+    )
+    st.divider()
+
+    # ---- 7. Predictive Maintenance (rule-based, NOT ML) ------------------ #
+    st.subheader("7 · Predictive Maintenance")
+    st.info(
+        "ℹ️ **Rule-based** predictive engine — asset risk is scored by a "
+        "transparent weighted-rule model (see `maintenance_risk.py`), **not** a "
+        "machine-learning model. Per-asset **confidence** reflects how much source "
+        "data was available; sparse assets score with lower confidence."
+    )
+    try:
+        _scores, rs = _maintenance_risk()
+    except Exception as exc:  # noqa: BLE001
+        st.error(f"Failed to build risk scores: {exc}")
+        rs = None
+    if rs:
+        rk = rs["kpis"]
+        _H = "Rule-based risk engine — not machine learning."
+        rr1 = st.columns(3)
+        rr1[0].metric("Critical Assets", f"{rk['critical_assets']:,}", help=_H)
+        rr1[1].metric("High-Risk Assets", f"{rk['high_risk_assets']:,}", help=_H)
+        rr1[2].metric("Due for Service", f"{rk['due_for_service']:,}",
+                      help="Assets past their maintenance-cycle service date (rule-based).")
+        rr2 = st.columns(3)
+        rr2[0].metric("Replacement Candidates", f"{rk['replacement_candidates']:,}",
+                      help="Recommended action = Replace (rule-based; Critical + end-of-life).")
+        rr2[1].metric("Average Risk Score", rk["avg_risk_score"], help=_H)
+        rr2[2].metric("Average Confidence", f"{rk['avg_confidence']}%",
+                      help="Mean per-asset confidence; low = sparse source data, not low risk.")
+
+        rcw = st.columns(2)
+        with rcw[0]:
+            _bar(rs["distribution"], "risk_level", "count", "Risk Distribution", "risk_distribution")
+        with rcw[1]:
+            _bar(rs["confidence_buckets"], "confidence", "count", "Confidence Distribution", "risk_confidence")
+        rcw2 = st.columns(2)
+        with rcw2[0]:
+            _bar(rs["by_type"], "asset_type", "avg_risk_score", "Avg Risk Score by Asset Type", "risk_by_type")
+        with rcw2[1]:
+            _bar(rs["by_apartment"], "apartment_code", "avg_risk_score", "Avg Risk Score by Apartment", "risk_by_apartment")
+
+        _table(rs["high_risk"], "High-Risk Assets (High + Critical)", "risk_high_assets",
+               "_No high-risk assets._")
+        _table(rs["due_for_service"], "Assets Due for Service", "risk_due_service",
+               "_No assets currently due for service._")
+        _table(rs["replacement"], "Replacement Candidates", "risk_replacement",
+               "_No replacement candidates (no asset reached Critical + end-of-life)._")
+        st.caption(
+            "Rule-based predictive engine (Phase 3B) — deterministic weighted rules, "
+            "not machine learning. Scoring formula and factor weights: `maintenance_risk.py`."
+        )
+
+
+# --------------------------------------------------------------------------- #
 # Shell
 # --------------------------------------------------------------------------- #
 PAGES = {
@@ -1023,6 +1298,7 @@ PAGES = {
     "Revenue Leakage": page_revenue_leakage,
     "Occupancy Analytics": page_occupancy,
     "Room Search": page_room_search,
+    "Maintenance Intelligence": page_maintenance_intelligence,
 }
 
 

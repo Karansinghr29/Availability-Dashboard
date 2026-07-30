@@ -623,6 +623,180 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
         required=False,
         description="Property master (Vishful Q86): property_id -> property_name/address.",
     ),
+    # ================================================================= #
+    # Maintenance / Asset / Ticket / Vendor domain (new Supabase export).
+    # Signature-based like everything else — NO filenames hardcoded. These
+    # feed the maintenance data model (src/maintenance.py); the existing
+    # availability pages never touch them, so backward compatibility holds.
+    # ================================================================= #
+    # Physical asset master (purchase/warranty/condition + type + supplier).
+    "asset_master": TableSpec(
+        name="asset_master",
+        signature=frozenset(
+            {
+                "asset_type_id", "asset_code", "serial_number", "purchase_date",
+                "purchase_price", "supplier_id", "warranty_expiry", "condition", "status",
+            }
+        ),
+        primary_key="id",
+        date_columns=("purchase_date", "warranty_expiry", "invoice_date", "created_at"),
+        numeric_columns=("purchase_price", "warranty_months", "capacity_value"),
+        min_match=0.8,
+        required=False,
+        description="Asset master (physical assets: purchase/warranty/condition/type/supplier).",
+    ),
+    # Asset type catalog (expected life, maintenance cycle, depreciation).
+    "asset_types": TableSpec(
+        name="asset_types",
+        signature=frozenset(
+            {
+                "category_id", "name", "expected_life_months", "depreciation_method",
+                "maintenance_cycle_months", "replacement_cost_estimate",
+            }
+        ),
+        primary_key="id",
+        date_columns=("created_at",),
+        numeric_columns=(
+            "expected_life_months", "depreciation_years",
+            "maintenance_cycle_months", "replacement_cost_estimate",
+        ),
+        min_match=0.8,
+        required=False,
+        description="Asset type catalog (expected life + maintenance cycle + depreciation).",
+    ),
+    # Asset -> room placement log.
+    "asset_allocations": TableSpec(
+        name="asset_allocations",
+        signature=frozenset(
+            {"asset_id", "allocation_type", "allocated_date", "allocated_by", "apartment_id", "bed_id"}
+        ),
+        primary_key="id",
+        date_columns=("allocated_date", "created_at"),
+        min_match=0.8,
+        required=False,
+        description="Asset allocation log (asset -> apartment/bed placement).",
+    ),
+    # Maintenance item / spare-part master.
+    "maintenance_items": TableSpec(
+        name="maintenance_items",
+        signature=frozenset(
+            {"item_name", "item_code", "unit", "minimum_stock_level", "issue_type_id", "default_cost"}
+        ),
+        primary_key="id",
+        date_columns=("created_at", "updated_at"),
+        numeric_columns=("default_cost", "default_unit_cost", "minimum_stock_level"),
+        min_match=0.8,
+        required=False,
+        description="Maintenance item / spare-part master.",
+    ),
+    # Maintenance item purchases / stock receipts.
+    "maintenance_item_purchases": TableSpec(
+        name="maintenance_item_purchases",
+        signature=frozenset(
+            {
+                "maintenance_item_id", "quantity_received", "quantity_available",
+                "purchase_cost_per_unit", "purchased_on", "invoice_number",
+            }
+        ),
+        primary_key="id",
+        date_columns=("purchased_on", "created_at"),
+        numeric_columns=("quantity_received", "quantity_available", "purchase_cost_per_unit"),
+        min_match=0.8,
+        required=False,
+        description="Maintenance item purchases (stock receipts per item).",
+    ),
+    # Vendor / supplier master.
+    "vendors": TableSpec(
+        name="vendors",
+        signature=frozenset(
+            {"vendor_name", "contact_person", "vendor_rating", "gst_number", "pan_number", "bank_ifsc", "id_proof_url"}
+        ),
+        primary_key="id",
+        date_columns=("created_at",),
+        numeric_columns=("vendor_rating",),
+        min_match=0.8,
+        required=False,
+        description="Vendor / service-provider master (rating + KYC + bank).",
+    ),
+    # Issue type / complaint category (priority + SLA).
+    "issue_types": TableSpec(
+        name="issue_types",
+        signature=frozenset({"name", "icon", "priority", "sla_hours"}),
+        primary_key="id",
+        date_columns=("created_at",),
+        numeric_columns=("sla_hours",),
+        min_match=0.8,
+        required=False,
+        description="Issue type catalog (priority + SLA hours).",
+    ),
+    # Ticket status-transition log (lifecycle audit trail).
+    "ticket_logs": TableSpec(
+        name="ticket_logs",
+        signature=frozenset({"ticket_id", "action", "old_status", "new_status", "created_by"}),
+        primary_key="id",
+        date_columns=("created_at",),
+        min_match=0.8,
+        required=False,
+        description="Ticket status-transition log (reconstructs ticket lifecycle).",
+    ),
+    # Ticket resolutions (resolved_at + cost breakdown + closure).
+    "ticket_resolutions": TableSpec(
+        name="ticket_resolutions",
+        signature=frozenset(
+            {
+                "ticket_id", "resolution_type", "service_type", "resolved_at",
+                "total_parts_cost", "total_labour_cost", "total_cost", "closure_summary",
+            }
+        ),
+        primary_key="id",
+        date_columns=("resolved_at", "payment_date", "created_at", "updated_at"),
+        numeric_columns=(
+            "total_parts_cost", "total_labour_cost", "total_cost",
+            "actual_total_cost", "diagnostic_estimated_cost",
+        ),
+        min_match=0.8,
+        required=False,
+        description="Ticket resolutions (resolved_at + parts/labour/total cost).",
+    ),
+    # Ticket cost estimates / approval lines (+ repeat-job recurrence flags).
+    "ticket_cost_estimates": TableSpec(
+        name="ticket_cost_estimates",
+        signature=frozenset(
+            {"ticket_id", "cost_type", "approved_by", "decline_reason", "repeat_job_alert", "repeat_job_previous_ticket_id"}
+        ),
+        primary_key="id",
+        date_columns=("approved_at", "created_at", "updated_at"),
+        numeric_columns=("quantity", "unit_price", "total", "price"),
+        min_match=0.8,
+        required=False,
+        description="Ticket cost estimates / approvals (with repeat-job flags).",
+    ),
+    # Per-ticket purchases (estimate -> actual, vendor).
+    "ticket_purchases": TableSpec(
+        name="ticket_purchases",
+        signature=frozenset(
+            {"ticket_id", "cost_estimate_id", "estimated_cost", "actual_cost", "vendor_id", "purchased_by"}
+        ),
+        primary_key="id",
+        date_columns=("purchase_date", "created_at", "updated_at"),
+        numeric_columns=("estimated_cost", "actual_cost", "quantity"),
+        min_match=0.8,
+        required=False,
+        description="Per-ticket purchases (estimate vs actual cost, vendor).",
+    ),
+    # Maintenance cost lines (per-ticket cost distribution to beds/tenants).
+    "maintenance_cost_lines": TableSpec(
+        name="maintenance_cost_lines",
+        signature=frozenset(
+            {"ticket_id", "purchase_id", "maintenance_type", "parts_details", "diagnosis_summary", "distributed_beds", "cost_scope"}
+        ),
+        primary_key="id",
+        date_columns=("created_at",),
+        numeric_columns=("quantity", "unit_price", "actual_cost", "distributed_amount"),
+        min_match=0.8,
+        required=False,
+        description="Maintenance cost lines (per-ticket cost + distribution to beds).",
+    ),
     # ---- recognised but NOT part of the Phase-1 business scope ----
     "assets": TableSpec(
         name="assets",
@@ -681,9 +855,25 @@ def _default_data_dir() -> Path:
     parent = project_root.parent
     packaged = project_root / "data"
 
-    # Prefer the live export folder when the Q73–Q76 replacement set is present.
+    # Prefer the live export folder — detected by COLUMN SIGNATURE, not by a
+    # hardcoded filename. The folder is the current normalized export if any CSV
+    # header matches the allotments (Q81) signature. Survives filename/export-
+    # number changes and legacy-file removal (the old query(73) marker is gone
+    # once legacy exports are cleaned out).
     def _has_current_exports(path: Path) -> bool:
-        return path.is_dir() and (path / "Supabase Snippet Untitled query (73).csv").exists()
+        if not path.is_dir():
+            return False
+        spec = TABLE_REGISTRY.get("allotments")
+        if spec is None:
+            return False
+        for fp in path.glob("*.csv"):
+            try:
+                cols = set(pd.read_csv(fp, nrows=0).columns)
+            except Exception:  # noqa: BLE001
+                continue
+            if len(spec.signature & cols) / len(spec.signature) >= spec.min_match:
+                return True
+        return False
 
     if _has_current_exports(parent):
         candidates.append(parent)
@@ -1023,6 +1213,64 @@ class DataLoader:
     def property_master(self) -> pd.DataFrame:
         """Raw property master (Vishful Q86)."""
         return self.load("property_master")
+
+    # -- Maintenance / asset / ticket / vendor raw accessors -------------- #
+    # Each returns an empty frame (not an error) when its export is absent,
+    # so the maintenance model degrades gracefully and existing pages are
+    # never affected.
+    def _load_optional(self, table: str) -> pd.DataFrame:
+        try:
+            return self.load(table)
+        except FileNotFoundError:
+            return pd.DataFrame()
+
+    def asset_master(self) -> pd.DataFrame:
+        """Physical asset master (purchase/warranty/condition/type/supplier)."""
+        return self._load_optional("asset_master")
+
+    def asset_types(self) -> pd.DataFrame:
+        """Asset type catalog (expected life, maintenance cycle)."""
+        return self._load_optional("asset_types")
+
+    def asset_allocations(self) -> pd.DataFrame:
+        """Asset allocation log (asset -> apartment/bed)."""
+        return self._load_optional("asset_allocations")
+
+    def maintenance_items(self) -> pd.DataFrame:
+        """Maintenance item / spare-part master."""
+        return self._load_optional("maintenance_items")
+
+    def maintenance_item_purchases(self) -> pd.DataFrame:
+        """Maintenance item purchases (stock receipts)."""
+        return self._load_optional("maintenance_item_purchases")
+
+    def vendors(self) -> pd.DataFrame:
+        """Vendor / service-provider master."""
+        return self._load_optional("vendors")
+
+    def issue_types(self) -> pd.DataFrame:
+        """Issue type catalog (priority + SLA)."""
+        return self._load_optional("issue_types")
+
+    def ticket_logs(self) -> pd.DataFrame:
+        """Ticket status-transition log."""
+        return self._load_optional("ticket_logs")
+
+    def ticket_resolutions(self) -> pd.DataFrame:
+        """Ticket resolutions (resolved_at + cost)."""
+        return self._load_optional("ticket_resolutions")
+
+    def ticket_cost_estimates(self) -> pd.DataFrame:
+        """Ticket cost estimates / approvals."""
+        return self._load_optional("ticket_cost_estimates")
+
+    def ticket_purchases(self) -> pd.DataFrame:
+        """Per-ticket purchases."""
+        return self._load_optional("ticket_purchases")
+
+    def maintenance_cost_lines(self) -> pd.DataFrame:
+        """Maintenance cost lines (per-ticket distribution)."""
+        return self._load_optional("maintenance_cost_lines")
 
     def _db_export_present(self) -> bool:
         """True when the normalized DB export (Q81-Q86) is the live source.
