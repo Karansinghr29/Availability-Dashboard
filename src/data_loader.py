@@ -797,6 +797,21 @@ TABLE_REGISTRY: Dict[str, TableSpec] = {
         required=False,
         description="Maintenance cost lines (per-ticket cost + distribution to beds).",
     ),
+    # Maintenance ticket header (asset-level history). Carries asset_id so tickets
+    # can be attributed to a specific asset (no room approximation). Source of the
+    # leakage-safe predictive-maintenance dataset.
+    "maintenance_tickets": TableSpec(
+        name="maintenance_tickets",
+        signature=frozenset(
+            {"asset_id", "ticket_number", "closure_cost", "issue_type_id", "priority", "status", "resolved_at", "sla_deadline"}
+        ),
+        primary_key="id",
+        date_columns=("created_at", "resolved_at", "closed_at", "sla_deadline", "updated_at"),
+        numeric_columns=("closure_cost",),
+        min_match=0.8,
+        required=False,
+        description="Maintenance ticket header with asset_id (asset-level ticket history).",
+    ),
     # ---- recognised but NOT part of the Phase-1 business scope ----
     "assets": TableSpec(
         name="assets",
@@ -1271,6 +1286,10 @@ class DataLoader:
     def maintenance_cost_lines(self) -> pd.DataFrame:
         """Maintenance cost lines (per-ticket distribution)."""
         return self._load_optional("maintenance_cost_lines")
+
+    def maintenance_tickets(self) -> pd.DataFrame:
+        """Maintenance ticket header with asset_id (asset-level ticket history)."""
+        return self._load_optional("maintenance_tickets")
 
     def _db_export_present(self) -> bool:
         """True when the normalized DB export (Q81-Q86) is the live source.
