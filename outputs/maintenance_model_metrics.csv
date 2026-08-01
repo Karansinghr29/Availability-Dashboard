@@ -1,0 +1,5 @@
+model,n_train,n_test,test_positives,accuracy,precision,recall,f1,roc_auc,pr_auc,tn,fp,fn,tp
+LogisticRegression,128,56,15,0.571,0.154,0.133,0.143,0.255,0.199,30,11,13,2
+RandomForest,128,56,15,0.571,0.263,0.333,0.294,0.45,0.275,27,14,10,5
+XGBoost,128,56,15,0.482,0.231,0.4,0.293,0.408,0.243,21,20,9,6
+RuleBased(existing),128,56,15,0.696,0.0,0.0,0.0,0.594,0.38,39,2,15,0

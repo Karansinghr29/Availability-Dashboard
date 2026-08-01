@@ -1,0 +1,28 @@
+metric,value
+horizon_days,30
+tickets_total,1503
+tickets_with_asset_id,259
+observations_excluded_right_censored,75
+total_observations,184
+positive_labels,34
+negative_labels,150
+positive_rate_pct,18.48
+class_balance_neg_per_pos,4.41
+assets_represented,145
+date_range_start,2026-03-31 14:41:05.467561
+date_range_end,2026-06-28 15:43:24.784149
+missing__asset_age_days,171 (92.9%)
+missing__purchase_age_months,171 (92.9%)
+missing__expected_life_months,19 (10.3%)
+missing__maintenance_cycle_months,19 (10.3%)
+missing__days_since_last_ticket,145 (78.8%)
+missing__previous_ticket_count,0 (0.0%)
+missing__previous_30_day_ticket_count,0 (0.0%)
+missing__previous_90_day_ticket_count,0 (0.0%)
+missing__previous_total_maintenance_cost,0 (0.0%)
+missing__previous_average_resolution_hours,148 (80.4%)
+missing__previous_issue_type,145 (78.8%)
+missing__previous_priority,145 (78.8%)
+missing__service_overdue,171 (92.9%)
+missing__warranty_active,184 (100.0%)
+missing__repeat_failure_count,0 (0.0%)
