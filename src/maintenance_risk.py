@@ -36,7 +36,6 @@ import logging
 from pathlib import Path
 from typing import Callable, List, Optional, Tuple
 
-import numpy as np
 import pandas as pd
 
 import maintenance_features as MF

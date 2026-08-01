@@ -15,7 +15,7 @@ the new dashboard page.
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Optional
 
 import numpy as np
 import pandas as pd
@@ -30,7 +30,9 @@ def _num(s) -> pd.Series:
     return pd.to_numeric(s, errors="coerce")
 
 
-def _counts(series: pd.Series, name_col: str, count_col: str = "count") -> pd.DataFrame:
+def _counts(series: Optional[pd.Series], name_col: str, count_col: str = "count") -> pd.DataFrame:
+    if series is None:
+        return pd.DataFrame(columns=[name_col, count_col])
     s = series.map(lambda v: str(v).strip() if v is not None and str(v).strip() and str(v).lower() != "nan" else "Unknown")
     out = s.value_counts(dropna=False).rename_axis(name_col).reset_index(name=count_col)
     return out
