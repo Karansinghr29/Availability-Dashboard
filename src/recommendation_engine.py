@@ -150,8 +150,14 @@ def recommend_rooms(
             bed_map = loader.bed_map()
         except Exception:  # noqa: BLE001
             bed_map = None
+        apartments = None
+        try:
+            apartments = loader.apartment_master()
+        except Exception:  # noqa: BLE001
+            apartments = None
         room_inventory = build_room_inventory(
-            loader.bookings(), tenants=tenants, beds_master=beds_master, bed_map=bed_map
+            loader.bookings(), tenants=tenants, beds_master=beds_master, bed_map=bed_map,
+            apartments=apartments,
         )
 
     # Shared lifecycle views — Active vacant only is recommendable.

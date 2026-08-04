@@ -79,9 +79,19 @@ def get_live_analytics():
     except Exception:  # noqa: BLE001
         bed_map = None
 
+    # apartments.start_date drives the activation-anchored occupancy rule (new
+    # apartments measured only from start_date onward) — shared by every
+    # availability page so occupancy is consistent across all dashboards.
+    apartments = None
+    try:
+        apartments = loader.apartment_master()
+    except Exception:  # noqa: BLE001
+        apartments = None
+
     inventory = prepare_inventory(
         build_room_inventory(
-            bookings, tenants=tenants, beds_master=beds_master, bed_map=bed_map
+            bookings, tenants=tenants, beds_master=beds_master, bed_map=bed_map,
+            apartments=apartments,
         )
     )
     occupancy_history = build_occupancy_history(bookings, transfers=transfers)
@@ -1013,31 +1023,6 @@ def page_room_search():
         )
 
 
-# --------------------------------------------------------------------------- #
-# Page 7 — Maintenance Intelligence (Phase 2: descriptive analytics only)
-# Additive: reuses the integrated maintenance datasets. Does NOT touch any of
-# the six availability pages or their data.
-# --------------------------------------------------------------------------- #
-@st.cache_resource(show_spinner="Building maintenance model…")
-def _maintenance_base():
-    """Build the (expensive) maintenance model + filter options ONCE (cached)."""
-    from data_loader import DataLoader
-    import maintenance_analytics as MA
-
-    loader = DataLoader()
-    return loader, MA.build_base(loader)
-
-
-@st.cache_resource(show_spinner="Scoring assets…")
-def _maintenance_risk():
-    """Rule-based risk scores + dashboard aggregates, built ONCE (cached)."""
-    from data_loader import DataLoader
-    import maintenance_risk as MR
-
-    scores = MR.build_risk_scores(DataLoader())
-    return scores, MR.risk_summary(scores)
-
-
 def _dl(df: pd.DataFrame, label: str, key: str):
     """CSV export button for one analytics table."""
     if df is None or df.empty:
@@ -1072,220 +1057,124 @@ def _table(df: pd.DataFrame, caption: str, key: str, empty_msg: str = "_No data.
     _dl(df, caption, key)
 
 
-def page_maintenance_intelligence():
-    import maintenance_analytics as MA
+def _xtable(df: pd.DataFrame, caption: str, key: str, empty_msg: str = "_No data._", expanded: bool = False):
+    """Detail table inside a collapsible expander (charts/KPIs stay in the default view)."""
+    n = 0 if df is None else len(df)
+    with st.expander(f"📋 {caption}" + (f"  ({n})" if n else ""), expanded=expanded):
+        if df is None or df.empty:
+            st.caption(empty_msg)
+        else:
+            st.dataframe(df, use_container_width=True, hide_index=True)
+            _dl(df, caption, key)
 
-    st.header("🛠 Maintenance Intelligence")
-    st.caption(
-        "Descriptive analytics from the integrated maintenance export — tickets, "
-        "assets, vendors, purchases and costs. Read-only; independent of the "
-        "availability pages."
-    )
-    try:
-        loader, base = _maintenance_base()
-    except Exception as exc:  # noqa: BLE001
-        st.error(f"Failed to build maintenance analytics: {exc}")
-        return
-    opts = base["options"]
 
-    # ---- Filters ---------------------------------------------------------- #
-    with st.expander("🔎 Filters", expanded=True):
-        f1 = st.columns(3)
-        prop = f1[0].selectbox("Property", opts["property"])
-        apt = f1[1].selectbox("Apartment", opts["apartment"])
-        atype = f1[2].selectbox("Asset Type", opts["asset_type"])
-        f2 = st.columns(3)
-        itype = f2[0].selectbox("Issue Type", opts["issue_type"])
-        vend = f2[1].selectbox("Vendor", opts["vendor"])
-        dmin, dmax = opts.get("date_min"), opts.get("date_max")
-        date_range = None
-        if dmin is not None and dmax is not None:
-            date_range = f2[2].date_input(
-                "Date Range",
-                value=(dmin.date(), dmax.date()),
-                min_value=dmin.date(),
-                max_value=dmax.date(),
-            )
-    filters = {"property": prop, "apartment": apt, "asset_type": atype,
-               "issue_type": itype, "vendor": vend}
-    if isinstance(date_range, (tuple, list)) and len(date_range) == 2:
-        filters["date_from"] = str(date_range[0])
-        filters["date_to"] = str(date_range[1])
+def _insight_card(col, emoji: str, title: str, value, color: str):
+    """Colored insight card with a left accent bar."""
+    col.markdown(
+        f"<div style='border-left:6px solid {color};background:rgba(127,127,127,0.08);"
+        f"padding:12px 16px;border-radius:8px;height:100%'>"
+        f"<div style='font-size:13px;font-weight:600;opacity:0.85'>{emoji} {title}</div>"
+        f"<div style='font-size:26px;font-weight:800;margin-top:4px;line-height:1.15'>{value}</div>"
+        f"</div>",
+        unsafe_allow_html=True)
 
-    A = MA.compute_all(loader, filters=filters, base=base)
-    k, dq = A["kpis"], A["dq"]
 
-    # ---- 1. KPI cards ----------------------------------------------------- #
-    st.subheader("1 · Key Metrics")
-    r1 = st.columns(4)
-    r1[0].metric("Total Tickets", f"{k['total_tickets']:,}")
-    r1[1].metric("Open Tickets", f"{k['open_tickets']:,}")
-    r1[2].metric("Resolved", f"{k['resolved_tickets']:,}")
-    r1[3].metric("Resolution Rate", f"{k['resolution_rate_pct']}%")
-    r2 = st.columns(4)
-    r2[0].metric("Avg Resolution (hrs)", k["avg_resolution_hours"] if k["avg_resolution_hours"] is not None else "—")
-    r2[1].metric("Total Maintenance Cost", _money(k["total_maintenance_cost"]))
-    r2[2].metric("Total Assets", f"{k['total_assets']:,}")
-    r2[3].metric("Assets In Service", f"{k['assets_in_service']:,}")
-    r3 = st.columns(4)
-    r3[0].metric("Active Vendors", f"{k['active_vendors']:,}")
-    r3[1].metric("Purchase Value", _money(k["total_purchase_value"]))
-    r3[2].metric("Low-Stock Items", f"{k['low_stock_items']:,}")
-    st.divider()
+def _gap(px: int = 12):
+    """Vertical spacer between sections."""
+    st.markdown(f"<div style='height:{px}px'></div>", unsafe_allow_html=True)
 
-    # ---- Data-quality panel (surfaced, not hidden) ----------------------- #
-    st.subheader("⚠ Data Quality")
-    st.caption("Source data gaps are shown here — not silently dropped. These "
-               "cap how far predictive analytics can go (Phase 3).")
-    d1 = st.columns(4)
-    d1[0].metric("Assets w/o Purchase Date", f"{dq['assets_without_purchase_date']:,}")
-    d1[1].metric("Assets w/o Warranty", f"{dq['assets_without_warranty']:,}")
-    d1[2].metric("Tickets w/o Apartment/Asset", f"{dq['tickets_without_apartment']:,}")
-    d1[3].metric("Tickets Unknown Type", f"{dq['tickets_unknown_type']:,}")
-    d2 = st.columns(4)
-    d2[0].metric("Invalid Vendor Names", f"{dq['invalid_vendor_count']:,}")
-    d2[1].metric("Outlier Purchase Costs", f"{dq['outlier_purchase_count']:,}")
-    if dq["invalid_vendor_names"]:
-        d2[2].caption("Invalid vendors: " + ", ".join(dq["invalid_vendor_names"][:8]))
-    with st.expander("Inspect data-quality issues"):
-        _table(dq["tables"]["assets_without_purchase_date"], "Assets missing purchase date", "dq_no_purchase_date")
-        _table(dq["tables"]["assets_without_warranty"], "Assets missing warranty", "dq_no_warranty")
-        _table(dq["tables"]["tickets_unknown_type"], "Tickets with unknown maintenance type", "dq_unknown_type")
-        _table(dq["tables"]["outlier_purchases"], "Outlier purchase costs (IQR fence)", "dq_outlier_purchases")
-    st.divider()
 
-    # ---- 2. Ticket analytics --------------------------------------------- #
-    st.subheader("2 · Ticket Analytics")
-    t = A["tickets"]
-    g = st.columns(2)
-    with g[0]:
-        _bar(t["by_status"], "status", "count", "Tickets by Current Status", "ticket_status")
-    with g[1]:
-        _bar(t["by_type"], "maintenance_type", "count", "Tickets by Maintenance Type", "ticket_type")
-    _bar(t["over_time"], "month", "tickets", "Tickets Opened per Month", "ticket_over_time")
-    g2 = st.columns(2)
-    with g2[0]:
-        _bar(t["top_apartments"], "apartment_code", "count", "Top Apartments by Ticket Count", "ticket_top_apts")
-    with g2[1]:
-        res = t["resolution"]
-        st.caption("Resolution Time")
-        rc = st.columns(3)
-        rc[0].metric("Avg (hrs)", res.get("avg_hours") if res.get("avg_hours") is not None else "—")
-        rc[1].metric("Median (hrs)", res.get("median_hours") if res.get("median_hours") is not None else "—")
-        rc[2].metric("Max (hrs)", res.get("max_hours") if res.get("max_hours") is not None else "—")
-        _table(t["resolution_by_type"], "Avg Resolution by Type", "ticket_res_by_type", "_No resolved tickets._")
-    st.divider()
+_RISK_ORDER = {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}
 
-    # ---- 3. Asset analytics ---------------------------------------------- #
-    st.subheader("3 · Asset Analytics")
-    a = A["assets"]
-    g3 = st.columns(2)
-    with g3[0]:
-        _bar(a["by_type"], "asset_type", "count", "Assets by Type", "asset_type")
-    with g3[1]:
-        _bar(a["by_condition"], "condition", "count", "Assets by Condition", "asset_condition")
-    g4 = st.columns(2)
-    with g4[0]:
-        _bar(a["age_buckets"], "age", "count", "Asset Age Distribution", "asset_age")
-    with g4[1]:
-        _bar(a["warranty"], "warranty", "count", "Warranty Status", "asset_warranty")
-    _bar(a["by_apartment"], "apartment_code", "count", "Assets by Apartment", "asset_by_apt")
-    _table(a["service_due"], "Assets Due for Service (next 30 days / overdue)", "asset_service_due",
-           "_No assets due within 30 days (limited by available purchase dates)._")
-    st.divider()
 
-    # ---- 4. Vendor analytics --------------------------------------------- #
-    st.subheader("4 · Vendor Analytics")
-    v = A["vendors"]
-    g5 = st.columns(2)
-    with g5[0]:
-        _bar(v["spend"].head(15), "vendor_name", "total_spend", "Spend by Vendor", "vendor_spend")
-    with g5[1]:
-        _table(v["ratings"], "Vendor Ratings (master)", "vendor_ratings", "_No vendor ratings._")
-    _bar(v["tickets"].head(15), "vendor_name", "cost_lines", "Maintenance Cost Lines by Vendor", "vendor_cost_lines")
-    st.divider()
+def _room_asset_index(A):
+    """Presentation-only per-apartment asset rollup from the engine's existing per-asset
+    scores. No new prediction — only reads columns already produced by asset_engine."""
+    idx = {}
+    if A is None or A.empty:
+        return idx
+    for apt, g in A.groupby("apartment_code"):
+        if not str(apt).strip():
+            continue
+        gg = g.copy()
+        gg["_r"] = gg["risk_level"].map(_RISK_ORDER).fillna(9)
+        top_risk = gg.sort_values(["_r", "health_score", "failure_prob_30d"],
+                                  ascending=[True, True, False]).iloc[0]
+        predict = gg.sort_values(["failure_prob_30d", "_r"],
+                                 ascending=[False, True]).iloc[0]
+        idx[apt] = {"assets": gg, "top_risk": top_risk, "predict": predict}
+    return idx
 
-    # ---- 5. Purchase & inventory analytics ------------------------------- #
-    st.subheader("5 · Purchase & Inventory Analytics")
-    p = A["purchases"]
-    g6 = st.columns(2)
-    with g6[0]:
-        _bar(p["by_item"], "item", "total_cost", "Purchase Spend by Item", "purchase_by_item")
-    with g6[1]:
-        _bar(p["by_vendor"].head(15), "vendor", "purchase_cost", "Purchase Spend by Vendor", "purchase_by_vendor")
-    _bar(p["over_time"], "month", "purchase_cost", "Purchase Spend per Month", "purchase_over_time")
-    _table(p["stock"], "Stock vs Minimum Level", "stock_levels", "_No stock data._")
-    _table(p["low_stock"], "Low-Stock Items (available < minimum)", "low_stock", "_No items below minimum stock._")
-    st.divider()
 
-    # ---- 6. Maintenance cost analytics ----------------------------------- #
-    st.subheader("6 · Maintenance Cost Analytics")
-    c = A["costs"]
-    st.metric("Total Maintenance Cost (filtered tickets)", _money(c["total"]))
-    g7 = st.columns(2)
-    with g7[0]:
-        _bar(c["by_type"], "t", "total_cost", "Cost by Maintenance Type", "cost_by_type")
-    with g7[1]:
-        _bar(c["parts_vs_labour"], "component", "cost", "Parts vs Labour Cost", "cost_parts_labour")
-    _bar(c["by_apartment"], "a", "total_cost", "Cost by Apartment", "cost_by_apt")
-    _bar(c["over_time"], "month", "cost", "Maintenance Cost per Month", "cost_over_time")
-    _table(c["per_ticket"], "Top Tickets by Cost", "cost_per_ticket", "_No ticket costs._")
-    st.caption(
-        "Note: values reflect the source export as-is; the Data Quality panel above "
-        "surfaces the known source gaps (missing dates/warranty, unknown types, "
-        "invalid vendors, outlier costs)."
-    )
-    st.divider()
+def _room_label(apt, bed=None):
+    """'Apartment A23' or 'Apartment A23 / Bed B2' from existing allocation fields."""
+    apt = str(apt).strip() or "—"
+    bed = str(bed).strip() if bed is not None else ""
+    return f"Apartment {apt}" + (f" / Bed {bed}" if bed and bed.lower() != "nan" else "")
 
-    # ---- 7. Predictive Maintenance (rule-based, NOT ML) ------------------ #
-    st.subheader("7 · Predictive Maintenance")
-    st.info(
-        "ℹ️ **Rule-based** predictive engine — asset risk is scored by a "
-        "transparent weighted-rule model (see `maintenance_risk.py`), **not** a "
-        "machine-learning model. Per-asset **confidence** reflects how much source "
-        "data was available; sparse assets score with lower confidence."
-    )
-    try:
-        _scores, rs = _maintenance_risk()
-    except Exception as exc:  # noqa: BLE001
-        st.error(f"Failed to build risk scores: {exc}")
-        rs = None
-    if rs:
-        rk = rs["kpis"]
-        _H = "Rule-based risk engine — not machine learning."
-        rr1 = st.columns(3)
-        rr1[0].metric("Critical Assets", f"{rk['critical_assets']:,}", help=_H)
-        rr1[1].metric("High-Risk Assets", f"{rk['high_risk_assets']:,}", help=_H)
-        rr1[2].metric("Due for Service", f"{rk['due_for_service']:,}",
-                      help="Assets past their maintenance-cycle service date (rule-based).")
-        rr2 = st.columns(3)
-        rr2[0].metric("Replacement Candidates", f"{rk['replacement_candidates']:,}",
-                      help="Recommended action = Replace (rule-based; Critical + end-of-life).")
-        rr2[1].metric("Average Risk Score", rk["avg_risk_score"], help=_H)
-        rr2[2].metric("Average Confidence", f"{rk['avg_confidence']}%",
-                      help="Mean per-asset confidence; low = sparse source data, not low risk.")
 
-        rcw = st.columns(2)
-        with rcw[0]:
-            _bar(rs["distribution"], "risk_level", "count", "Risk Distribution", "risk_distribution")
-        with rcw[1]:
-            _bar(rs["confidence_buckets"], "confidence", "count", "Confidence Distribution", "risk_confidence")
-        rcw2 = st.columns(2)
-        with rcw2[0]:
-            _bar(rs["by_type"], "asset_type", "avg_risk_score", "Avg Risk Score by Asset Type", "risk_by_type")
-        with rcw2[1]:
-            _bar(rs["by_apartment"], "apartment_code", "avg_risk_score", "Avg Risk Score by Apartment", "risk_by_apartment")
+def _why_bullets(r):
+    """WHY the asset is predicted to fail next — built only from existing engine columns."""
+    bits = []
+    tc = int(r.get("ticket_count", 0) or 0)
+    rec = int(r.get("recent_30d", 0) or 0)
+    at = str(r.get("asset_type", "asset")) or "asset"
+    if tc:
+        bits.append(f"{tc} historical {at} ticket(s)" + (f", {rec} in last 30d" if rec else ""))
+    rp = int(r.get("repeat_count", 0) or 0)
+    if rp:
+        bits.append(f"{rp} repeat failure(s)")
+    am, el, src, ar = r.get("age_months"), r.get("expected_life_months"), r.get("age_source"), r.get("age_ratio")
+    if pd.notna(am):
+        life_txt = f" vs expected {int(el)} mo" if pd.notna(el) else ""
+        cmp = ""
+        if pd.notna(ar):
+            cmp = " — exceeds expected lifecycle" if ar >= 1 else f" ({int(100 * ar)}% of lifecycle)"
+        bits.append(f"asset age {am} mo ({src}){life_txt}{cmp}")
+    tr = r.get("failure_trend")
+    if tr and tr != "Stable":
+        bits.append(f"maintenance trend: {tr}")
+    fp = r.get("failure_prob_30d")
+    if pd.notna(fp):
+        bits.append(f"{fp}% modeled 30-day failure probability")
+    return bits or ["limited history — flagged by current risk level"]
 
-        _table(rs["high_risk"], "High-Risk Assets (High + Critical)", "risk_high_assets",
-               "_No high-risk assets._")
-        _table(rs["due_for_service"], "Assets Due for Service", "risk_due_service",
-               "_No assets currently due for service._")
-        _table(rs["replacement"], "Replacement Candidates", "risk_replacement",
-               "_No replacement candidates (no asset reached Critical + end-of-life)._")
-        st.caption(
-            "Rule-based predictive engine (Phase 3B) — deterministic weighted rules, "
-            "not machine learning. Scoring formula and factor weights: `maintenance_risk.py`."
-        )
+
+def _loc(apt, bed=None):
+    """Consistent physical-location label: 'A23 / Bed C1', or 'A23' when no bed."""
+    apt = str(apt).strip()
+    if not apt or apt.lower() == "nan":
+        apt = "—"
+    bed = str(bed).strip() if bed is not None else ""
+    return f"{apt} / Bed {bed}" if bed and bed.lower() != "nan" else apt
+
+
+def _add_location(df, A=None):
+    """Presentation-only: replace apartment_code (+bed_code) with a single 'location'
+    column ('A23 / Bed C1'). If the row has no bed_code, look it up by asset_code from A;
+    falls back to apartment code alone when no bed is available. No engine change."""
+    if df is None or df.empty:
+        return df
+    d = df.copy()
+    n = len(d)
+    if "bed_code" in d.columns:
+        beds = d["bed_code"].astype(str)
+    elif A is not None and "asset_code" in d.columns:
+        bmap = dict(zip(A["asset_code"].astype(str), A["bed_code"].astype(str)))
+        beds = d["asset_code"].astype(str).map(bmap)
+    else:
+        beds = pd.Series([""] * n, index=d.index)
+    if "apartment_code" in d.columns:
+        apts = d["apartment_code"].astype(str)
+    elif A is not None and "asset_code" in d.columns:
+        amap = dict(zip(A["asset_code"].astype(str), A["apartment_code"].astype(str)))
+        apts = d["asset_code"].astype(str).map(amap)
+    else:
+        apts = pd.Series([""] * n, index=d.index)
+    loc = [_loc(a, b) for a, b in zip(apts, beds)]
+    insert_at = d.columns.get_loc("apartment_code") if "apartment_code" in d.columns else 0
+    d.insert(insert_at, "location", loc)
+    return d.drop(columns=[c for c in ["apartment_code", "bed_code"] if c in d.columns], errors="ignore")
 
 
 # --------------------------------------------------------------------------- #
@@ -1293,6 +1182,236 @@ def page_maintenance_intelligence():
 # Page 8 — Asset Predictive Analytics (ticket-centric engine, from scratch)
 # Standalone; reads only; no DB writes. Uses src/asset_engine.py exclusively.
 # --------------------------------------------------------------------------- #
+def _room_reason(n, r30, repeat, prob, age_ratio=None, overdue=False, trend=""):
+    """Qualitative reason bullets — derived only from existing engine outputs + ticket counts."""
+    q = []
+    if n >= 5:
+        q.append("High ticket frequency")
+    elif n >= 2:
+        q.append("Multiple tickets from this room")
+    if repeat >= 1:
+        q.append("Repeat failures")
+    if r30 >= 1:
+        q.append("Recent activity in last 30 days")
+    if prob is not None and prob >= 80:
+        q.append("Similar assets fail frequently")
+    if age_ratio is not None and pd.notna(age_ratio) and age_ratio >= 1:
+        q.append("Asset age exceeds expected lifecycle")
+    if overdue:
+        q.append("Maintenance cycle exceeded")
+    if trend in ("Degrading", "Rapidly Degrading"):
+        q.append("Failure trend worsening")
+    return q or ["Flagged by current risk level"]
+
+
+def _join_and(items):
+    items = [str(x) for x in items if str(x).strip()]
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    return ", ".join(items[:-1]) + " and " + items[-1]
+
+
+def _asset_reason(r):
+    """Short per-asset reason bullets — from existing engine columns only."""
+    b = []
+    tc = int(r.get("ticket_count", 0) or 0)
+    rec = int(r.get("recent_30d", 0) or 0)
+    rp = int(r.get("repeat_count", 0) or 0)
+    if tc >= 4:
+        b.append("High historical failure frequency")
+    elif tc >= 2:
+        b.append("Multiple tickets")
+    if rp >= 1:
+        b.append("Repeat failures")
+    if rec >= 1:
+        b.append("Recent activity (30d)")
+    ar = r.get("age_ratio")
+    if pd.notna(ar) and ar >= 1:
+        b.append("Age exceeds expected lifecycle")
+    if bool(r.get("maintenance_overdue")):
+        b.append("Near/over maintenance cycle")
+    if r.get("failure_trend") in ("Degrading", "Rapidly Degrading"):
+        b.append("Failure trend worsening")
+    return b or ["Flagged by current risk level"]
+
+
+def _room_reco(asset_type, risk, overdue, replace, prob):
+    """Preventive-maintenance recommendation — phrased from existing engine flags only."""
+    a = asset_type or "the asset"
+    if replace:
+        return f"Replace {a} — end of expected life."
+    if risk == "Critical" or overdue:
+        return f"Inspect {a} within 7 days."
+    if risk == "High" or (prob is not None and prob >= 80):
+        return f"Inspect {a} within 30 days."
+    if risk == "Medium":
+        return f"Schedule preventive maintenance for {a}."
+    return f"Monitor {a}; no immediate action."
+
+
+def _room_risk(total, repeat, prob, health, r30):
+    """Presentation-only room prioritisation score (does NOT alter engine scoring).
+    Combines ticket volume, repeat issues, predicted failure probability, asset health
+    and recent activity into a rank/label for the maintenance team."""
+    s = min(total, 20) * 1.5 + min(repeat, 5) * 6.0 + (prob or 0) * 0.25
+    if health is not None and pd.notna(health):
+        s += max(0.0, 100.0 - float(health)) * 0.15
+    s += min(r30, 5) * 2.0
+    lvl = "Critical" if s >= 70 else "High" if s >= 50 else "Medium" if s >= 30 else "Low"
+    return round(s, 1), lvl
+
+
+def _ticket_room_view(loader, built, assets=None):
+    """PRESENTATION LAYER ONLY — authoritative room comes from the ticket itself
+    (maintenance_tickets.bed_id → beds_master.bed_code → apartment_code), NOT from
+    the asset's current allocation. Each room is then matched to the engine's existing
+    per-asset predictions to surface the asset most likely to fail next in that room.
+    The prediction engine (asset_engine.py) is not modified."""
+    import asset_engine as AE
+    S = AE._s
+    mt = loader.maintenance_tickets().copy()
+    if mt.empty or "bed_id" not in mt.columns:
+        return {"table": pd.DataFrame(), "rooms": {}}
+    beds, aptm, iss = loader.beds_master_uuid(), loader.apartment_master(), loader.issue_types()
+    bcode = dict(zip(beds["id"].map(S), beds["bed_code"].map(S))) if not beds.empty else {}
+    bapt = dict(zip(beds["id"].map(S), beds["apartment_id"].map(S))) if (not beds.empty and "apartment_id" in beds.columns) else {}
+    aptcode = dict(zip(aptm["id"].map(S), aptm["apartment_code"].map(S))) if not aptm.empty else {}
+    iname = dict(zip(iss["id"].map(S), iss["name"].map(S))) if not iss.empty else {}
+
+    bed_id = mt["bed_id"].map(S)
+    room = bed_id.map(lambda b: bcode.get(b, ""))
+    apt_via_bed = bed_id.map(lambda b: aptcode.get(bapt.get(b, ""), ""))
+    apt_direct = mt["apartment_id"].map(lambda x: aptcode.get(S(x), S(x)))
+    apt = [a if a else d for a, d in zip(apt_via_bed, apt_direct)]
+    T = pd.DataFrame({
+        "apartment_code": apt, "room": list(room),
+        "issue_type": [iname.get(S(x), "") for x in mt["issue_type_id"]],
+        "created_at": pd.to_datetime(mt.get("created_at"), errors="coerce", utc=True).dt.tz_localize(None),
+    })
+    T = T[T["room"].astype(str).str.strip().replace({"nan": ""}) != ""]
+    if T.empty:
+        return {"table": pd.DataFrame(), "rooms": {}}
+
+    A = assets if (assets is not None and not assets.empty) else built["assets"]
+    now = pd.Timestamp.today().normalize()
+    rows, rooms = [], {}
+    for (apt_c, rm), g in T.groupby(["apartment_code", "room"]):
+        n = len(g)
+        r30 = int((g["created_at"] >= now - pd.Timedelta(days=30)).sum())
+        r90 = int((g["created_at"] >= now - pd.Timedelta(days=90)).sum())
+        _iss = g["issue_type"][g["issue_type"].astype(bool)]
+        top_issue = _iss.value_counts().idxmax() if not _iss.empty else ""
+        conf = "High"
+        cand = A[(A["apartment_code"] == apt_c) & (A["bed_code"].astype(str) == str(rm))] if not A.empty else A
+        if (cand is None or cand.empty) and not A.empty:
+            cand = A[A["apartment_code"] == apt_c]
+            conf = "Medium"
+        distinct_issues = int(_iss.nunique()) if not _iss.empty else 0
+        issue_breakdown = [f"{kk}: {vv}" for kk, vv in _iss.value_counts().head(6).items()] if not _iss.empty else []
+        top_issue_count = int(_iss.value_counts().iloc[0]) if not _iss.empty else 0
+        repeat, last_maint, next_maint, prob, asset_tickets = 0, "", "—", None, n
+        brand, health = "", None
+        pred_age, pred_trend, est_window = None, "", "—"
+        pred_segment, pred_anom_score, pred_anom_flag, room_max_anom = "—", None, False, None
+        inspection, high_risk_assets, effort = [], 0, "Low"
+        needs_today = needs_week = multi_high_risk = likely_30d = False
+        if cand is None or cand.empty:
+            p_type, p_code = (top_issue or "—"), ""
+            conf = "Low"
+            reason = _room_reason(n, r30, 0, None)
+            reco = "Inspect room; no scored asset currently mapped to this bed."
+            combined_reco = "This room has recurring tickets but no scored asset is currently mapped to the bed; inspect on the next visit."
+        else:
+            _cs = cand.sort_values("failure_prob_30d", ascending=False)
+            pr = _cs.iloc[0]
+            p_type, p_code, prob = pr["asset_type"], pr["asset_code"], pr["failure_prob_30d"]
+            brand = str(pr.get("brand", "") or "").strip()
+            health = pr.get("health_score")
+            repeat = int(pr.get("repeat_count", 0) or 0)
+            asset_tickets = int(pr.get("ticket_count", 0) or 0)
+            lt = pr.get("last_ticket")
+            last_maint = str(lt)[:10] if pd.notna(lt) else ""
+            due = pr.get("maintenance_due_days")
+            if pd.notna(due):
+                due = int(due)
+                next_maint = "Overdue" if due <= 0 else f"Within {due} days"
+            ar = pr.get("age_ratio")
+            pred_age = pr.get("age_months")
+            pred_trend = pr.get("failure_trend", "")
+            aiv = pr.get("avg_interval_days")
+            if pd.notna(aiv) and pd.notna(lt):
+                _est = lt.normalize() + pd.Timedelta(days=float(aiv))
+                est_window = (f"~{_est.date()} (overdue)" if _est < now else f"~{_est.date()}")
+            reason = _room_reason(n, r30, repeat, prob, ar,
+                                  bool(pr.get("maintenance_overdue")), pr.get("failure_trend", ""))
+            reco = _room_reco(p_type, pr.get("risk_level", ""), bool(pr.get("maintenance_overdue")),
+                              bool(pr.get("replacement_recommended")), prob)
+            # ML enrichment (additive; only if the ML columns were merged onto the asset frame)
+            pred_segment = str(pr.get("ml_risk_segment", "—") or "—")
+            _pas = pr.get("ml_anomaly_score")
+            pred_anom_score = float(_pas) if pd.notna(_pas) else None
+            pred_anom_flag = bool(pr.get("ml_anomaly_flag", False))
+            if "ml_anomaly_score" in _cs.columns and _cs["ml_anomaly_score"].notna().any():
+                room_max_anom = round(float(_cs["ml_anomaly_score"].max()), 1)
+            for _, arw in _cs.iterrows():
+                _b = str(arw.get("bed_code", "")).strip()
+                inspection.append({
+                    "asset_type": arw["asset_type"], "asset_code": arw["asset_code"],
+                    "bed": (_b if _b and _b.lower() != "nan" else ""),
+                    "prob": arw["failure_prob_30d"], "risk": arw["risk_level"],
+                    "health": arw["health_score"], "reasons": _asset_reason(arw),
+                })
+            high_risk_assets = int(_cs["risk_level"].isin(["High", "Critical"]).sum())
+            effort = "High" if high_risk_assets >= 3 else "Medium" if high_risk_assets == 2 else "Low"
+            _others = [a["asset_type"] for a in inspection[1:]
+                       if (a["prob"] is not None and a["prob"] >= 50) or a["risk"] in ("Critical", "High")][:3]
+            if _others:
+                combined_reco = (f"This room has a high probability of future {inspection[0]['asset_type']} "
+                                 f"failure. During the next maintenance visit, also inspect {_join_and(_others)} "
+                                 f"to reduce repeat visits.")
+            else:
+                combined_reco = (f"This room has an elevated probability of {inspection[0]['asset_type']} "
+                                 f"failure. Prioritise it during the next preventive maintenance visit.")
+            _due = pr.get("maintenance_due_days")
+            needs_today = bool(pr.get("risk_level") == "Critical" or bool(pr.get("maintenance_overdue")))
+            needs_week = bool(((pd.notna(_due) and 0 <= int(_due) <= 7) or pr.get("risk_level") == "High")
+                              and not needs_today)
+            multi_high_risk = high_risk_assets >= 2
+            likely_30d = bool(prob is not None and prob >= 60)
+        risk_score, risk_level = _room_risk(n, repeat, prob, health, r30)
+        visit_priority = "High" if risk_level in ("Critical", "High") else risk_level
+        preventive_recommended = "Yes" if (risk_level != "Low" or needs_today or needs_week) else "No"
+        likely_repeat = "Yes" if likely_30d else "No"
+        rec = {
+            "room_label": f"{apt_c}-{rm}", "apartment_code": apt_c, "room": rm,
+            "issue_type": top_issue, "distinct_issues": distinct_issues,
+            "issue_breakdown": issue_breakdown, "similar_issue_tickets": top_issue_count,
+            "predicted_asset": p_type, "predicted_asset_code": p_code, "brand": (brand or "—"),
+            "failure_prob": (f"{prob}%" if prob is not None else "—"),
+            "_p": (float(prob) if prob is not None else -1.0),
+            "confidence": conf, "reason": "; ".join(reason), "recommendation": reco,
+            "combined_reco": combined_reco, "high_risk_assets": high_risk_assets, "effort": effort,
+            "needs_today": needs_today, "needs_week": needs_week,
+            "multi_high_risk": multi_high_risk, "likely_30d": likely_30d,
+            "risk_score": risk_score, "risk_level": risk_level,
+            "visit_priority": visit_priority, "preventive_recommended": preventive_recommended,
+            "likely_repeat": likely_repeat,
+            "pred_age": pred_age, "pred_trend": (pred_trend or "—"), "est_failure_window": est_window,
+            "ml_segment": pred_segment, "ml_anomaly_score": pred_anom_score,
+            "ml_anomaly_flag": pred_anom_flag, "room_max_anomaly": room_max_anom,
+            "total_tickets": n, "recent_30d": r30, "recent_90d": r90,
+            "repeat_failures": repeat, "asset_ticket_count": asset_tickets,
+            "last_maintenance": (last_maint or "—"), "expected_next_maintenance": next_maint,
+        }
+        rows.append(rec)
+        rooms[(apt_c, rm)] = {**rec, "assets": (cand.copy() if cand is not None else pd.DataFrame()),
+                              "inspection_priority": inspection}
+    tbl = pd.DataFrame(rows).sort_values(["_p", "total_tickets"], ascending=[False, False]).reset_index(drop=True)
+    return {"table": tbl, "rooms": rooms}
+
+
 @st.cache_resource(show_spinner="Running ticket-centric asset engine…")
 def _asset_engine():
     from data_loader import DataLoader
@@ -1306,6 +1425,22 @@ def _asset_engine():
     planner = AE.replacement_planner(loader, built)
     report_card = AE.apartment_report_card(built, bv)
     roi = AE.asset_roi(loader, built, bv)
+
+    # ---- ADDITIVE unsupervised ML layer (src/ml): GMM segmentation + Isolation Forest ----
+    # Does not touch the rule engine above. Merges ML columns onto the (superset) asset frame
+    # so downstream presentation can show rule + Poisson + ML side by side. Fails soft.
+    ml_df = pd.DataFrame()
+    ml_meta = {}
+    try:
+        from ml import run_asset_ml
+        _base_assets = bv.get("assets") if (bv.get("assets") is not None and not bv["assets"].empty) else built["assets"]
+        ml_df = run_asset_ml(_base_assets, built["mapped"])
+        ml_meta = dict(ml_df.attrs.get("meta", {}))
+        assets_ml = _base_assets.merge(ml_df, on="asset_id", how="left") if not ml_df.empty else _base_assets
+    except Exception as exc:  # noqa: BLE001 — ML is optional; never break the rule dashboard
+        assets_ml = bv.get("assets") if bv else built["assets"]
+        ml_meta = {"error": str(exc)}
+
     return built, {
         "room_risk": AE.room_risk(built),
         "type_risk": AE.type_risk(built),
@@ -1328,6 +1463,12 @@ def _asset_engine():
         "sla": AE.sla_dashboard(loader, built),
         "brand": AE.brand_analysis(built, bv),
         "purchase": AE.purchase_recommendation(loader, built, bv),
+        # presentation-layer: authoritative room from ticket bed_id (not allocation)
+        "room_view": _ticket_room_view(loader, built, assets_ml),
+        # additive unsupervised ML (GMM + Isolation Forest); assets_ml = superset + ML cols
+        "ml": ml_df,
+        "ml_meta": ml_meta,
+        "assets_ml": assets_ml,
     }
 
 
@@ -1373,15 +1514,6 @@ li{{margin:8px 0}}@media print{{a,button{{display:none}}}}</style></head><body>
 
 def page_asset_predictive():
     st.header("🔧 Asset Predictive Analytics")
-    st.info(
-        "**Ticket-centric engine.** Every maintenance ticket is attributed to a physical "
-        "asset (direct `asset_id`, else Apartment/Room → Asset Allocation → Issue Type → "
-        "Asset Type), joined to allocations + assets, and aged by purchase date (else "
-        "earliest allocation date). Health, risk, maintenance-due, replacement, failure "
-        "trend, room risk and asset-type risk are computed from ticket frequency, recent "
-        "failures, age, expected life and maintenance cycle. Statistical (not ML). "
-        "Read-only — no database records are modified."
-    )
     try:
         built, ex = _asset_engine()
     except Exception as exc:  # noqa: BLE001
@@ -1392,237 +1524,404 @@ def page_asset_predictive():
         st.warning("No maintenance tickets available to analyze.")
         return
     ch = ex["charts"]
+    cov = ex["coverage"]
     bv = ex.get("business") or {}
     if bv.get("assets") is not None and not bv["assets"].empty:
         A = bv["assets"]   # superset: adds reliability_score/level + lifecycle_stage columns
+    if ex.get("assets_ml") is not None and not ex["assets_ml"].empty:
+        A = ex["assets_ml"]  # superset + additive ML columns (GMM segment, anomaly)
+    _HAS_ML = "ml_risk_segment" in A.columns and A["ml_risk_segment"].notna().any()
+    _ml_seg = dict(zip(A["asset_code"].astype(str), A["ml_risk_segment"])) if _HAS_ML else {}
+    _ml_anom = dict(zip(A["asset_code"].astype(str), A["ml_anomaly_score"])) if _HAS_ML else {}
+    _ml_flag = dict(zip(A["asset_code"].astype(str), A["ml_anomaly_flag"])) if _HAS_ML else {}
 
-    # ---- Coverage & mapping ---- #
-    st.subheader("Engine Coverage & Ticket Mapping")
-    cov = ex["coverage"]
-    e1 = st.columns(4)
-    e1[0].metric("Total Maintenance Tickets", f"{cov['total_tickets']:,}")
-    e1[1].metric("Tickets Successfully Processed", f"{cov['tickets_processed']:,}",
-                 help="Participate in prediction via room and/or asset-type intelligence.")
-    e1[2].metric("Tickets Waiting for Mapping", f"{cov['tickets_waiting_mapping']:,}")
-    e1[3].metric("Coverage %", f"{cov['coverage_pct']}%",
-                 help="Processed ÷ total. Asset-pinned coverage separately below.")
-    e2 = st.columns(4)
-    e2[0].metric("Total Assets", f"{cov['total_assets']:,}")
-    e2[1].metric("Allocated Assets", f"{cov['allocated_assets']:,}")
-    e2[2].metric("Assets w/ Purchase Date", f"{cov['assets_with_purchase_date']:,}")
-    e2[3].metric("Assets using Allocation Date", f"{cov['assets_using_allocation_date']:,}")
-    c = k["confidence"]
+    # Apartment-summary enrichment sourced from the AUTHORITATIVE ticket room view
+    # (maintenance_tickets.bed_id), NOT from asset allocation. Per apartment we surface
+    # its highest-probability room prediction.
+    _rv = ex.get("room_view") or {"table": pd.DataFrame(), "rooms": {}}
+    _rvt = _rv["table"]
+    _apt_best = {}
+    if not _rvt.empty:
+        for _apt_c, _g in _rvt.groupby("apartment_code"):
+            _apt_best[_apt_c] = _g.sort_values(["_p", "total_tickets"], ascending=[False, False]).iloc[0]
+    _pred_asset_map = {a: r["predicted_asset"] for a, r in _apt_best.items()}
+    _pred_loc_map = {a: _loc(a, r["room"]) for a, r in _apt_best.items()}
+    _pred_prob_map = {a: r["failure_prob"] for a, r in _apt_best.items()}
+    _pred_reason_map = {a: r["reason"] for a, r in _apt_best.items()}
+    _top_asset_map = {a: (f"{r['predicted_asset']} ({r['predicted_asset_code']})"
+                          if r["predicted_asset_code"] else r["predicted_asset"])
+                      for a, r in _apt_best.items()}
+
+    def _apt_pred(df):
+        """Attach predicted-asset / location / probability / reason to an apartment-summary
+        table (presentation only — reads the engine's existing per-asset scores)."""
+        if df is None or df.empty or "apartment_code" not in df.columns:
+            return df
+        d = df.copy()
+        at = d.columns.get_loc("apartment_code") + 1
+        d.insert(at, "predicted_asset", d["apartment_code"].map(_pred_asset_map).fillna("—"))
+        d.insert(at + 1, "predicted_location", d["apartment_code"].map(_pred_loc_map).fillna("—"))
+        d.insert(at + 2, "predicted_failure_prob", d["apartment_code"].map(_pred_prob_map).fillna("—"))
+        d.insert(at + 3, "reason", d["apartment_code"].map(_pred_reason_map).fillna("—"))
+        return d
+
+    # ---- HERO: full-width Maintenance Health Score ---- #
+    _hs = A["health_score"]
+    score = int(round(float(_hs.mean()))) if _hs.notna().any() else 0
+    if score >= 75:
+        _emoji, _status, _color = "🟢", "Healthy", "#2e9e5b"
+    elif score >= 60:
+        _emoji, _status, _color = "🟡", "Attention Needed", "#d9a406"
+    else:
+        _emoji, _status, _color = "🔴", "Critical", "#d64545"
+
+    def _hstat(label, value):
+        return (f"<div style='flex:1 1 130px;text-align:center;min-width:110px'>"
+                f"<div style='font-size:13px;opacity:0.75'>{label}</div>"
+                f"<div style='font-size:30px;font-weight:800;line-height:1.1'>{value}</div></div>")
+
+    _tickets = format(cov["total_tickets"], ",")
+    _assets = format(cov["total_assets"], ",")
+    _covpct = f"{cov['coverage_pct']}%"
+    _stats_html = (_hstat("Total Tickets", _tickets)
+                   + _hstat("Total Assets", _assets)
+                   + _hstat("Coverage %", _covpct))
+    st.markdown(
+        f"<div style='border:1px solid rgba(127,127,127,0.25);border-radius:14px;"
+        f"padding:22px 26px;background:linear-gradient(90deg,{_color}22,rgba(127,127,127,0.05));'>"
+        f"<div style='display:flex;flex-wrap:wrap;gap:26px;align-items:center;'>"
+        f"<div style='flex:0 0 auto'>"
+        f"<div style='font-size:12px;font-weight:700;letter-spacing:0.6px;opacity:0.75'>MAINTENANCE HEALTH SCORE</div>"
+        f"<div style='font-size:58px;font-weight:900;line-height:1'>{score}"
+        f"<span style='font-size:22px;font-weight:700'> / 100</span></div>"
+        f"<div style='font-size:20px;font-weight:800;color:{_color}'>{_emoji} {_status}</div></div>"
+        f"<div style='flex:1 1 auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-around'>"
+        f"{_stats_html}"
+        f"</div></div></div>",
+        unsafe_allow_html=True)
     st.caption(
-        f"Whole maintenance history participates: **{cov['tickets_processed']} / {cov['total_tickets']} "
-        f"tickets ({cov['coverage_pct']}%)** via room + asset-type intelligence. "
-        f"Asset-pinned (specific asset): {cov['asset_pinned_reliable']} reliable "
-        f"({cov['asset_coverage_pct']}%), {cov['asset_pinned_incl_medium']} incl. medium. "
-        f"Confidence — Verified {c['Verified']} · High {c['High']} · Medium {c['Medium']} · Low {c['Low']}."
-    )
+        f"ℹ️ Overall score = average of existing per-asset health scores (statistical, read-only; no new model). "
+        f"Asset age uses purchase date where available (**{cov['assets_with_purchase_date']:,}** assets); "
+        f"the remaining **{cov['assets_using_allocation_date']:,}** are aged from earliest allocation date. "
+        f"{cov['tickets_processed']:,} / {cov['total_tickets']:,} tickets processed ({cov['coverage_pct']}%).")
+    with st.expander("ℹ️ How this engine works"):
+        st.markdown(
+            "**Ticket-centric engine.** Every maintenance ticket is attributed to a physical "
+            "asset (direct `asset_id`, else Apartment/Room → Asset Allocation → Issue Type → "
+            "Asset Type), joined to allocations + assets, and aged by purchase date (else "
+            "earliest allocation date). Health, risk, maintenance-due, replacement, failure "
+            "trend, room risk and asset-type risk are computed from ticket frequency, recent "
+            "failures, age, expected life and maintenance cycle. Statistical (not ML). "
+            "Read-only — no database records are modified.")
     st.divider()
 
-    # ---- Health / risk cards ---- #
+    # ---- Today's Priority Rooms (very top — the day's action list) ---- #
+    if not _rvt.empty:
+        _gap(4)
+        st.subheader("🚨 Today's Priority Rooms")
+        st.caption("**Ranked by:** Composite Room Risk (ticket volume + repeat failures + predicted failure "
+                   "probability + asset health + recent activity). The Top 10 rooms to inspect today. "
+                   "_The same room may also appear in later sections under a different ranking metric "
+                   "(e.g. Average Apartment Health, Recent Ticket Volume, SLA) — every section states its own metric._")
+        _tp = _rvt.sort_values(["risk_score", "_p"], ascending=[False, False]).head(10).reset_index(drop=True).copy()
+        _tp.insert(0, "Rank", range(1, len(_tp) + 1))
+        _tp_show = _tp.rename(columns={
+            "room_label": "Room", "risk_level": "Priority", "predicted_asset": "Predicted Asset",
+            "failure_prob": "Failure Probability", "recommendation": "Recommended Action"})
+        _table(_tp_show[["Rank", "Room", "Priority", "Predicted Asset", "Failure Probability", "Recommended Action"]],
+               "Today's Priority Rooms (Top 10 — inspect today)", "rv_today_top")
+        st.divider()
+
+    # ---- Asset Health & Risk (grouped) ---- #
+    _gap(4)
     st.subheader("Asset Health & Risk")
-    r1 = st.columns(4)
-    r1[0].metric("🟢 Healthy", f"{k['healthy']:,}")
-    r1[1].metric("🟡 Medium Risk", f"{k['medium_risk']:,}")
-    r1[2].metric("🟠 High Risk", f"{k['high_risk']:,}")
-    r1[3].metric("🔴 Critical", f"{k['critical']:,}")
-    r2 = st.columns(4)
-    r2[0].metric("Due for Maintenance", f"{k['due_maintenance']:,}")
-    r2[1].metric("Due for Replacement", f"{k['due_replacement']:,}")
-    r2[2].metric("Repeat-Failure Assets", f"{k['repeat_failures']:,}")
-    r2[3].metric("Avg Health Score", round(A["health_score"].mean(), 1))
+    st.caption("**Ranked by:** portfolio counts — assets grouped by their engine risk band (health-score driven).")
+    hr = st.columns([3, 1])
+    hr[0].markdown(
+        f"<div style='border-left:6px solid #3b82c4;background:rgba(127,127,127,0.08);"
+        f"padding:12px 16px;border-radius:8px'>"
+        f"<div style='font-size:13px;font-weight:600;opacity:0.85'>Asset Risk Distribution</div>"
+        f"<div style='font-size:22px;font-weight:800;margin-top:6px;line-height:1.5'>"
+        f"🟢 {k['healthy']:,} Healthy &nbsp;&nbsp; 🟡 {k['medium_risk']:,} Medium &nbsp;&nbsp; "
+        f"🟠 {k['high_risk']:,} High &nbsp;&nbsp; 🔴 {k['critical']:,} Critical</div></div>",
+        unsafe_allow_html=True)
+    _insight_card(hr[1], "🔧", "Replacement Due", f"{k['due_replacement']:,}", "#d9a406")
+    # ---- ADDITIVE ML view (GMM risk segments + Isolation Forest anomalies) ---- #
+    if "ml_risk_segment" in A.columns and A["ml_risk_segment"].notna().any():
+        _gap(6)
+        _mlmeta = ex.get("ml_meta") or {}
+        _agree = _mlmeta.get("if_lof_agreement")
+        st.caption("**ML view (unsupervised, additive — does not replace the rule engine):** "
+                   "GMM clusters assets into risk segments; Isolation Forest flags anomalous assets. "
+                   "Rule risk bands and Poisson probability above are unchanged."
+                   + (f" IF/LOF agreement {_agree}%." if _agree is not None else ""))
+        _seg = A["ml_risk_segment"].value_counts()
+        mc = st.columns(5)
+        _insight_card(mc[0], "🟢", "ML Low", int(_seg.get("Low", 0)), "#2e9e5b")
+        _insight_card(mc[1], "🟡", "ML Medium", int(_seg.get("Medium", 0)), "#d9a406")
+        _insight_card(mc[2], "🟠", "ML High", int(_seg.get("High", 0)), "#e07b39")
+        _insight_card(mc[3], "🔴", "ML Critical", int(_seg.get("Critical", 0)), "#d64545")
+        _insight_card(mc[4], "⚠️", "Anomalies (IF)", int(A["ml_anomaly_flag"].sum()), "#8b5cf6")
     st.divider()
 
-    # ---- Room risk + asset-type risk ---- #
-    st.subheader("Room Risk & Asset-Type Risk")
-    rt = st.columns(2)
-    with rt[0]:
-        rr = ex["room_risk"]
-        _bar(rr.head(15) if rr is not None else None, "apartment_code", "room_risk_score",
-             "Room Risk Score (top apartments)", "ae_room")
-        _table(rr.head(20) if rr is not None else None, "Room Risk Detail", "ae_room_tbl", "_No data._")
-    with rt[1]:
-        tr = ex["type_risk"]
-        _bar(tr.head(15) if tr is not None else None, "asset_type", "type_risk_score",
-             "Asset-Type Risk Score", "ae_type")
-        _table(tr if tr is not None else None, "Asset-Type Risk Detail", "ae_type_tbl", "_No data._")
+    # ---- Room Intelligence (per room, from the ticket's own bed selection) ---- #
+    st.subheader("🏢 Room Intelligence (room-first — Apartment-Bed)")
+    st.caption("Grouped by **Apartment + Bed** (the Vishful room, e.g. `B44-B1`), taken from the ticket's "
+               "own `maintenance_tickets.bed_id → bed_code` — the room the technician selected, **not** the "
+               "asset's current allocation. Each room is matched to the engine's existing per-asset predictions.")
+    if _rvt.empty:
+        st.caption("_No ticket room data (bed_id) available._")
+    else:
+        oc = st.columns(4)
+        _insight_card(oc[0], "🔴", "Inspect Today", int(_rvt["needs_today"].sum()), "#d64545")
+        _insight_card(oc[1], "🟠", "Preventive This Week", int(_rvt["needs_week"].sum()), "#e07b39")
+        _insight_card(oc[2], "🟣", "Rooms w/ Multiple High-Risk Assets", int(_rvt["multi_high_risk"].sum()), "#8b5cf6")
+        _insight_card(oc[3], "🟡", "Likely Another Ticket (30d)", int(_rvt["likely_30d"].sum()), "#d9a406")
+        _gap(8)
+        ic = st.columns(3)
+        ic[0].metric("Rooms (Apartment-Bed) with Tickets", f"{len(_rvt):,}")
+        ic[1].metric("Rooms Active (30d)", int((_rvt["recent_30d"] > 0).sum()))
+        ic[2].metric("High-Confidence Predictions", int((_rvt["confidence"] == "High").sum()))
+        _bar(_rvt.head(15)[["room_label", "total_tickets"]], "room_label", "total_tickets",
+             "Ticket Volume by Room (Apartment-Bed, top 15)", "rv_chart")
+        st.caption("**Ranked by:** predicted 30-day failure probability (highest first). "
+                   "The chart above is ranked by Recent Ticket Volume — so the #1 room can differ between the two.")
+        _rv_show = _rvt.head(30).rename(columns={
+            "room_label": "Room (Apt-Bed)", "apartment_code": "Apartment", "room": "Bed",
+            "total_tickets": "Total Tickets", "distinct_issues": "Distinct Issues",
+            "issue_type": "Most Frequent Issue", "predicted_asset": "Predicted Asset",
+            "predicted_asset_code": "Asset Code", "brand": "Brand",
+            "failure_prob": "Failure Probability", "asset_ticket_count": "Historical Asset Tickets",
+            "last_maintenance": "Last Maintenance", "expected_next_maintenance": "Expected Next Maintenance",
+            "confidence": "Confidence", "recommendation": "Recommendation"})
+        _table(_rv_show[["Room (Apt-Bed)", "Apartment", "Bed", "Total Tickets", "Distinct Issues",
+                         "Most Frequent Issue", "Predicted Asset", "Asset Code", "Brand",
+                         "Failure Probability", "Historical Asset Tickets", "Last Maintenance",
+                         "Expected Next Maintenance", "Confidence", "Recommendation"]],
+               "Room Intelligence — grouped by Apartment + Bed", "rv_tbl")
+
+        # ---- Room drill-down: full maintenance history + prediction per room ---- #
+        _gap(6)
+        st.markdown("**🛏 Room & Asset Action Detail** — full maintenance history behind each room prediction "
+                    "(expand to view every asset in that room)")
+        for _, rr in _rvt.head(12).iterrows():
+            info = _rv["rooms"].get((rr["apartment_code"], rr["room"]), {})
+            with st.expander(f"🏢 {rr['room_label']} · Issue: {rr['issue_type'] or '—'} "
+                             f"· {rr['total_tickets']} ticket(s)"):
+                cA, cB = st.columns(2)
+                with cA:
+                    st.markdown(f"**Room {rr['room_label']}**  \n"
+                                f"Apartment: {rr['apartment_code']}  \nBed: {rr['room']}")
+                    st.markdown("**Historical Tickets**")
+                    st.markdown(f"- Total tickets: **{rr['total_tickets']}**\n"
+                                f"- Issues raised (distinct types): **{rr['distinct_issues']}**\n"
+                                f"- Most frequent issue: **{rr['issue_type'] or '—'}**\n"
+                                f"- Last 30 days: **{rr['recent_30d']}**\n"
+                                f"- Last 90 days: **{rr['recent_90d']}**\n"
+                                f"- Repeat failures: **{rr['repeat_failures']}**")
+                    if info.get("issue_breakdown"):
+                        st.markdown("**Issues raised:**")
+                        for ib in info["issue_breakdown"]:
+                            st.markdown(f"- {ib}")
+                with cB:
+                    st.markdown("**Prediction**")
+                    if rr["predicted_asset_code"]:
+                        st.markdown(f"⚠ **{rr['predicted_asset']}** ({rr['predicted_asset_code']})"
+                                    + (f" · {rr['brand']}" if rr["brand"] and rr["brand"] != "—" else ""))
+                    else:
+                        st.markdown(f"{rr['predicted_asset']} — from ticket history "
+                                    f"(no scored asset mapped to this room)")
+                    _age = "—" if not pd.notna(rr["pred_age"]) else f"{rr['pred_age']} months"
+                    st.markdown("**Prediction Evidence**")
+                    st.markdown(f"- Historical tickets: **{rr['total_tickets']}**\n"
+                                f"- Similar issue tickets: **{rr['similar_issue_tickets']}**\n"
+                                f"- Repeat failures: **{rr['repeat_failures']}**\n"
+                                f"- Recent tickets (30 days): **{rr['recent_30d']}**\n"
+                                f"- Asset age: **{_age}**\n"
+                                f"- Failure trend: **{rr['pred_trend']}**\n"
+                                f"- Failure probability: **{rr['failure_prob']}**\n"
+                                f"- Confidence: **{rr['confidence']}**")
+                    st.markdown("**Prediction Timeline**")
+                    st.markdown(f"- Last maintenance date: **{rr['last_maintenance']}**\n"
+                                f"- Expected next maintenance window: **{rr['expected_next_maintenance']}**\n"
+                                f"- Estimated failure window: **{rr['est_failure_window']}**")
+                    if rr.get("ml_segment", "—") not in ("—", None):
+                        _af = " · ⚠️ anomaly" if rr.get("ml_anomaly_flag") else ""
+                        _asc = rr.get("ml_anomaly_score")
+                        st.markdown("**ML signal (additive)**")
+                        st.markdown(f"- Risk segment (GMM): **{rr['ml_segment']}**\n"
+                                    f"- Anomaly score (Isolation Forest): "
+                                    f"**{_asc if _asc is not None else '—'}**{_af}")
+                _insp = info.get("inspection_priority") or []
+                if _insp:
+                    st.markdown("**Inspection Priority**")
+                    for i, a in enumerate(_insp, 1):
+                        _bt = f" · Bed {a['bed']}" if a["bed"] else ""
+                        st.markdown(f"**{i}. {_risk_badge(a['risk'])} {a['asset_type']}** "
+                                    f"({a['asset_code']}){_bt} — Probability **{a['prob']}%** · health {a['health']}")
+                        st.markdown("&nbsp;&nbsp;&nbsp;&nbsp;" + " · ".join(a["reasons"]))
+                st.success(f"**Recommendation:** {rr['combined_reco']}")
+                st.markdown("**Business Impact**")
+                st.markdown(f"- Likely repeat ticket: **{rr['likely_repeat']}**\n"
+                            f"- Estimated maintenance effort: **{rr['effort']}**\n"
+                            f"- Visit priority: **{rr['visit_priority']}**\n"
+                            f"- Preventive inspection recommended: **{rr['preventive_recommended']}**")
     st.divider()
 
-    # ---- Room Intelligence (ALL tickets) ---- #
-    st.subheader("🏢 Room Intelligence (all tickets)")
-    ri = ex["room_intel"]
-    if ri is None or ri.empty:
+    # ---- Room Maintenance Risk Ranking (executive; presentation prioritisation) ---- #
+    _gap(4)
+    st.subheader("🏆 Room Maintenance Risk Ranking")
+    st.caption("**Ranked by:** Composite Room Risk (ticket volume + repeat failures + predicted failure "
+               "probability + asset health + recent activity). Full supervisor worklist. "
+               "Prioritisation only — the per-asset prediction scores are unchanged.")
+    if _rvt.empty:
         st.caption("_No room data._")
     else:
-        ic = st.columns(4)
-        ic[0].metric("Rooms w/ Increasing Demand", int((ri["demand_trend"] == "Increasing").sum()))
-        ic[1].metric("Rooms w/ Repeated Failures", int((ri["repeated_failures"] >= 1).sum()))
-        ic[2].metric("Rooms w/ Multiple Asset Failures", int(ri["multiple_asset_failures"].sum()))
-        ic[3].metric("Need Preventive Inspection", int(ri["preventive_inspection"].sum()))
-        _bar(ri.head(15), "apartment_code", "total_tickets", "Maintenance Demand by Apartment", "ri_demand")
-        _table(ri.head(25)[["apartment_code", "total_tickets", "recent_30d", "demand_trend",
-                            "repeated_failures", "assets_failing", "est_maintenance_cost",
-                            "room_risk_level", "preventive_inspection"]],
-               "Room Intelligence Detail", "ri_tbl")
+        _rank = _rvt.sort_values(["risk_score", "_p"], ascending=[False, False]).reset_index(drop=True).copy()
+        rc = st.columns(3)
+        _insight_card(rc[0], "🔴", "Critical Rooms", int((_rank["risk_level"] == "Critical").sum()), "#d64545")
+        _insight_card(rc[1], "🟠", "High-Risk Rooms", int((_rank["risk_level"] == "High").sum()), "#e07b39")
+        _insight_card(rc[2], "🟡", "Medium-Risk Rooms", int((_rank["risk_level"] == "Medium").sum()), "#d9a406")
+        _gap(8)
+        _rank.insert(0, "Rank", range(1, len(_rank) + 1))
+        _rank["ml_anomaly"] = _rank["ml_anomaly_flag"].map(lambda v: "⚠️ Yes" if bool(v) else "No") \
+            if "ml_anomaly_flag" in _rank.columns else "—"
+        _rank_show = _rank.rename(columns={
+            "room_label": "Room", "risk_level": "Risk (rule)", "predicted_asset": "Predicted Asset",
+            "failure_prob": "Poisson Probability", "total_tickets": "Total Tickets",
+            "high_risk_assets": "High-Risk Assets in Room", "effort": "Estimated Maintenance Effort",
+            "ml_segment": "ML Segment", "room_max_anomaly": "Max Anomaly (ML)", "ml_anomaly": "Anomaly Flag",
+            "recommendation": "Recommendation"})
+        _cols = ["Rank", "Room", "Risk (rule)", "ML Segment", "Predicted Asset", "Poisson Probability",
+                 "Max Anomaly (ML)", "Anomaly Flag", "Total Tickets", "High-Risk Assets in Room",
+                 "Estimated Maintenance Effort", "Recommendation"]
+        _table(_rank_show[[c for c in _cols if c in _rank_show.columns]].head(40),
+               "Room Maintenance Risk Ranking — rule + Poisson + ML (highest first)", "rv_rank")
     st.divider()
 
     # ---- Asset-Type Intelligence (ALL tickets) ---- #
     st.subheader("🧩 Asset-Type Intelligence (all tickets)")
+    st.caption("**Ranked by:** Failure Frequency (count of issue-tickets mapped to each asset type via the "
+               "issue→asset-type bridge).")
     ti = ex["type_intel"]
     if ti is None or ti.empty:
         st.caption("_No asset-type data._")
     else:
-        tc = st.columns(3)
+        tc = st.columns(1)
         tc[0].metric("High-Risk Asset Types", int(ti["high_risk"].sum()))
-        tc[1].metric("Types Approaching End-of-Life", int(ti["approaching_end_of_life"].sum()))
-        tc[2].metric("Asset Types Tracked", int(len(ti)))
         _bar(ti.head(15), "asset_type", "failure_frequency", "Failure Frequency by Asset Type", "ti_freq")
-        _table(ti[["asset_type", "assets", "failure_frequency", "avg_age_months",
-                   "avg_tickets_per_asset", "avg_maintenance_interval_days", "avg_health",
-                   "approaching_end_of_life", "high_risk"]],
-               "Asset-Type Intelligence Detail", "ti_tbl")
+        _xtable(ti[["asset_type", "assets", "failure_frequency", "avg_age_months",
+                    "avg_tickets_per_asset", "avg_maintenance_interval_days", "avg_health",
+                    "approaching_end_of_life", "high_risk"]],
+                "Asset-Type Intelligence Detail", "ti_tbl")
     st.divider()
 
-    # ---- Executive Dashboard ---- #
-    st.subheader("📊 Executive Dashboard")
+    # ---- Owner Action List (formerly Executive Dashboard) ---- #
+    _gap(4)
+    st.subheader("🧭 Owner Action List")
+    st.caption("**Ranked by:** Composite Maintenance Priority — the same room-risk composite used by the Risk "
+               "Ranking (ticket volume + repeat failures + predicted failure probability + asset health + "
+               "recent activity). One prioritised list of what the owner should action first.")
     exe = ex["executive"]
-    for line in exe.get("insights", []):
-        st.markdown(f"- {line}")
-    wc = st.columns(3)
-    wc[0].metric("Workload Forecast (next 30d)", f"{exe['workload_forecast_30d']} tickets",
-                 help=f"Last 30d = {exe['workload_last_30d']} tickets (damped trend).")
-    wc[1].metric("Likely to Fail (30d)", len(exe["likely_fail_30d"]))
-    wc[2].metric("Replacement Candidates", len(exe["replacement"]))
-    pv = exe.get("purchase_vs_allocation", {})
-    if pv:
-        pvdf = pd.DataFrame([{"age_source": kk, "assets": vv["assets"], "avg_age_months": vv["avg_age_months"]}
-                             for kk, vv in pv.items()])
-        _table(pvdf, "Purchase vs Allocation Age Comparison", "exe_pv")
-    eg = st.columns(2)
-    with eg[0]:
-        _table(exe["top_risky_apartments"][["apartment_code", "total_tickets", "demand_trend", "room_risk_level"]]
-               if not exe["top_risky_apartments"].empty else None, "Top Risky Apartments", "exe_rooms", "_None._")
-        _table(exe["likely_fail_30d"], "Assets Likely to Fail Next Month", "exe_likely", "_None._")
-    with eg[1]:
-        _table(exe["top_risky_asset_types"][["asset_type", "failure_frequency", "high_risk", "approaching_end_of_life"]]
-               if not exe["top_risky_asset_types"].empty else None, "Top Risky Asset Categories", "exe_types", "_None._")
-        _table(exe["replacement"], "Assets Needing Replacement", "exe_replace", "_None._")
-    _table(exe["preventive"], "Assets Needing Preventive Maintenance", "exe_prev", "_None._")
+    _ta, _tt = exe["top_risky_apartments"], exe["top_risky_asset_types"]
+    _top_apt = _ta.iloc[0]["apartment_code"] if not _ta.empty else "—"
+    _top_type = _tt.iloc[0]["asset_type"] if not _tt.empty else "—"
+    _top_apt_focus = _top_asset_map.get(_top_apt, "")
+    _top_apt_val = (f"{_top_apt}<div style='font-size:13px;font-weight:600;opacity:0.8'>"
+                    f"Focus asset: {_top_apt_focus}</div>") if _top_apt_focus else _top_apt
+    ec = st.columns(3)
+    _insight_card(ec[0], "🔴", "Top Risk Apartment", _top_apt_val, "#d64545")
+    _insight_card(ec[1], "🟠", "Top Failing Asset Type", _top_type, "#e07b39")
+    _insight_card(ec[2], "🟡", "Assets Likely to Fail (30 Days)", f"{len(exe['likely_fail_30d']):,}", "#d9a406")
+    _gap(8)
+    if not _rvt.empty:
+        _oal = _rvt.sort_values(["risk_score", "_p"], ascending=[False, False]).head(15).reset_index(drop=True).copy()
+        _oal.insert(0, "Priority #", range(1, len(_oal) + 1))
+        _oal_show = _oal.rename(columns={
+            "room_label": "Room", "risk_level": "Priority", "predicted_asset": "Predicted Asset",
+            "failure_prob": "Failure Probability", "effort": "Estimated Effort",
+            "combined_reco": "Recommended Action"})
+        _table(_oal_show[["Priority #", "Room", "Priority", "Predicted Asset", "Failure Probability",
+                          "Estimated Effort", "Recommended Action"]],
+               "Owner Action List — Top 15 by Composite Maintenance Priority", "exe_oal")
+    _gap(6)
+    st.caption("Supporting detail — each list below is ranked by its **own** metric:")
+    _ta_x = _apt_pred(_ta[["apartment_code", "total_tickets", "demand_trend", "room_risk_level"]].copy()) \
+        if not _ta.empty else None
+    _xtable(_ta_x, "Top Risk Apartments — ranked by Composite Room Risk", "exe_rooms", "_None._")
+    _xtable(_tt[["asset_type", "failure_frequency", "high_risk", "approaching_end_of_life"]]
+            if not _tt.empty else None, "Top Failing Asset Types — ranked by Failure Frequency", "exe_types", "_None._")
+    _xtable(_add_location(exe["likely_fail_30d"], A),
+            "Assets Likely to Fail Next 30 Days — ranked by 30-day Failure Probability", "exe_likely", "_None._")
     st.divider()
 
     # ---- Visualizations ---- #
+    _gap(4)
     st.subheader("Predictive Visualizations")
+    st.caption("Descriptive distributions (not ranked): asset-health spread, monthly ticket trend, and "
+               "tickets-summed-per-asset-type. The table below is ranked by ticket count.")
     g = st.columns(2)
     with g[0]:
         _bar(ch.get("health_distribution"), "health", "assets", "Asset Health Distribution", "ae_health")
     with g[1]:
         _bar(ch.get("monthly_trend"), "month", "tickets", "Monthly Failure Trend", "ae_monthly")
-    g2 = st.columns(2)
-    with g2[0]:
-        _bar(ch.get("failure_by_type"), "asset_type", "tickets", "Failures by Asset Type", "ae_ftype")
-    with g2[1]:
-        _bar(ch.get("maintenance_timeline"), "window", "assets", "Maintenance Due Timeline", "ae_mtl")
-    _bar(ch.get("replacement_by_type"), "asset_type", "assets", "Replacement Forecast by Type", "ae_repl")
-    _table(ch.get("top_failing_assets"), "Top Frequently-Failing Assets", "ae_topfail", "_No data._")
+    _bar(ch.get("failure_by_type"), "asset_type", "tickets", "Failures by Asset Type", "ae_ftype")
+    _xtable(_add_location(ch.get("top_failing_assets"), A), "Top Frequently-Failing Assets", "ae_topfail", "_No data._")
     st.divider()
 
     # ---- Recommendations + alerts ---- #
+    _gap(4)
     st.subheader("Predictive Recommendations")
+    st.caption("**Ranked by:** 30-day Failure Probability (highest first). Per-asset engine actions "
+               "(Replace / Repair Immediately / Schedule Maintenance / Monitor).")
     rd = A["recommendation"].value_counts()
     rc = st.columns(len(rd) if len(rd) else 1)
     for i, (nm, cnt) in enumerate(rd.items()):
         rc[i].metric(nm, int(cnt))
-    _table(A[A["recommendation"] != "No Action Needed"][
-        ["asset_code", "asset_type", "apartment_code", "risk_level", "recommendation",
-         "failure_prob_30d", "age_months", "reason"]].sort_values("failure_prob_30d", ascending=False),
+    _gap(6)
+    _xtable(_add_location(A[A["recommendation"] != "No Action Needed"][
+        ["asset_code", "asset_type", "apartment_code", "bed_code", "risk_level", "recommendation",
+         "failure_prob_30d", "age_months", "reason"]].sort_values("failure_prob_30d", ascending=False)),
         "Assets needing action", "ae_recs", "_No actions recommended._")
-    alerts = A[A["alerts"].astype(str).str.len() > 0][["asset_code", "asset_type", "apartment_code", "risk_level", "alerts"]]
-    _table(alerts, f"⚠ Active Alerts ({len(alerts)})", "ae_alerts", "_No active alerts._")
+    alerts = A[A["alerts"].astype(str).str.len() > 0][["asset_code", "asset_type", "apartment_code", "bed_code", "risk_level", "alerts"]]
+    _xtable(_add_location(alerts), f"⚠ Active Alerts ({len(alerts)})", "ae_alerts", "_No active alerts._")
     st.divider()
 
     # ========================================================================= #
     # Business Maintenance Intelligence (items 1-10) — additive
     # ========================================================================= #
     if bv:
-        ek = bv["exec_kpis"]
-        # ---- 5. Executive KPI strip ---- #
-        st.subheader("📈 Executive KPIs")
-        x1 = st.columns(4)
-        x1[0].metric("Total Assets", f"{ek['total_assets']:,}")
-        x1[1].metric("Allocated Assets", f"{ek['allocated_assets']:,}")
-        x1[2].metric("Total Tickets", f"{ek['total_tickets']:,}")
-        x1[3].metric("Coverage %", f"{ek['coverage_pct']}%")
-        x2 = st.columns(4)
-        x2[0].metric("Assets w/ Purchase Date", f"{ek['assets_with_purchase_date']:,}")
-        x2[1].metric("Assets using Allocation Date", f"{ek['assets_using_allocation_date']:,}")
-        x2[2].metric("Maintenance Due", f"{ek['maintenance_due']:,}")
-        x2[3].metric("Replacement Due", f"{ek['replacement_due']:,}")
-        x3 = st.columns(4)
-        x3[0].metric("🟢 Healthy", f"{ek['healthy']:,}")
-        x3[1].metric("🟡 Medium", f"{ek['medium_risk']:,}")
-        x3[2].metric("🟠 High", f"{ek['high_risk']:,}")
-        x3[3].metric("🔴 Critical", f"{ek['critical_risk']:,}")
-        x4 = st.columns(2)
-        x4[0].metric("Top Problem Apartment", ek["top_problem_apartment"])
-        x4[1].metric("Top Problem Asset Type", ek["top_problem_asset_type"])
-        st.divider()
-
-        # ---- 1. Asset Reliability ---- #
-        st.subheader("🔩 Asset Reliability (0–100)")
-        rl = A["reliability_level"].value_counts().reindex(["High", "Medium", "Low", "Poor"]).fillna(0).astype(int)
-        rc = st.columns(4)
-        for i, lvl in enumerate(["High", "Medium", "Low", "Poor"]):
-            rc[i].metric(f"{lvl} Reliability", int(rl[lvl]))
-        _table(A.sort_values("reliability_score")[
-            ["asset_code", "asset_type", "apartment_code", "reliability_score", "reliability_level",
-             "ticket_count", "repeat_count", "age_months"]].head(30),
-            "Reliability (lowest first)", "bv_reliability")
-        st.divider()
-
-        # ---- 10. Asset Lifecycle ---- #
-        st.subheader("♻ Asset Lifecycle")
-        _bar(bv["lifecycle_counts"], "stage", "assets", "Assets by Lifecycle Stage", "bv_lifecycle")
-        st.divider()
-
         # ---- 2. Apartment Health ---- #
+        _gap(4)
         st.subheader("🏢 Apartment Health Score")
+        st.caption("**Ranked by:** Average Apartment Health Score (lowest = worst, shown first). "
+                   "A whole-building rollup — distinct from the room-level failure-probability ranking above.")
         _bar(bv["apartment_health"].head(15), "apartment_code", "health_score",
              "Apartment Health (lowest = worst; top 15)", "bv_apt_health_chart")
-        _table(bv["apartment_health"], "Apartment Health Detail", "bv_apt_health")
-        st.divider()
-
-        # ---- 3. Asset-Type Health ---- #
-        st.subheader("🧩 Asset-Type Health")
-        _table(bv["asset_type_health"], "Asset-Type Health Detail", "bv_type_health")
-        st.divider()
-
-        # ---- 4. Maintenance Calendar ---- #
-        st.subheader("📅 Maintenance Calendar")
-        cal = bv["calendar"]
-        cc = st.columns(4)
-        cc[0].metric("Today / Overdue", len(cal["today"]))
-        cc[1].metric("This Week", len(cal["this_week"]))
-        cc[2].metric("This Month", len(cal["this_month"]))
-        cc[3].metric("Next Month", len(cal["next_month"]))
-        for label, key in [("Today / Overdue", "today"), ("This Week", "this_week"),
-                           ("This Month", "this_month"), ("Next Month", "next_month")]:
-            if not cal[key].empty:
-                _table(cal[key], label, f"bv_cal_{key}")
-        if all(cal[k].empty for k in cal):
-            st.caption("_No assets due within 60 days — asset maintenance cycles (6–24 mo) exceed the "
-                       "current ticket-history window; schedule populates as history lengthens._")
+        _ah = _apt_pred(bv["apartment_health"].copy())
+        if _HAS_ML and _ah is not None and not _ah.empty and "apartment_code" in _ah.columns:
+            _ml_apt = A.groupby("apartment_code").agg(
+                ml_anomalies=("ml_anomaly_flag", lambda s: int(s.fillna(False).sum())),
+                ml_critical_assets=("ml_risk_segment", lambda s: int((s == "Critical").sum()))).reset_index()
+            _ah = _ah.merge(_ml_apt, on="apartment_code", how="left")
+            _ah["ml_anomalies"] = _ah["ml_anomalies"].fillna(0).astype(int)
+            _ah["ml_critical_assets"] = _ah["ml_critical_assets"].fillna(0).astype(int)
+        _xtable(_ah, "Apartment Health Detail (+ ML anomalies / critical-segment assets)", "bv_apt_health")
         st.divider()
 
         # ---- 6. Failure Hotspots ---- #
+        _gap(4)
         st.subheader("🔥 Failure Hotspots")
+        st.caption("**Ranked by:** Recent Ticket Volume (density) — apartments, months and floors with the "
+                   "most tickets. A volume view, not a health or probability view.")
         hs = bv["hotspots"]
         h1 = st.columns(2)
         with h1[0]:
             _bar(hs["apartment_density"], "apartment_code", "tickets", "Apartment-wise Ticket Density", "bv_hs_apt")
         with h1[1]:
             _bar(hs["monthly_trend"], "month", "tickets", "Monthly Ticket Trend", "bv_hs_month")
+        _xtable(_apt_pred(hs["apartment_density"].copy()),
+                "Hotspot Apartments — predicted asset to action", "bv_hs_apt_tbl")
         h2 = st.columns(2)
         with h2[0]:
             _bar(hs["type_failures"], "asset_type", "total_failures", "Asset-Type-wise Failures", "bv_hs_type")
@@ -1631,112 +1930,47 @@ def page_asset_predictive():
                  "Floor-wise Ticket Density", "bv_hs_floor")
         st.divider()
 
-        # ---- 7. Asset Rankings ---- #
-        st.subheader("🏆 Asset Rankings")
-        rk = bv["rankings"]
-        kg = st.columns(2)
-        with kg[0]:
-            _table(rk["least_reliable"], "Least Reliable", "bv_rk_least")
-            _table(rk["most_repaired"], "Most Frequently Repaired", "bv_rk_repaired")
-            _table(rk["highest_risk"], "Highest Risk", "bv_rk_risk")
-        with kg[1]:
-            _table(rk["most_reliable"], "Most Reliable", "bv_rk_most")
-            _table(rk["near_end_of_life"], "Near End-of-Life", "bv_rk_eol")
-        st.divider()
-
-        # ---- 8. Repeat Failure Analysis ---- #
-        st.subheader("🔁 Repeat Failure Analysis")
-        _table(bv["repeat_analysis"], "Assets with repeated failures", "bv_repeat",
-               "_No repeat failures._")
-        st.divider()
-
         # ---- 9. Preventive Maintenance Queue ---- #
+        _gap(4)
         st.subheader("🧰 Preventive Maintenance Queue")
+        st.caption("**Ranked by:** Asset Health (worst first) among all non-low-risk assets, with priority band.")
         pq = bv["preventive_queue"]
         pcnt = pq["priority"].value_counts().reindex(["Critical", "High", "Medium"]).fillna(0).astype(int) if not pq.empty else None
         if pcnt is not None:
             pc = st.columns(3)
-            pc[0].metric("🔴 Critical", int(pcnt["Critical"]))
-            pc[1].metric("🟠 High", int(pcnt["High"]))
-            pc[2].metric("🟡 Medium", int(pcnt["Medium"]))
-        _table(pq, "Prioritized work list (with reason)", "bv_queue", "_Queue empty._")
+            _insight_card(pc[0], "🔴", "Critical", f"{int(pcnt['Critical']):,}", "#d64545")
+            _insight_card(pc[1], "🟠", "High", f"{int(pcnt['High']):,}", "#e07b39")
+            _insight_card(pc[2], "🟡", "Medium", f"{int(pcnt['Medium']):,}", "#d9a406")
+            _gap(6)
+        _pq = _add_location(pq, A)
+        if _HAS_ML and _pq is not None and not _pq.empty and "asset_code" in _pq.columns:
+            _pq = _pq.copy()
+            _pq["ml_segment"] = _pq["asset_code"].astype(str).map(_ml_seg).fillna("—")
+            _pq["ml_anomaly_score"] = _pq["asset_code"].astype(str).map(_ml_anom)
+            _pq["ml_anomaly"] = _pq["asset_code"].astype(str).map(_ml_flag).map(
+                lambda v: "⚠️ Yes" if bool(v) else "No")
+        _xtable(_pq, "Prioritized work list (with reason + ML segment/anomaly)", "bv_queue", "_Queue empty._")
         st.divider()
 
     # ========================================================================= #
-    # Management & Business Planning (extension 3) — additive
+    # Business Recommendations (extension 3) — additive
     # ========================================================================= #
-    # ---- 1. Maintenance Budget Forecast ---- #
-    st.subheader("💰 Maintenance Budget Forecast")
-    bf = ex["budget"]
-    st.caption(f"Based on recent ticket rate (~{bf['monthly_rate']}/month) × avg ticket cost "
-               f"{_money(bf['avg_ticket_cost'])} (cost is an estimate — source closure_cost is null).")
-    bw = bf["windows"].copy()
-    bcols = st.columns(4)
-    for i, (_, w) in enumerate(bw.iterrows()):
-        bcols[i].metric(w["window"], f"{int(w['expected_jobs'])} jobs")
-        bcols[i].caption(_money(w["estimated_budget"]))
-    _table(bw, "Budget Forecast", "mp_budget")
-    _table(bf["top_contributing_types"], "Top Contributing Asset Types", "mp_budget_types")
-    st.divider()
-
-    # ---- 2. Asset Replacement Planner ---- #
-    st.subheader("🗓 Asset Replacement Planner")
-    pl = ex["planner"]
-    _table(pl["summary"], "Replacement Plan Summary (count · est. cost · priority)", "mp_plan_sum", "_No assets in replacement window._")
-    _table(pl["detail"], "Replacement Plan Detail", "mp_plan_detail", "_None._")
-    st.divider()
-
-    # ---- 3. Maintenance Workload Forecast ---- #
-    st.subheader("📈 Maintenance Workload Forecast")
-    wf = ex["workload"]
-    ww = wf["windows"]
-    wc = st.columns(4)
-    for i, (_, w) in enumerate(ww.iterrows()):
-        wc[i].metric(w["window"], f"{int(w['expected_tickets'])} tickets")
-    wg = st.columns(2)
-    with wg[0]:
-        _bar(wf["by_apartment"], "apartment_code", "expected_next_month", "Expected Next Month by Apartment", "mp_wl_apt")
-    with wg[1]:
-        _bar(wf["by_type"], "issue_type", "expected_next_month", "Expected Next Month by Issue/Asset Type", "mp_wl_type")
-    st.divider()
-
-    # ---- 4. Asset ROI ---- #
-    st.subheader("💹 Asset ROI (value for money)")
-    roi = ex["roi"]
-    if not roi.empty:
-        st.metric("Poor-Value Asset Types", int(roi["poor_value"].sum()))
-    _table(roi, "Asset ROI by Type", "mp_roi", "_No ROI data._")
-    st.divider()
-
-    # ---- 6. Apartment Report Card ---- #
-    st.subheader("🏅 Apartment Maintenance Report Card (Best → Worst)")
-    _table(ex["report_card"], "Apartment Report Card", "mp_report_card", "_No data._")
-    st.divider()
-
-    # ---- 7. Asset Performance Comparison ---- #
-    st.subheader("⚖ Asset Performance Comparison")
-    _table(ex["performance"], "Asset-Type Performance (reliability, failures, age, freq, high-risk %)", "mp_perf", "_No data._")
-    st.divider()
-
-    # ---- 8. Business Recommendations ---- #
+    # ---- Business Recommendations (sorted Critical → High → Medium → Low) ---- #
+    _gap(4)
     st.subheader("💡 Business Recommendations")
+    st.caption("**Ranked by:** Priority (Critical → High → Medium → Low).")
     recs = ex["recommendations"]
     if recs is None or recs.empty:
         st.caption("_No recommendations._")
     else:
-        for _, r in recs.iterrows():
+        _prio_order = {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}
+        recs_sorted = recs.sort_values(
+            "priority", key=lambda s: s.map(_prio_order).fillna(9), kind="stable")
+        for _, r in recs_sorted.iterrows():
             badge = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}.get(r["priority"], "⚪")
             st.markdown(f"**{badge} {r['priority']} — {r['recommendation']}**  \n"
                         f"WHY: {r['why']}  \nEXPECTED IMPACT: {r['expected_impact']}")
-        _dl(recs, "recommendations", "mp_recs")
-    st.divider()
-
-    # ---- 9. Printable Management Report ---- #
-    st.subheader("🖨 Printable Management Report")
-    st.caption("One-click monthly summary — download the HTML and print / save as PDF from the browser.")
-    html = _management_report_html(ex, bf, pl, recs)
-    st.download_button("⬇ Download Management Report (HTML)", html.encode("utf-8"),
-                       file_name="maintenance_management_report.html", mime="text/html", key="mp_report_html")
+        _dl(recs_sorted, "recommendations", "mp_recs")
     st.divider()
 
     # ========================================================================= #
@@ -1745,39 +1979,64 @@ def page_asset_predictive():
     # ---- 1. Maintenance SLA Dashboard ---- #
     sla = ex.get("sla") or {}
     if sla:
+        _gap(4)
         st.subheader("⏱ Maintenance SLA Dashboard")
+        st.caption("**Ranked by:** Ticket Volume within each breakdown; SLA-met % measured only on tickets that "
+                   "have both a resolved time and an SLA deadline.")
         o = sla["overall"]
-        s1 = st.columns(4)
+        _met = o["sla_met_pct"]
+        _viol = o["sla_violated_pct"]
+        sg = st.columns(2)
+        _insight_card(sg[0], "🟢", "SLA Met",
+                      f"{_met}%" if _met is not None else "—", "#2e9e5b")
+        _insight_card(sg[1], "🔴", "SLA Violated",
+                      f"{_viol}%" if _viol is not None else "—", "#d64545")
+        _gap(8)
+        s1 = st.columns(3)
         s1[0].metric("Total Tickets", f"{o['total_tickets']:,}")
         s1[1].metric("Open", f"{o['open_tickets']:,}")
         s1[2].metric("Closed", f"{o['closed_tickets']:,}")
-        s1[3].metric("Avg Resolution (hrs)", o["avg_resolution_hours"] if o["avg_resolution_hours"] is not None else "—")
-        s2 = st.columns(4)
-        s2[0].metric("Median Resolution (hrs)", o["median_resolution_hours"] if o["median_resolution_hours"] is not None else "—")
-        s2[1].metric("Fastest (hrs)", o["fastest_resolution_hours"] if o["fastest_resolution_hours"] is not None else "—")
-        s2[2].metric("Slowest (hrs)", o["slowest_resolution_hours"] if o["slowest_resolution_hours"] is not None else "—")
-        s2[3].metric("SLA Met %", f"{o['sla_met_pct']}%" if o["sla_met_pct"] is not None else "—")
-        st.caption(f"SLA Violated {o['sla_violated_pct']}% · resolution measured on {o['resolution_measured_on']} "
-                   f"tickets, SLA on {o['sla_measured_on']} (tickets with both resolved + deadline).")
-        _table(sla["by_apartment"], "SLA by Apartment", "sla_apt")
-        _table(sla["by_issue_type"], "SLA by Issue Type", "sla_issue")
-        _table(sla["by_asset_type"], "SLA by Asset Type", "sla_type")
+        _fmt = lambda x: x if x is not None else "—"
+        st.caption(
+            f"Resolution (hrs) — avg {_fmt(o['avg_resolution_hours'])} · median {_fmt(o['median_resolution_hours'])} · "
+            f"fastest {_fmt(o['fastest_resolution_hours'])} · slowest {_fmt(o['slowest_resolution_hours'])}. "
+            f"Resolution measured on {o['resolution_measured_on']} tickets, SLA on {o['sla_measured_on']} "
+            f"(tickets with both resolved + deadline).")
+        _xtable(sla["by_apartment"], "SLA by Apartment", "sla_apt")
+        _xtable(sla["by_issue_type"], "SLA by Issue Type", "sla_issue")
+        _xtable(sla["by_asset_type"], "SLA by Asset Type", "sla_type")
         if sla.get("has_technician"):
-            _table(sla["technician"], "Technician-wise (assigned_to id)", "sla_tech")
+            _xtable(sla["technician"], "Technician-wise (assigned_to id)", "sla_tech")
         st.divider()
 
     # ---- 2. Vendor / Brand Analysis ---- #
     brand = ex.get("brand") or {}
     if brand:
+        _gap(4)
         st.subheader("🏭 Vendor / Brand Analysis")
-        _table(brand["by_brand"], "Brand Reliability (all brands)", "brand_all")
-        bcol = st.columns(2)
-        with bcol[0]:
-            _table(brand["most_reliable"][["brand", "total_assets", "failure_rate", "avg_reliability"]],
-                   "Most Reliable Brands", "brand_best")
-        with bcol[1]:
-            _table(brand["worst_performing"][["brand", "total_assets", "failure_rate", "avg_reliability"]],
-                   "Worst Performing Brands", "brand_worst")
+        st.caption("**Ranked by:** Average Brand Reliability (best first) and Failure Rate (worst first). "
+                   "Covers assets with a populated brand only.")
+        _mb = brand["most_reliable"]
+        _wb = brand["worst_performing"]
+        bc = st.columns(2)
+        if not _mb.empty:
+            _b = _mb.iloc[0]
+            _insight_card(bc[0], "🏆", "Best Performing Brand",
+                          f"{_b['brand']}<div style='font-size:13px;font-weight:600;opacity:0.8'>"
+                          f"reliability {_b['avg_reliability']} · failure rate {_b['failure_rate']}</div>",
+                          "#2e9e5b")
+        if not _wb.empty:
+            _b = _wb.iloc[0]
+            _insight_card(bc[1], "⚠️", "Worst Performing Brand",
+                          f"{_b['brand']}<div style='font-size:13px;font-weight:600;opacity:0.8'>"
+                          f"reliability {_b['avg_reliability']} · failure rate {_b['failure_rate']}</div>",
+                          "#d64545")
+        _gap(8)
+        _xtable(brand["by_brand"], "Brand Reliability (all brands)", "brand_all")
+        _xtable(_mb[["brand", "total_assets", "failure_rate", "avg_reliability"]],
+                "Most Reliable Brands", "brand_best")
+        _xtable(_wb[["brand", "total_assets", "failure_rate", "avg_reliability"]],
+                "Worst Performing Brands", "brand_worst")
         if brand.get("recommendations"):
             st.markdown("**Brand recommendations:**")
             for line in brand["recommendations"]:
@@ -1788,16 +2047,49 @@ def page_asset_predictive():
     # ---- 3. Purchase Recommendation ---- #
     pur = ex.get("purchase")
     if pur is not None and not pur.empty:
+        _gap(4)
         st.subheader("🛒 Purchase Recommendation")
-        prc = pur["recommendation"].value_counts()
-        pcol = st.columns(len(prc) if len(prc) else 1)
-        for i, (nm, cnt) in enumerate(prc.items()):
-            pcol[i].metric(nm, int(cnt))
-        _table(pur, "Purchase Guidance by Asset Type", "purchase_rec")
+        st.caption("**Ranked by:** Purchase Priority (Avoid → Reduce → Monitor → Continue), driven by each "
+                   "asset type's average reliability.")
+        _rec = pur["recommendation"].astype(str)
+
+        def _pcount(sub):
+            return int(_rec.str.contains(sub, case=False, na=False).sum())
+        pcol = st.columns(4)
+        _insight_card(pcol[0], "🟢", "Continue", f"{_pcount('Continue'):,}", "#2e9e5b")
+        _insight_card(pcol[1], "🟡", "Monitor", f"{_pcount('Monitor'):,}", "#d9a406")
+        _insight_card(pcol[2], "🟠", "Reduce", f"{_pcount('Reduce'):,}", "#e07b39")
+        _insight_card(pcol[3], "🔴", "Avoid", f"{_pcount('Avoid'):,}", "#d64545")
+        _gap(8)
+        _xtable(pur, "Purchase Guidance by Asset Type", "purchase_rec")
         st.divider()
 
-    # ---- Search + detail ---- #
+    # ---- Export ---- #
+    _gap(4)
+    st.subheader("⬇ Export Reports")
+    st.caption("Not ranked — downloadable CSVs. Maintenance Schedule is ordered soonest-due first; "
+               "the others are full exports of scored assets.")
+    exp = ex["exports"]
+    ec = st.columns(3)
+    for i, (key, label) in enumerate([("asset_health_report", "Full Asset Health Report"),
+                                      ("maintenance_schedule", "Maintenance Schedule"),
+                                      ("replacement_plan", "Replacement Plan")]):
+        df = exp.get(key)
+        with ec[i]:
+            st.caption(label)
+            if df is not None and not df.empty:
+                st.download_button("⬇ CSV", df.to_csv(index=False).encode("utf-8"),
+                                   file_name=f"asset_{key}.csv", mime="text/csv", key=f"aexp_{key}")
+                st.caption(f"{len(df)} rows")
+            else:
+                st.caption("_empty_")
+    st.divider()
+
+    # ---- Asset Search & Profile (final section) ---- #
+    _gap(4)
     st.subheader("Asset Search & Profile")
+    st.caption("Not ranked — a lookup/filter tool. Results reflect your search and filters; open any asset "
+               "for its full profile and ticket timeline.")
     f = st.columns(4)
     q = f[0].text_input("Asset Code / Brand / Model contains")
     apt_opts = ["All"] + sorted([x for x in A["apartment_code"].dropna().unique() if str(x).strip()])
@@ -1818,14 +2110,16 @@ def page_asset_predictive():
     if a_risk != "All":
         v = v[v["risk_level"] == a_risk]
     cols = ["asset_code", "asset_type", "apartment_code", "bed_code", "age_months", "age_source",
-            "health_score", "risk_level", "failure_prob_30d", "ticket_count", "recommendation"]
-    _table(v[[c for c in cols if c in v.columns]], f"{len(v)} assets", "ae_search", "_No assets match._")
+            "health_score", "risk_level", "failure_prob_30d", "ticket_count", "recommendation",
+            "ml_risk_segment", "ml_anomaly_score", "ml_anomaly_flag"]
+    _table(_add_location(v[[c for c in cols if c in v.columns]]), f"{len(v)} assets", "ae_search", "_No assets match._")
 
     if not v.empty:
         pick = st.selectbox("Open asset profile", ["—"] + v["asset_code"].tolist())
         if pick and pick != "—":
             r = v[v["asset_code"] == pick].iloc[0]
             st.markdown(f"### {pick} — {r['asset_type']}  ·  {_risk_badge(r['risk_level'])}")
+            st.caption(f"📍 {_loc(r.get('apartment_code'), r.get('bed_code'))}")
             p1 = st.columns(4)
             p1[0].metric("Health Score", r["health_score"])
             p1[1].metric("30d Failure Prob", f"{r['failure_prob_30d']}%")
@@ -1855,26 +2149,119 @@ def page_asset_predictive():
             tlm[3].metric("Next Predicted", str(nxt) if nxt is not None else "—")
             tl = built["mapped"]
             tl = tl[tl["asset_id"] == r["asset_id"]][["created_at", "issue_type", "confidence"]].sort_values("created_at")
-            _table(tl, "Every Maintenance Ticket", "ae_timeline", "_No tickets._")
+            _xtable(tl, "Every Maintenance Ticket", "ae_timeline", "_No tickets._", expanded=True)
+
+
+
+# --------------------------------------------------------------------------- #
+# Page 9 — Maintenance Forecast (ADDITIVE time-series analytics layer)
+# Uses src/forecasting.py on the unified 18-month event timeline. Does NOT
+# replace the rule engine, Poisson scores, or the ML segmentation/anomaly layer.
+# --------------------------------------------------------------------------- #
+# Bump this string whenever the forecasting output schema changes so the cached
+# result is invalidated (avoids a stale dict that predates new keys like
+# avg_ticket_cost / portfolio_backtest / explain).
+_FC_VERSION = "v2-intervals-backtest-budget-explain"
+
+
+@st.cache_resource(show_spinner="Fitting maintenance forecasting models…")
+def _forecasts(_version: str = _FC_VERSION):
+    from data_loader import DataLoader
+    import forecasting as FC
+    return FC.run_forecasts(DataLoader(), top_apartments=15)
+
+
+def _fc_table(items):
+    rows = []
+    for r in items:
+        m = r.get("metrics", {})
+        rows.append({
+            "Entity": r["label"], "Months": r["n_months"], "Best Model": r["best_model"],
+            "Next-Month Forecast": r["forecast_next"],
+            "Lower": r.get("forecast_lower", "—"), "Upper": r.get("forecast_upper", "—"),
+            "Confidence": r["confidence"],
+            "Best MAPE %": (m.get(r["best_model"], {}) or {}).get("MAPE", "—") if r["best_model"] in m else "—",
+            "Best MAE": (m.get(r["best_model"], {}) or {}).get("MAE", "—") if r["best_model"] in m else "—",
+        })
+    return pd.DataFrame(rows)
+
+
+def _fc_band_chart(p):
+    """History line + next-month forecast point with a shaded confidence band.
+    Uses Altair for the band; falls back to a multi-line chart if Altair is unavailable."""
+    hist = p["history"].rename("value").rename_axis("month").reset_index()
+    hist["kind"] = "history"
+    fpt = pd.DataFrame({"month": [p["next_period"]], "value": [p["forecast_next"]],
+                        "kind": ["forecast"],
+                        "lower": [p.get("forecast_lower")], "upper": [p.get("forecast_upper")]})
+    try:
+        import altair as alt
+        base = alt.Chart(hist).mark_line().encode(x="month:T", y="value:Q")
+        band = alt.Chart(fpt).mark_area(opacity=0.25, color="#e07b39").encode(
+            x="month:T", y="lower:Q", y2="upper:Q")
+        pt = alt.Chart(fpt).mark_point(size=90, color="#d64545", filled=True).encode(x="month:T", y="value:Q")
+        st.altair_chart(band + base + pt, use_container_width=True)
+    except Exception:
+        _h = p["history"].rename("history").to_frame()
+        _f = pd.DataFrame({"forecast": [p["forecast_next"]], "lower": [p.get("forecast_lower")],
+                           "upper": [p.get("forecast_upper")]}, index=[p["next_period"]])
+        st.line_chart(pd.concat([_h, _f], axis=1))
+
+
+def page_forecast():
+    st.header("📈 Maintenance Forecast")
+    st.info(
+        "**Additive time-series layer.** Forecasts next month's maintenance ticket **workload** "
+        "at Portfolio, Asset-Type and Apartment levels from the **unified 18-month event timeline** "
+        "(`created_at` else `resolved_at` else `closed_at`). Compares **Seasonal Naive, Holt-Winters (ETS), "
+        "SARIMA and Prophet** on a chronological hold-out and picks the lowest MAPE (MAE tie-break). "
+        "It forecasts volume — not which specific asset fails. The rule engine, Poisson scores and "
+        "ML segmentation are unchanged.  \n_Prophet is compared on the Portfolio series; per-entity "
+        "(asset-type / apartment) uses the three fast models (Seasonal Naive / ETS / SARIMA) for "
+        "responsiveness — Prophet's fit is ~15s/series._"
+    )
+    try:
+        fc = _forecasts()
+    except Exception as exc:  # noqa: BLE001
+        st.error(f"Forecasting failed: {exc}")
+        return
+
+    p = fc.get("portfolio")
+    if not p:
+        st.warning("No maintenance history available to forecast.")
+        return
+    st.caption(f"History through **{fc.get('as_of')}** · next forecast month "
+               f"**{p['next_period'].date() if p.get('next_period') is not None else '—'}**.")
+
+    # ---- Portfolio (with prediction interval + shaded band) ---- #
+    _gap(4)
+    st.subheader("Portfolio — Next-Month Workload")
+    pc = st.columns(5)
+    pc[0].metric("Forecast", f"{p['forecast_next']:.0f}")
+    pc[1].metric("Lower Bound", f"{p.get('forecast_lower', 0):.0f}")
+    pc[2].metric("Upper Bound", f"{p.get('forecast_upper', 0):.0f}")
+    pc[3].metric("Interval", f"{p.get('confidence_pct') or '—'}%")
+    pc[4].metric("Best Model", p["best_model"])
+    _fc_band_chart(p)
+    if p.get("metrics"):
+        _mt = pd.DataFrame(p["metrics"]).T.rename_axis("Model").reset_index()
+        _table(_mt, "Model comparison on hold-out (lower = better)", "fc_port_metrics")
     st.divider()
 
-    # ---- Export ---- #
-    st.subheader("⬇ Export Reports")
-    exp = ex["exports"]
-    ec = st.columns(3)
-    for i, (key, label) in enumerate([("asset_health_report", "Full Asset Health Report"),
-                                      ("maintenance_schedule", "Maintenance Schedule"),
-                                      ("replacement_plan", "Replacement Plan")]):
-        df = exp.get(key)
-        with ec[i]:
-            st.caption(label)
-            if df is not None and not df.empty:
-                st.download_button("⬇ CSV", df.to_csv(index=False).encode("utf-8"),
-                                   file_name=f"asset_{key}.csv", mime="text/csv", key=f"aexp_{key}")
-                st.caption(f"{len(df)} rows")
-            else:
-                st.caption("_empty_")
-
+    # ---- Apartment ---- #
+    _gap(4)
+    st.subheader("Apartment — Next-Month Workload (top 15 by volume)")
+    st.caption("**Ranked by:** forecast volume. Sparse apartments fall back to naive and are flagged Low confidence.")
+    _at = _fc_table(fc.get("by_apartment", []))
+    if not _at.empty:
+        _bar(_at.sort_values("Next-Month Forecast", ascending=False).head(15),
+             "Entity", "Next-Month Forecast", "Forecast next-month tickets by apartment", "fc_apt_bar")
+        _table(_at.sort_values("Next-Month Forecast", ascending=False), "Apartment Forecasts", "fc_apt_tbl")
+    else:
+        st.caption("_No apartment series._")
+    st.caption("Caveat: 18–19 monthly points support Seasonal-Naive/ETS well and are marginal for "
+               "SARIMA/Prophet yearly seasonality (which prefer ≥24 months). Short per-entity series "
+               "(<6 months) use a naive forecast and are marked Low confidence.")
 
 
 # --------------------------------------------------------------------------- #
@@ -1887,8 +2274,8 @@ PAGES = {
     "Revenue Leakage": page_revenue_leakage,
     "Occupancy Analytics": page_occupancy,
     "Room Search": page_room_search,
-    "Maintenance Intelligence": page_maintenance_intelligence,
     "Asset Predictive Analytics": page_asset_predictive,
+    "Maintenance Forecast": page_forecast,
 }
 
 

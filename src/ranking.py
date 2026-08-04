@@ -233,9 +233,11 @@ def rank_recommendations(
     # Business-need signals for the AFTER-same-state group (tier 2).
     # historical_occupancy_pct is the recent baseline (2025+ → as_of), same
     # window as Demand — pre-2025 history is excluded from this ordering.
-    pool["_hist_occ"] = pd.to_numeric(
-        pool["historical_occupancy_pct"], errors="coerce"
-    ).fillna(0.0)
+    # NaN = NEW apartment with no baseline yet (measured only from start_date):
+    # keep it NaN so it is NOT ranked as "lowest occupancy / difficult to fill";
+    # it sorts LAST within tier 2 (na_position="last"). Existing rooms never carry
+    # NaN here, so their ordering is unchanged.
+    pool["_hist_occ"] = pd.to_numeric(pool["historical_occupancy_pct"], errors="coerce")
     pool["_hist_vac"] = pd.to_numeric(
         pool["average_vacancy_days_recent"], errors="coerce"
     ).fillna(-1.0)
@@ -258,7 +260,7 @@ def rank_recommendations(
     t2_asc = [True, False, False]
 
     tier1 = pool[pool["_tier"] == 1].sort_values(by=t1_by, ascending=t1_asc)
-    tier2 = pool[pool["_tier"] == 2].sort_values(by=t2_by, ascending=t2_asc)
+    tier2 = pool[pool["_tier"] == 2].sort_values(by=t2_by, ascending=t2_asc, na_position="last")
     # Priority 1 (all same-state rooms) before Priority 2 (business-need order).
     pool = pd.concat([tier1, tier2]).reset_index(drop=True)
 

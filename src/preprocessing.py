@@ -182,7 +182,8 @@ def _normalize_phone(series: pd.Series) -> pd.Series:
 
 
 def _windowed_metrics(
-    group: pd.DataFrame, window_start: pd.Timestamp, as_of: pd.Timestamp, capacity: int
+    group: pd.DataFrame, window_start: pd.Timestamp, as_of: pd.Timestamp, capacity: int,
+    activation: Optional[pd.Timestamp] = None,
 ):
     """Occupancy % and accrued revenue for one room within [window_start, as_of].
 
@@ -190,14 +191,28 @@ def _windowed_metrics(
     later of the window start and the room's first-ever occupancy, so a room is
     never penalised for time before it existed. Older (pre-window) data is used
     only to establish that first-occupancy reference — never discarded.
+
+    Business rule (new apartments): when ``activation`` (apartments.start_date) is
+    AFTER ``window_start`` the apartment is NEW — occupancy is measured ONLY from
+    start_date onward and months before it are ignored. A new apartment with no
+    occupancy in its own lifetime has NO fill history to judge, so occupancy is
+    returned as UNKNOWN (NaN) rather than 0% (it must not be treated as
+    "difficult to fill"). Existing apartments (start_date <= window_start) keep the
+    original first-occupancy anchor exactly unchanged.
     """
     onboard = group["onboarding_date"]
     span_end = group["_span_end"]
     room_first = onboard.min()
 
-    eff_window_start = max(window_start, room_first) if pd.notna(room_first) else window_start
+    is_new = activation is not None and pd.notna(activation) and pd.Timestamp(activation) > window_start
+    if is_new:
+        eff_window_start = pd.Timestamp(activation)
+    else:
+        eff_window_start = max(window_start, room_first) if pd.notna(room_first) else window_start
+
     if pd.isna(eff_window_start) or eff_window_start > as_of:
-        return 0.0, 0.0
+        # New apartment not yet active within the data window -> no baseline.
+        return (float("nan"), 0.0) if is_new else (0.0, 0.0)
 
     eff_start = onboard.clip(lower=eff_window_start)
     days = (span_end - eff_start).dt.days
@@ -206,6 +221,10 @@ def _windowed_metrics(
 
     occupied_days = float(days.sum())
     revenue = float((group["monthly_rental"].fillna(0) * days / _DAYS_PER_MONTH).sum())
+
+    if is_new and occupied_days == 0:
+        # New apartment, zero occupancy since activation -> UNKNOWN, not 0%.
+        return float("nan"), round(revenue, 2)
 
     window_len = max((as_of - eff_window_start).days, 1)
     occ_pct = min(100.0, 100 * occupied_days / (capacity * window_len)) if capacity else 0.0
@@ -1035,6 +1054,7 @@ def build_room_inventory(
     historical_start: Optional[pd.Timestamp] = None,
     recent_start: Optional[pd.Timestamp] = None,
     bed_map: Optional[pd.DataFrame] = None,
+    apartments: Optional[pd.DataFrame] = None,
 ) -> pd.DataFrame:
     """Build the Room Master — the single source of truth for room identity.
 
@@ -1073,6 +1093,19 @@ def build_room_inventory(
     """
     historical_start = pd.Timestamp(historical_start or HISTORICAL_BASELINE_START)
     recent_start = pd.Timestamp(recent_start or RECENT_BASELINE_START)
+
+    # Per-apartment activation date (apartments.start_date). Used to measure new
+    # apartments' occupancy ONLY from start_date onward (see _windowed_metrics).
+    # Existing apartments (start_date <= recent_start) are unaffected.
+    activation_by_apt: dict = {}
+    if apartments is not None and not apartments.empty and \
+            "apartment_code" in apartments.columns and "start_date" in apartments.columns:
+        _sd = pd.to_datetime(apartments["start_date"], errors="coerce", utc=True)
+        try:
+            _sd = _sd.dt.tz_localize(None)
+        except (TypeError, AttributeError):
+            pass
+        activation_by_apt = dict(zip(apartments["apartment_code"].astype(str).str.strip(), _sd))
 
     # Production bookings omit bed_type; fill before the hard require.
     if "bed_type" not in bookings.columns:
@@ -1279,8 +1312,9 @@ def build_room_inventory(
 
         # Business-priority + Demand share the recent baseline (2025+).
         # Pre-2025 booking history is kept for capacity/age only — not these %.
+        _activation = activation_by_apt.get(str(apartment_code).strip())
         recent_occupancy_pct, recent_revenue = _windowed_metrics(
-            g, recent_start, as_of, capacity
+            g, recent_start, as_of, capacity, activation=_activation
         )
         # Column name retained for ranking/dashboard; value is recent-window occ.
         historical_occupancy_pct, historical_revenue = (
