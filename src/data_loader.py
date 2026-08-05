@@ -50,6 +50,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -137,6 +138,22 @@ _PRIMARY_CSV_MARKERS: Dict[str, frozenset] = {
 # Bookings (Q35) are complete for the pipeline — do NOT backfill from Q31 by
 # apartment+bed (that would stamp one legacy booking_id onto every stay).
 _COLUMN_FALLBACK_TABLES = frozenset({"current_occupancy", "beds_master"})
+
+# Explicit manifest of the CURRENT production CSV export per logical table.
+# TEMPORARY: this pin exists only until the project moves to Supabase/Postgres.
+# Rationale: several export generations coexist in data_dir, and neither file
+# mtime (flattened by `git clone`) nor query-number order (newest re-exports
+# reused LOWER numbers, e.g. beds (55) is newer than (83)) reliably identifies
+# the current file. Keyed by INTERNAL table name; friendly names in comments.
+# When a new export lands, update the filename here.
+_LATEST_EXPORTS: Dict[str, str] = {
+    "allotments":       "Supabase Snippet Untitled query (89).csv",  # bookings
+    "apartment_master": "Supabase Snippet Untitled query (87).csv",  # apartments
+    "property_master":  "Supabase Snippet Untitled query (90).csv",  # properties
+    "beds_master_uuid": "Supabase Snippet Untitled query (55).csv",  # beds
+    "tenant_master":    "Supabase Snippet Untitled query (49).csv",  # tenants
+    "bed_rates":        "Supabase Snippet Untitled query (77).csv",  # bed_rates
+}
 
 # Friendly labels for the "<label> -> <file>" selection log (business names).
 _LOG_LABEL: Dict[str, str] = {
@@ -2137,50 +2154,94 @@ class DataLoader:
         except Exception:  # noqa: BLE001
             return set()
 
+    @staticmethod
+    def _query_number(path: Path) -> int:
+        """Extract the export query number from a filename.
+
+        ``Supabase Snippet Untitled query (87).csv`` -> 87.
+        Filenames without a ``(<n>)`` token are treated as lowest priority (-1),
+        so a numbered export always outranks an unnumbered one.
+        """
+        match = re.search(r"\((\d+)\)", path.name)
+        return int(match.group(1)) if match else -1
+
     def _select_primary_csv_files(self, table: str, files: List[Path]) -> List[Path]:
         """Choose ONE primary CSV; optional secondary for missing-column backfill.
 
-        Deployment fix: several generations of the same logical export can coexist
-        in ``data_dir`` — e.g. ``query (81..86)``, ``(87)``, ``(89)``, ``(90)`` …
-        The primary is ALWAYS the newest file by modification time (never filename
-        order, never a hardcoded query number). Older snapshots are never
-        concatenated as extra rows — they may only fill columns the primary lacks.
+        Several generations of the same logical export are kept side by side in
+        ``data_dir`` — e.g. ``query (81..86)``, ``(87)``, ``(89)``, ``(90)`` …
+        Selection order:
+
+        1. **Explicit manifest** (``_LATEST_EXPORTS``): if the pinned file for
+           this table exists in ``data_dir``, always use it. This is the source
+           of truth and is unaffected by ``git clone`` mtime flattening.
+        2. **Fallback** (pin absent / unlisted table): highest export query
+           number parsed from the filename (see ``_query_number``); modification
+           time is never consulted.
+
+        Older snapshots are never concatenated as extra rows — they may only fill
+        columns the primary lacks.
         """
         label = _LOG_LABEL.get(table, table)
 
-        # ---- TEMPORARY DEBUG (remove after diagnosing deployment) ----------- #
-        # Log data_dir, every candidate CSV + its st_mtime, and the final choice
-        # so we can see exactly what the deployed app resolves. On Streamlit
-        # Cloud a fresh `git clone` may stamp ALL files with near-identical
-        # checkout mtimes, which would make "newest by mtime" pick the wrong one.
-        def _mt(p: Path) -> float:
-            try:
-                return p.stat().st_mtime
-            except OSError:
-                return 0.0
+        # ---- 1) Explicit production manifest (preferred) ------------------- #
+        pinned_name = _LATEST_EXPORTS.get(table)
+        if pinned_name:
+            pinned = self.data_dir / pinned_name
+            if pinned.exists():
+                logger.info("%s -> %s (pinned manifest)", label, pinned.name)
+                selected = [pinned]
+                if table in _COLUMN_FALLBACK_TABLES:
+                    for fp in files:
+                        if fp.resolve() == pinned.resolve():
+                            continue
+                        if table == "beds_master":
+                            cols = self._csv_header_columns(fp)
+                            if {"booking_date", "staying_status", "tenant_id"}.issubset(cols):
+                                continue
+                        selected.append(fp)
+                        logger.info("%s secondary (column backfill only): %s", label, fp.name)
+                        break
+                return selected
+            logger.info(
+                "%s pinned file %s not found; falling back to discovery",
+                label, pinned_name,
+            )
 
-        ranked = sorted(files, key=_mt, reverse=True)
-        logger.info("[CSV-DEBUG] %s: %d candidate(s) | data_dir=%s",
-                    label, len(files), self.data_dir)
-        for fp in ranked:
-            logger.info("[CSV-DEBUG]   candidate: %s | st_mtime=%.1f (%s)",
-                        fp.name, _mt(fp), str(pd.Timestamp(_mt(fp), unit="s")))
-        # -------------------------------------------------------------------- #
+        # ---- 2) Fallback: highest query number ----------------------------- #
+        # Highest query number first; unnumbered files fall to the end. The
+        # secondary key keeps ordering stable/deterministic for equal numbers.
+        ranked = sorted(
+            files,
+            key=lambda p: (self._query_number(p), p.name),
+            reverse=True,
+        )
+        logger.info(
+            "%s: %d candidate(s) [%s]",
+            label,
+            len(files),
+            ", ".join(f"{fp.name}#{self._query_number(fp)}" for fp in ranked),
+        )
 
         if len(files) <= 1:
             # Single match -> unchanged behaviour.
             sel = list(files)
             if sel:
-                logger.info("[CSV-DEBUG] %s -> SELECTED %s | st_mtime=%.1f (single match)",
-                            label, sel[0].name, _mt(sel[0]))
+                logger.info(
+                    "%s -> %s (single match)", label, sel[0].name
+                )
             return sel
 
-        # Requirement: collect matches, sort DESC by Path.stat().st_mtime, take [0].
+        # Collect matches, order by DESC query number, take the highest.
         matches = ranked
         primary = matches[0]
-        logger.info("[CSV-DEBUG] %s -> SELECTED %s | st_mtime=%.1f (newest of %d)",
-                    label, primary.name, _mt(primary), len(files))
-        logger.info("%s -> %s", label, primary.name)
+        logger.info(
+            "%s -> %s (query %d, highest of %d)",
+            label,
+            primary.name,
+            self._query_number(primary),
+            len(files),
+        )
 
         selected = [primary]
         if table in _COLUMN_FALLBACK_TABLES:
