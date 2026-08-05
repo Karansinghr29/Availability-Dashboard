@@ -2146,14 +2146,41 @@ class DataLoader:
         order, never a hardcoded query number). Older snapshots are never
         concatenated as extra rows — they may only fill columns the primary lacks.
         """
+        label = _LOG_LABEL.get(table, table)
+
+        # ---- TEMPORARY DEBUG (remove after diagnosing deployment) ----------- #
+        # Log data_dir, every candidate CSV + its st_mtime, and the final choice
+        # so we can see exactly what the deployed app resolves. On Streamlit
+        # Cloud a fresh `git clone` may stamp ALL files with near-identical
+        # checkout mtimes, which would make "newest by mtime" pick the wrong one.
+        def _mt(p: Path) -> float:
+            try:
+                return p.stat().st_mtime
+            except OSError:
+                return 0.0
+
+        ranked = sorted(files, key=_mt, reverse=True)
+        logger.info("[CSV-DEBUG] %s: %d candidate(s) | data_dir=%s",
+                    label, len(files), self.data_dir)
+        for fp in ranked:
+            logger.info("[CSV-DEBUG]   candidate: %s | st_mtime=%.1f (%s)",
+                        fp.name, _mt(fp), str(pd.Timestamp(_mt(fp), unit="s")))
+        # -------------------------------------------------------------------- #
+
         if len(files) <= 1:
             # Single match -> unchanged behaviour.
-            return list(files)
+            sel = list(files)
+            if sel:
+                logger.info("[CSV-DEBUG] %s -> SELECTED %s | st_mtime=%.1f (single match)",
+                            label, sel[0].name, _mt(sel[0]))
+            return sel
 
         # Requirement: collect matches, sort DESC by Path.stat().st_mtime, take [0].
-        matches = sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)
+        matches = ranked
         primary = matches[0]
-        logger.info("%s -> %s", _LOG_LABEL.get(table, table), primary.name)
+        logger.info("[CSV-DEBUG] %s -> SELECTED %s | st_mtime=%.1f (newest of %d)",
+                    label, primary.name, _mt(primary), len(files))
+        logger.info("%s -> %s", label, primary.name)
 
         selected = [primary]
         if table in _COLUMN_FALLBACK_TABLES:
