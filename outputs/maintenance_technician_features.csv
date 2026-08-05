@@ -1,0 +1,5 @@
+technician_id,tickets_closed,avg_resolution_time,average_cost,rejected_count
+bd081ad6-5fe3-4c1d-a919-81b1055efa19,344,129.85,1417.8,23
+8c42685b-f2df-4dec-96bd-0e77b715e33e,23,182.99,1564.0,1
+e4897d45-cba7-4d8a-ade0-d6014ccba68d,4,32.09,300.0,0
+f6623646-3abe-4faf-bff7-684ea1f04e96,1,2.85,2500.0,0
