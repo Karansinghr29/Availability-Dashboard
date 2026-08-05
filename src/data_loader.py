@@ -138,6 +138,18 @@ _PRIMARY_CSV_MARKERS: Dict[str, frozenset] = {
 # apartment+bed (that would stamp one legacy booking_id onto every stay).
 _COLUMN_FALLBACK_TABLES = frozenset({"current_occupancy", "beds_master"})
 
+# Friendly labels for the "<label> -> <file>" selection log (business names).
+_LOG_LABEL: Dict[str, str] = {
+    "allotments": "Bookings",
+    "beds_master_uuid": "Beds",
+    "apartment_master": "Apartments",
+    "property_master": "Properties",
+    "tenant_master": "Tenants",
+    "bed_rates": "Bed rates",
+    "asset_master": "Assets",
+    "maintenance_tickets": "Maintenance tickets",
+}
+
 
 TABLE_REGISTRY: Dict[str, TableSpec] = {
     # Production tenants allocation backfill (Q76 primary; legacy Q32 fallback).
@@ -2128,49 +2140,24 @@ class DataLoader:
     def _select_primary_csv_files(self, table: str, files: List[Path]) -> List[Path]:
         """Choose ONE primary CSV; optional secondary for missing-column backfill.
 
-        Vishful production exports (Q35–Q39) win via ``_PRIMARY_CSV_MARKERS``.
-        Older snapshots are never concatenated as extra rows — they may only
-        fill columns that the primary file lacks.
+        Deployment fix: several generations of the same logical export can coexist
+        in ``data_dir`` — e.g. ``query (81..86)``, ``(87)``, ``(89)``, ``(90)`` …
+        The primary is ALWAYS the newest file by modification time (never filename
+        order, never a hardcoded query number). Older snapshots are never
+        concatenated as extra rows — they may only fill columns the primary lacks.
         """
         if len(files) <= 1:
+            # Single match -> unchanged behaviour.
             return list(files)
 
-        markers = _PRIMARY_CSV_MARKERS.get(table)
-        if not markers:
-            newest = max(files, key=lambda p: p.stat().st_mtime)
-            logger.info(
-                "Multiple CSVs for '%s'; using newest primary %s",
-                table,
-                newest.name,
-            )
-            return [newest]
-
-        scored = []
-        for fp in files:
-            cols = self._csv_header_columns(fp)
-            scored.append((len(markers & cols), fp.stat().st_mtime, fp))
-        scored.sort(key=lambda t: (t[0], t[1]), reverse=True)
-        best_score, _, primary = scored[0]
-        if best_score == 0:
-            primary = max(files, key=lambda p: p.stat().st_mtime)
-            logger.info(
-                "Multiple CSVs for '%s'; no marker match; using newest %s",
-                table,
-                primary.name,
-            )
-            return [primary]
+        # Requirement: collect matches, sort DESC by Path.stat().st_mtime, take [0].
+        matches = sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)
+        primary = matches[0]
+        logger.info("%s -> %s", _LOG_LABEL.get(table, table), primary.name)
 
         selected = [primary]
-        logger.info(
-            "Multiple CSVs for '%s'; primary=%s (markers %d/%d)",
-            table,
-            primary.name,
-            best_score,
-            len(markers),
-        )
-
         if table in _COLUMN_FALLBACK_TABLES:
-            for _score, _, fp in scored[1:]:
+            for fp in matches[1:]:
                 if fp.resolve() == primary.resolve():
                     continue
                 # Skip mega-join dumps (Q69) that share bed columns but are not
@@ -2182,7 +2169,7 @@ class DataLoader:
                 selected.append(fp)
                 logger.info(
                     "%s secondary (column backfill only): %s",
-                    table,
+                    _LOG_LABEL.get(table, table),
                     fp.name,
                 )
                 break
