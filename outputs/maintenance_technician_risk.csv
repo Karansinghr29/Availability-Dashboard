@@ -1,0 +1,5 @@
+entity_id,risk_score,risk_level,anomaly_score,flags,explanation
+bd081ad6-5fe3-4c1d-a919-81b1055efa19,70.0,High,0.0,high_reject_rate;volume_dominant,Rejection rate 7% (23 of 344) | Closed 344 tickets (dominant share)
+f6623646-3abe-4faf-bff7-684ea1f04e96,22.5,Low,0.0,fast_and_costly,Faster than peers yet higher average cost
+8c42685b-f2df-4dec-96bd-0e77b715e33e,0.0,Low,0.0,,
+e4897d45-cba7-4d8a-ade0-d6014ccba68d,0.0,Low,0.0,,
