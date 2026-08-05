@@ -2267,6 +2267,12 @@ def page_forecast():
 # --------------------------------------------------------------------------- #
 # Shell
 # --------------------------------------------------------------------------- #
+def page_maintenance_investigation():
+    """Read-only investigation page (Phase 4); logic lives in its own module."""
+    from maintenance_investigation import render
+    render()
+
+
 PAGES = {
     "Inventory Overview": page_inventory_overview,
     "Customer Recommendation": page_recommendation,
@@ -2276,6 +2282,7 @@ PAGES = {
     "Room Search": page_room_search,
     "Asset Predictive Analytics": page_asset_predictive,
     "Maintenance Forecast": page_forecast,
+    "Maintenance Investigation": page_maintenance_investigation,
 }
 
 
