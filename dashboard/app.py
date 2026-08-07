@@ -982,12 +982,15 @@ def page_room_search():
         st.caption("Live occupancy history unavailable.")
 
     st.subheader("Vacant beds")
-    # ALL currently vacant beds from the shared Bed-Map inventory — NOT the
-    # Blocked dataframe. Includes fully-vacant rooms (e.g. B33, C31). Blocked
-    # Rooms is occupancy-blockage only and must never drive this general list.
-    from inventory_views import active_vacant_beds
+    # Bed-level view keyed by the physical DB record (bed_id) — NOT deduplicated
+    # by (apartment_code, bed_code). Two vacant records that share a bed_code but
+    # differ by bed_id are BOTH shown. This is display-only and does not change
+    # the recommendation eligibility rule / active_vacant_beds. Inactive-apartment
+    # beds stay excluded (same rule as everywhere else).
+    from bed_inventory import vacant_beds_by_bed_id
 
-    vb = active_vacant_beds(inv)
+    loader, _ = get_engine()
+    vb = vacant_beds_by_bed_id(loader)
     if vb is not None and not vb.empty:
         vb = vb[vb["room_code"].astype(str).isin(room_codes)].copy()
         if bed_q.strip():
@@ -997,22 +1000,33 @@ def page_room_search():
     if vb is None or vb.empty:
         st.caption("No vacant beds for this selection.")
     else:
-        vb_show = vb.copy()
-        vb_show["Rent"] = vb_show["current_rent"].map(_money)
-        vb_show["Occupancy"] = vb_show["current_occupancy_pct"].map(
-            lambda v: f"{v}%" if pd.notna(v) else "—"
+        n_dup = int(vb["duplicate_bed_code"].sum())
+        st.caption(
+            "Each vacant **physical bed** is listed by its unique **Bed ID**; beds "
+            "are never merged by bed code. When two rows share a bed code but have "
+            "different Bed IDs they are two separate database records (a real "
+            "second bed or a data-entry duplicate — both kept, none deleted)."
+            + (f" ⚠ {n_dup} bed(s) here share a bed code — see the Bed ID column."
+               if n_dup else "")
         )
-        if "bed_status" in vb_show.columns:
-            vb_show["Bed Status"] = vb_show["bed_status"].map(_status_badge)
+        vb_show = vb.copy()
+        vb_show["Rent"] = vb_show["monthly_rate"].map(_money)
+        # Bed ID is small secondary metadata (short form); the ⚠ marks a shared code.
+        vb_show["Bed ID"] = vb_show["bed_id"].astype(str).str.slice(0, 8) + "…"
+        vb_show["Bed"] = [
+            f"{code} ⚠" if dup else code
+            for code, dup in zip(vb_show["bed_code"].astype(str), vb_show["duplicate_bed_code"])
+        ]
         vac_cols = {
             "apartment_code": "Apartment",
             "room_code": "Room",
-            "bed_code": "Bed",
-            "bed_type": "Room Type",
+            "Bed": "Bed",
+            "bed_type": "Bed Type",
+            "toilet_type": "Toilet Type",
             "Rent": "Rent",
-            "Occupancy": "Occupancy",
-            "Bed Status": "Bed Status",
-            "demand_score": "Demand Score",
+            "occupancy_status": "Status",
+            "occupancy_history": "History",
+            "Bed ID": "Bed ID",
         }
         vcols = [c for c in vac_cols if c in vb_show.columns]
         st.dataframe(
@@ -2273,6 +2287,12 @@ def page_maintenance_investigation():
     render()
 
 
+def page_sla_performance():
+    """SLA Performance Analytics — standalone operations page (own module)."""
+    from sla_analytics import render
+    render()
+
+
 PAGES = {
     "Inventory Overview": page_inventory_overview,
     "Customer Recommendation": page_recommendation,
@@ -2283,6 +2303,7 @@ PAGES = {
     "Asset Predictive Analytics": page_asset_predictive,
     "Maintenance Forecast": page_forecast,
     "Maintenance Investigation": page_maintenance_investigation,
+    "SLA Performance": page_sla_performance,
 }
 
 

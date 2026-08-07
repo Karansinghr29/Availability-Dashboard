@@ -1,0 +1,6 @@
+ticket_id,asset_id,previous_status,new_status,fake_reason,reviewed_by,reviewed_at
+62ec3e07-d588-4248-a406-54abbe7097eb,1d23efda-47c5-4f25-a9a9-fb25f27f1555,Pending Review,Verified Fake,Duplicate Ticket,,2026-08-06T17:26:19
+62ec3e07-d588-4248-a406-54abbe7097eb,1d23efda-47c5-4f25-a9a9-fb25f27f1555,Verified Fake,Pending Review,,,2026-08-06T17:27:04
+62ec3e07-d588-4248-a406-54abbe7097eb,1d23efda-47c5-4f25-a9a9-fb25f27f1555,Pending Review,Verified Fake,Duplicate Ticket,nan,2026-08-06T17:27:25
+ba000612-08eb-466e-a200-9116b2f0ab0f,30d9dbfc-a9d3-49fb-bc99-c78196773658,(none),Pending Review,,,2026-08-06T17:27:48
+62ec3e07-d588-4248-a406-54abbe7097eb,1d23efda-47c5-4f25-a9a9-fb25f27f1555,Verified Fake,Pending Review,,nan,2026-08-06T17:27:53

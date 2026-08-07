@@ -1,0 +1,1506 @@
+ticket_id,created_at_present,closed_at_present,sla_present,included_in_sla_analysis,exclusion_reason
+e87fdb6a-0f93-4b63-8bf2-5f346cb9f10d,Yes,No,Yes,No,Missing closed_at
+d83795d2-c76c-1f57-b4f1-a157fb9a1f9e,No,Yes,Yes,No,Missing created_at
+c9cb7236-8e59-4d71-4640-b5bd5d92fc3c,No,Yes,Yes,No,Missing created_at
+9b519d24-38bf-9a73-c7bc-13a86452cfc9,No,Yes,Yes,No,Missing created_at
+9e565e88-284e-3695-913b-23d2b5ba38dd,No,Yes,Yes,No,Missing created_at
+2253a749-6272-7393-199c-9d01bf989aaa,No,Yes,Yes,No,Missing created_at
+e3d3b08e-1168-24d9-88db-6d8af6ed10da,No,Yes,Yes,No,Missing created_at
+54e11d47-087a-301c-2e07-65fe0ff60f46,No,Yes,Yes,No,Missing created_at
+57873b90-a7d4-ae83-d657-4bc0d57f6ee0,No,Yes,Yes,No,Missing created_at
+1ef74a90-7dca-6bcb-05da-b385f97420e0,No,Yes,Yes,No,Missing created_at
+37c4d587-a13a-a523-828b-8c1c3f47c6e5,No,Yes,Yes,No,Missing created_at
+b5e44530-52eb-195c-23ce-0901df0f2811,No,Yes,Yes,No,Missing created_at
+58afb6b4-58c2-bb78-8401-0d840281812e,No,Yes,Yes,No,Missing created_at
+50c923c5-a984-3119-6443-cfa0e8805482,No,Yes,Yes,No,Missing created_at
+cb8c9894-64d9-69dd-3677-6f430d882b79,No,Yes,Yes,No,Missing created_at
+752c8d81-bc98-42db-d215-788d17dba6eb,No,Yes,Yes,No,Missing created_at
+7db38434-5d5c-80cd-e524-00e52d3546e6,No,Yes,Yes,No,Missing created_at
+96c1cf88-5d0c-4449-a197-7c8bc5fd4dc3,Yes,Yes,Yes,Yes,
+846c9340-23b3-47a4-8a54-5953b41f2f7a,Yes,No,Yes,No,Missing closed_at
+f0de0900-6a45-49e5-87a7-f90468c0021f,Yes,Yes,Yes,Yes,
+8940a72b-e97b-c430-fe80-dd5f703d2b2c,No,Yes,Yes,No,Missing created_at
+9cc03432-0168-846b-b8af-34f2e82c1304,No,Yes,Yes,No,Missing created_at
+3214e117-49c9-552b-6e9c-cbcfa2d83bf4,No,Yes,Yes,No,Missing created_at
+bfbf4ee4-3dd6-8946-090f-0356ae9756b7,No,Yes,Yes,No,Missing created_at
+01f41bfa-c2f0-c2c6-f86a-f9b8cf2cc167,No,Yes,Yes,No,Missing created_at
+e62170fd-2a8f-147c-f99a-7f35f5948a80,No,Yes,Yes,No,Missing created_at
+caa1c9b3-3c45-4470-f1b3-515b2aea1edc,No,Yes,Yes,No,Missing created_at
+1b3d336b-b145-5392-6446-db743197dacb,No,Yes,Yes,No,Missing created_at
+65cada80-da95-693b-58dd-f609d026c2a1,No,Yes,Yes,No,Missing created_at
+f48522e3-b70e-4caf-95c4-4c64695c632a,Yes,No,Yes,No,Missing closed_at
+e61d2cb9-3140-4ef0-b62a-d73a1c750756,Yes,Yes,Yes,Yes,
+76d61ead-a174-4c32-b826-99c5a6277e1f,Yes,Yes,Yes,Yes,
+6383a047-73e9-0049-6be1-ad420bb426d6,No,Yes,Yes,No,Missing created_at
+298682a6-471a-a4c0-1cc9-4b9dc5ecfaa8,No,Yes,Yes,No,Missing created_at
+998c2e22-122e-bbe3-865b-e1ff25394044,No,Yes,Yes,No,Missing created_at
+a4884c74-2b30-25a0-62a9-6c621ae380fe,No,Yes,Yes,No,Missing created_at
+72405ca5-e55a-4349-9fdd-ca700389fd6b,Yes,Yes,Yes,Yes,
+c1863a04-127e-cef5-7eff-0a3bd5bca7fc,No,Yes,Yes,No,Missing created_at
+cfa2d054-c1d3-89ad-2e1b-cc4421339451,No,Yes,Yes,No,Missing created_at
+ed21b145-26a5-65ab-bf2c-ddf190872e8f,No,Yes,Yes,No,Missing created_at
+44316f83-5813-fb8e-d2ab-1343d0fab3f2,No,Yes,Yes,No,Missing created_at
+88a47516-18c5-fc32-41c5-90261c772576,No,Yes,Yes,No,Missing created_at
+dd4fdec3-f242-30e5-f5e1-aa357590564d,No,Yes,Yes,No,Missing created_at
+2a9075fb-d301-bbad-581c-adcd1678f49e,No,Yes,Yes,No,Missing created_at
+34da8673-bdcf-9b98-1ca2-9f2896b7f74f,No,Yes,Yes,No,Missing created_at
+63f97aaf-b20e-8b0a-5d96-7a6350f33a27,No,Yes,Yes,No,Missing created_at
+a6ee1147-a3cb-5e19-004b-15055ccb08ce,No,Yes,Yes,No,Missing created_at
+dee0cae2-cd15-c3db-131c-74eb0aaa95da,No,Yes,Yes,No,Missing created_at
+10c1b27a-bfc6-9920-7298-f5e427cb51e0,No,Yes,Yes,No,Missing created_at
+1b7a9324-3f5b-bd8a-c773-49a8f0277d78,No,Yes,Yes,No,Missing created_at
+2132b30e-45a1-4021-801e-c0772c7fcc4d,Yes,Yes,Yes,Yes,
+41bdac72-19c0-5a9b-a35f-efc615ffa556,No,Yes,Yes,No,Missing created_at
+2d0426ce-4364-67e9-68d1-143468bc86b1,No,Yes,Yes,No,Missing created_at
+4e4b885f-7557-9cf8-c749-6b24d2c0b86b,No,Yes,Yes,No,Missing created_at
+807cd978-b74c-c028-1930-847256523211,No,Yes,Yes,No,Missing created_at
+19f805a8-9b26-2b32-379c-99affa8e1f6b,No,Yes,Yes,No,Missing created_at
+1d6c1d1e-c163-a3ed-f124-0be3e1ea6a82,No,Yes,Yes,No,Missing created_at
+09781585-3e29-b7f6-d8df-192b30112013,No,Yes,Yes,No,Missing created_at
+5f9e416d-811a-4ecf-1b31-737be7ceb3a4,No,Yes,Yes,No,Missing created_at
+a92341f2-7949-9d9a-059c-7ec91da5f73f,No,Yes,Yes,No,Missing created_at
+7aa3d23d-49cc-3e4b-1540-ad55db32c87e,No,Yes,Yes,No,Missing created_at
+e2680a24-cf4d-bfe8-610c-72cf8f84dbc5,No,Yes,Yes,No,Missing created_at
+cfb7fc5d-8ab2-8bd5-49d0-64c8429e447d,No,Yes,Yes,No,Missing created_at
+f4307019-60f3-9ada-2acd-8969db2d48ae,No,Yes,Yes,No,Missing created_at
+2c8244de-5eb7-4650-b53e-707875513366,Yes,Yes,Yes,Yes,
+2500da24-9030-4a35-bdca-c1175df4b2ff,Yes,Yes,Yes,Yes,
+8d4494ef-d16a-9039-7a5e-cc1338af9606,No,Yes,Yes,No,Missing created_at
+4a510ded-bb90-41ad-8dc6-15bfa3346839,Yes,No,Yes,No,Missing closed_at
+dc2e91e2-69aa-4915-a6dd-b84ead36f658,Yes,Yes,Yes,Yes,
+97349eec-eeab-59cb-1c58-c48d49f27bb3,No,Yes,Yes,No,Missing created_at
+4dc2e07a-34a8-484e-af81-8347df1d0aef,Yes,Yes,Yes,Yes,
+55cdcc01-d85e-4ef7-86a5-c4ff8547afd3,Yes,Yes,Yes,Yes,
+074ea4b3-1a2f-4ee8-a73c-6e16276f6bff,Yes,Yes,Yes,Yes,
+3370a9f2-c854-4e94-b39e-d811d2844bbc,Yes,Yes,Yes,Yes,
+5c0cde5c-e20b-40e4-8cb8-3d20e69f2841,Yes,Yes,Yes,Yes,
+57812506-96c7-7960-deb3-8f03aed7e43a,No,Yes,Yes,No,Missing created_at
+bef235f1-9a2e-a1e0-0eb4-8e61181e8a58,No,Yes,Yes,No,Missing created_at
+59383f60-80a3-45ae-8e89-537056666a9a,Yes,Yes,Yes,Yes,
+38bca02b-7f1a-39a5-a2f8-619a1d6258e9,No,Yes,Yes,No,Missing created_at
+7a434025-9978-430b-aad6-27f67465bd9f,Yes,Yes,Yes,Yes,
+4258bc18-25be-8242-126d-124cf1ef33dc,No,Yes,Yes,No,Missing created_at
+ef2570d4-44d4-3f78-f1f0-6c23a57fb96b,No,Yes,Yes,No,Missing created_at
+b01c08e7-1a87-232a-ae60-8ff001d24f41,No,Yes,Yes,No,Missing created_at
+aa23d1f8-2684-c45c-6946-8d2d89b63e2d,No,Yes,Yes,No,Missing created_at
+cd746238-e268-40f5-950a-46720e40182d,Yes,No,Yes,No,Missing closed_at
+23895d1d-2d76-4fb4-9dbd-d0ff1b8eedff,Yes,Yes,Yes,Yes,
+87dbab50-1e1c-9e21-022a-1d4a580386d3,No,Yes,Yes,No,Missing created_at
+2aff393b-0b59-8da0-9a1c-eaf8ba381c5a,No,Yes,Yes,No,Missing created_at
+73999906-6bab-4a7b-bb02-ee5f45f086a2,Yes,Yes,Yes,Yes,
+93875bf1-b143-40b3-b27a-84bb5f57ef44,Yes,Yes,Yes,Yes,
+f1d005e9-820f-3db6-3e1d-cf90adf2cca7,No,Yes,Yes,No,Missing created_at
+b9bd090d-cea5-4596-96a5-86bfeb94b132,Yes,Yes,Yes,Yes,
+b230c8d4-47ac-4fca-bcfd-25076d66ebe0,Yes,No,Yes,No,Missing closed_at
+8d172be0-ab43-cb22-e839-bf58a94564bf,No,Yes,Yes,No,Missing created_at
+42dc85fe-a356-9222-0525-2ca60fcc8e2d,No,Yes,Yes,No,Missing created_at
+05c1d1d2-acff-3956-0c2a-366d5c690a8b,No,Yes,Yes,No,Missing created_at
+61d72347-fcd7-4363-94c2-e82a2a80912c,Yes,Yes,Yes,Yes,
+4178cce0-302c-c26e-34ef-5f46a77abc1a,No,Yes,Yes,No,Missing created_at
+5fc50886-f490-6b51-28df-166c5383b6f2,No,Yes,Yes,No,Missing created_at
+f4f01648-706d-45b9-95cc-6b116b5a749b,Yes,Yes,Yes,Yes,
+36e7ab35-4d46-f2af-6003-ff1c720d7703,No,Yes,Yes,No,Missing created_at
+0663a0d4-f2cc-0202-976b-8181ff7dd772,No,Yes,Yes,No,Missing created_at
+d6f54fbb-2bd4-dcc0-5a49-e29867b4754a,No,Yes,Yes,No,Missing created_at
+2191b23d-eeba-66fc-7983-f3ce989917ce,No,Yes,Yes,No,Missing created_at
+2d2f4aaa-e9db-12ef-bb50-f74383e74434,No,Yes,Yes,No,Missing created_at
+31dbf808-b397-8ee5-d368-3cac57b8507c,No,Yes,Yes,No,Missing created_at
+adf1259b-d291-fb77-ec80-a0ac71781819,No,Yes,Yes,No,Missing created_at
+44d8d40e-1945-d69f-fba6-b0836b9d2ac8,No,Yes,Yes,No,Missing created_at
+8ebfcd5d-e530-732b-7a4b-ea5cb5c43f71,No,Yes,Yes,No,Missing created_at
+b5a9d8e5-7aff-3007-8a07-0cae008936bb,No,Yes,Yes,No,Missing created_at
+7f308902-292b-d2d1-bb4b-76c5bf00aa54,No,Yes,Yes,No,Missing created_at
+8aa5cc61-6d57-4c38-ac7a-f4ac6c478ff1,Yes,Yes,Yes,Yes,
+195b33de-b770-4b0e-bd94-babf652a0704,Yes,Yes,Yes,Yes,
+a02e92b4-4619-4b7b-87f5-d1fd8f77c22a,Yes,Yes,Yes,Yes,
+358e878a-d9f2-cb1c-06a6-cbe99a7af07c,No,Yes,Yes,No,Missing created_at
+fb30b031-d325-23a7-1bee-a92b3483fb9e,No,Yes,Yes,No,Missing created_at
+441c340c-01f0-bc40-79bb-5f4ae5242cfc,No,Yes,Yes,No,Missing created_at
+b82b0ffd-2e21-2699-d0b5-28465ae7b470,No,Yes,Yes,No,Missing created_at
+da4b522e-88ea-8369-3cab-234db640ae87,No,Yes,Yes,No,Missing created_at
+73e91292-d62f-e4de-8f61-4991e760bf42,No,Yes,Yes,No,Missing created_at
+14707aae-6ecc-b4d1-f07b-1cbbef577d15,No,Yes,Yes,No,Missing created_at
+f36a3de9-8f2a-8d34-9b71-173e85d0d430,No,Yes,Yes,No,Missing created_at
+ca767982-0311-9ec4-0efb-66d254fe43ea,No,Yes,Yes,No,Missing created_at
+ec2ccc9a-c9fb-d6dc-1c0c-8b5431541f70,No,Yes,Yes,No,Missing created_at
+66ec0fed-ffa4-0ad9-019d-2c639998a9d9,No,Yes,Yes,No,Missing created_at
+d30b22b5-0ac7-75a6-e420-6b0a5b9f5fcd,No,Yes,Yes,No,Missing created_at
+ca339a54-3c9f-62d9-dfda-fc897926f7f2,No,Yes,Yes,No,Missing created_at
+e81e2e0c-2011-bd98-1c48-b355cc939fd1,No,Yes,Yes,No,Missing created_at
+f3d254a5-84be-aba0-e9f6-18960051c6e9,No,Yes,Yes,No,Missing created_at
+3e6e0a31-07cc-d3e1-2828-76327d86404f,No,Yes,Yes,No,Missing created_at
+42c3224a-e332-3f39-2a9e-dd50aa7623b6,No,Yes,Yes,No,Missing created_at
+a6d9a817-9434-9ab9-78b4-9738e6e4a9f0,No,Yes,Yes,No,Missing created_at
+8e5d4904-2f0d-9258-d8be-15f59b27f94a,No,Yes,Yes,No,Missing created_at
+d3846174-ddb9-2777-dc63-a9e6bf1aed4c,No,Yes,Yes,No,Missing created_at
+16712bef-057a-b054-b0df-fad8102616f9,No,Yes,Yes,No,Missing created_at
+79e3e2e1-77a4-48ba-c2df-77280c9b9a2a,No,Yes,Yes,No,Missing created_at
+53509283-e332-a848-f033-f156ba9bd243,No,Yes,Yes,No,Missing created_at
+ca95c03f-1dae-5565-d8ef-6fd6180b77ce,No,Yes,Yes,No,Missing created_at
+392a0c6e-211c-42ad-e5fa-a33537d5df26,No,Yes,Yes,No,Missing created_at
+6a0a6c7a-96ad-4250-bb4e-b959e0104b63,No,Yes,Yes,No,Missing created_at
+84508b32-6d5e-64fe-b469-9bdf32f62409,No,Yes,Yes,No,Missing created_at
+b251a63a-cfc3-adbc-edd9-8cd1e968f45c,No,Yes,Yes,No,Missing created_at
+ba05cf16-9e6f-fea7-8a18-d319411a2aad,No,Yes,Yes,No,Missing created_at
+16a68c05-d6f0-5226-4818-eb0fb78a93bd,No,Yes,Yes,No,Missing created_at
+6650481d-5a62-3022-687f-6542f0a05b3a,No,Yes,Yes,No,Missing created_at
+821cbec5-596a-7f0e-6daa-f71788c6f3dc,No,Yes,Yes,No,Missing created_at
+0805c9b9-4ad2-eee5-4d20-2e2b186860bc,No,Yes,Yes,No,Missing created_at
+a719dcef-1785-485c-64ae-61d1a0ff249b,No,Yes,Yes,No,Missing created_at
+57973195-46ef-4872-a4bc-28f3eab8fd71,Yes,Yes,Yes,Yes,
+93e4010d-b202-4327-4291-8608090b4249,No,Yes,Yes,No,Missing created_at
+ab512c3f-da9f-2cf3-0a27-98f2af55e3e9,No,Yes,Yes,No,Missing created_at
+b6192ba9-f4c2-080e-2cac-5c0a8a33d47d,No,Yes,Yes,No,Missing created_at
+1493d90e-ab4a-15f0-9f8b-2547f4e3d840,No,Yes,Yes,No,Missing created_at
+77ac97b6-db0c-f7ed-82b2-d93e60dd841b,No,Yes,Yes,No,Missing created_at
+4cc5dd3d-04d1-7f06-9ae3-afc57770ff48,No,Yes,Yes,No,Missing created_at
+e0e96049-7aab-68ce-ff57-adba7d041458,No,Yes,Yes,No,Missing created_at
+da7b9309-d948-ccad-e28e-28896693e56e,No,Yes,Yes,No,Missing created_at
+0a18b8da-f50d-17cf-cfc6-fbf63a5b2cd5,No,Yes,Yes,No,Missing created_at
+e59b8693-c216-f7a0-2b8d-e0f32303ee18,No,Yes,Yes,No,Missing created_at
+17328753-a5c5-1f60-e28a-9b49fa7d88b5,No,Yes,Yes,No,Missing created_at
+5a2444ea-07e6-ed92-4e88-8ce8c301eabb,No,Yes,Yes,No,Missing created_at
+9065ed47-28c5-ddb8-a33c-4b971bea31d9,No,Yes,Yes,No,Missing created_at
+af5bb683-0bb1-484c-812a-6c365e52ad8a,No,Yes,Yes,No,Missing created_at
+e4cac291-f415-0324-2de7-52b987aafabc,No,Yes,Yes,No,Missing created_at
+90c31ba1-869a-fdc8-be8e-965549b7287d,No,Yes,Yes,No,Missing created_at
+f07c107b-1e23-b654-2ba7-81e6d9650bd7,No,Yes,Yes,No,Missing created_at
+f30105ad-0686-e5c3-9260-847b452c3f09,No,Yes,Yes,No,Missing created_at
+f786ac47-d29a-9f0b-acd2-c179e0d5c49e,No,Yes,Yes,No,Missing created_at
+6c82af21-3118-bc00-d7d7-b17d04a03d84,No,Yes,Yes,No,Missing created_at
+0a89b554-b3fb-a037-300d-b6700f9ea741,No,Yes,Yes,No,Missing created_at
+1fdfe0db-a50f-8eb9-b0ef-6eb600ad4b20,No,Yes,Yes,No,Missing created_at
+ec1414fb-cf85-4da2-c91b-435bcbe0bedf,No,Yes,Yes,No,Missing created_at
+f76bea3c-a024-2745-4b06-c1021739cddf,No,Yes,Yes,No,Missing created_at
+7fb63f92-3d08-f01c-d3bb-36d5a14e53a1,No,Yes,Yes,No,Missing created_at
+b784ebad-ba4a-a89b-f48b-765c27359637,No,Yes,Yes,No,Missing created_at
+f48d3aa0-e5e8-3cfe-115b-f5106cf97e9f,No,Yes,Yes,No,Missing created_at
+aaf86792-b98d-1597-72ca-01e51d266008,No,Yes,Yes,No,Missing created_at
+a6ec090b-d381-1f63-6f28-1bb81b6d0ec5,No,Yes,Yes,No,Missing created_at
+0572540d-7d3d-cd44-9ef0-84a477a4859b,No,Yes,Yes,No,Missing created_at
+13ee6ea9-d5b3-fd62-c035-e9bb1d8e7fe6,No,Yes,Yes,No,Missing created_at
+480e1668-6e43-9dc4-959d-3963c3e3241d,No,Yes,Yes,No,Missing created_at
+14d0b195-1ffe-975f-40ea-5fe1145df246,No,Yes,Yes,No,Missing created_at
+5cb7e17e-1c68-3dd4-1d87-b0da116c9bff,No,Yes,Yes,No,Missing created_at
+08f019f5-aa34-6393-259c-8e382deecf44,No,Yes,Yes,No,Missing created_at
+5ffb0b10-ca2c-0d93-3b99-c455861c885c,No,Yes,Yes,No,Missing created_at
+89cf9415-cb4b-a9d1-bb61-ecb5e2aaa387,No,Yes,Yes,No,Missing created_at
+4e65b997-6dbd-5e6a-2790-5433ef5a8664,No,Yes,Yes,No,Missing created_at
+1aba1441-2df9-79da-5819-d950afda374e,No,Yes,Yes,No,Missing created_at
+1297c3c4-025b-4f26-c633-718fc36ed0ee,No,Yes,Yes,No,Missing created_at
+8d69ff83-3b77-b53e-15d6-cb22c193e5a1,No,Yes,Yes,No,Missing created_at
+ea45107c-8117-e94f-238f-5a2a66b9f1ee,No,Yes,Yes,No,Missing created_at
+d8ac9d4d-262c-01ac-c1f9-4436162b2e95,No,Yes,Yes,No,Missing created_at
+27f8d0e4-1105-9ba5-cbdf-1b73d5c8f7fa,No,Yes,Yes,No,Missing created_at
+69c81b2b-edb9-f6b2-751a-223d282840df,No,Yes,Yes,No,Missing created_at
+621220cf-d586-225a-2015-4c269cdcce23,No,Yes,Yes,No,Missing created_at
+d5372a25-6e83-df83-ddec-2223d3361967,No,Yes,Yes,No,Missing created_at
+76d4e83a-f486-5e8c-e50a-fae0a7740d4b,No,Yes,Yes,No,Missing created_at
+03dd5932-a744-d556-f6df-d587ca1d1a8f,No,Yes,Yes,No,Missing created_at
+7f38453a-97e7-d781-41c6-ae3e648a45c7,No,Yes,Yes,No,Missing created_at
+614e6ff4-beb4-bf82-cda2-ad9fd855eaf4,No,Yes,Yes,No,Missing created_at
+9f554f6d-697f-0963-d5c1-2d14d15be9ce,No,Yes,Yes,No,Missing created_at
+1edfb329-5f3a-1274-ed2d-d13041a43352,No,Yes,Yes,No,Missing created_at
+e02ffcaf-5ebc-8c38-d6f8-b784d77ec015,No,Yes,Yes,No,Missing created_at
+b63d6c63-ac9e-04e3-8068-387d8a2604ac,No,Yes,Yes,No,Missing created_at
+47460e2a-6de5-9f3c-e85d-26a87e88b9f9,No,Yes,Yes,No,Missing created_at
+91b192c9-411f-105d-d6ec-927d7c2dee6b,No,Yes,Yes,No,Missing created_at
+356c677e-db70-f33b-f02f-ce37c899ca6e,No,Yes,Yes,No,Missing created_at
+6ad64ebc-fb2d-1b48-26e8-7981913864c5,No,Yes,Yes,No,Missing created_at
+e78bc5cf-1343-a638-4a87-8217095ae1d3,No,Yes,Yes,No,Missing created_at
+80eb03c0-513c-da92-e47b-dd2f93a5f84b,No,Yes,Yes,No,Missing created_at
+ebd37461-93f5-9c36-a2fb-878d4d81fd60,No,Yes,Yes,No,Missing created_at
+6467266a-fc62-74a4-2746-da4c889a1cb8,No,Yes,Yes,No,Missing created_at
+1e804873-1f01-2439-a1b2-e24dface96d9,No,Yes,Yes,No,Missing created_at
+57584f0a-35f3-99af-bc46-f728d7ce662b,No,Yes,Yes,No,Missing created_at
+a110dcd6-57ff-f65e-a9f4-ad68d52f5ed7,No,Yes,Yes,No,Missing created_at
+a0fd9654-eb9e-da53-7b73-6db617b432e2,No,Yes,Yes,No,Missing created_at
+53a8bb41-b03a-6d85-efe4-aed7c835660c,No,Yes,Yes,No,Missing created_at
+014cb7c7-f017-ac40-2dae-689e423794d2,No,Yes,Yes,No,Missing created_at
+ae693564-6289-cfb1-cead-e6d8e4e9ba2c,No,Yes,Yes,No,Missing created_at
+97beeab7-5ad1-8122-7784-1c690ab3e70b,No,Yes,Yes,No,Missing created_at
+f7eef293-0543-ae3f-98e3-6366264442e5,No,Yes,Yes,No,Missing created_at
+e1b17952-5bbe-3339-31a2-20244c2c0f99,No,Yes,Yes,No,Missing created_at
+9110e092-c877-fb73-70df-be1c73151790,No,Yes,Yes,No,Missing created_at
+47b2b55c-b767-6e9a-26cb-5622dc4edd18,No,Yes,Yes,No,Missing created_at
+49b58c99-5f2f-43ea-aa8e-87a305d018af,Yes,Yes,Yes,Yes,
+524eeb41-a60a-79da-43ac-8bc88c3c896d,No,Yes,Yes,No,Missing created_at
+1df9b841-b039-6bcd-9e05-d24b1c3734f6,No,Yes,Yes,No,Missing created_at
+e54040bc-7aed-d0df-3aa7-bed6b9f9f947,No,Yes,Yes,No,Missing created_at
+498461fa-8dd5-2b1e-cda5-8f1433301f13,No,Yes,Yes,No,Missing created_at
+f207d573-6afe-b507-8793-1d3c151d84ef,No,Yes,Yes,No,Missing created_at
+68bd2885-5f97-208d-4f8a-dc5e09d6afde,No,Yes,Yes,No,Missing created_at
+09cae616-8152-3e63-adc9-7e7a2e6095b0,No,Yes,Yes,No,Missing created_at
+784240b2-b503-0cee-4a69-b79ff2613149,No,Yes,Yes,No,Missing created_at
+afb8cf37-0927-b4d3-8281-30726617bf6a,No,Yes,Yes,No,Missing created_at
+fb1f6a8e-4b6d-2eb3-ed71-10704003ca93,No,Yes,Yes,No,Missing created_at
+9a513701-4c62-424e-9aa7-c38eff6c017b,No,Yes,Yes,No,Missing created_at
+cc8dabc0-557f-445d-9bf0-6297ded41835,Yes,Yes,Yes,Yes,
+0a249101-dd5f-4a12-9c3a-07a92226137a,Yes,Yes,Yes,Yes,
+c1b52572-c0ee-4d6f-8b4b-19e97105217b,Yes,Yes,Yes,Yes,
+ad083df7-9c0d-12d8-d880-224050e43b60,No,Yes,Yes,No,Missing created_at
+e80fac36-7f85-ed6e-9b77-6ebc94fbad08,No,Yes,Yes,No,Missing created_at
+482b850c-7344-192d-6f61-7c2f30322ece,No,Yes,Yes,No,Missing created_at
+d081735b-45d5-6930-7ecc-9ba290d94909,No,Yes,Yes,No,Missing created_at
+63b7cc7b-7577-a332-84d8-3363422b089a,No,Yes,Yes,No,Missing created_at
+b3e1c5b7-dadf-5ebd-3b5e-8e9da2466dc7,No,Yes,Yes,No,Missing created_at
+610c6ef8-9e8e-ad7d-53c5-259a0e43c9cb,No,Yes,Yes,No,Missing created_at
+c7fbe84d-8e28-db31-8a39-da887d69982c,No,Yes,Yes,No,Missing created_at
+c817bd3e-161f-a005-b447-e0679be1418c,No,Yes,Yes,No,Missing created_at
+b0f62c52-692f-b276-0bbd-50005572c3ef,No,Yes,Yes,No,Missing created_at
+6689d353-c81c-120f-019c-b088c521dafb,No,Yes,Yes,No,Missing created_at
+b87825e2-0121-09f6-274d-8d5148be80f7,No,Yes,Yes,No,Missing created_at
+2219302c-fd07-0f43-2d78-9271b8c38dae,No,Yes,Yes,No,Missing created_at
+9201790b-de85-739c-a3bd-a8185eb484fc,No,Yes,Yes,No,Missing created_at
+be11261f-5493-9e7c-0155-16852657b8b9,No,Yes,Yes,No,Missing created_at
+6d63af98-5c89-9093-a7b6-d3cfe37dc9c7,No,Yes,Yes,No,Missing created_at
+434ca6ed-8fc5-cbb9-8ff2-999b535f94b7,No,Yes,Yes,No,Missing created_at
+08f20369-8c81-9bfe-f8f1-e5b66940a311,No,Yes,Yes,No,Missing created_at
+197c1909-c115-b48f-c7db-608feb7f6151,No,Yes,Yes,No,Missing created_at
+d0567dac-8c86-d7cb-d1ea-30f478982a88,No,Yes,Yes,No,Missing created_at
+fc7c612f-84e9-ac8a-17de-f68fb024d3d9,No,Yes,Yes,No,Missing created_at
+6461b6d0-fd1c-df62-937d-770556f3ca78,No,Yes,Yes,No,Missing created_at
+5df1f489-5450-e236-8313-402f7e12d88a,No,Yes,Yes,No,Missing created_at
+3f4db417-d4d8-acce-3be1-0c7922e53e2e,No,Yes,Yes,No,Missing created_at
+70ae761f-808e-7c4b-f576-6287eb0ce294,No,Yes,Yes,No,Missing created_at
+b6178ef3-4c72-e931-f379-1822fc371017,No,Yes,Yes,No,Missing created_at
+5c308b09-2750-c596-2408-e88621129da4,No,Yes,Yes,No,Missing created_at
+4df5928b-5c95-6cd9-d960-33626578ae6c,No,Yes,Yes,No,Missing created_at
+a5ec4e65-3b89-709f-a548-7a4e84fdae41,No,Yes,Yes,No,Missing created_at
+77ba3295-631e-26cd-3785-48da40448148,No,Yes,Yes,No,Missing created_at
+4133b508-ad94-d651-c631-effeae31b33d,No,Yes,Yes,No,Missing created_at
+d7e7be03-0135-651d-000d-837d6b3fa476,No,Yes,Yes,No,Missing created_at
+5e0ecf89-2b66-8ad0-7146-430737109586,No,Yes,Yes,No,Missing created_at
+e75be53b-546d-2a9e-7f23-8f298c88ad5c,No,Yes,Yes,No,Missing created_at
+1c5f7abc-2c5c-2539-629e-2cd16a08ab09,No,Yes,Yes,No,Missing created_at
+4d3d7725-09ab-e4fa-d5ae-3ec2f9008155,No,Yes,Yes,No,Missing created_at
+3ed32b48-c463-50fb-814c-3de0afc29a2e,No,Yes,Yes,No,Missing created_at
+0df78abe-895d-6b2d-2c0e-d08c2cc09528,No,Yes,Yes,No,Missing created_at
+2afbc190-ef89-547a-a712-5a1baf55e2c0,No,Yes,Yes,No,Missing created_at
+cb88e974-53e8-cb0b-72fb-1e8409b7b2fd,No,Yes,Yes,No,Missing created_at
+7fd5bc9b-4cb3-8e7b-e296-aacc70fe390e,No,Yes,Yes,No,Missing created_at
+79e5bb21-22c6-8b79-43b3-505f455eb348,No,Yes,Yes,No,Missing created_at
+24e69fce-725c-f859-23d2-09810c7e72d4,No,Yes,Yes,No,Missing created_at
+09963920-afc7-8fcd-7829-b30987557b55,No,Yes,Yes,No,Missing created_at
+c571eabe-749c-29ef-9207-0956a6800bb5,No,Yes,Yes,No,Missing created_at
+ddf94358-0ea9-0871-0ed0-f48cc421d721,No,Yes,Yes,No,Missing created_at
+ce6db03e-7f9f-4564-73e7-e9d29ff78ab4,No,Yes,Yes,No,Missing created_at
+aea3d88b-c517-2783-3d05-48f0546c4c57,No,Yes,Yes,No,Missing created_at
+1142fbaa-dcc7-de1b-7bd8-be142ffa15cc,No,Yes,Yes,No,Missing created_at
+09f81b2c-72e7-709d-5ba1-360f8646c884,No,Yes,Yes,No,Missing created_at
+1656ff84-c36f-d856-7314-b0a25a415913,No,Yes,Yes,No,Missing created_at
+0c08f06f-7a08-3220-ee9c-6522b0b93825,No,Yes,Yes,No,Missing created_at
+e81d0e92-c8ae-73c9-50de-586fcc1cbdf3,No,Yes,Yes,No,Missing created_at
+2a3327d0-872c-007c-4a67-2a0a9b03c93b,No,Yes,Yes,No,Missing created_at
+e61cc2bb-931d-59e6-1e2e-316293ff05e4,No,Yes,Yes,No,Missing created_at
+10811cf6-6fa4-5c54-010e-863a8da4067e,No,Yes,Yes,No,Missing created_at
+85bd1fef-51ab-3b14-6151-74d7fb0d6b7c,No,Yes,Yes,No,Missing created_at
+abf38d2d-6fbf-d102-0915-ad1fa7488dca,No,Yes,Yes,No,Missing created_at
+e61d9b86-53e5-4ae3-755d-e8cb399dac7d,No,Yes,Yes,No,Missing created_at
+bfe6d0a1-db47-03ef-da0c-0b770d03b44b,No,Yes,Yes,No,Missing created_at
+8507f042-7a29-c3b6-3408-e31b541a76c2,No,Yes,Yes,No,Missing created_at
+68f2b79b-99a7-fd31-c664-933f4296a50d,No,Yes,Yes,No,Missing created_at
+fd95aa3b-dc52-7809-ca1e-c3a77c98640a,No,Yes,Yes,No,Missing created_at
+247a627c-f744-8179-498c-0e2e95528e61,No,Yes,Yes,No,Missing created_at
+cc6809fa-9153-7415-8aae-5e6e06e85431,No,Yes,Yes,No,Missing created_at
+d452baaa-641a-24de-db04-0e27f16ba62c,No,Yes,Yes,No,Missing created_at
+85ca321f-ffd0-7ab3-e1f7-8924bcc14eef,No,Yes,Yes,No,Missing created_at
+28ec0694-a088-19c4-4323-cd4553956079,No,Yes,Yes,No,Missing created_at
+1e57c28b-1320-4b79-cf80-804c62ce33b0,No,Yes,Yes,No,Missing created_at
+03531a0e-3965-ab08-3d56-2dd34942f46c,No,Yes,Yes,No,Missing created_at
+9f53b279-80bb-d6c2-ac64-4a431b95bc5b,No,Yes,Yes,No,Missing created_at
+df177e35-34fa-282b-99e3-d357ab89c159,No,Yes,Yes,No,Missing created_at
+62d4d454-72a1-4a9c-bf74-5e76d38d73a1,No,Yes,Yes,No,Missing created_at
+1dbdc9f9-607f-b4cc-0686-3b37b5ff8e2f,No,Yes,Yes,No,Missing created_at
+2e931b7a-d306-ca07-b025-a6de8424a0ef,No,Yes,Yes,No,Missing created_at
+4847fed3-1b82-6638-f5a1-7a9693648c96,No,Yes,Yes,No,Missing created_at
+5a925b9c-d1f8-0566-47d4-8ed4dd46dbb8,No,Yes,Yes,No,Missing created_at
+24b7914b-5e48-2a00-b1ea-b8902ec62020,No,Yes,Yes,No,Missing created_at
+0a4cd8f2-2db8-9935-1b30-54c32fcbc537,No,Yes,Yes,No,Missing created_at
+203ce1fb-f4ef-1b37-08de-ac71a6646312,No,Yes,Yes,No,Missing created_at
+0e58e701-d08d-a59c-2ad8-3f1a8c69219c,No,Yes,Yes,No,Missing created_at
+23404ee7-bf50-01a4-3fac-ca1189241380,No,Yes,Yes,No,Missing created_at
+e3104f55-5184-c89b-8fdd-b79b306522b5,No,Yes,Yes,No,Missing created_at
+447d278c-ec24-ea0d-d97e-612c035047aa,No,Yes,Yes,No,Missing created_at
+a6ec186d-73a9-1f62-04cf-cc99bb49e59b,No,Yes,Yes,No,Missing created_at
+a0b9da19-2d75-f36c-381c-cc12226c6796,No,Yes,Yes,No,Missing created_at
+8a8311f9-e077-c1eb-9d82-bf29c1cb8760,No,Yes,Yes,No,Missing created_at
+dad411af-d52f-f78c-9f02-9e68d034ff23,No,Yes,Yes,No,Missing created_at
+ac3b2089-fd17-8405-c0da-36694478e99a,No,Yes,Yes,No,Missing created_at
+e3380041-43a8-3990-0d7e-afbde37b3059,No,Yes,Yes,No,Missing created_at
+4127a382-8952-99ca-1643-4cdf2ad23be1,No,Yes,Yes,No,Missing created_at
+c0b69336-c6f6-d65a-f712-53e612261f9e,No,Yes,Yes,No,Missing created_at
+5eca8d51-c2b6-ec11-b6e6-89dd2897b075,No,Yes,Yes,No,Missing created_at
+bc76ebbc-cb82-bdd7-d9c6-de4748cd0326,No,Yes,Yes,No,Missing created_at
+981261d4-3c5b-8adc-db69-ae84bcc1dba3,No,Yes,Yes,No,Missing created_at
+1a1395c3-f76b-19bf-1d27-c52cc4711aa6,No,Yes,Yes,No,Missing created_at
+05d64e3b-69dd-31cc-8145-43d4e66a50f4,No,Yes,Yes,No,Missing created_at
+d9460800-359b-4052-f607-37cbccea4f3e,No,Yes,Yes,No,Missing created_at
+f9dad515-1c6b-4b4f-4de5-8520cd2993b5,No,Yes,Yes,No,Missing created_at
+fb51ea4d-9db5-2145-4d51-c0cc488c77cc,No,Yes,Yes,No,Missing created_at
+51eaca41-c28a-29b0-99c6-ab86a1ece54b,No,Yes,Yes,No,Missing created_at
+39be7a6d-dc55-7d43-7ebc-b1224b409f99,No,Yes,Yes,No,Missing created_at
+426a131a-c589-9ad6-e71c-7850a464b002,No,Yes,Yes,No,Missing created_at
+2f805829-2fb8-7a88-3d1c-2e6f3078d664,No,Yes,Yes,No,Missing created_at
+426fd85d-0eae-4e36-2d0a-74ee0148d9b4,No,Yes,Yes,No,Missing created_at
+912e14a6-6b54-baf4-5eaf-c485f59e5529,No,Yes,Yes,No,Missing created_at
+1dc17326-126e-c888-59c5-f65ba7f151b3,No,Yes,Yes,No,Missing created_at
+f3acbb18-9cf1-6150-3522-83ecf16cc409,No,Yes,Yes,No,Missing created_at
+ea46b250-7c89-56bc-6da1-73cddb149d51,No,Yes,Yes,No,Missing created_at
+16824e25-1f75-89a0-9bc8-1d0749eccfa8,No,Yes,Yes,No,Missing created_at
+3bc479ca-6d81-09b6-6ecb-30ec2cf68781,No,Yes,Yes,No,Missing created_at
+0ccf2132-aaa6-a3d2-640d-87700fd8d69c,No,Yes,Yes,No,Missing created_at
+61d44faa-d7f1-67a8-b8fe-8dda77dcc66c,No,Yes,Yes,No,Missing created_at
+fb2a8321-828e-f0b6-2f8e-4edc9a9f8bc0,No,Yes,Yes,No,Missing created_at
+41b155ae-0f70-9866-7ebd-1596f05e95c4,No,Yes,Yes,No,Missing created_at
+645aeafa-c16f-4cfc-0e99-6cf755a10311,No,Yes,Yes,No,Missing created_at
+8e402122-6b6b-6fc7-cace-ed00f0853c59,No,Yes,Yes,No,Missing created_at
+41d3cf70-f318-b786-4010-902e3fd05280,No,Yes,Yes,No,Missing created_at
+46bb75e7-11af-198c-0abf-9e1bffda7010,No,Yes,Yes,No,Missing created_at
+f88b2c3f-8ae0-b291-402a-962c760dfe06,No,Yes,Yes,No,Missing created_at
+09c5b0a5-24b7-28fb-288c-8469809c38fe,No,Yes,Yes,No,Missing created_at
+54541597-831f-7957-88dd-62cedd74b747,No,Yes,Yes,No,Missing created_at
+117f9f22-b73f-e9dd-8f22-c26ca7f4570d,No,Yes,Yes,No,Missing created_at
+b6d17344-d2da-e8d7-812e-f76c7a390e58,No,Yes,Yes,No,Missing created_at
+3ab4faa5-abf5-31b8-fdbf-8ffb543cdbb0,No,Yes,Yes,No,Missing created_at
+74049431-1314-fb4a-0d41-7894a6035d00,No,Yes,Yes,No,Missing created_at
+2cb9a7fb-76a2-068b-b739-041830b3edd7,No,Yes,Yes,No,Missing created_at
+cc629fcc-fb15-5872-b444-904e2646d3f3,No,Yes,Yes,No,Missing created_at
+6071c6e8-f56c-00d1-94a1-f3a3de65dce0,No,Yes,Yes,No,Missing created_at
+760c7838-d6cc-4adc-250b-62e58c4d778b,No,Yes,Yes,No,Missing created_at
+3e853e5e-a856-aa19-34e3-dcb41b13f242,No,Yes,Yes,No,Missing created_at
+4536fcf1-5efd-28ec-bb95-8f03c474f0e8,No,Yes,Yes,No,Missing created_at
+8a25d154-e210-da76-4518-9865e5e371aa,No,Yes,Yes,No,Missing created_at
+b4b7dc1d-1b9a-63b3-30cb-7aa3d300777f,No,Yes,Yes,No,Missing created_at
+fb578592-2baf-dd51-b8b9-02d1693c76bf,No,Yes,Yes,No,Missing created_at
+6f80f35f-b19a-21b3-8506-ce7c8bc05b65,No,Yes,Yes,No,Missing created_at
+97309cb0-0ca8-b857-156e-e16a7dc4efd2,No,Yes,Yes,No,Missing created_at
+070592e9-2623-5baa-060d-4ec50c858f8a,No,Yes,Yes,No,Missing created_at
+ad41337b-a0e9-0cf0-1699-b242bd846869,No,Yes,Yes,No,Missing created_at
+f5439bfe-94e3-9824-71c6-0421874bdb74,No,Yes,Yes,No,Missing created_at
+e8b6876e-8665-cbc6-95b3-2037ef921736,No,Yes,Yes,No,Missing created_at
+c8756a49-286a-a3f4-4a90-af32c2bb21b1,No,Yes,Yes,No,Missing created_at
+a23925d3-7c20-2966-b16a-0a16d0d973bf,No,Yes,Yes,No,Missing created_at
+332a0b92-f032-da4b-e51c-31a35375db98,No,Yes,Yes,No,Missing created_at
+aadff554-5571-6661-3741-dc22842e3252,No,Yes,Yes,No,Missing created_at
+326e574d-22b2-1849-ac5c-b2677b7cf820,No,Yes,Yes,No,Missing created_at
+79a4fa68-ffe9-5fc6-32cf-fcbc279047db,No,Yes,Yes,No,Missing created_at
+7239c720-1796-50ef-ae84-dfd071ee0282,No,Yes,Yes,No,Missing created_at
+1dd2c106-4258-400a-1a32-7d97685a4147,No,Yes,Yes,No,Missing created_at
+eb28aba7-2121-5158-67cd-31bd0f594c53,No,Yes,Yes,No,Missing created_at
+56bf799d-78dc-cf98-7c9c-ae28fd077b67,No,Yes,Yes,No,Missing created_at
+23a9dd24-c837-a686-d288-270f0c83192f,No,Yes,Yes,No,Missing created_at
+62a23cb9-2c0d-f789-7ca4-2116d1668f48,No,Yes,Yes,No,Missing created_at
+a845ff25-034e-46d8-1eb7-bb5369cb3262,No,Yes,Yes,No,Missing created_at
+66204206-a7b6-515d-6da6-70b6ff4e2312,No,Yes,Yes,No,Missing created_at
+252031ca-0ef5-8c6b-d2ff-1a00ca847936,No,Yes,Yes,No,Missing created_at
+807d886e-74a3-8db1-e062-0491b7e0026f,No,Yes,Yes,No,Missing created_at
+29997340-f115-502b-0d6c-7637b887e4dc,No,Yes,Yes,No,Missing created_at
+23177e98-39bc-a0ed-8a61-e1f8d8d4f79d,No,Yes,Yes,No,Missing created_at
+40ee49ea-91ec-0756-6c17-e660f8b67350,No,Yes,Yes,No,Missing created_at
+7e427e2e-e414-cbed-387c-0e94af7907ab,No,Yes,Yes,No,Missing created_at
+05e3d7c7-fc5a-f79b-ef5d-864e7e757deb,No,Yes,Yes,No,Missing created_at
+dc6209b1-1df4-0207-754d-0d66d1a873d7,No,Yes,Yes,No,Missing created_at
+9305429f-7bd9-af86-eb51-38dd47e9db23,No,Yes,Yes,No,Missing created_at
+dc849f5b-a5bb-60fc-84b4-b2f4a25f0ea2,No,Yes,Yes,No,Missing created_at
+74120f49-0b22-3537-b5ec-d3c5572da009,No,Yes,Yes,No,Missing created_at
+ecdc4f67-27c8-d1ea-11dd-e41dcf5dfe6d,No,Yes,Yes,No,Missing created_at
+59b655fe-f97b-daf6-e89d-fdb0e1945f1d,No,Yes,Yes,No,Missing created_at
+e6e82b56-81dd-d808-0199-2e8da2bd3838,No,Yes,Yes,No,Missing created_at
+f061e3f1-87fc-7754-0f2f-84162a953251,No,Yes,Yes,No,Missing created_at
+fafbbe54-c3ff-f3c5-595a-a06cdb43c848,No,Yes,Yes,No,Missing created_at
+4c3f7bae-781c-1224-0222-ad3f94ce381d,No,Yes,Yes,No,Missing created_at
+0286eca6-c356-4481-081f-29a964923811,No,Yes,Yes,No,Missing created_at
+f40e33ee-142d-488a-db13-058960c1e4af,No,Yes,Yes,No,Missing created_at
+a2c8ff46-ac0a-424a-bcae-582dfd6db28e,Yes,Yes,Yes,Yes,
+c21ada41-f39e-4dc2-a692-e977fc9d3772,Yes,No,Yes,No,Missing closed_at
+8acb89e3-ea87-4013-8fdf-7f56b6d7f6b2,Yes,No,Yes,No,Missing closed_at
+6a9b6d23-6feb-e775-0c8e-83fe76169010,No,Yes,Yes,No,Missing created_at
+fa14fd02-b868-e37a-92b7-c20d6f0a5c10,No,Yes,Yes,No,Missing created_at
+51807d31-16f9-9a56-70b6-59405dae842e,No,Yes,Yes,No,Missing created_at
+8718b796-91e6-9c0c-92d2-c6d81c681770,No,Yes,Yes,No,Missing created_at
+e8ed3a95-48e4-c823-b90e-b0e406766bf4,No,Yes,Yes,No,Missing created_at
+fa5cda43-b643-29b8-8e7b-2cdf427a67e3,No,Yes,Yes,No,Missing created_at
+f064a275-3ae8-940a-4616-4aa677a8a5d6,No,Yes,Yes,No,Missing created_at
+aa5246b5-42ec-df14-577c-9ae981cb4ff6,No,Yes,Yes,No,Missing created_at
+f4273f95-362a-d869-093c-d42cd4d9de4f,No,Yes,Yes,No,Missing created_at
+fa7d7055-c9d0-ff03-059c-9735424dc6bd,No,Yes,Yes,No,Missing created_at
+c7648a8a-650a-798f-c536-b41de048c7dd,No,Yes,Yes,No,Missing created_at
+0403bcc2-8ef7-44ec-1da3-00dd82ed1fab,No,Yes,Yes,No,Missing created_at
+651e134c-2a52-efdf-1276-13543df66fd4,No,Yes,Yes,No,Missing created_at
+0724df23-fa13-e288-2a8f-17e148ea51fb,No,Yes,Yes,No,Missing created_at
+ae224d05-9645-7216-1523-43113a40dbbe,No,Yes,Yes,No,Missing created_at
+3f10393c-cd77-74ab-4261-2a3eeafd8217,No,Yes,Yes,No,Missing created_at
+902b2478-df95-2995-4a94-9c6a45f500f7,No,Yes,Yes,No,Missing created_at
+066cfbbc-b43a-c487-b9ca-a3e19c3bd308,No,Yes,Yes,No,Missing created_at
+668fbf0a-6179-f053-0294-57280ffe5cb5,No,Yes,Yes,No,Missing created_at
+7ad00c6e-9014-bbe1-8b23-68a6e4b22ad7,No,Yes,Yes,No,Missing created_at
+9f9b8f73-6644-3bed-a6ea-6334e8b89337,No,Yes,Yes,No,Missing created_at
+8bbc5f47-0b85-27d2-d660-bb4bbeb005ec,No,Yes,Yes,No,Missing created_at
+e106bcdc-78ba-02cf-9589-368dc10bb2dc,No,Yes,Yes,No,Missing created_at
+144a737a-98cb-64f8-3ec4-0406d92af671,No,Yes,Yes,No,Missing created_at
+3c22fcd8-7379-4ce2-00f6-fd114d84f389,No,Yes,Yes,No,Missing created_at
+4ffdcd63-b570-acda-f773-7073709ae98f,No,Yes,Yes,No,Missing created_at
+ad3474ad-6bd6-40ba-42f7-b62a14f0cb6e,No,Yes,Yes,No,Missing created_at
+1eae2b63-2af5-bd4b-7f4a-57394ae9cb75,No,Yes,Yes,No,Missing created_at
+c0a5fa74-cdcd-c23e-2d58-e3b1b502fa1b,No,Yes,Yes,No,Missing created_at
+8c944ff6-cd23-6076-4cf5-20fdde397111,No,Yes,Yes,No,Missing created_at
+78d47d55-37ad-f2cc-c16c-bb5f3647ccc0,No,Yes,Yes,No,Missing created_at
+0e2940ea-1484-9537-8245-126de31ead97,No,Yes,Yes,No,Missing created_at
+9d8efa81-f0ba-b4ba-ed77-a34da3d41735,No,Yes,Yes,No,Missing created_at
+201b5206-df00-626c-98ad-e448bdb1551d,No,Yes,Yes,No,Missing created_at
+386d9101-8d34-b85e-4c35-5567e05fc0e3,No,Yes,Yes,No,Missing created_at
+33c4fcea-1fab-9705-5e7a-49ead1f1a919,No,Yes,Yes,No,Missing created_at
+f880a3de-eff2-2145-29f1-5664ee9c6984,No,Yes,Yes,No,Missing created_at
+de81cb45-76db-b939-c204-b73655735f8c,No,Yes,Yes,No,Missing created_at
+409160f3-8c48-9b1d-923f-ea28f3d96126,No,Yes,Yes,No,Missing created_at
+352a7be8-13bb-a32f-579c-73f8dc725e5c,No,Yes,Yes,No,Missing created_at
+6efda9c4-a92a-a6b4-5580-c8d804c8a8ea,No,Yes,Yes,No,Missing created_at
+aa9b998c-8efc-80b2-88d8-761f59792a85,No,Yes,Yes,No,Missing created_at
+b20da449-07a7-3597-12d9-d3ef305fd475,No,Yes,Yes,No,Missing created_at
+6cf515d2-ca6f-3da8-6801-8d62a1fc00d9,No,Yes,Yes,No,Missing created_at
+f4d00892-b71c-2af8-dabd-11e1be17f340,No,Yes,Yes,No,Missing created_at
+adeaf389-d252-4d24-c3ab-0e50e8a2fbed,No,Yes,Yes,No,Missing created_at
+ae6da258-9c81-624d-2934-34953f25defb,No,Yes,Yes,No,Missing created_at
+a6f40061-a4af-80b8-51a0-add777415e10,No,Yes,Yes,No,Missing created_at
+740813a9-6573-e8d0-b8c4-6adbbab8dd17,No,Yes,Yes,No,Missing created_at
+a2b3733c-b903-2965-c49d-16bd14e93f9d,No,Yes,Yes,No,Missing created_at
+15cd3e09-fb20-9a8f-2e8d-f91350af41ea,No,Yes,Yes,No,Missing created_at
+6ceff8a6-da56-9ccc-ea8c-8698a0c1845c,No,Yes,Yes,No,Missing created_at
+af1012ed-deed-ab6e-1e17-a21d716ef235,No,Yes,Yes,No,Missing created_at
+78aca685-0f96-6e02-9ab4-69d619fb88ae,No,Yes,Yes,No,Missing created_at
+b529d44c-b728-aa47-0506-a4f4c85bfff1,No,Yes,Yes,No,Missing created_at
+9e288426-3f88-8f59-6175-0669bba6e4cf,No,Yes,Yes,No,Missing created_at
+e850b127-0860-cf3a-f986-b59dcb42fb37,No,Yes,Yes,No,Missing created_at
+c3dcca55-b6b6-d12c-4b0c-e07a1ccdd1ef,No,Yes,Yes,No,Missing created_at
+788837e8-e58b-c0e7-3452-69b046dea975,No,Yes,Yes,No,Missing created_at
+92f2ed4a-b852-4e6b-4bb3-497b0a50ef0d,No,Yes,Yes,No,Missing created_at
+5da92ddf-bf0f-b6b3-1723-91cc27df4de4,No,Yes,Yes,No,Missing created_at
+83cb1e0e-e87b-ef82-d677-edb30f541e33,No,Yes,Yes,No,Missing created_at
+75ff20a3-da1c-37f4-53e2-60d3fcaacc1a,No,Yes,Yes,No,Missing created_at
+cca7e70a-48a3-002d-0e3f-d90608447fd9,No,Yes,Yes,No,Missing created_at
+2cea25f0-3677-3f84-58bd-03342209e0c5,No,Yes,Yes,No,Missing created_at
+b347e660-2ad1-0ea5-d0cd-f352f7a075d2,No,Yes,Yes,No,Missing created_at
+576979ef-7d9e-dc4a-e304-e55db3134e9c,No,Yes,Yes,No,Missing created_at
+18132a2d-a10a-9c1c-adfe-d20dbd81998c,No,Yes,Yes,No,Missing created_at
+802ef082-7491-427a-4efd-63fbdc8a985a,No,Yes,Yes,No,Missing created_at
+70315a1d-017d-534e-f9bb-ea32e750971a,No,Yes,Yes,No,Missing created_at
+de1d21af-d109-809c-3d33-14b4fded184e,No,Yes,Yes,No,Missing created_at
+9f1260cf-ea83-34dc-2480-97fd1c8d60d1,No,Yes,Yes,No,Missing created_at
+beb4698e-dd6c-2ed1-0fb3-6ce50bba12db,No,Yes,Yes,No,Missing created_at
+e20883ba-5965-1056-585e-bfb2d50f7cb5,No,Yes,Yes,No,Missing created_at
+e49ff129-587a-a108-850f-4c8afbe08afe,No,Yes,Yes,No,Missing created_at
+fbebc0bd-1769-1c5d-3878-6f2be50d1b26,No,Yes,Yes,No,Missing created_at
+a965778b-1704-86cc-cb17-5d919a86ca02,No,Yes,Yes,No,Missing created_at
+ba2f26ba-8f9a-c2e9-9611-c96add20458b,No,Yes,Yes,No,Missing created_at
+78fa54cb-492c-4f7e-a1fc-dc5973d0fab7,No,Yes,Yes,No,Missing created_at
+ecad523b-e901-dd1a-de6c-3bb757fc543d,No,Yes,Yes,No,Missing created_at
+0397b467-57d0-b37d-dfe3-7d8bb951857d,No,Yes,Yes,No,Missing created_at
+58218adb-02ff-5b72-2208-7f6ec4d8608f,No,Yes,Yes,No,Missing created_at
+7571d8e8-af13-bd15-9bb8-855a9e93f163,No,Yes,Yes,No,Missing created_at
+3cb8d4ac-5716-7e0e-cb7f-6ade786edbff,No,Yes,Yes,No,Missing created_at
+ba238862-0dfd-1ebd-d77d-ba00518ec191,No,Yes,Yes,No,Missing created_at
+b7b58dd6-555a-7a6e-9642-b178021124e3,No,Yes,Yes,No,Missing created_at
+817ac95b-3731-26b7-a06a-fca260f98dbf,No,Yes,Yes,No,Missing created_at
+07fb873e-dafe-8564-9e3b-1f4d0a454b70,No,Yes,Yes,No,Missing created_at
+4b006b0d-44ab-79c3-f2b5-3dddee58d837,No,Yes,Yes,No,Missing created_at
+2070934b-bd8c-4500-1b23-affc5cf07912,No,Yes,Yes,No,Missing created_at
+fc6b7111-6e0c-71da-3de2-dc02748de68a,No,Yes,Yes,No,Missing created_at
+08efd0fa-d081-c5c1-1566-e7d3972f7055,No,Yes,Yes,No,Missing created_at
+ef67ad06-86bc-9e25-520a-15e911742c77,No,Yes,Yes,No,Missing created_at
+a3fbff99-ca37-6bdc-b0e8-710adfef4145,No,Yes,Yes,No,Missing created_at
+861f306f-1a6c-7c5a-06e9-08a42702b082,No,Yes,Yes,No,Missing created_at
+f556a7f0-1d8b-9856-85eb-81deb402c084,No,Yes,Yes,No,Missing created_at
+287b88f6-8a4d-af36-efcf-607de8d6a938,No,Yes,Yes,No,Missing created_at
+bc3e63d8-eeb8-75a9-cd14-ac2398d366b6,No,Yes,Yes,No,Missing created_at
+3c60087f-1aa0-429f-1396-d28a4a92510b,No,Yes,Yes,No,Missing created_at
+78b4112e-81f8-8ed5-b7a6-2500532aeac0,No,Yes,Yes,No,Missing created_at
+6b50bea0-a7ab-e535-3602-269f6ff51a72,No,Yes,Yes,No,Missing created_at
+36a40325-baf0-48bd-2f2f-a612a265adc3,No,Yes,Yes,No,Missing created_at
+4f665432-00ea-bd48-1e0d-5295a8d5143c,No,Yes,Yes,No,Missing created_at
+7611c5ad-a10a-6498-8240-5dd57102a83a,No,Yes,Yes,No,Missing created_at
+238c890d-5faa-10e2-b209-0bc3e6b4e85c,No,Yes,Yes,No,Missing created_at
+65a008e5-41ea-54a8-5942-f4ddae4ca21a,No,Yes,Yes,No,Missing created_at
+207d4f79-ca3b-81d7-a278-ccadd9a91e9e,No,Yes,Yes,No,Missing created_at
+582213a7-6b49-1557-034d-3a32966dd4cb,No,Yes,Yes,No,Missing created_at
+47d3316d-9540-1d59-ba29-32ee477f1e8a,No,Yes,Yes,No,Missing created_at
+ffc10678-e45d-21f8-0d52-0e877f6f9077,No,Yes,Yes,No,Missing created_at
+37a08cad-31d2-3601-42de-28737d8758e3,No,Yes,Yes,No,Missing created_at
+4e7ca839-263d-d5ae-62e2-4d0501932052,No,Yes,Yes,No,Missing created_at
+8ae5df29-ab68-511e-a2a7-bd1ea02aa7b0,No,Yes,Yes,No,Missing created_at
+62b61c4a-7479-1cc3-c45d-23f16ea6618e,No,Yes,Yes,No,Missing created_at
+59a5749f-8b02-97c4-3172-28242d56af23,No,Yes,Yes,No,Missing created_at
+cc4b4376-b317-e31e-1e2b-39351662b6c9,No,Yes,Yes,No,Missing created_at
+f547b148-c128-bc17-19fd-6e8757e29acc,No,Yes,Yes,No,Missing created_at
+811495b9-9031-6fab-2798-6f6be148fb5f,No,Yes,Yes,No,Missing created_at
+c08369d1-2076-2c4d-0beb-61c89c02e94a,No,Yes,Yes,No,Missing created_at
+f9ea4ca4-cd17-d171-7335-6b95146b4564,No,Yes,Yes,No,Missing created_at
+9fbf9079-7f2b-f7d0-5bbc-f83da15d958d,No,Yes,Yes,No,Missing created_at
+77ee2c36-ef8e-b816-2eae-4f0bbc4ee39d,No,Yes,Yes,No,Missing created_at
+6892c421-7fab-6653-4682-fdfca2a906c8,No,Yes,Yes,No,Missing created_at
+44e23c91-04f4-3014-cc4b-7763b87e61da,No,Yes,Yes,No,Missing created_at
+cb539671-0d18-c5e3-fe53-b551999fe747,No,Yes,Yes,No,Missing created_at
+9abc8bec-0de4-9fd0-aef0-aa5803996917,No,Yes,Yes,No,Missing created_at
+2929ba91-1c18-f7cd-13b4-5829e19924d8,No,Yes,Yes,No,Missing created_at
+205c95ab-a46b-242c-fc10-d55c91470309,No,Yes,Yes,No,Missing created_at
+9cfd931c-a7b5-be34-3f5b-62ba7660e4cf,No,Yes,Yes,No,Missing created_at
+e006c98b-0400-0c75-92f3-8786777496cb,No,Yes,Yes,No,Missing created_at
+77ef5f13-86e2-f97a-bba5-83cb8e39d1d3,No,Yes,Yes,No,Missing created_at
+4fbbf771-e794-340d-5bff-7eeb3173c838,No,Yes,Yes,No,Missing created_at
+edaecf35-2fb4-ab87-98c7-c676fa361e5a,No,Yes,Yes,No,Missing created_at
+093c0a7a-c19c-81e7-72ca-31bc9601eb7d,No,Yes,Yes,No,Missing created_at
+637093ef-09b8-483f-4f8b-b67af18f2353,No,Yes,Yes,No,Missing created_at
+42aecabe-fbf4-d28d-d450-269841d649ef,No,Yes,Yes,No,Missing created_at
+760e351d-c2d9-1245-080d-215a8ecd29d3,No,Yes,Yes,No,Missing created_at
+300fa212-08e8-4189-885b-bdc30e7bf240,No,Yes,Yes,No,Missing created_at
+cf40b8a0-c908-ff56-b4d8-4f541a1b2ac6,No,Yes,Yes,No,Missing created_at
+111e348f-68e6-7d8c-8c09-5e38605a53dd,No,Yes,Yes,No,Missing created_at
+b9f94071-f23d-e472-7c81-2debe5c2461c,No,Yes,Yes,No,Missing created_at
+3edd585d-7e13-57a4-de13-fd9301cd93fd,No,Yes,Yes,No,Missing created_at
+a0b0ed3b-343e-d090-3df8-c7d0c7b25fe0,No,Yes,Yes,No,Missing created_at
+d59bee09-a26f-d2c5-bd2f-0bb7c904cb90,No,Yes,Yes,No,Missing created_at
+fad548cb-59ec-7aa4-3d5e-3ac417ffd350,No,Yes,Yes,No,Missing created_at
+49454c62-50e8-2d73-503b-70773180abbd,No,Yes,Yes,No,Missing created_at
+5b2cc5a3-5b3f-a619-2d5d-7fed31bd05eb,No,Yes,Yes,No,Missing created_at
+335f863d-05ce-f6a9-bfd3-4569834cf6c6,No,Yes,Yes,No,Missing created_at
+72f6c638-6f52-cada-9b0e-04aef9433883,No,Yes,Yes,No,Missing created_at
+e11108e5-6b8a-d0d5-672b-2d31712fea6a,No,Yes,Yes,No,Missing created_at
+819913a6-a5ae-b42e-359d-04f2998be437,No,Yes,Yes,No,Missing created_at
+72ad442b-df33-2fab-8499-1df42b7c85c2,No,Yes,Yes,No,Missing created_at
+c069f0df-b621-5b4a-e32c-9fabefaf93a6,No,Yes,Yes,No,Missing created_at
+ed5a2d28-0de4-11dd-8456-15c7cff62c2b,No,Yes,Yes,No,Missing created_at
+71870173-17e9-1be1-9c07-7e81fe929ff3,No,Yes,Yes,No,Missing created_at
+f34e58b0-bc29-5a39-5d75-5e5fa487809f,No,Yes,Yes,No,Missing created_at
+60c7dcef-7f3c-313c-1a67-83b7d271cc70,No,Yes,Yes,No,Missing created_at
+18e7d064-3b5d-3fcf-517f-929a24a05a6d,No,Yes,Yes,No,Missing created_at
+67508b26-75de-cfc6-9d70-cbd934950149,No,Yes,Yes,No,Missing created_at
+15930406-d512-7b48-1b75-f8fb87bd1b4e,No,Yes,Yes,No,Missing created_at
+13f0b7b6-665a-39f3-8097-ceeefb6a3b10,No,Yes,Yes,No,Missing created_at
+431bc1ba-f8e4-400c-63f9-9b161468c725,No,Yes,Yes,No,Missing created_at
+8d934583-ba12-2b81-3728-458a50b91869,No,Yes,Yes,No,Missing created_at
+513b0a80-8b3f-6e60-d948-878480a5051a,No,Yes,Yes,No,Missing created_at
+063a131e-3dc4-f0a1-9bda-8a0664bd5e94,No,Yes,Yes,No,Missing created_at
+06424d86-1df8-0db3-8464-939cc3dfdb1c,No,Yes,Yes,No,Missing created_at
+fce09a0d-c068-3de8-0a06-0a027eba81a9,No,Yes,Yes,No,Missing created_at
+554ce09f-109a-ffdd-cdb7-69fa72f2f483,No,Yes,Yes,No,Missing created_at
+20a82a52-d6ce-ee9f-29a2-31b4981cf48c,No,Yes,Yes,No,Missing created_at
+750de943-50cf-721e-6420-3ed5e6471663,No,Yes,Yes,No,Missing created_at
+f150df87-1be6-8900-b126-dcf57a1ab2ca,No,Yes,Yes,No,Missing created_at
+235d7e98-6c9b-f842-7ba7-65747ae09ffb,No,Yes,Yes,No,Missing created_at
+7a60f3ab-01f4-e9dd-3fca-c31a408f63c7,No,Yes,Yes,No,Missing created_at
+d837105e-eb7b-8fcf-c460-f1dee25a26ac,No,Yes,Yes,No,Missing created_at
+9b4230ca-e197-7b61-ca55-fd9dec1487ee,No,Yes,Yes,No,Missing created_at
+b26170bd-87b4-e0c9-43a5-fe6145bfaf38,No,Yes,Yes,No,Missing created_at
+c14621d3-04fb-2b28-a9d3-92da337965e1,No,Yes,Yes,No,Missing created_at
+912ad16c-a1c2-48c6-b445-1685778c106f,Yes,Yes,Yes,Yes,
+7556746e-5ab5-45c5-9a9d-bb283b5604dc,Yes,No,Yes,No,Missing closed_at
+1b95553d-b7c7-4d17-8765-8d13ca401084,Yes,Yes,Yes,Yes,
+d2b0a261-7b0d-4472-8f2d-41c343d828a4,Yes,Yes,Yes,Yes,
+45229435-1d2b-cd17-9b38-1c75b7ac682c,No,Yes,Yes,No,Missing created_at
+44d079ab-8347-7a60-ed11-b5967b8d489a,No,Yes,Yes,No,Missing created_at
+c17b5ee9-a510-1ded-1ae6-b1fcb3925cc9,No,Yes,Yes,No,Missing created_at
+d2d01942-cf89-b5d4-75e4-19bdcca8ef18,No,Yes,Yes,No,Missing created_at
+ee7cb224-1299-32b7-23c8-09fb54e4ba5e,No,Yes,Yes,No,Missing created_at
+4679e1a8-24a3-c557-b0a7-8eca63fda0e3,No,Yes,Yes,No,Missing created_at
+476bdbe3-9fee-cfc9-eb42-8aa89f0d0bc7,No,Yes,Yes,No,Missing created_at
+6309f690-26bb-b9a2-0fcb-bc6b6d679b18,No,Yes,Yes,No,Missing created_at
+d4c81ebd-d2f4-430a-df0c-156da4e4af1e,No,Yes,Yes,No,Missing created_at
+43229c71-8720-0406-37e1-14a5a64c2fe1,No,Yes,Yes,No,Missing created_at
+45bc3de8-d595-eb4e-1cbd-037ad2fb587f,No,Yes,Yes,No,Missing created_at
+9f98f5b0-6de0-cf7a-b77c-cd4fa5b650cf,No,Yes,Yes,No,Missing created_at
+c6a52beb-9c1d-109f-437a-839b10c7765c,No,Yes,Yes,No,Missing created_at
+61184fb5-8061-5ece-528b-7e5c6ca4787b,No,Yes,Yes,No,Missing created_at
+389d48cd-cf0b-2c64-9f0a-8a109cdd3827,No,Yes,Yes,No,Missing created_at
+7c30dbad-f0d5-c8c1-70cf-fee0b88ce2ec,No,Yes,Yes,No,Missing created_at
+8682c5b6-5f78-fcac-e55c-fefbfe8b2065,No,Yes,Yes,No,Missing created_at
+c0b6da96-7cb5-29f7-8ad6-b7c7d9f1982c,No,Yes,Yes,No,Missing created_at
+b84f5d4f-a5fa-d6ef-41a4-d9d75cdf3503,No,Yes,Yes,No,Missing created_at
+7222a87d-4346-8de3-8b87-e6008011b06b,No,Yes,Yes,No,Missing created_at
+29a64aae-b610-9e01-3a14-34b281ca6642,No,Yes,Yes,No,Missing created_at
+ef6fa04e-6e5c-4a6f-3c27-b0ee051ca71e,No,Yes,Yes,No,Missing created_at
+a3a3cc43-b411-0144-c92f-314ec2f831e4,No,Yes,Yes,No,Missing created_at
+3fc1b9c5-b9e6-293c-afb1-44d40a5b80b9,No,Yes,Yes,No,Missing created_at
+edb1bbfc-9549-4aff-914c-57b360a760b9,No,Yes,Yes,No,Missing created_at
+cb474fda-3a48-487c-6b19-541717f82457,No,Yes,Yes,No,Missing created_at
+44016b4f-2a9e-1233-731f-304761fcaaf0,No,Yes,Yes,No,Missing created_at
+2d8e2b32-4f15-7ddc-adb1-75d6eee40b2c,No,Yes,Yes,No,Missing created_at
+f9463b05-6e61-4f9c-9648-7d2b439ecee1,No,Yes,Yes,No,Missing created_at
+1d8a98e7-646e-9dc0-ba56-3133d755cb9f,No,Yes,Yes,No,Missing created_at
+89ee9b87-c86b-7163-be89-5a967e802f18,No,Yes,Yes,No,Missing created_at
+af095155-2af0-9260-a357-896fee51935d,No,Yes,Yes,No,Missing created_at
+d6aef305-a43f-390c-0a4e-948a5bcbaf5d,No,Yes,Yes,No,Missing created_at
+4303e9ad-9862-b3ac-4a96-aa8a8807780b,No,Yes,Yes,No,Missing created_at
+333b6033-e488-dae1-4c12-638c961cb2fa,No,Yes,Yes,No,Missing created_at
+1ef09cc6-0ee3-fe30-4482-d7d6428045dd,No,Yes,Yes,No,Missing created_at
+f139cab6-9934-dd1c-59fe-ceaa8ccef718,No,Yes,Yes,No,Missing created_at
+e0edc13c-3ffc-1e3f-88cc-7a2f9368d7ff,No,Yes,Yes,No,Missing created_at
+452da79e-4327-7968-e29e-940bdebd161d,No,Yes,Yes,No,Missing created_at
+c5f174fc-8408-5c89-b61a-c7f7df2bb9f3,No,Yes,Yes,No,Missing created_at
+bae7431e-d5df-0eb1-0e2a-8938186ab913,No,Yes,Yes,No,Missing created_at
+e12b45cd-a36e-03a2-5ec1-d11c49aecab3,No,Yes,Yes,No,Missing created_at
+dcd80133-2740-94f2-c089-3086a6eabf56,No,Yes,Yes,No,Missing created_at
+743c41c0-cdc2-1538-1214-55334b04c359,No,Yes,Yes,No,Missing created_at
+b1e60750-e4dc-770a-caa7-e31ddf5c7625,No,Yes,Yes,No,Missing created_at
+25b9c0a6-1e32-92a8-1131-ad8a0ca431fc,No,Yes,Yes,No,Missing created_at
+f9430b56-5626-d5b9-c2c7-4960976ad3fc,No,Yes,Yes,No,Missing created_at
+99fe47c3-efb6-79b4-7aa0-502f0e1d9cab,No,Yes,Yes,No,Missing created_at
+698de39f-636f-e304-6e78-4dbe603da9ad,No,Yes,Yes,No,Missing created_at
+9738811f-d089-6792-654e-c69bdc0c73a1,No,Yes,Yes,No,Missing created_at
+69453db7-f136-69bd-39c5-07984f03f0ad,No,Yes,Yes,No,Missing created_at
+52445982-44fc-84c3-2471-6c1bf4093856,No,Yes,Yes,No,Missing created_at
+1c4cc71e-ae66-c800-6a15-4c1b2615bce2,No,Yes,Yes,No,Missing created_at
+dae281ca-87b8-d0d1-9832-fa5fe445c4dc,No,Yes,Yes,No,Missing created_at
+9a08726f-03c5-3110-ef60-e94e2b21fbbd,No,Yes,Yes,No,Missing created_at
+992714f0-c404-f19c-c055-3df3913fe345,No,Yes,Yes,No,Missing created_at
+feabad01-7299-601b-b0da-efa518fe2dd3,No,Yes,Yes,No,Missing created_at
+1c437840-4910-cc17-b362-8b03ad9d3196,No,Yes,Yes,No,Missing created_at
+a1de284e-db54-8a2f-d14c-b689d377ebd0,No,Yes,Yes,No,Missing created_at
+ba40bb47-d80f-d60d-aaf9-5fd0db3a2409,No,Yes,Yes,No,Missing created_at
+ca91bbb6-9955-0fe7-68d5-c332b6b33b8f,No,Yes,Yes,No,Missing created_at
+6e1a547c-552f-d6bb-f8fc-bf69d3e7fdda,No,Yes,Yes,No,Missing created_at
+3b3e98f3-d959-e46f-5af4-d528bb4d5d17,No,Yes,Yes,No,Missing created_at
+edcbce8c-d7d2-09d1-1868-996d77f21166,No,Yes,Yes,No,Missing created_at
+779bd59b-2cc4-3104-a645-5f4a72d218a6,No,Yes,Yes,No,Missing created_at
+9b36f5bb-4887-7918-dc4b-b4041df81d47,No,Yes,Yes,No,Missing created_at
+e8dfd260-1b1b-e834-8658-a1d4f3cddfa0,No,Yes,Yes,No,Missing created_at
+ef838539-3c16-7e36-2740-32a4668ae4f0,No,Yes,Yes,No,Missing created_at
+179deaaf-c984-bd65-bf3e-4134fe900e21,No,Yes,Yes,No,Missing created_at
+dd33fcf4-3cb2-8881-37e6-6fc22a12e3db,No,Yes,Yes,No,Missing created_at
+70474ca3-d011-8286-5192-a17d91082a34,No,Yes,Yes,No,Missing created_at
+f9c80776-51ad-cff3-6384-83e85e2a892e,No,Yes,Yes,No,Missing created_at
+bb4f516b-2c26-4e0d-c9bd-c532b30cffe5,No,Yes,Yes,No,Missing created_at
+cbb86a8c-ebfa-7c9c-7bb7-c636ccab17d3,No,Yes,Yes,No,Missing created_at
+f8afd35a-1ac4-d36b-eba9-ab802a840469,No,Yes,Yes,No,Missing created_at
+e59af8ce-c359-87da-eda3-a1014252600b,No,Yes,Yes,No,Missing created_at
+df67f97f-b60c-9f57-a4e3-592bd6e49873,No,Yes,Yes,No,Missing created_at
+4b7163fa-28ee-607d-ae0c-3a9224e1122a,No,Yes,Yes,No,Missing created_at
+b1a7a150-9173-13da-7bc8-7d3dc0c61f8f,No,Yes,Yes,No,Missing created_at
+b54d4bb6-3b47-d0c3-f106-327c79e129d6,No,Yes,Yes,No,Missing created_at
+f2b54f8b-c76d-7368-a9f5-1819d1b2525d,No,Yes,Yes,No,Missing created_at
+047c1201-ada6-deb9-3a98-cffaed2cbcac,No,Yes,Yes,No,Missing created_at
+f710248c-036c-4414-8a8b-a05f7158d60b,No,Yes,Yes,No,Missing created_at
+4ede64d0-95f2-9856-d368-90d7dac5e7f4,No,Yes,Yes,No,Missing created_at
+71d77401-e8a7-e5a5-7d79-d5e087e26af8,No,Yes,Yes,No,Missing created_at
+6f8c20ff-35c0-c965-ce46-52a00b5644ca,No,Yes,Yes,No,Missing created_at
+4c4f2a1e-7fa7-ea18-0f2d-add3bb9fccac,No,Yes,Yes,No,Missing created_at
+a83295bf-61fa-e0b1-ea7c-e02e56fa6d9b,No,Yes,Yes,No,Missing created_at
+690ced8f-1267-4d45-b938-e08f24469ebf,Yes,No,Yes,No,Missing closed_at
+0faa0e6f-3fbf-0984-2517-86149f652eee,No,Yes,Yes,No,Missing created_at
+96fa351d-867a-d4cd-c35b-d9d0ad8b4d99,No,Yes,Yes,No,Missing created_at
+170bf74f-28d9-a03a-4e83-cd00440d2111,No,Yes,Yes,No,Missing created_at
+1de66398-8625-62e6-ef81-b42c674601be,No,Yes,Yes,No,Missing created_at
+2764d230-6756-458e-51f3-c2c97e551db0,No,Yes,Yes,No,Missing created_at
+bf96c44b-df48-3507-79e8-49f5ddcc3813,No,Yes,Yes,No,Missing created_at
+cf43d7f2-22dc-b187-4375-5c5269dc4db4,No,Yes,Yes,No,Missing created_at
+93892541-f9a7-723c-1ad9-d648fa30de17,No,Yes,Yes,No,Missing created_at
+192ce7f9-44e6-f1ea-f2ce-9f7ad7f7c7eb,No,Yes,Yes,No,Missing created_at
+741b147a-3947-8220-ec44-7f739ac46466,No,Yes,Yes,No,Missing created_at
+e8afdd8c-baf4-969e-c31a-0706b3eca8e1,No,Yes,Yes,No,Missing created_at
+0c0f9589-f77b-5e2a-c631-d2b8560b317e,No,Yes,Yes,No,Missing created_at
+062e0c15-1356-1a98-1fe6-dc0c4124900e,No,Yes,Yes,No,Missing created_at
+6ff44eb2-b46c-41ab-e416-1214df2f0d93,No,Yes,Yes,No,Missing created_at
+50486ccc-afa8-8777-4574-e3022ce76fde,No,Yes,Yes,No,Missing created_at
+df853a74-7063-6b51-612e-43e3c51100dc,No,Yes,Yes,No,Missing created_at
+74bfe4c4-80fa-9b99-091c-b5e760c3fb9e,No,Yes,Yes,No,Missing created_at
+44202a80-84f2-45c8-ad8e-b69c6599ba32,Yes,Yes,Yes,Yes,
+676634f4-5f63-4dd0-a41a-aa84ace516b2,Yes,Yes,Yes,Yes,
+9e8951d5-3a5a-777e-884c-eaef821393c0,No,Yes,Yes,No,Missing created_at
+8c25f955-0b01-4421-a445-3effd1208a77,Yes,Yes,Yes,Yes,
+000b5172-04c6-835a-0a87-b16ddb38b1b6,No,Yes,Yes,No,Missing created_at
+6ee7e61a-b10e-4a6d-95c2-02b365bb774e,Yes,Yes,Yes,Yes,
+70c64b62-6db0-be33-5fff-bdb78c1d6151,No,Yes,Yes,No,Missing created_at
+74736744-0a87-d445-027f-a284f49b5ac9,No,Yes,Yes,No,Missing created_at
+c09765e4-f4ca-a4a4-a536-4aaf58169b63,No,Yes,Yes,No,Missing created_at
+6c244d62-cf5b-1874-531a-3fff17373038,No,Yes,Yes,No,Missing created_at
+c57e93d9-055a-f5e9-dd2e-42950e9758ea,No,Yes,Yes,No,Missing created_at
+96ac38f2-88f0-4bad-b91f-7e63474cbd8a,Yes,Yes,Yes,Yes,
+7afb353a-c390-43a8-a04f-a07954bcecf6,Yes,No,Yes,No,Missing closed_at
+6c91a465-4e6a-4e33-a064-54bbec48228c,Yes,Yes,Yes,Yes,
+9a4115ff-94dc-47eb-5c92-1e4c30dadfe3,No,Yes,Yes,No,Missing created_at
+4f80da01-041a-0f8f-e169-1f258d5f4cfa,No,Yes,Yes,No,Missing created_at
+da4cec39-3df3-80ee-0175-f57aa45ec24f,No,Yes,Yes,No,Missing created_at
+f700d88b-d513-5f3f-b277-5c4de098b3e5,No,Yes,Yes,No,Missing created_at
+28f1244e-46a5-772c-2442-a5265b21139d,No,Yes,Yes,No,Missing created_at
+9009488b-d503-a539-4b14-a1d0aab75059,No,Yes,Yes,No,Missing created_at
+49fb3511-b543-29b5-ceb6-f1dfc0c34db1,No,Yes,Yes,No,Missing created_at
+d34689b0-33a6-38d1-fc9d-e363063efdc1,No,Yes,Yes,No,Missing created_at
+ce9e0d69-ad2b-9a1e-ec3e-87b7af65927b,No,Yes,Yes,No,Missing created_at
+bb3e7bda-ce04-ddbd-c86f-40369ce1b2bc,No,Yes,Yes,No,Missing created_at
+32a2c7ab-e977-8bfe-ce83-84f3e827b856,No,Yes,Yes,No,Missing created_at
+cf90ed6a-84e2-81f6-e4ad-6cf19d3762c4,No,Yes,Yes,No,Missing created_at
+aca386b0-7292-3927-764e-6367f410da06,No,Yes,Yes,No,Missing created_at
+74d1e3cf-ee76-4d50-8896-05503b3b9e0f,Yes,Yes,Yes,Yes,
+e63ac7d0-1380-d884-da40-c7f53e906ce3,No,Yes,Yes,No,Missing created_at
+160d2e75-955e-a6a7-811e-5e4b01104b1f,No,Yes,Yes,No,Missing created_at
+2c6d1260-ed14-4d39-8728-59d2af490a65,No,Yes,Yes,No,Missing created_at
+8c637cf9-d7b1-4183-4b29-eb5d08c1eaca,No,Yes,Yes,No,Missing created_at
+633c9c62-52a8-6252-ebe4-e07c4157da6e,No,Yes,Yes,No,Missing created_at
+10a7e9c6-a89d-2ded-8da9-bfd9677184fd,No,Yes,Yes,No,Missing created_at
+d1e7f60a-9d05-726a-a8b0-538f18fede55,No,Yes,Yes,No,Missing created_at
+981845c3-de7f-01af-fbd2-1d8f8eaaaf12,No,Yes,Yes,No,Missing created_at
+1a7d2c07-ed92-50de-9fd4-a47975486039,No,Yes,Yes,No,Missing created_at
+5a806119-bcc5-dd17-0b34-2c6d43730967,No,Yes,Yes,No,Missing created_at
+1061922a-6df4-4740-b754-7677e856b7b9,Yes,Yes,Yes,Yes,
+b78672bf-3a6d-43b0-a988-51a5ab493f3e,Yes,No,Yes,No,Missing closed_at
+33aba1c2-3617-474c-a622-dc3f9c58140f,Yes,Yes,Yes,Yes,
+736faf3e-7bf6-46af-9b45-541ac5062166,Yes,Yes,Yes,Yes,
+a9138e2c-ea04-8bab-0d93-2eb03f39b99f,No,Yes,Yes,No,Missing created_at
+88d0ee33-24c8-7df3-99f7-e0ebe4944d5a,No,Yes,Yes,No,Missing created_at
+4a7cba5b-f7b2-5372-cd73-0e5495f0a9b6,No,Yes,Yes,No,Missing created_at
+badc7044-7f80-d9df-7839-fa0827ce90fc,No,Yes,Yes,No,Missing created_at
+b8e5135d-20e0-3eba-6667-7b6fa69881b9,No,Yes,Yes,No,Missing created_at
+1f565fcf-6704-cd24-9d04-ce41596e686b,No,Yes,Yes,No,Missing created_at
+e4a9a8e6-63c6-3864-1a81-c1212159b45e,No,Yes,Yes,No,Missing created_at
+e91ac47d-4cbe-de7c-f430-80c2266996ea,No,Yes,Yes,No,Missing created_at
+659960b4-5804-4736-8e20-c646a5ef5c4b,Yes,Yes,Yes,Yes,
+c5a466e9-f41a-4436-8a4d-58621227a138,Yes,Yes,Yes,Yes,
+2c7741ed-97b5-0165-0f07-2e10816d9a48,No,Yes,Yes,No,Missing created_at
+62ec3e07-d588-4248-a406-54abbe7097eb,Yes,Yes,Yes,Yes,
+dc8d276b-8b37-3602-9510-0bc552a6ce5c,No,Yes,Yes,No,Missing created_at
+88be3487-8eda-fded-78ec-9b5978d7bbfa,No,Yes,Yes,No,Missing created_at
+6fa48ee2-ff5f-07e0-3dbc-f066854a6260,No,Yes,Yes,No,Missing created_at
+7c1aeccd-02d9-02b2-5f80-e0a8c995bbb4,No,Yes,Yes,No,Missing created_at
+4f685155-35d5-d247-2e3f-2f08f71e94a0,No,Yes,Yes,No,Missing created_at
+51267f15-61c6-4af6-8c24-cd0ff614464d,No,Yes,Yes,No,Missing created_at
+7f70738b-24fd-3b01-e161-6ef52deb0381,No,Yes,Yes,No,Missing created_at
+f528254a-4243-9753-30de-8c8477c18006,No,Yes,Yes,No,Missing created_at
+bbd0d8a1-1699-e9ea-a6e1-beaeec60ee1a,No,Yes,Yes,No,Missing created_at
+a330ffc8-03fa-ec7c-b8c6-1afe0828d04b,No,Yes,Yes,No,Missing created_at
+c50579e1-6a2e-452e-a149-b4be524cb522,Yes,No,Yes,No,Missing closed_at
+8a802dd0-9027-63e1-ab3b-e98b9efd86b3,No,Yes,Yes,No,Missing created_at
+cc3ee2f8-0614-a044-0e49-2ff157a1b355,No,Yes,Yes,No,Missing created_at
+3abe357b-e656-064e-0536-bb86c08c657b,No,Yes,Yes,No,Missing created_at
+4a3c32c4-7485-8604-2524-762c54aa246c,No,Yes,Yes,No,Missing created_at
+44db321f-5e76-e65a-fd8e-343be344266b,No,Yes,Yes,No,Missing created_at
+1260f99f-80fb-7d54-d159-1b325bbe157a,No,Yes,Yes,No,Missing created_at
+7349071f-e4b0-b3c4-3725-6bc4b923b93b,No,Yes,Yes,No,Missing created_at
+9fbe6091-0a0b-66fa-3ee8-675bfc9f31f7,No,Yes,Yes,No,Missing created_at
+7c76880a-5502-6704-3e46-176b90129218,No,Yes,Yes,No,Missing created_at
+bc3bceba-aa02-73f3-4b19-d40f046033ed,No,Yes,Yes,No,Missing created_at
+78746781-67e6-6007-e70f-7ba79e45cc51,No,Yes,Yes,No,Missing created_at
+0c5337c9-164e-21cf-81f8-202342521e37,No,Yes,Yes,No,Missing created_at
+b406781b-bb3d-b4d9-2151-762f561bc3ae,No,Yes,Yes,No,Missing created_at
+fd823c3e-804b-7a88-c6b4-51593d82b7b0,No,Yes,Yes,No,Missing created_at
+2935d7db-7d58-825a-bfec-a0b93ff63808,No,Yes,Yes,No,Missing created_at
+2008a447-537c-97dd-76c3-728d01af7ce0,No,Yes,Yes,No,Missing created_at
+5ad350b1-43d9-ac0f-dd39-728313359724,No,Yes,Yes,No,Missing created_at
+9863f959-61f4-677e-1720-a0c5cbe621d5,No,Yes,Yes,No,Missing created_at
+7545e4b6-686a-973a-8b96-a070810bcf6c,No,Yes,Yes,No,Missing created_at
+b1787bae-d6e8-4586-8858-0cb87ce35efc,Yes,Yes,Yes,Yes,
+cb8dda0f-5045-04bf-3219-d58dcf7c019d,No,Yes,Yes,No,Missing created_at
+ca550b88-899a-0e4f-ae42-fdab678d02ff,No,Yes,Yes,No,Missing created_at
+484c2aa6-749c-3b2d-a16d-9a72c367d8ab,No,Yes,Yes,No,Missing created_at
+e2d05f99-3315-2702-b694-9981599b8ba9,No,Yes,Yes,No,Missing created_at
+b4b9567f-226d-69c0-ac66-80c7237f2e65,No,Yes,Yes,No,Missing created_at
+2174b8b1-3e92-f759-bd00-afaa660091bd,No,Yes,Yes,No,Missing created_at
+e9700c8e-553c-4ec3-0fee-24bcd992e599,No,Yes,Yes,No,Missing created_at
+c54e7167-c417-43db-6d97-e6f62797743d,No,Yes,Yes,No,Missing created_at
+d3d079a0-12a0-14db-7072-c46c8321953d,No,Yes,Yes,No,Missing created_at
+d0bb547e-b1b5-627c-5559-53e6b377e3e4,No,Yes,Yes,No,Missing created_at
+39303148-fb33-05ae-a87c-0e4f44503f2e,No,Yes,Yes,No,Missing created_at
+1343d3e0-662a-f1f6-4efa-dbdac1db41b9,No,Yes,Yes,No,Missing created_at
+46a341b3-6984-6efc-f4b9-af7acc22228e,No,Yes,Yes,No,Missing created_at
+ceaf797f-d3ee-4198-0e34-827df4c659ff,No,Yes,Yes,No,Missing created_at
+5fef2cd7-c5d2-41ce-c610-e92463d0cd20,No,Yes,Yes,No,Missing created_at
+cc29e194-f2c7-a160-4f8a-1054aea369c7,No,Yes,Yes,No,Missing created_at
+07ca5293-2777-3e16-9b23-ea4ecf5b881e,No,Yes,Yes,No,Missing created_at
+4cd40f9b-bb6c-13c2-9d3c-c9c28be825f2,No,Yes,Yes,No,Missing created_at
+04962a31-7e9f-26df-9c86-6d787aeb69ad,No,Yes,Yes,No,Missing created_at
+1bcce9be-ab68-8fc7-6ddb-b30c01ab984b,No,Yes,Yes,No,Missing created_at
+7b4ec106-b4d2-ceaf-4938-59f0fc3b81b4,No,Yes,Yes,No,Missing created_at
+399d8292-331b-912a-28bb-50674faae87e,No,Yes,Yes,No,Missing created_at
+d3d64a71-5d62-0674-6fe7-29c2a1605089,No,Yes,Yes,No,Missing created_at
+d667ecae-ad30-7f56-4353-ac60328b5e2a,No,Yes,Yes,No,Missing created_at
+2aaa84fc-cda7-95e1-9e7a-0036868a5b30,No,Yes,Yes,No,Missing created_at
+c38f19a3-aee5-951e-eed6-d03a0e5f1269,No,Yes,Yes,No,Missing created_at
+7115c973-7e6f-e003-5c75-3b4fb2e807e2,No,Yes,Yes,No,Missing created_at
+f0f69534-94b0-a650-d80d-135356da12fb,No,Yes,Yes,No,Missing created_at
+fe24cfe4-0753-749a-0039-82760b6ecc79,No,Yes,Yes,No,Missing created_at
+a212b27f-92ed-857a-77b3-a26d9e0f652c,No,Yes,Yes,No,Missing created_at
+75f53352-8d66-6e0b-5432-d0b1f5cdcf5d,No,Yes,Yes,No,Missing created_at
+20dd9eba-2697-f9a5-66fe-67bc7809db5a,No,Yes,Yes,No,Missing created_at
+3e94b85f-789e-6568-b2fa-09c6b9f029fc,No,Yes,Yes,No,Missing created_at
+c7d320ae-173d-0678-125c-952d6d2e27b3,No,Yes,Yes,No,Missing created_at
+35f03b5e-ed32-9da7-723d-c55a6e237448,No,Yes,Yes,No,Missing created_at
+a3c545a1-0dc6-685a-c0cc-0f35b3c125a5,No,Yes,Yes,No,Missing created_at
+c9336ea3-3cf8-4337-4133-60731a85ef41,No,Yes,Yes,No,Missing created_at
+272f0d92-688b-090a-9859-a3de84de0135,No,Yes,Yes,No,Missing created_at
+5a4e7d25-05b9-6a79-7ddc-7b359e089390,No,Yes,Yes,No,Missing created_at
+fa7f2f86-209a-b3e7-1c29-8c2351e2d432,No,Yes,Yes,No,Missing created_at
+000ecd4e-efeb-8b6a-1011-b861a148ab95,No,Yes,Yes,No,Missing created_at
+525759ba-bfa8-cafb-f399-0bd166f512e4,No,Yes,Yes,No,Missing created_at
+a834794b-c55c-955a-d7ed-17c88725bea0,No,Yes,Yes,No,Missing created_at
+710e45cb-8cc5-3423-494f-45d44e23a495,No,Yes,Yes,No,Missing created_at
+aa1a4e43-abeb-1420-46d8-ee2a7476c868,No,Yes,Yes,No,Missing created_at
+3514fadd-6adf-e82d-b42f-5b5b1cfee140,No,Yes,Yes,No,Missing created_at
+d87fb98a-2c29-3aa7-b73f-6e66c6816daa,No,Yes,Yes,No,Missing created_at
+d16c55ca-5726-898b-d70a-868dd7c1c3e9,No,Yes,Yes,No,Missing created_at
+6a2bec8f-cf3f-bcb6-2628-0a65c6101104,No,Yes,Yes,No,Missing created_at
+a1737b82-8efb-1c81-fd17-e3e4925e34d2,No,Yes,Yes,No,Missing created_at
+f94be875-b53d-855e-3154-8cd7462d6682,No,Yes,Yes,No,Missing created_at
+cf513d7d-2a03-f7be-f560-270f77ced0d2,No,Yes,Yes,No,Missing created_at
+37b44064-8cea-80be-279a-6cf16d20c97c,No,Yes,Yes,No,Missing created_at
+1054b931-6258-e04c-6cbe-223161c1d0be,No,Yes,Yes,No,Missing created_at
+67c6eb85-b7d3-687e-b269-33e78554a2fe,No,Yes,Yes,No,Missing created_at
+473cffe2-6679-00f5-c199-450fca59dda6,No,Yes,Yes,No,Missing created_at
+e789a249-4377-8723-2e82-7e0d74c4c214,No,Yes,Yes,No,Missing created_at
+95f8cf49-fc82-79cb-a2e0-c4fb2da6992f,No,Yes,Yes,No,Missing created_at
+3b755d32-0f1a-6810-0e79-907e3d062ab3,No,Yes,Yes,No,Missing created_at
+4d723aeb-5e07-1412-05d5-b19e242c249b,No,Yes,Yes,No,Missing created_at
+14f23ec9-b24c-6439-37b3-f63e288a2e83,No,Yes,Yes,No,Missing created_at
+8880f2fd-e054-2496-7d85-79927381fb7f,No,Yes,Yes,No,Missing created_at
+a3132746-bf03-fe3a-93a2-aeb762ecfcf2,No,Yes,Yes,No,Missing created_at
+8c8d2825-6b75-cb1c-1b01-99a5cc58e3b6,No,Yes,Yes,No,Missing created_at
+becea167-181c-ea20-98a5-e457e3fc2077,No,Yes,Yes,No,Missing created_at
+99709500-2777-735a-b86f-11644a31d6b3,No,Yes,Yes,No,Missing created_at
+86d13ed1-e5d1-ddae-17c2-f840db540052,No,Yes,Yes,No,Missing created_at
+b558cf98-8867-7e04-f928-35170d57165f,No,Yes,Yes,No,Missing created_at
+6af2a08f-b861-2815-6c81-3e37eb606bd7,No,Yes,Yes,No,Missing created_at
+8474a0ad-d852-096f-e93b-550654ed63ee,No,Yes,Yes,No,Missing created_at
+5fb582ea-e39e-7894-bad2-0690b24e5372,No,Yes,Yes,No,Missing created_at
+09f891e4-800a-9466-9d6d-901b91280d4b,No,Yes,Yes,No,Missing created_at
+f68ef872-15fe-196e-0870-d005777d5740,No,Yes,Yes,No,Missing created_at
+8a767531-6242-8f65-d47b-13865f23a709,No,Yes,Yes,No,Missing created_at
+36c3a9da-e0cd-c718-faf0-2ca9506f9483,No,Yes,Yes,No,Missing created_at
+5f906ac8-ea94-7bf1-6ab4-04c17cf1240c,No,Yes,Yes,No,Missing created_at
+4a900ffa-6511-3296-e676-cbb41bc6c6b5,No,Yes,Yes,No,Missing created_at
+cd9cb94d-c5fc-5a9e-ca80-fc2c96baa9fb,No,Yes,Yes,No,Missing created_at
+07dd8741-471c-8d37-22cc-cf68a4376187,No,Yes,Yes,No,Missing created_at
+1092389b-0072-6ff5-1052-ebd37ceed780,No,Yes,Yes,No,Missing created_at
+c872d60e-c5fb-ab8f-cb8e-a2d141f5e637,No,Yes,Yes,No,Missing created_at
+17548ff8-6ece-9208-3526-7668872174ca,No,Yes,Yes,No,Missing created_at
+961ae242-f5aa-8ba5-a134-338cee740c13,No,Yes,Yes,No,Missing created_at
+ea5bad9b-b2b8-ec88-b92d-0e7b1a618a6e,No,Yes,Yes,No,Missing created_at
+3a1a56fb-b17e-4ff6-96dc-19b7cb2d6331,No,Yes,Yes,No,Missing created_at
+e1b5db30-a002-7185-934a-a9366d36ab0a,No,Yes,Yes,No,Missing created_at
+b5d43f4c-a666-ff29-d326-42d925349ecd,No,Yes,Yes,No,Missing created_at
+e63d37e6-72be-e63c-e866-c720d54f45c3,No,Yes,Yes,No,Missing created_at
+bf3282aa-4a76-3cd6-e2e2-9a991cbf09b0,No,Yes,Yes,No,Missing created_at
+b0f23ed9-93bd-d3c3-c28b-b68a176da951,No,Yes,Yes,No,Missing created_at
+c5196469-736b-1fc9-c88f-03d0369cfc1b,No,Yes,Yes,No,Missing created_at
+d6082536-b155-c9ed-c884-34e47cfb5fd1,No,Yes,Yes,No,Missing created_at
+5b15bd91-c25b-f47b-070d-e092172bce46,No,Yes,Yes,No,Missing created_at
+eead3b6a-d489-649b-4c95-5a676786a5ad,No,Yes,Yes,No,Missing created_at
+1d7b9442-855e-49fc-fe9d-5936a5e94053,No,Yes,Yes,No,Missing created_at
+cb0122d3-b3f1-a15b-dd3b-5dd6a106344b,No,Yes,Yes,No,Missing created_at
+7ed612c2-7263-7df0-fef7-ca70e2346fba,No,Yes,Yes,No,Missing created_at
+b4b139c4-5f07-df8d-4dde-e0de3838a827,No,Yes,Yes,No,Missing created_at
+9bb84a51-aad1-34e8-c0ce-27ce36e92c88,No,Yes,Yes,No,Missing created_at
+a32f3f1d-4037-9d92-536a-bab43993385f,No,Yes,Yes,No,Missing created_at
+1c7f0fd1-69b3-9974-9529-e09acef7dadf,No,Yes,Yes,No,Missing created_at
+ae52d7af-c890-08ff-1115-6ddd99ab2582,No,Yes,Yes,No,Missing created_at
+25821fed-d2cb-bc55-d48c-15dc576c0b0a,No,Yes,Yes,No,Missing created_at
+9f4f582e-815e-fc9e-9c2b-1ec7aab9b567,No,Yes,Yes,No,Missing created_at
+145d4767-32c5-5c11-a36b-154c53174cac,No,Yes,Yes,No,Missing created_at
+a57be028-429e-3af4-38c8-28d8da1fa085,No,Yes,Yes,No,Missing created_at
+efc165ef-b485-4535-3dbe-75129cbd9f5a,No,Yes,Yes,No,Missing created_at
+b9971b18-d458-52fe-ef12-03c3e9b45284,No,Yes,Yes,No,Missing created_at
+2043bae8-3194-b27c-ed6c-1f618c179f71,No,Yes,Yes,No,Missing created_at
+75e91e3f-6144-f9cb-f594-d28327caa217,No,Yes,Yes,No,Missing created_at
+796569b1-7443-bfd0-78a5-08912f5e38af,No,Yes,Yes,No,Missing created_at
+97eb9168-61dc-8e8c-d494-8eee5d4011d9,No,Yes,Yes,No,Missing created_at
+41e93d4f-9a16-82c8-57c5-9b98854f71da,No,Yes,Yes,No,Missing created_at
+1cae60e8-dbb2-ce52-79bd-f0bd7fd3b0e5,No,Yes,Yes,No,Missing created_at
+014acb2c-befd-2ad4-a2a5-1b6ec4cd5c3f,No,Yes,Yes,No,Missing created_at
+05943b5e-03d4-8c35-5d07-33ae79c63f78,No,Yes,Yes,No,Missing created_at
+ce727e74-0aff-2cd2-a13a-73c3371f8b52,No,Yes,Yes,No,Missing created_at
+389711c4-a25b-9e60-494e-916051640061,No,Yes,Yes,No,Missing created_at
+b82ee78f-e773-f4d6-adab-69b2f59fc030,No,Yes,Yes,No,Missing created_at
+90d9ad72-b61d-cc56-b875-9ab68aa1bb46,No,Yes,Yes,No,Missing created_at
+e32442d6-f18e-d1f1-0836-7a155cd787a3,No,Yes,Yes,No,Missing created_at
+4e7b7a17-bb04-272c-49c0-ba63889992ce,No,Yes,Yes,No,Missing created_at
+477b8b5e-44bc-cf7f-3f3c-e1d676d8b3f2,No,Yes,Yes,No,Missing created_at
+0076e2fd-ff3a-a068-9a6d-58472f2045c0,No,Yes,Yes,No,Missing created_at
+c089c97d-947e-84d4-0423-5f96dcc71710,No,Yes,Yes,No,Missing created_at
+ae4a555c-71ae-f1ba-a3bd-db1cdd0c8f6a,No,Yes,Yes,No,Missing created_at
+51a08f03-4b9b-dfb9-3ae7-c2c2303ce8cb,No,Yes,Yes,No,Missing created_at
+91d05d3e-89f1-081d-20d7-8bfa97aec383,No,Yes,Yes,No,Missing created_at
+ce172fc4-b6aa-abc1-33eb-59ce80c099dc,No,Yes,Yes,No,Missing created_at
+f845bcba-1d96-7e1b-6d6c-8ccbdd3f5a2e,No,Yes,Yes,No,Missing created_at
+b9539b9e-c5ea-9083-29af-3d8fd832a9f4,No,Yes,Yes,No,Missing created_at
+95bd678b-7846-3fea-8884-204e2297bcf4,No,Yes,Yes,No,Missing created_at
+d5bf54c4-687e-3a14-6652-f9ef56f411cf,No,Yes,Yes,No,Missing created_at
+3018c82b-f528-61af-214b-15ca0ef8c47a,No,Yes,Yes,No,Missing created_at
+a977ff65-0de9-5c26-06b6-a4cc56b18734,No,Yes,Yes,No,Missing created_at
+2a81ca66-0a1e-c394-4274-a520ddc66590,No,Yes,Yes,No,Missing created_at
+571c40ae-7caa-7a6b-e687-aecf298761ec,No,Yes,Yes,No,Missing created_at
+32ef6d67-4209-24af-0f24-e3525cec4dd8,No,Yes,Yes,No,Missing created_at
+3a78ee76-a177-acee-e030-45852a756f14,No,Yes,Yes,No,Missing created_at
+fb3a63f4-4ce1-1a20-fb92-7f45be05dbfb,No,Yes,Yes,No,Missing created_at
+1ee62743-770b-5234-e263-41dc6fe2d655,No,Yes,Yes,No,Missing created_at
+630d09d3-0e15-6eb7-dacf-f273fc551fdc,No,Yes,Yes,No,Missing created_at
+06b68349-389b-2128-2c42-ccd288dc9c55,No,Yes,Yes,No,Missing created_at
+a559bcc2-1a4a-cd0d-c2c0-0c3690a471e0,No,Yes,Yes,No,Missing created_at
+430d8e3d-cd0e-e4c7-650d-b4030914b6de,No,Yes,Yes,No,Missing created_at
+2be858da-cb47-720f-3d6a-ce43bf82799c,No,Yes,Yes,No,Missing created_at
+45c8c911-2871-0e47-599e-c0d08ebbd28c,No,Yes,Yes,No,Missing created_at
+a2826655-ab5f-ab3f-2892-ae07e1505399,No,Yes,Yes,No,Missing created_at
+294332a5-eef9-a55b-f9e8-0b32b07fa7ec,No,Yes,Yes,No,Missing created_at
+3c6d0938-c313-cf05-bf3b-fcba50ad70fe,No,Yes,Yes,No,Missing created_at
+c68f70b7-035a-44ab-345c-11982a0dc096,No,Yes,Yes,No,Missing created_at
+150172de-ded5-a8e6-c970-80c80241a2c7,No,Yes,Yes,No,Missing created_at
+49860e95-d5fa-1ff9-eeca-40a3bf5eba80,No,Yes,Yes,No,Missing created_at
+5cc93020-db45-07cf-0258-6b2b0fc054e8,No,Yes,Yes,No,Missing created_at
+0690df6b-fc27-bed5-34e4-3c81e02f44fd,No,Yes,Yes,No,Missing created_at
+29dce7bb-ef09-c925-a158-d03b5f365d3a,No,Yes,Yes,No,Missing created_at
+318ec65d-65a2-f5a9-7489-82443e82c5a5,No,Yes,Yes,No,Missing created_at
+c535474a-fe1a-8f58-3934-7f9ecadc16d9,No,Yes,Yes,No,Missing created_at
+fad4e838-b192-f880-c075-c9f3801f3eac,No,Yes,Yes,No,Missing created_at
+695f5510-18f1-ae58-3fb2-b1940f54272d,No,Yes,Yes,No,Missing created_at
+f35dc870-caea-dd38-9828-fb058532796a,No,Yes,Yes,No,Missing created_at
+1bd6a170-7db9-b6ac-29f4-f80b4c43bb25,No,Yes,Yes,No,Missing created_at
+8d13ed87-5c3e-28b6-c8e3-b08b84289414,No,Yes,Yes,No,Missing created_at
+cc319de0-96a2-2ab8-8f6e-5d0c8f0c2fee,No,Yes,Yes,No,Missing created_at
+dc9ecc49-bbd1-843a-63eb-706ba8037826,No,Yes,Yes,No,Missing created_at
+249174cc-e5f5-8f8c-4db0-c145a73ddd3d,No,Yes,Yes,No,Missing created_at
+d0f6ed1c-2d83-56be-a03a-1421b787b29a,No,Yes,Yes,No,Missing created_at
+66b1f33a-bcbe-9146-f375-564d62923815,No,Yes,Yes,No,Missing created_at
+071f0184-d34c-42cf-9601-436c165be255,No,Yes,Yes,No,Missing created_at
+75f6b923-fe2b-029a-a4f5-44f679a75045,No,Yes,Yes,No,Missing created_at
+fddbbd18-5181-bc01-0b33-12744b53888e,No,Yes,Yes,No,Missing created_at
+872eb121-c785-416c-b0f2-20227d911d53,Yes,Yes,Yes,Yes,
+2a619afd-a49f-45c5-a21c-eb85d9784f98,Yes,No,Yes,No,Missing closed_at
+3292aeda-c013-4eff-8508-3770a7fc120e,Yes,Yes,Yes,Yes,
+4e9d33a9-b6bd-5f22-d5f4-07a5af55c30c,No,Yes,Yes,No,Missing created_at
+b3c70f02-2c0c-6495-4d19-c1e002ddfe2a,No,Yes,Yes,No,Missing created_at
+ba7461ee-0857-d716-3a54-bf089620c88c,No,Yes,Yes,No,Missing created_at
+27802b90-02f6-1a32-622f-cecb85f530af,No,Yes,Yes,No,Missing created_at
+0e43b079-2dcd-cc2e-a59b-231a4d09d320,No,Yes,Yes,No,Missing created_at
+a448afd9-369a-e509-9010-7734cf53c877,No,Yes,Yes,No,Missing created_at
+b519061a-2bff-2978-51a8-7017cdadf313,No,Yes,Yes,No,Missing created_at
+c757d6be-997f-f232-b648-4a9b0ba03a7c,No,Yes,Yes,No,Missing created_at
+00aef037-ca9a-488a-86a1-c7605be66701,No,Yes,Yes,No,Missing created_at
+4831aa4a-92b3-41f6-9693-765438f95119,No,Yes,Yes,No,Missing created_at
+8d9f1e78-0f45-e5f7-7960-4240ab34b5c4,No,Yes,Yes,No,Missing created_at
+bdf35e69-d40f-6c19-56d0-04ddde233c19,No,Yes,Yes,No,Missing created_at
+4d5a5dd0-3caf-e73c-3a12-2397611a6c6e,No,Yes,Yes,No,Missing created_at
+f0576a1c-1517-c150-6fa3-d7d6f2865c9c,No,Yes,Yes,No,Missing created_at
+93040aef-2f10-5fc0-0067-39e9dd5b030f,No,Yes,Yes,No,Missing created_at
+c1157f92-8766-d7f6-ca9d-6497b7ece3bc,No,Yes,Yes,No,Missing created_at
+6bb1bd0e-5231-060f-ceb1-904e1c8db58c,No,Yes,Yes,No,Missing created_at
+1e6c4796-afdc-5d3e-44c4-5e150f583e35,No,Yes,Yes,No,Missing created_at
+6e0ed47c-6053-4a00-c050-db6f98c3d292,No,Yes,Yes,No,Missing created_at
+4026b298-7f62-e4e3-37ad-3520e342d500,No,Yes,Yes,No,Missing created_at
+ed012943-19b6-b729-4180-d633c01ca969,No,Yes,Yes,No,Missing created_at
+596ab94b-6133-1973-ad92-2e948c8fb433,No,Yes,Yes,No,Missing created_at
+db3176fe-965e-03eb-f8ea-f988afe63312,No,Yes,Yes,No,Missing created_at
+509bb2c0-5ae3-facc-e3a2-d883e7bc3899,No,Yes,Yes,No,Missing created_at
+99acbcd6-f5e2-3464-257e-6307c5f8240c,No,Yes,Yes,No,Missing created_at
+c8f319c5-f656-22c6-d89e-4b26a228daec,No,Yes,Yes,No,Missing created_at
+8e13a3cb-24ca-2eab-a37c-d0550bcd342a,No,Yes,Yes,No,Missing created_at
+31dae01f-f799-0430-6c7b-08b070a7a3d8,No,Yes,Yes,No,Missing created_at
+d630d3b6-570c-f6f8-987e-75eab5891d77,No,Yes,Yes,No,Missing created_at
+a6e758c2-52fe-42aa-3e2d-75eab932be02,No,Yes,Yes,No,Missing created_at
+6d726407-9326-f5d9-2b31-8ea0a3b6fd5a,No,Yes,Yes,No,Missing created_at
+ccacfcd3-ab18-2e8e-46b6-d1cd9718f4a6,No,Yes,Yes,No,Missing created_at
+0f791ac8-3e49-03a5-38a5-52b9f0faf333,No,Yes,Yes,No,Missing created_at
+b1635ae1-58e8-c773-c965-7465fd7e581b,No,Yes,Yes,No,Missing created_at
+e6b169cb-f485-f929-0c10-3390d853cdef,No,Yes,Yes,No,Missing created_at
+f94f3fc8-0a93-1476-3735-1226c6c07a25,No,Yes,Yes,No,Missing created_at
+fbef5564-61db-b880-111a-a820c57dad7e,No,Yes,Yes,No,Missing created_at
+78c963c5-baa9-1759-2f33-ee3cfab9a695,No,Yes,Yes,No,Missing created_at
+3abdc501-c2d0-afab-127c-d3875c9a508f,No,Yes,Yes,No,Missing created_at
+c39b8002-c7ea-36ec-acba-ca6b76bd84be,No,Yes,Yes,No,Missing created_at
+e3cf4f01-f971-d717-ecbb-142e0961de9b,No,Yes,Yes,No,Missing created_at
+d419c1b5-a37d-e94a-993d-dcfe97f22719,No,Yes,Yes,No,Missing created_at
+7d73b439-48e1-a4e4-451c-9fd9d2d98814,No,Yes,Yes,No,Missing created_at
+e0ab7426-e4d5-9303-1698-d86175db730d,No,Yes,Yes,No,Missing created_at
+e7dd5af9-f2be-5172-d5b6-8253d88014ac,No,Yes,Yes,No,Missing created_at
+c7bb8bbc-f4a4-05c6-4355-f1ce3bed257d,No,Yes,Yes,No,Missing created_at
+0f5e0109-0dcb-65ff-6100-bc19889ff88b,No,Yes,Yes,No,Missing created_at
+99777063-a06d-ca59-ae18-c19e61fd5219,No,Yes,Yes,No,Missing created_at
+c2082173-cb4b-b938-20ca-c03b57ac106c,No,Yes,Yes,No,Missing created_at
+32d45079-d9b0-5d5c-175f-21583ec19e59,No,Yes,Yes,No,Missing created_at
+1d8df4cc-1924-d9c9-5d61-79eea0a3a2a2,No,Yes,Yes,No,Missing created_at
+9c6e430f-4c40-78a6-78d8-801dc576521c,No,Yes,Yes,No,Missing created_at
+94355d74-84df-42fc-f229-efe047e1f490,No,Yes,Yes,No,Missing created_at
+f1896899-dd41-7875-5842-26a63376833a,No,Yes,Yes,No,Missing created_at
+d0f52d78-20c3-3dc7-4639-7e9991625ac3,No,Yes,Yes,No,Missing created_at
+d52d4cfc-f3f8-b4b9-7d22-51aed9524b61,No,Yes,Yes,No,Missing created_at
+1b25c9db-34f6-afc3-6665-ddafb484f8ef,No,Yes,Yes,No,Missing created_at
+b76396af-a727-9d31-c000-1a46427976f9,No,Yes,Yes,No,Missing created_at
+d3493b15-9a02-75ae-63ee-c9fdfb9258f7,No,Yes,Yes,No,Missing created_at
+ce0beafc-5f92-1f89-2d9c-c3b6c75f93ea,No,Yes,Yes,No,Missing created_at
+8a18f425-865d-42c4-7493-379274c5d5fa,No,Yes,Yes,No,Missing created_at
+7381491b-7b44-3ead-7e55-a066248de0a0,No,Yes,Yes,No,Missing created_at
+7d53352f-075e-2c36-a351-a7d8062b78bd,No,Yes,Yes,No,Missing created_at
+001a2e9c-a316-5366-433e-c260965f6311,No,Yes,Yes,No,Missing created_at
+5c70d500-7b97-fbbf-eb5e-989147ffad01,No,Yes,Yes,No,Missing created_at
+b3826991-f8ec-6f00-00dd-fe4a11f6f050,No,Yes,Yes,No,Missing created_at
+fa75f127-bf00-d23b-5866-729079c50097,No,Yes,Yes,No,Missing created_at
+8a38d58b-7f4d-4e91-a87b-017f2c0084a3,No,Yes,Yes,No,Missing created_at
+6676bf1d-4385-3d3d-34e4-6d793f58e3db,No,Yes,Yes,No,Missing created_at
+c8b00cc6-4aff-bf85-ca89-888be9e8fe41,No,Yes,Yes,No,Missing created_at
+d5031f98-f842-6fdf-1a2c-2c56422aad19,No,Yes,Yes,No,Missing created_at
+04e35aca-0eb1-f869-0612-b0f9095d955a,No,Yes,Yes,No,Missing created_at
+5f7c06e9-d4b0-231a-54ec-e7a4dd2315e6,No,Yes,Yes,No,Missing created_at
+a5364016-84bc-0360-799f-22ca9a48092a,No,Yes,Yes,No,Missing created_at
+65430ff7-582b-c456-3c80-561ebc995325,No,Yes,Yes,No,Missing created_at
+2e133895-32c7-a2e2-8563-ebc8292b174c,No,Yes,Yes,No,Missing created_at
+a941c078-343e-4e81-6a4a-755cf6b1f454,No,Yes,Yes,No,Missing created_at
+f6d40f5d-6f58-2716-7b95-5068e4ef3ded,No,Yes,Yes,No,Missing created_at
+593f2a1e-8225-5619-39ae-88e7f69cf0fa,No,Yes,Yes,No,Missing created_at
+32bcfff6-e18a-8347-e7f2-a90565f062a4,No,Yes,Yes,No,Missing created_at
+d0e4e252-ae00-938e-4ae4-ed68efe64f90,No,Yes,Yes,No,Missing created_at
+433f81b9-f881-984f-d61d-0b4ecb251f7b,No,Yes,Yes,No,Missing created_at
+78c51919-8a58-4bcc-ac84-6e4675c707a0,Yes,Yes,Yes,Yes,
+f908e919-590a-1ae4-6f73-1ddc7b017800,No,Yes,Yes,No,Missing created_at
+344ec81c-a19d-f1ba-2d2c-d46f4f39d112,No,Yes,Yes,No,Missing created_at
+35ac2c8f-988c-90b1-5729-8f4566f100a0,No,Yes,Yes,No,Missing created_at
+a6465f30-4e23-1183-f2f8-cbd8dea48580,No,Yes,Yes,No,Missing created_at
+a383137c-f83c-7d32-8f2a-1d6246aef0b4,No,Yes,Yes,No,Missing created_at
+c5b6fd56-e039-ca62-4bec-520fc7d77711,No,Yes,Yes,No,Missing created_at
+ac7b87fb-080f-3d17-374a-de3792479957,No,Yes,Yes,No,Missing created_at
+13699593-fbb1-e74b-77c9-660cdd786638,No,Yes,Yes,No,Missing created_at
+b1ff846d-9f93-3dff-cb1f-d10d78e7e83d,No,Yes,Yes,No,Missing created_at
+479bf1e8-673a-9c3c-b20b-a6ae40009f7e,No,Yes,Yes,No,Missing created_at
+d28fd200-2ceb-bb5e-679f-1c84be768244,No,Yes,Yes,No,Missing created_at
+a7c25386-9046-33f2-3b31-16e37462818e,No,Yes,Yes,No,Missing created_at
+88028ce4-c61f-5200-612b-5cebe1986654,No,Yes,Yes,No,Missing created_at
+90df6aab-bc25-f8e2-7bb4-cb2572293795,No,Yes,Yes,No,Missing created_at
+b76d761f-efb9-b696-b79b-3c715f0dd686,No,Yes,Yes,No,Missing created_at
+8fb1f2b5-1c44-e1d4-095b-ea19a7a37026,No,Yes,Yes,No,Missing created_at
+499ff5a8-1b16-d883-faad-bda99684bd94,No,Yes,Yes,No,Missing created_at
+75968c96-4cd2-6c96-48a8-b4cce6446e26,No,Yes,Yes,No,Missing created_at
+9298bbd0-ee2f-4cc1-fa9c-43f83c73aafd,No,Yes,Yes,No,Missing created_at
+6dd43e52-c5a9-77f4-c3f8-e4017d761789,No,Yes,Yes,No,Missing created_at
+b3a4f563-9eb9-68e1-8882-648fec628998,No,Yes,Yes,No,Missing created_at
+21fc81d0-0871-fd42-e598-d8111a0c6d20,No,Yes,Yes,No,Missing created_at
+6419a0fa-fd56-78bf-b267-45e1459ef865,No,Yes,Yes,No,Missing created_at
+67874652-d7d1-5d89-1e13-b2b3aead6c9d,No,Yes,Yes,No,Missing created_at
+5faf0ee5-1b3e-2151-d131-ee42ecb6ab7b,No,Yes,Yes,No,Missing created_at
+2d3ab790-25d2-0d83-666a-ee73e9ea2cb9,No,Yes,Yes,No,Missing created_at
+8acf69f6-f774-4864-930d-6998e3c0bd1e,Yes,No,Yes,No,Missing closed_at
+51959913-1e11-1890-7273-d24ab4c4faef,No,Yes,Yes,No,Missing created_at
+3e142f38-96cd-b474-f8b0-0b9558f99f46,No,Yes,Yes,No,Missing created_at
+c178b4b7-d5b4-9128-d71a-493657ef3f3e,No,Yes,Yes,No,Missing created_at
+6985c2d7-c75e-0aa7-fdba-4e611259d164,No,Yes,Yes,No,Missing created_at
+bf4a8b4c-b0db-1345-9092-67061e46a1ab,No,Yes,Yes,No,Missing created_at
+484162ef-a628-3ed5-b066-49a041d48726,No,Yes,Yes,No,Missing created_at
+6f3095ec-8946-8d2a-b83c-a9d46df0809e,No,Yes,Yes,No,Missing created_at
+ed33db40-0cc9-a1d4-3477-29dcb26f0324,No,Yes,Yes,No,Missing created_at
+2c519828-7cf5-d70d-4cb1-52e00a8334cc,No,Yes,Yes,No,Missing created_at
+badb3cb0-39fe-9836-946b-e258a03bbf6a,No,Yes,Yes,No,Missing created_at
+42672831-9a59-a059-dc72-3c065189a994,No,Yes,Yes,No,Missing created_at
+40b92aa1-6736-3e4f-b6d7-6d7e200a4263,No,Yes,Yes,No,Missing created_at
+22d47b77-1bc2-30a2-8c9d-79b6a8fa7adb,No,Yes,Yes,No,Missing created_at
+7ee2fea9-67aa-7357-5ea6-c4ca0aaf7fc1,No,Yes,Yes,No,Missing created_at
+864927b8-23a6-4604-b885-b882c3eaea80,Yes,Yes,Yes,Yes,
+47edf057-a884-4cb6-ae6e-5fbb26bcef22,Yes,Yes,Yes,Yes,
+c858bfef-db3f-4d0f-f219-0519df977d44,No,Yes,Yes,No,Missing created_at
+f878ae6d-c005-a23a-3984-6e38e2d10ed7,No,Yes,Yes,No,Missing created_at
+9a5cacfe-adec-0b39-19f3-fff80dd71bce,No,Yes,Yes,No,Missing created_at
+8b5381ba-acdf-03f6-6be7-6800dea7cbe9,No,Yes,Yes,No,Missing created_at
+6093b3d1-66a4-6af6-6a8f-c38000ed54d3,No,Yes,Yes,No,Missing created_at
+fe135c45-2c5f-ff36-9116-8e946fbcdf6d,No,Yes,Yes,No,Missing created_at
+f3f9fb0f-bafa-4449-b1cc-708f927d4d18,Yes,Yes,Yes,Yes,
+6ce14ba3-0273-dec5-c6e8-ce50b7f82458,No,Yes,Yes,No,Missing created_at
+c1d1b7b9-f412-3169-3a23-1dc873449273,No,Yes,Yes,No,Missing created_at
+62af6e4b-83dc-31fe-466b-e27a73446760,No,Yes,Yes,No,Missing created_at
+0f76e7a0-46f8-6d73-2b28-b0e2719414a0,No,Yes,Yes,No,Missing created_at
+0a213065-021d-087d-4cd0-6c6b6161e442,No,Yes,Yes,No,Missing created_at
+007e589d-aa52-be62-0044-c5682cf9ff5d,No,Yes,Yes,No,Missing created_at
+a9236a7f-e98b-f82b-31fb-adbe52054ca5,No,Yes,Yes,No,Missing created_at
+fbda59df-22f8-673b-b07b-95492ef1337b,No,Yes,Yes,No,Missing created_at
+a953844f-7a56-1195-4b84-ed1481c2e445,No,Yes,Yes,No,Missing created_at
+2326e405-37ae-3906-152a-102bb782de8b,No,Yes,Yes,No,Missing created_at
+154c14c7-590e-44b2-bae9-8cc1ec79bdac,Yes,Yes,Yes,Yes,
+a6bf74c0-61b5-353f-aa2e-4740e153d3b4,No,Yes,Yes,No,Missing created_at
+25e9589e-699d-5219-577f-b0c37e301a54,No,Yes,Yes,No,Missing created_at
+a735d8a3-de99-acf1-d943-33a386ad48cf,No,Yes,Yes,No,Missing created_at
+1948f55b-f4aa-e1b7-6c49-db9dbac439a9,No,Yes,Yes,No,Missing created_at
+6d16f9b1-debb-9ee4-d988-b757a0350cf7,No,Yes,Yes,No,Missing created_at
+88d9b06e-58e2-d7d0-46f7-a41b77505c6e,No,Yes,Yes,No,Missing created_at
+eb253da6-91b6-dd8a-77bf-8cf5f11a75a3,No,Yes,Yes,No,Missing created_at
+da09fe1c-7d29-2e41-3605-6daeee02dcf5,No,Yes,Yes,No,Missing created_at
+71f582cc-7db3-4fbb-f6ee-121469b7f04e,No,Yes,Yes,No,Missing created_at
+996a9c60-67ca-370a-023a-672e0ebf1781,No,Yes,Yes,No,Missing created_at
+d24ca09b-494b-4bda-992a-aad57b478ff5,Yes,No,Yes,No,Missing closed_at
+dc7afc7b-d90e-4653-bc2a-9c1262ca0c1a,Yes,Yes,Yes,Yes,
+3c18ed0c-e9be-4828-9078-59cfa6e3179f,Yes,No,Yes,No,Missing closed_at
+0eb9ee9c-0ec2-8abd-d2ea-67f6a73d7c1f,No,Yes,Yes,No,Missing created_at
+5f1a2e15-b570-0961-2451-abc86328f2ed,No,Yes,Yes,No,Missing created_at
+394dcf20-0869-2a1f-4e31-aeaa4352c461,No,Yes,Yes,No,Missing created_at
+8d77f862-4d8d-749d-00c2-a8407330ac9e,No,Yes,Yes,No,Missing created_at
+525c5c90-12dd-3ba9-ab53-cf84e532bec4,No,Yes,Yes,No,Missing created_at
+067a756e-c2f3-dc7c-4197-e6492313dcd8,No,Yes,Yes,No,Missing created_at
+f3c02af0-eb73-f73d-2fea-bfe940813ecb,No,Yes,Yes,No,Missing created_at
+d722759f-6f57-45cf-bb2e-49ce36bafeeb,Yes,Yes,Yes,Yes,
+aecce5fb-e812-42f2-9ac3-2c17e70ce753,Yes,Yes,Yes,Yes,
+cc7736c0-bc35-388d-a03b-af0e444a9570,No,Yes,Yes,No,Missing created_at
+f8644a82-b623-fa56-b619-4fc6e2ac5a1c,No,Yes,Yes,No,Missing created_at
+89e3ef14-fc95-bf03-5a85-798e197ed316,No,Yes,Yes,No,Missing created_at
+90a1c3c9-607c-437f-8426-657c5eb02294,Yes,No,Yes,No,Missing closed_at
+ef8c3a1d-43af-4961-8357-cf070d80c051,Yes,Yes,Yes,Yes,
+563ac94b-7456-4248-8168-c966fdfc62e8,Yes,Yes,Yes,Yes,
+2e989071-829e-4249-8612-aa3fcf326aa7,Yes,No,Yes,No,Missing closed_at
+9e2d3ac5-79ba-434f-ac2a-77579bd93806,Yes,No,Yes,No,Missing closed_at
+8709bba9-ca03-4034-9bc8-85f2f2143034,Yes,No,Yes,No,Missing closed_at
+b16a2495-69ed-4671-9dfd-adf008115c06,Yes,Yes,Yes,Yes,
+22eb3c39-c0bd-440d-b24b-ba80aa6cdb26,Yes,Yes,Yes,Yes,
+fbb9b65c-9764-4f57-908b-cb419814fd61,Yes,Yes,Yes,Yes,
+4c3d4b48-972e-46e0-90d8-d6b7a2653e36,Yes,Yes,Yes,Yes,
+77e65fde-9cf0-48bf-88ea-b73d492d7402,Yes,No,Yes,No,Missing closed_at
+768547d3-d472-4ce0-9930-cfe1ef655793,Yes,Yes,Yes,Yes,
+230eeb01-de31-420e-bcc1-9eaee856ece8,Yes,No,Yes,No,Missing closed_at
+f8c6f83f-55ab-4ed2-a212-452d032d8223,Yes,Yes,Yes,Yes,
+32cb1ee0-419b-40de-aef5-b94e94f94f20,Yes,No,Yes,No,Missing closed_at
+ed0e68ba-fe8c-4d06-a47a-284d03626f7e,Yes,Yes,Yes,Yes,
+de899f7a-76a9-4f06-bf71-892c57ca7b22,Yes,Yes,Yes,Yes,
+7a84dc8b-7e56-4002-b996-5d8ebf44054f,Yes,Yes,Yes,Yes,
+d574a779-6597-4856-988f-98fb961bbacc,Yes,Yes,Yes,Yes,
+c3120da0-ba49-4a90-872a-19d881add1e0,Yes,Yes,Yes,Yes,
+4f43e97f-c4e1-4156-988a-54c9f6c99e72,Yes,Yes,Yes,Yes,
+2d04137c-1bbf-4263-b67e-e5d876b7df10,Yes,No,Yes,No,Missing closed_at
+9bd4d358-7776-4a11-a6f5-84023090ca9c,Yes,Yes,Yes,Yes,
+5d341a5d-b7e7-4e8d-97fb-bf57a2426652,Yes,Yes,Yes,Yes,
+35df53c4-12a2-4134-a0ae-df8575e49a09,Yes,Yes,Yes,Yes,
+2d713c73-7e76-4895-a544-5c78e46173fb,Yes,Yes,Yes,Yes,
+b88e51a5-f3cb-4174-bcae-781487f61548,Yes,Yes,Yes,Yes,
+a4a43033-febe-41a9-bbdd-2cfc86099aef,Yes,Yes,Yes,Yes,
+fe56c106-be83-4065-bacb-790bee4ee22f,Yes,No,Yes,No,Missing closed_at
+1a7ff493-ce01-4c1a-b20d-7b9d7aa55994,Yes,Yes,Yes,Yes,
+610ea2c6-67f4-40c1-a0d2-df6fe5f536f6,Yes,Yes,Yes,Yes,
+f81606ff-f03d-4d5c-b8fb-6c0f5b46f70d,Yes,Yes,Yes,Yes,
+ac597c1a-68f7-49a5-8760-11224712adb6,Yes,Yes,Yes,Yes,
+cc255e0c-64bf-46b2-bb50-08ab25d1c967,Yes,Yes,Yes,Yes,
+ba75932d-0505-4a0c-949b-84bc22c5eb59,Yes,Yes,Yes,Yes,
+281b94ee-eecc-417c-8cf9-25b2cb80a2bc,Yes,Yes,Yes,Yes,
+aac4f5a4-d8d3-4cc8-9292-e01278f8efc2,Yes,No,Yes,No,Missing closed_at
+c8d729d3-993e-4f49-80c3-95b036fee0ce,Yes,Yes,Yes,Yes,
+e4dde419-3a46-4d6e-b263-48266ba1c497,Yes,Yes,Yes,Yes,
+93e90f49-e5d8-4bd3-8cc8-eaf91c0ecf63,Yes,Yes,Yes,Yes,
+bdd973e0-2c3c-4f59-91eb-6b511ab1f88e,Yes,Yes,Yes,Yes,
+e4be2723-0b34-4274-a153-d5586ae48053,Yes,Yes,Yes,Yes,
+5a1bcddb-2d8c-46b9-836e-c9260fac9645,Yes,Yes,Yes,Yes,
+8cb5baa2-ecba-4c2a-bb26-fab56d983ce5,Yes,No,Yes,No,Missing closed_at
+084a0c36-2582-40e3-8475-6aba20bc16fc,Yes,Yes,Yes,Yes,
+d656424e-37a1-4a40-8922-ea466c6ab0e1,Yes,Yes,Yes,Yes,
+ccba095f-b24b-4f5b-8598-7c8389259de9,Yes,No,Yes,No,Missing closed_at
+715031c3-cc29-4ff1-ae30-4ac0fcb63e01,Yes,Yes,Yes,Yes,
+6cf73c01-c30c-44e1-bf59-4d95d5c9907c,Yes,No,Yes,No,Missing closed_at
+488572a1-3596-4a89-9d85-69a2b47f3300,Yes,Yes,Yes,Yes,
+4f67d38e-db9d-4de3-be89-726052bf6887,Yes,Yes,Yes,Yes,
+46888dab-b407-4528-9d76-40eb2bd96486,Yes,Yes,Yes,Yes,
+07125828-0af2-447b-88e1-cafa8a322705,Yes,Yes,Yes,Yes,
+9ef8dcc4-03ec-4ce8-82ed-9048516978d0,Yes,Yes,Yes,Yes,
+38e5fe3c-4ec9-4649-bf1a-efd37e8651e2,Yes,Yes,Yes,Yes,
+b2e5ca4c-34ae-4c4d-a445-bc5428ec5062,Yes,Yes,Yes,Yes,
+32eeede6-e4e3-40c2-9aab-c6ec2fe74563,Yes,No,Yes,No,Missing closed_at
+c43a9fe1-1d1f-415d-8c50-c5fb4f30df08,Yes,Yes,Yes,Yes,
+0c36c099-242f-4649-b3a0-3a16774d674f,Yes,Yes,Yes,Yes,
+34bf23b2-e00f-44e4-892d-93409d666322,Yes,Yes,Yes,Yes,
+79834947-5612-4e83-9890-f9f95e4e0c0a,Yes,Yes,Yes,Yes,
+17a66482-faa4-4cad-a904-e869812f2950,Yes,Yes,Yes,Yes,
+337de57d-034a-4531-990b-0af07c34522a,Yes,Yes,Yes,Yes,
+54316a65-9440-462b-b7db-271a2192364b,Yes,No,Yes,No,Missing closed_at
+107a789d-01e3-48fc-a5fa-f82cba3dfbf8,Yes,No,Yes,No,Missing closed_at
+11cae148-c552-4a96-98ac-1230d988e8cf,Yes,No,Yes,No,Missing closed_at
+fb3b774d-c4e5-489d-8094-e94fab7628a7,Yes,Yes,Yes,Yes,
+5eb5b237-34c0-4960-904f-f1aa99aa5a5c,Yes,Yes,Yes,Yes,
+696afd2a-6b96-4a16-91bd-92de7377802a,Yes,Yes,Yes,Yes,
+f7a042a6-0da1-4ed0-8ec9-1df4485f0395,Yes,Yes,Yes,Yes,
+84c4cb57-827f-49b5-a473-4bb6df134de6,Yes,No,Yes,No,Missing closed_at
+e0606954-e645-47ed-8008-f5ace1c87acc,Yes,No,Yes,No,Missing closed_at
+e94fedc0-9209-4678-8a9d-4b3a6cd644f6,Yes,Yes,Yes,Yes,
+32c3b5d6-227c-4abf-a0dd-463cbafae316,Yes,Yes,Yes,Yes,
+b6942741-3835-40eb-9c00-66dd29bc7170,Yes,Yes,Yes,Yes,
+a20d3286-8cc7-4f31-84b3-1cb544e2756a,Yes,Yes,Yes,Yes,
+2403da27-4924-4f3d-8754-1a476c834283,Yes,Yes,Yes,Yes,
+6bc1941f-b4b3-4f5e-8b26-8d0ed2d7ac25,Yes,Yes,Yes,Yes,
+d1a9b329-dee6-4993-be04-11fe8c8aca0f,Yes,No,Yes,No,Missing closed_at
+b518acf6-04cd-4e30-90bb-ae78d57b50a0,Yes,Yes,Yes,Yes,
+ae92473e-7b54-4b9d-9518-1a34e5d7f714,Yes,No,Yes,No,Missing closed_at
+a9ad55bd-fdac-45ed-a18c-868bf93c9793,Yes,No,Yes,No,Missing closed_at
+43e6cbf0-e2d4-40ae-bf20-4df7b23cf915,Yes,Yes,Yes,Yes,
+3280b720-3e0c-4df3-a962-35fe76a4a434,Yes,No,Yes,No,Missing closed_at
+3714a311-a5b5-46ed-9868-1b383c55906d,Yes,Yes,Yes,Yes,
+52ec5ab0-c642-4dbb-af9f-e9065cf605f6,Yes,Yes,Yes,Yes,
+1c260e7d-b201-4d78-84c7-5f7d98da6011,Yes,No,Yes,No,Missing closed_at
+fc9e112d-5e63-4203-8b16-d7f1d68e10da,Yes,No,Yes,No,Missing closed_at
+33131087-1090-40d4-9806-6c96010d12a8,Yes,Yes,Yes,Yes,
+17fe2cf1-0e71-401f-984f-ad4d7ad1e0c0,Yes,No,Yes,No,Missing closed_at
+094ec329-57a6-4e2d-8f07-52e271c7ba66,Yes,No,Yes,No,Missing closed_at
+15917ad7-bf88-4861-8777-e736a43024ee,Yes,No,Yes,No,Missing closed_at
+b04c6dc7-ef50-48b8-937b-f6b9039c131a,Yes,Yes,Yes,Yes,
+4dc1661f-4f6f-480f-914b-c4c531a02740,Yes,Yes,Yes,Yes,
+dda32688-cb21-4683-b49b-1b75f6b72771,Yes,Yes,Yes,Yes,
+5a4b0eb5-ffd2-4be2-aeea-8d02f0ac9d36,Yes,Yes,Yes,Yes,
+da7414fa-6c44-4570-ab9e-7a4d39ccda5d,Yes,Yes,Yes,Yes,
+eed88ead-3973-4643-8814-412fdd2ad9be,Yes,Yes,Yes,Yes,
+72214ccd-713f-4085-b036-812383c1c771,Yes,No,Yes,No,Missing closed_at
+013fcae1-a397-4cf1-821c-16365a1cf07d,Yes,No,Yes,No,Missing closed_at
+819bbb55-e646-56c4-22d2-56e997491ca3,No,Yes,Yes,No,Missing created_at
+c1a019ae-9535-418f-a544-5a76ab8b9f50,Yes,Yes,Yes,Yes,
+72f49c21-8aa8-45bb-a4c7-4954fcb84481,Yes,Yes,Yes,Yes,
+3cb45ade-a1b3-4a3e-a5ad-afb563541fbe,Yes,No,Yes,No,Missing closed_at
+3617c754-2014-417f-89e9-872fdc322560,Yes,Yes,Yes,Yes,
+35dd8f94-4c35-4169-a395-42d399fd0956,Yes,Yes,Yes,Yes,
+3938fc58-441d-46d3-b350-690023ef2634,Yes,Yes,Yes,Yes,
+fd2babd5-9005-450a-ae03-3489776a5eae,Yes,Yes,Yes,Yes,
+6d5795dc-528f-4803-9e0f-be060bc4f7af,Yes,Yes,Yes,Yes,
+d92a4b99-dbe6-4eed-81d5-fa375a71c0f8,Yes,Yes,Yes,Yes,
+3be84f30-5349-486b-a4a2-d5e936abdba5,Yes,No,Yes,No,Missing closed_at
+a038450b-915e-4336-ab94-04b54c883858,Yes,Yes,Yes,Yes,
+f066b048-d1c1-461f-9f98-1db50a26d591,Yes,Yes,Yes,Yes,
+fecc3070-4c29-4249-ade0-1c9eae2687c2,Yes,No,Yes,No,Missing closed_at
+a1c5eb64-147d-4345-bcf9-908919babb90,Yes,Yes,Yes,Yes,
+53040f7e-89a2-4c5c-9f73-71feae903e1a,Yes,No,Yes,No,Missing closed_at
+9c3cf2fa-b5d4-46e0-b7a6-a3acfca2c674,Yes,No,Yes,No,Missing closed_at
+7c159bf0-6ac6-4788-984f-258e0cd2aa6f,Yes,Yes,Yes,Yes,
+9fd43c4c-a469-4f74-8c15-74a116f26187,Yes,Yes,Yes,Yes,
+11dcf269-8bc3-4127-94ad-49b9f248cbb2,Yes,Yes,Yes,Yes,
+2e126a23-8caf-4f95-8de0-b745519555c4,Yes,Yes,Yes,Yes,
+c9127618-abb9-4756-bae1-5ac6e8ed51c6,Yes,Yes,Yes,Yes,
+2ccf9bff-aca4-4df0-9b53-338cff2175f1,Yes,Yes,Yes,Yes,
+9e794fe8-7c9d-4006-b59c-a654afcd2644,Yes,No,Yes,No,Missing closed_at
+1b950245-c697-47aa-a34d-c8c230097405,Yes,Yes,Yes,Yes,
+68542466-9525-4a7a-bad1-384981867a1a,Yes,Yes,Yes,Yes,
+98d1b7f5-3d99-479d-85a5-0bed2c1b5252,Yes,Yes,Yes,Yes,
+d0bf3299-2a22-4fa7-afd0-0b9ffc93ad76,Yes,Yes,Yes,Yes,
+83d03c23-f8b3-4f6c-8f52-e156f3fc8823,Yes,Yes,Yes,Yes,
+f113e226-b3c6-4360-9d6d-eaf9928fcd6c,Yes,No,Yes,No,Missing closed_at
+ddbe9afe-17ac-4cbf-aba7-3713ac3dcd53,Yes,No,Yes,No,Missing closed_at
+b013dda1-2181-41f8-a9c3-db8acdeaca2d,Yes,Yes,Yes,Yes,
+b53c8057-ceb7-453d-ba81-05a80347d635,Yes,Yes,Yes,Yes,
+3145b7a3-f9b8-4b69-be75-cf0d3ead40f9,Yes,Yes,Yes,Yes,
+6178a47c-c209-4050-bbd3-46234b2010e5,Yes,Yes,Yes,Yes,
+00442f6b-bad8-4efc-9138-a7fe5a491665,Yes,Yes,Yes,Yes,
+81a80b7e-da29-4044-be0e-fcccd3afe7fd,Yes,Yes,Yes,Yes,
+01e761fc-cf80-46dc-99fc-90cec18565a9,Yes,No,Yes,No,Missing closed_at
+e0e94ac2-9af5-4194-ba97-3caff204496e,Yes,No,Yes,No,Missing closed_at
+ec7dd572-aa06-43eb-8cf4-469684996ac1,Yes,Yes,Yes,Yes,
+6655ddc8-ece3-485d-a194-14d08986ba03,Yes,No,Yes,No,Missing closed_at
+d01d2356-1785-4413-a34d-b32eec8aa9f6,Yes,No,Yes,No,Missing closed_at
+c357bd0c-ed09-4aed-9e47-2952abc4b848,Yes,Yes,Yes,Yes,
+047c498a-6455-4af2-a829-3e20b6f96ed3,Yes,Yes,Yes,Yes,
+4b313b65-29bc-4a38-9c5c-a7db2daa1745,Yes,Yes,Yes,Yes,
+ba000612-08eb-466e-a200-9116b2f0ab0f,Yes,No,Yes,No,Missing closed_at
+8048197e-b83c-45a0-bf10-7a52115667e4,Yes,No,Yes,No,Missing closed_at
+67123f11-5721-4f52-950f-d91b623d5cc2,Yes,No,Yes,No,Missing closed_at
+298b0b9f-9d4c-4ef2-a37f-7d9e7d35910d,Yes,Yes,Yes,Yes,
+30f4d87a-751c-4266-ad46-975889178700,Yes,Yes,Yes,Yes,
+1c905e75-7535-416d-a137-8dc916747194,Yes,Yes,Yes,Yes,
+fee940e2-83d1-4749-ab17-a7df7d3e1905,Yes,No,Yes,No,Missing closed_at
+1253875a-f6c4-4ed0-92d1-c3e6e7a4dabb,Yes,Yes,Yes,Yes,
+3d26fc71-98fb-4052-a26c-40e7b044d63b,Yes,Yes,Yes,Yes,
+7c2663ac-612b-417d-9bf7-5e6ac8d3efe5,Yes,Yes,Yes,Yes,
+4f8b2dee-434d-4bea-8392-a77c7e9c5362,Yes,Yes,Yes,Yes,
+48a7025a-a65f-4b80-914c-984259833370,Yes,Yes,Yes,Yes,
+fbfcd225-fb5b-43dc-b136-702c313ae190,Yes,Yes,Yes,Yes,
+8ff9e815-22fc-4901-8096-cd2d0ae81176,Yes,No,Yes,No,Missing closed_at
+206f2473-1864-4ba9-ae6a-109ee0fa0150,Yes,No,Yes,No,Missing closed_at
+793f193e-cb76-43f3-991d-36b8179160da,Yes,No,Yes,No,Missing closed_at
+65de8cca-e13c-44ee-8b37-0a8f33e93223,Yes,Yes,Yes,Yes,
+73752713-dfcb-4eff-8ce4-b47bbb904804,Yes,Yes,Yes,Yes,
+f1c62a11-792d-4692-9de7-fc5834c32a22,Yes,Yes,Yes,Yes,
+b30178f4-4a1c-4469-9255-be9eed264561,Yes,Yes,Yes,Yes,
+a212351e-fd47-4d4f-b06f-cfd544db2630,Yes,Yes,Yes,Yes,
+3b217359-2d33-49eb-9efa-90da713930cb,Yes,Yes,Yes,Yes,
+48862e77-53fa-42d1-a7e4-5082320b4b33,Yes,No,Yes,No,Missing closed_at
+313e7f25-536e-4c44-bcbc-aeeed7545253,Yes,Yes,Yes,Yes,
+b09e510e-96ad-4622-8e2b-5fb39c8d213b,Yes,Yes,Yes,Yes,
+04617c6a-c9d0-4f9c-845e-a513b686709a,Yes,Yes,Yes,Yes,
+fe68f9b2-11d4-4da9-8573-21a5fad9d663,Yes,Yes,Yes,Yes,
+4d777e0e-07ea-4138-9065-e0405fe2debb,Yes,Yes,Yes,Yes,
+3beee66c-b10d-4d92-ad2f-d084d2754066,Yes,No,Yes,No,Missing closed_at
+e9107c13-9b09-4dd1-817c-bf01b8d59ab9,Yes,Yes,Yes,Yes,
+9c6f1860-b99a-4590-a537-7b0051409a06,Yes,Yes,Yes,Yes,
+f9b32676-14df-4807-b389-ab327909f7ab,Yes,Yes,Yes,Yes,
+f90ebf64-ee75-41cd-8a53-e97d7aad40da,Yes,No,Yes,No,Missing closed_at
+0235df0d-e86c-43df-8113-5df1701a4bd2,Yes,Yes,Yes,Yes,
+2a30d99f-9ee0-433b-83d4-e4038d28c669,Yes,No,Yes,No,Missing closed_at
+0780c700-c404-4944-abab-6c90a1c92975,Yes,No,Yes,No,Missing closed_at
+457efb24-90c0-41ae-bb6b-5a047470eec7,Yes,No,Yes,No,Missing closed_at
+8a21f623-e774-4f1e-ab8c-83fbcc18c810,Yes,Yes,Yes,Yes,
+91c3df30-8736-4363-afda-343891a9380a,Yes,Yes,Yes,Yes,
+617dfc67-d0d6-429a-bfa5-06460a2c98da,Yes,No,Yes,No,Missing closed_at
+5745ae7c-577e-45ee-8306-282882275a32,Yes,Yes,Yes,Yes,
+943908d6-ee9a-4bf4-aeab-eff7fb4ae697,Yes,No,Yes,No,Missing closed_at
+8227d1f8-5ed9-4eb2-b9fd-d6fc0c9423f4,Yes,No,Yes,No,Missing closed_at
+42068e51-cf17-44bb-9dd2-2b27cec6e39e,Yes,Yes,Yes,Yes,
+ff484b1a-5e85-4d57-8f3d-8e514b8f76ac,Yes,Yes,Yes,Yes,
+3452ec27-2423-4f26-b3e8-61abde88cb0d,Yes,Yes,Yes,Yes,
+93da2cb6-2365-4ade-b0a3-bffbb5fc56fe,Yes,Yes,Yes,Yes,
+2d51794c-13c3-46fb-9138-15f4b9c36f32,Yes,Yes,Yes,Yes,
+d6a91c4a-bcda-4f95-83d1-a34ed7cf8e65,Yes,Yes,Yes,Yes,
+a3081c04-706b-45c9-9a10-6ee5edce0401,Yes,No,Yes,No,Missing closed_at
+64ee36db-ed0b-4fe8-bbfe-d5aa6e77423f,Yes,Yes,Yes,Yes,
+2f821a1a-cdee-4e0b-b688-83e9e30edf93,Yes,Yes,Yes,Yes,
+79ca95c6-84d4-4fe7-b054-b7e9588ce30d,Yes,Yes,Yes,Yes,
+273cfd52-9861-4f44-9271-39952f4c6a35,Yes,No,Yes,No,Missing closed_at
+61640151-5e67-4bdf-854e-05c78cf4a317,Yes,Yes,Yes,Yes,
+53f77ddc-446d-4480-a617-de536961a1e0,Yes,No,Yes,No,Missing closed_at
+fd2604e2-76a9-40ac-b9cb-34f60454de15,Yes,Yes,Yes,Yes,
+25627ef2-0336-47f6-8a33-cf89a60ab7c7,Yes,No,Yes,No,Missing closed_at
+469fe91b-3816-4adf-b5c6-7ba012838bc2,Yes,Yes,Yes,Yes,
+c94b4387-b104-49de-a22d-136c17203559,Yes,Yes,Yes,Yes,
+925b5fb4-9735-4f08-b8bb-e93d33cc14e1,Yes,No,Yes,No,Missing closed_at
+1b24e22a-8d8f-4237-80aa-4709478acf52,Yes,No,Yes,No,Missing closed_at
+51d838ab-d34d-458d-8ba4-a58d1c010c5f,Yes,Yes,Yes,Yes,
+697a386b-0c0f-44c4-8653-96a72084bcec,Yes,Yes,Yes,Yes,
+86745b91-6f81-4ee1-b55f-e981c6de7b5c,Yes,Yes,Yes,Yes,
+a63e7669-3fd6-4fdc-a961-ad40190c10fa,Yes,Yes,Yes,Yes,
+63d1eaff-e400-4032-a823-9494310f2bba,Yes,No,Yes,No,Missing closed_at
+84606359-3085-4e82-8854-11ac5b5045e7,Yes,No,Yes,No,Missing closed_at
+9351a6f4-4c82-419b-a851-61ee8fd6b403,Yes,Yes,Yes,Yes,
+ecfd4173-3aef-4da2-8aa5-f03fe01f639e,Yes,Yes,Yes,Yes,
+f0affaee-a05c-4cd9-97b6-f6b895f55ad6,Yes,Yes,Yes,Yes,
+72f721e8-8e16-444d-b150-09b3385ae141,Yes,No,Yes,No,Missing closed_at
+4505aa76-6647-4ef0-b86d-d332e066828a,Yes,No,Yes,No,Missing closed_at
+edd4ab1d-1d4d-4acd-9e82-f4fcc0e3288a,Yes,Yes,Yes,Yes,
+ef1e06ce-5ac7-4ad8-a668-f0ebffab0a86,Yes,Yes,Yes,Yes,
+3c0f2d94-6e2b-4bdb-9426-6c887f11be91,Yes,Yes,Yes,Yes,
+3d7e8e75-3347-4c38-9518-8b60c3c5e3fd,Yes,No,Yes,No,Missing closed_at
+51dfc044-dc6f-4a50-af93-7e9e8d15e46d,Yes,Yes,Yes,Yes,
+32dfcd89-4de1-4165-bbc4-a648bc99f9f5,Yes,No,Yes,No,Missing closed_at
+5e89f675-cd07-456b-89e4-d141040c2f0e,Yes,No,Yes,No,Missing closed_at
+8b77d984-c02f-4275-97fa-4e5696f7ff85,Yes,No,Yes,No,Missing closed_at
+9b7123f6-8720-4828-b7e3-5bbf68a2a78b,Yes,No,Yes,No,Missing closed_at
+96abc1f1-6f1a-4e36-a35f-b1432c33a3be,Yes,No,Yes,No,Missing closed_at
+49b3a5c8-bea6-4e84-afdb-52c0b6f5cc67,Yes,Yes,Yes,Yes,
+f43974a5-c1b8-4d39-9446-5bfe0f18fcd3,Yes,No,Yes,No,Missing closed_at
+204275a1-d75e-4b2f-ad2f-ae607f40730a,Yes,Yes,Yes,Yes,
+60a2a5bb-341e-440a-9008-8eedeba17856,Yes,Yes,Yes,Yes,
+b34f7660-d7e5-4c73-8b44-1b710f3ab3b1,Yes,No,Yes,No,Missing closed_at
+8c965ce1-1fdc-4f92-b919-e5bad7017ebf,Yes,No,Yes,No,Missing closed_at
+5247abe6-4cde-420c-886d-569651233596,Yes,No,Yes,No,Missing closed_at
+255bff17-c0f3-4eb4-810b-05df5eb3c360,Yes,Yes,Yes,Yes,
+ebb855b4-4121-4659-977f-638e2ffdeb75,Yes,Yes,Yes,Yes,
+d07d886a-50cd-43dd-b8a2-efdc5353759b,Yes,No,Yes,No,Missing closed_at
+3e24dc37-f8e6-4813-8301-873c8f0cba33,Yes,Yes,Yes,Yes,
+3d9e2a93-f4a4-4d7c-b921-19347f1c1403,Yes,No,Yes,No,Missing closed_at
+6fe8eb8d-4e64-4977-8968-772d400d759e,Yes,Yes,Yes,Yes,
+1a95484c-9172-45a3-b983-a8d8aa409c42,Yes,Yes,Yes,Yes,
+4916dbd8-2371-41fd-aae7-9946532592bd,Yes,No,Yes,No,Missing closed_at
+3c32a980-6f97-4cca-abe8-e11505111e96,Yes,No,Yes,No,Missing closed_at
+9d46f760-21e0-4282-b63b-f6dc832bec8d,Yes,Yes,Yes,Yes,
+6b2280fc-f664-4c8c-953b-18db76713171,Yes,No,Yes,No,Missing closed_at
+af56a3bd-431e-4109-a114-dd960d9d2ba2,Yes,Yes,Yes,Yes,
+7a7ada9a-c432-4664-af52-bb993b0c52c7,Yes,No,Yes,No,Missing closed_at
+07adc185-f2be-4bc2-b209-4e93f7b77682,Yes,No,Yes,No,Missing closed_at
+e05c3490-500a-433e-a722-65a282a41f7f,Yes,Yes,Yes,Yes,
+31b72d96-b600-47b9-864d-47d51f9766f0,Yes,Yes,Yes,Yes,
+e2f11fa3-0123-4cab-a9e4-46d077572c09,Yes,Yes,Yes,Yes,
+2c290b85-57fd-4fca-8a21-5f6dab2423bf,Yes,Yes,Yes,Yes,
+5d9d7a1b-fb90-40b5-9623-002f5c788745,Yes,Yes,Yes,Yes,
+0fa32228-d1f8-4453-90d2-a0553412b2f1,Yes,Yes,Yes,Yes,
+328c45b0-3fca-4e12-a210-b04df5c758e4,Yes,Yes,Yes,Yes,
+5a5c1abb-862e-439f-b206-930acf2ac60a,Yes,No,Yes,No,Missing closed_at
+131febae-d05e-4205-a572-c63a9cc4a124,Yes,Yes,Yes,Yes,
+12683646-ca80-4749-baf9-654e9c8c6b08,Yes,No,Yes,No,Missing closed_at
+6fe04578-66d9-4f36-a50d-df7ac49d7c3e,Yes,Yes,Yes,Yes,
+3bbdb1e6-97f8-4bf0-a3da-9ac0e18a1030,Yes,Yes,Yes,Yes,
+430db962-2353-4fd9-912d-297e09e7bf28,Yes,Yes,Yes,Yes,
+9ca32c91-7377-4136-a935-59b051cf9150,Yes,No,Yes,No,Missing closed_at
+938c7806-1f83-4034-a447-087e1dd599b1,Yes,No,Yes,No,Missing closed_at
+851326b0-8cf3-4659-b4b4-fc42713f3a40,Yes,Yes,Yes,Yes,
+cfed9c1c-ee04-4342-958d-a727582d4c36,Yes,No,Yes,No,Missing closed_at
+a919aa54-ea64-4420-a732-20ffe4a13f83,Yes,No,Yes,No,Missing closed_at
+3d9051cc-ec57-4acb-89ea-b68821421808,Yes,Yes,Yes,Yes,
+7ae58cd2-f723-43f4-9507-209bed09b762,Yes,Yes,Yes,Yes,
+327e384f-e936-47d9-9cfb-ca1b41bc8f1c,Yes,Yes,Yes,Yes,
+3151f7a1-adad-4329-925b-3375c30dae24,Yes,No,Yes,No,Missing closed_at
+808da367-8dc0-49dd-b070-e86ed899354d,Yes,No,Yes,No,Missing closed_at
+e71f6cdc-2ec5-44e4-bed4-87a615cec1e9,Yes,Yes,Yes,Yes,
+5553e210-3933-4725-864c-1919c0e8afc0,Yes,Yes,Yes,Yes,
+455d5545-85c3-4b43-a944-e788c3257855,Yes,Yes,Yes,Yes,
+984460d4-41c3-4c2d-93ce-47902e5c6391,Yes,No,Yes,No,Missing closed_at
+ae295f50-0b70-4196-8d65-0167a77cbbe1,Yes,No,Yes,No,Missing closed_at
+c0ddb057-58a9-457b-af08-0bb6312b17ab,Yes,No,Yes,No,Missing closed_at
+de3748e9-f438-493b-9322-b16d547efa5c,Yes,Yes,Yes,Yes,
+2c2c0970-fdfc-4d72-8cbb-8d434cb6233d,Yes,No,Yes,No,Missing closed_at
+a654bf9b-1cb0-4547-a58d-48ada2ec7a05,Yes,No,Yes,No,Missing closed_at
+421bb1d1-5097-4c05-a533-97860e8a541c,Yes,No,Yes,No,Missing closed_at
+7934badb-1059-4191-a4f4-a54e31d99bba,Yes,Yes,Yes,Yes,
+a7e318bc-fde2-4691-a766-fbdf9b064f4d,Yes,Yes,Yes,Yes,
+83656a61-e193-4ff2-8091-fbb5a8f2c5ad,Yes,No,Yes,No,Missing closed_at
+fe5a5b64-d81e-45cf-be23-0471b912df3c,Yes,Yes,Yes,Yes,
+b6252b1a-ee47-4f4d-8e22-212452907c29,Yes,Yes,Yes,Yes,
+7ec25312-d183-4981-b47a-4c126bd9f97e,Yes,Yes,Yes,Yes,
+b361c9dd-e7af-4f37-b4cf-ca5fd454fc99,Yes,No,Yes,No,Missing closed_at
+5dbc9be1-a8a1-487f-84b3-2100742c5039,Yes,Yes,Yes,Yes,
+7a34f85d-6bcf-47c5-a0e3-2b6bc3123ff4,Yes,Yes,Yes,Yes,
+898a6115-b421-4261-8349-932ff12befac,Yes,No,Yes,No,Missing closed_at
+b61f51cf-1bc4-4f30-a118-dfda4bb62988,Yes,Yes,Yes,Yes,
+89fb6e9b-199c-475d-afcf-8e705a911f49,Yes,No,Yes,No,Missing closed_at
+ef1af8f2-6c30-4d1a-bbb3-76b45a1ef0b6,Yes,No,Yes,No,Missing closed_at
+2a3b7aa4-41df-4598-804a-40c35246e4fe,Yes,No,Yes,No,Missing closed_at
+39c0d310-1634-4544-a11f-6e2978cf42c4,Yes,No,Yes,No,Missing closed_at
+b78384d6-f204-47ff-9590-9608188a8126,Yes,Yes,Yes,Yes,
+bd5b38ff-32d9-4213-b0a7-c9fb8fbbbdc2,Yes,Yes,Yes,Yes,
+4d73f96e-77f8-414a-a140-29330161d3e6,Yes,No,Yes,No,Missing closed_at
+3f4b31f7-20c0-4b8d-a196-07787b68fbfc,Yes,No,Yes,No,Missing closed_at
+1bafcc2f-7872-4122-a353-d5d40de70cb8,Yes,Yes,Yes,Yes,
+74a97d36-3046-4f66-924e-bbb4af23bdb6,Yes,Yes,Yes,Yes,
+8b3527cf-868d-4d7a-9efc-63713caae3ef,Yes,Yes,Yes,Yes,
+e7cfc06b-7da6-4d99-969d-c03e52298b47,Yes,No,Yes,No,Missing closed_at
+7f5ea07a-701f-4fd0-8473-2918e35dd085,Yes,Yes,Yes,Yes,
+949e7e59-6b77-4b9a-8372-85cdc319db87,Yes,Yes,Yes,Yes,
+3c33e01e-12af-4544-98dd-09399c2c61db,Yes,Yes,Yes,Yes,
+ede434ad-c70c-40a2-9485-b640ab90663c,Yes,No,Yes,No,Missing closed_at
+40746a5e-55d4-43cb-ae82-27d92f2ed6fa,Yes,No,Yes,No,Missing closed_at
+0e095d80-8ab7-4313-9958-5f31427e3a26,Yes,Yes,Yes,Yes,
+84f6d1b5-9225-49f1-bebb-82dd005821d9,Yes,No,Yes,No,Missing closed_at
+2186bdc7-f92c-4cce-95be-2dc2d768696f,Yes,No,Yes,No,Missing closed_at
+698d27f3-fc36-4b88-97b9-bf260b25c5fb,Yes,No,Yes,No,Missing closed_at
+d5643989-a331-4967-ba63-11ee9e1e1f64,Yes,Yes,Yes,Yes,
+f578ef87-8153-4c0a-98bd-4feed4ac6d3c,Yes,No,Yes,No,Missing closed_at
+37683b76-a4d2-4af4-ad50-56ccab7e8556,Yes,No,Yes,No,Missing closed_at
+e4a24fa5-dd00-43f6-b93d-0f314865648a,Yes,Yes,Yes,Yes,
+0f181edc-4747-445a-bbe5-135dba418948,Yes,No,Yes,No,Missing closed_at
+4e0f6b2d-05e5-4010-aff3-66ad287fe7fd,Yes,No,Yes,No,Missing closed_at
+1faa1b2c-b5ba-4cca-8c28-4159fd9ad188,Yes,No,Yes,No,Missing closed_at
+1615e90e-84bc-49bc-8702-f4fdc175dc8e,Yes,No,Yes,No,Missing closed_at
+43c9bb6f-ada1-4ef5-b08b-2fc02cc53600,Yes,Yes,Yes,Yes,
+996519c8-a521-4d07-aabf-e0a8c185663c,Yes,No,Yes,No,Missing closed_at
+8a683947-442d-4763-bd18-02ba97a44a81,Yes,No,Yes,No,Missing closed_at
+ecfb0f75-5c43-4830-9b47-4228d3dbdaaf,Yes,No,Yes,No,Missing closed_at
+e1a9d3c0-7527-430e-bee5-117e4b5c944b,Yes,Yes,Yes,Yes,
+f130f31f-51cd-41f5-a55e-46d12e05aa48,Yes,Yes,Yes,Yes,
+cd9d1309-4a43-4af2-85c7-a8f6aa98cc45,Yes,Yes,Yes,Yes,
+b68b2bcf-ceb9-4cdc-8e0a-fdf2e5fd8d30,Yes,Yes,Yes,Yes,
+91dbe4c0-bd94-4588-a0a2-ad0961eda292,Yes,No,Yes,No,Missing closed_at
+3452ef1d-d432-41d4-879e-15bc3ffea536,Yes,No,Yes,No,Missing closed_at
+fe8f1d7d-eb10-411e-9658-5287792fd4fe,Yes,No,Yes,No,Missing closed_at
+00c4b59e-970d-4075-a3b1-5c88a14a036c,Yes,No,Yes,No,Missing closed_at
+445453be-c171-4a6e-bda4-13f01b7ca1cd,Yes,Yes,Yes,Yes,
+42c21bca-c32d-4c2d-b7d4-23f8666ab04d,Yes,Yes,Yes,Yes,
+8d86ddd2-88ae-48c2-8c5d-dfa12df947e1,Yes,Yes,Yes,Yes,
+c34a5a2b-2e66-4e2a-9596-193484fbb757,Yes,Yes,Yes,Yes,
+c5937030-097a-4c7d-8437-21c5444641a3,Yes,No,Yes,No,Missing closed_at
+f136cc5b-30b5-4357-ad73-b4d6604fc7df,Yes,No,Yes,No,Missing closed_at
+85812d2d-2e47-47d4-af86-ec809ed46287,Yes,Yes,Yes,Yes,
+f8701579-a3ae-4b19-abbe-d3c7bd436263,Yes,Yes,Yes,Yes,
+a50a8d0f-4ac8-43e0-87cb-ca92f4dffab0,Yes,Yes,Yes,Yes,
+16a8aad8-07c4-4f3e-b978-32bed777aa47,Yes,Yes,Yes,Yes,
+ff9f72a4-de0c-4964-840e-34556c799035,Yes,No,Yes,No,Missing closed_at
+81ffd7e3-ee08-4ada-9643-ae1f91da4b26,Yes,No,Yes,No,Missing closed_at
+e8661742-3adc-4507-9241-bca7836274a8,Yes,Yes,Yes,Yes,
+f6e4e255-661d-4329-a287-d1bb171ea8af,Yes,No,Yes,No,Missing closed_at
+c213fe10-5678-4492-a4c9-be13015463c6,Yes,Yes,Yes,Yes,
+e689126d-d5a7-4935-ba4d-1f17097d2393,Yes,No,Yes,No,Missing closed_at
+e6339d7a-b25b-431d-b995-64c4abff9132,Yes,No,Yes,No,Missing closed_at
+82050226-2a78-428a-8c04-cca4feae40a3,Yes,Yes,Yes,Yes,
+4a230654-886f-4fc0-99ed-f669b07f509f,Yes,No,Yes,No,Missing closed_at
+ac72e508-b892-459e-8fa3-0ed87a7ab484,Yes,Yes,Yes,Yes,
+7b5a60ef-d1f2-4f62-943f-59506796ec43,Yes,Yes,Yes,Yes,
+d536308a-d7cc-4c83-a9d6-e86527a6682e,Yes,Yes,Yes,Yes,
+8d75fa92-677d-4efd-ab0f-c81b150830e1,Yes,No,Yes,No,Missing closed_at
+e7593d52-e92f-42a7-99c4-947533f6baeb,Yes,Yes,Yes,Yes,
+32a14c06-3cab-4503-98f6-4a02c22f776b,Yes,No,Yes,No,Missing closed_at
+74c37e82-2a93-41d5-8930-07d0d6ff11ef,Yes,Yes,Yes,Yes,
+72306fae-1737-4c53-917b-4a0408a78a10,Yes,Yes,Yes,Yes,
+e30e43e2-9262-49e8-b618-095bf27ff69b,Yes,Yes,Yes,Yes,
+3f7257c9-29d8-41bb-a4d5-18b68bbeba1f,Yes,No,Yes,No,Missing closed_at
+4530a003-d425-4d3c-be37-5eef89668fa4,Yes,No,Yes,No,Missing closed_at
+58187d60-a167-4ff1-b719-83401928ff54,Yes,Yes,Yes,Yes,
+87886ad5-efc3-47b9-8ef3-65cef3bd906a,Yes,Yes,Yes,Yes,
+fe9ab246-7529-4e14-b17d-18d0309e4131,Yes,No,Yes,No,Missing closed_at
+188b1fdb-205f-470f-b9f4-db6e18d74a41,Yes,Yes,Yes,Yes,
+b9b6ff6a-a698-42ae-b3b3-76647096971e,Yes,Yes,Yes,Yes,
+c72ab07c-8f4a-421d-b919-a30f5b493712,Yes,No,Yes,No,Missing closed_at
+a99ead9e-4fc7-4128-bf2c-9a69cd0a8215,Yes,No,Yes,No,Missing closed_at
+4d818673-1496-448a-854e-3c4f180a1ee3,Yes,No,Yes,No,Missing closed_at
+d8a3ea93-5c3b-4388-ad6b-03f15dad3785,Yes,No,Yes,No,Missing closed_at
+bd43c120-eb3a-4a87-b4b5-0d005353802b,Yes,Yes,Yes,Yes,

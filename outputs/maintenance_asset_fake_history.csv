@@ -1,0 +1,2 @@
+asset_id,asset_code,ticket_id,ticket_number,resolved_at,resolution_hours,review_status,fake_reason,reviewed_by,reviewed_at,marked_fake_at
+1d23efda-47c5-4f25-a9a9-fb25f27f1555,VH-AC-C43-0001,62ec3e07-d588-4248-a406-54abbe7097eb,VISH-2026-1100,2026-04-10 08:05:38.344000,0.5856342697222222,Pending Review,Duplicate Ticket,,2026-08-06T17:27:53,2026-08-06T17:26:19

@@ -50,10 +50,18 @@ class RiskConfig:
     lvl_high: int = 55
     lvl_medium: int = 35
     random_state: int = 42
+    # fast-resolution HIERARCHICAL baseline (asset -> asset_type -> issue_type)
+    fast_ratio: float = 0.25              # flag if resolution < ratio * baseline
+    min_asset_baseline_n: int = 3         # level 1: asset_id + issue_type
+    min_type_baseline_n: int = 5          # level 2: asset_type + issue_type
+    # recent-repeat fast-resolution rule (additive, owner requirement)
+    recent_repeat_window_days: int = 30   # "another repair within N days"
+    allow_related_issue_groups: bool = False  # False -> require identical issue_type
     flag_weights: Dict[str, int] = field(default_factory=lambda: {
         # ticket
         "repeated_issue": 1, "fast_resolution": 2, "tenant_rejected": 2,
         "cost_over_expected": 3, "process_edit_unlocked": 3,
+        "recent_repeat_fast_resolution": 3,
         # asset
         "high_frequency": 2, "repeated_same_issue": 2, "severe_repeat": 3,
         "high_vs_age": 2, "peer_outlier": 2, "severe_peer_outlier": 3,
@@ -69,6 +77,23 @@ class RiskConfig:
 # --------------------------------------------------------------------------- #
 def _num(s) -> pd.Series:
     return pd.to_numeric(s, errors="coerce")
+
+
+def _dt(series) -> pd.Series:
+    d = pd.to_datetime(series, errors="coerce", utc=True)
+    try:
+        return d.dt.tz_localize(None)
+    except (TypeError, AttributeError):
+        return pd.to_datetime(series, errors="coerce")
+
+
+def _hours_str(h: float) -> str:
+    """Human-friendly duration: minutes below 1h, else hours."""
+    if pd.isna(h):
+        return "—"
+    if h < 1:
+        return f"{int(round(h * 60))} minutes"
+    return f"{h:.1f} hours"
 
 
 def _robust_z(s: pd.Series) -> pd.Series:
@@ -164,35 +189,187 @@ def _level(score: float, cfg: RiskConfig) -> str:
 
 
 # --------------------------------------------------------------------------- #
+# asset-issue historical resolution baseline (additive rule signal)
+# --------------------------------------------------------------------------- #
+def _ticket_asset_type(base: Path) -> Dict[str, str]:
+    """ticket_id -> mapped_asset_type from the Phase-1 mapping artefact."""
+    p = base / "ticket_asset_mapping.csv"
+    if not p.exists():
+        return {}
+    mp = pd.read_csv(p, dtype=str)
+    if "mapped_asset_type" not in mp.columns:
+        return {}
+    out = {}
+    for tid, at in zip(mp["ticket_id"].astype(str), mp["mapped_asset_type"]):
+        a = str(at).strip()
+        if a and a.lower() not in ("nan", "none", ""):
+            out[tid] = a
+    return out
+
+
+def _ticket_asset_id(base: Path) -> Dict[str, str]:
+    """ticket_id -> mapped_asset_id from the Phase-1 mapping artefact."""
+    p = base / "ticket_asset_mapping.csv"
+    if not p.exists():
+        return {}
+    mp = pd.read_csv(p, dtype=str)
+    if "mapped_asset_id" not in mp.columns:
+        return {}
+    out = {}
+    for tid, aid in zip(mp["ticket_id"].astype(str), mp["mapped_asset_id"]):
+        a = str(aid).strip()
+        if a and a.lower() not in ("nan", "none", ""):
+            out[tid] = a
+    return out
+
+
+def asset_issue_resolution_baseline(tk: pd.DataFrame, at_map: Dict[str, str],
+                                    cfg: RiskConfig) -> pd.DataFrame:
+    """Historical median resolution time per (asset_type, issue_type).
+
+    Built from tickets that HAVE both a resolution time and a mapped asset type.
+    Only combinations with >= cfg.min_type_baseline_n samples are considered
+    trustworthy; the caller ignores the rest. Exported for transparency.
+    """
+    d = tk.copy()
+    d["resolution_hours"] = _num(d["resolution_hours"])
+    d["asset_type"] = d["ticket_id"].astype(str).map(at_map)
+    d = d[d["resolution_hours"].notna() & d["asset_type"].notna()
+          & (d["asset_type"] != "") & (d["issue_type"].fillna("") != "")]
+    if d.empty:
+        return pd.DataFrame(columns=["asset_type", "issue_type",
+                                     "baseline_median_hours", "n"])
+    g = d.groupby(["asset_type", "issue_type"])["resolution_hours"]
+    base = g.median().rename("baseline_median_hours").reset_index()
+    base["n"] = g.size().values
+    base["trustworthy"] = base["n"] >= cfg.min_type_baseline_n
+    return base.sort_values(["asset_type", "issue_type"]).reset_index(drop=True)
+
+
+def _hier_baseline_lookups(tk: pd.DataFrame, at_map: Dict[str, str],
+                           aid_map: Dict[str, str], cfg: RiskConfig):
+    """Return the three baseline lookups for hierarchical selection.
+
+    L1 (asset)      : (asset_id,   issue_type) -> (median, n)  n >= min_asset_baseline_n
+    L2 (asset_type) : (asset_type, issue_type) -> (median, n)  n >= min_type_baseline_n
+    L3 (issue_type) : issue_type -> (median, n)                any n >= 1
+    """
+    d = tk.copy()
+    d["resolution_hours"] = _num(d["resolution_hours"])
+    d = d[d["resolution_hours"].notna() & (d["issue_type"].fillna("") != "")]
+    d["_aid"] = d["ticket_id"].astype(str).map(aid_map)
+    d["_atype"] = d["ticket_id"].astype(str).map(at_map)
+
+    l3_med = d.groupby("issue_type")["resolution_hours"].median().to_dict()
+    l3_n = d.groupby("issue_type")["resolution_hours"].size().to_dict()
+
+    dt = d[d["_atype"].notna() & (d["_atype"] != "")]
+    gt = dt.groupby(["_atype", "issue_type"])["resolution_hours"]
+    l2 = {k: (v, int(gt.size()[k])) for k, v in gt.median().items()
+          if gt.size()[k] >= cfg.min_type_baseline_n}
+
+    da = d[d["_aid"].notna() & (d["_aid"] != "")]
+    ga = da.groupby(["_aid", "issue_type"])["resolution_hours"]
+    l1 = {k: (v, int(ga.size()[k])) for k, v in ga.median().items()
+          if ga.size()[k] >= cfg.min_asset_baseline_n}
+    return l1, l2, (l3_med, l3_n)
+
+
+# --------------------------------------------------------------------------- #
 # TICKET grain
 # --------------------------------------------------------------------------- #
-def score_tickets(tk: pd.DataFrame, cfg: RiskConfig,
-                  loader=None) -> pd.DataFrame:
+def score_tickets(tk: pd.DataFrame, cfg: RiskConfig, loader=None,
+                  at_map: Optional[Dict[str, str]] = None,
+                  aid_map: Optional[Dict[str, str]] = None) -> pd.DataFrame:
     tk = tk.copy()
     tk["resolution_hours"] = _num(tk["resolution_hours"])
     tk["cost_difference"] = _num(tk["cost_difference"])
     tk["tenant_ticket_count"] = _num(tk["tenant_ticket_count"])
     tk["repeat_issue_flag"] = _num(tk["repeat_issue_flag"]).fillna(0)
 
-    # issue-type median resolution (for the "unusually fast" flag)
-    med = tk.groupby("issue_type")["resolution_hours"].median()
-    tk["_issue_med"] = tk["issue_type"].map(med)
+    # ---- HIERARCHICAL fast-resolution baseline selection -------------------- #
+    # For every ticket pick the highest-confidence baseline available:
+    #   1) asset_id + issue_type   (>= min_asset_baseline_n repairs)  source=asset
+    #   2) asset_type + issue_type (>= min_type_baseline_n)           source=asset_type
+    #   3) global issue_type median (fallback, existing behaviour)    source=issue_type
+    # The chosen baseline value, source and sample size are stored per ticket;
+    # a single `fast_resolution` flag fires when resolution < fast_ratio*baseline.
+    if at_map is None:
+        at_map = _ticket_asset_type(_OUT)
+    if aid_map is None:
+        aid_map = _ticket_asset_id(_OUT)
+    l1, l2, (l3_med, l3_n) = _hier_baseline_lookups(tk, at_map, aid_map, cfg)
 
-    # optional raw-ticket join: rejection + process-edit (not in feature CSV)
+    tk["_atype"] = tk["ticket_id"].astype(str).map(at_map)
+    tk["_aid"] = tk["ticket_id"].astype(str).map(aid_map)
+    base_val, base_src, base_n = [], [], []
+    for _, r in tk.iterrows():
+        issue = r["issue_type"]
+        hit = l1.get((r["_aid"], issue))
+        if hit:
+            base_val.append(hit[0]); base_src.append("asset"); base_n.append(hit[1])
+            continue
+        hit = l2.get((r["_atype"], issue))
+        if hit:
+            base_val.append(hit[0]); base_src.append("asset_type"); base_n.append(hit[1])
+            continue
+        gm = l3_med.get(issue)
+        if gm is not None and gm > 0:
+            base_val.append(gm); base_src.append("issue_type")
+            base_n.append(int(l3_n.get(issue, 0)))
+        else:
+            base_val.append(np.nan); base_src.append(""); base_n.append(0)
+    tk["_base"] = base_val
+    tk["_base_src"] = base_src
+    tk["_base_n"] = base_n
+
+    # optional raw-ticket join: rejection + process-edit + completion date
     rejected = pd.Series(False, index=tk.index)
     edit_unlocked = pd.Series(False, index=tk.index)
+    asset_code_map: Dict[str, str] = {}
     if loader is not None:
         try:
             raw = loader.maintenance_tickets()
             rid = raw["id"].astype(str)
             appr = dict(zip(rid, raw["tenant_approved"].astype(str).str.strip().str.lower()))
             unl = dict(zip(rid, raw["resolution_edit_unlocked_at"].astype(str).str.strip().str.lower()))
+            resolved = dict(zip(rid, _dt(raw.get("resolved_at"))))
             tid = tk["ticket_id"].astype(str)
             rejected = tid.map(lambda x: appr.get(x, "") == "false")
             edit_unlocked = tid.map(
                 lambda x: unl.get(x, "") not in ("", "nan", "none", "null", "nat"))
+            tk["_resolved"] = tid.map(resolved)
         except Exception:  # noqa: BLE001
-            pass
+            tk["_resolved"] = pd.NaT
+        try:
+            am = loader.asset_master()
+            asset_code_map = {str(k).strip(): str(v).strip()
+                              for k, v in zip(am["id"], am.get("asset_code", am["id"]))}
+        except Exception:  # noqa: BLE001
+            asset_code_map = {}
+    else:
+        tk["_resolved"] = pd.NaT
+
+    # ---- recent-repeat fast-resolution: previous completed repair per asset -- #
+    # For each ticket find the immediately-preceding completed repair on the SAME
+    # asset (ordered by resolved_at). Stored regardless of the alert; the alert
+    # itself has extra conditions (window + same issue + fast vs baseline).
+    tk["previous_repair_date"] = pd.NaT
+    tk["previous_ticket_id"] = ""
+    tk["_prev_issue"] = ""
+    tk["days_since_previous_repair"] = np.nan
+    has_hist = tk["_aid"].fillna("").ne("") & tk["_resolved"].notna()
+    sub = tk[has_hist].sort_values("_resolved")
+    if not sub.empty:
+        grp = sub.groupby("_aid", sort=False)
+        prev_date = grp["_resolved"].shift(1)
+        prev_tid = grp["ticket_id"].shift(1)
+        prev_issue = grp["issue_type"].shift(1)
+        tk.loc[sub.index, "previous_repair_date"] = prev_date
+        tk.loc[sub.index, "previous_ticket_id"] = prev_tid.fillna("")
+        tk.loc[sub.index, "_prev_issue"] = prev_issue.fillna("")
+        days = (sub["_resolved"] - prev_date).dt.total_seconds() / 86400.0
+        tk.loc[sub.index, "days_since_previous_repair"] = days.values
 
     # anomaly feature block
     feat = pd.DataFrame({
@@ -210,10 +387,31 @@ def score_tickets(tk: pd.DataFrame, cfg: RiskConfig,
         if r["repeat_issue_flag"] == 1:
             f.append("repeated_issue")
             why.append("Repeated issue at this location")
-        rh, m = r["resolution_hours"], r["_issue_med"]
-        if pd.notna(rh) and pd.notna(m) and m > 0 and rh < 0.25 * m:
+        rh, base, src, bn = (r["resolution_hours"], r["_base"],
+                             r["_base_src"], r["_base_n"])
+        if pd.notna(rh) and pd.notna(base) and base > 0 and rh < cfg.fast_ratio * base:
             f.append("fast_resolution")
-            why.append(f"Resolved in {rh:.1f}h vs {m:.1f}h typical for {r['issue_type']}")
+            scope = {
+                "asset": f"this asset ({r['_atype']}/{r['issue_type']})",
+                "asset_type": f"{r['_atype']}/{r['issue_type']}",
+                "issue_type": f"{r['issue_type']}",
+            }.get(src, r["issue_type"])
+            why.append(f"Resolved in {rh:.1f}h vs {base:.1f}h {src} baseline "
+                       f"for {scope} (n={int(bn)})")
+        # NEW owner rule: same asset repaired again within window + much faster
+        dsp = r["days_since_previous_repair"]
+        same_issue = (cfg.allow_related_issue_groups
+                      or (r["_prev_issue"] and r["_prev_issue"] == r["issue_type"]))
+        if pd.notna(rh) and pd.notna(base) and base > 0 and pd.notna(dsp) \
+                and dsp <= cfg.recent_repeat_window_days and same_issue \
+                and rh < cfg.fast_ratio * base:
+            f.append("recent_repeat_fast_resolution")
+            acode = asset_code_map.get(str(r["_aid"]), str(r["_aid"])[:8])
+            why.append(
+                f"Asset {acode} was repaired again after {dsp:.0f} days. "
+                f"Historical median resolution time ({src} baseline, n={int(bn)}) "
+                f"is {base:.1f}h, but this repair was completed in "
+                f"{_hours_str(rh)}. Investigation recommended.")
         if bool(rejected.loc[idx]):
             f.append("tenant_rejected")
             why.append("Tenant rejected / did not approve the resolution")
@@ -228,10 +426,22 @@ def score_tickets(tk: pd.DataFrame, cfg: RiskConfig,
         reasons.append(why)
 
     conf = tk["asset_mapping_confidence"].map(_CONF_WEIGHT).fillna(0.3)
-    return _assemble(
+    out = _assemble(
         tk["ticket_id"], anomaly, flags, reasons, cfg, confidence=conf,
-        critical_flags={"cost_over_expected", "process_edit_unlocked"},
+        critical_flags={"cost_over_expected", "process_edit_unlocked",
+                        "recent_repeat_fast_resolution"},
     )
+    # attach baseline + recurrence provenance (additive cols; scoring untouched)
+    meta = pd.DataFrame({
+        "entity_id": tk["ticket_id"].values,
+        "previous_repair_date": tk["previous_repair_date"].values,
+        "days_since_previous_repair": tk["days_since_previous_repair"].round(1).values,
+        "previous_ticket_id": tk["previous_ticket_id"].values,
+        "historical_resolution_baseline": pd.Series(tk["_base"].values).round(2),
+        "baseline_source": tk["_base_src"].values,
+        "baseline_sample_size": tk["_base_n"].values,
+    })
+    return out.merge(meta, on="entity_id", how="left")
 
 
 # --------------------------------------------------------------------------- #
@@ -428,18 +638,55 @@ def build_all(cfg: Optional[RiskConfig] = None, loader=None,
         except Exception:  # noqa: BLE001
             loader = None
 
+    # hierarchical fast-resolution baseline maps (asset -> asset_type -> issue)
+    at_map = _ticket_asset_type(base)
+    aid_map = _ticket_asset_id(base)
+    baseline = asset_issue_resolution_baseline(tk, at_map, cfg)  # asset_type tier export
+
     risks = {
-        "ticket": score_tickets(tk, cfg, loader=loader),
+        "ticket": score_tickets(tk, cfg, loader=loader, at_map=at_map, aid_map=aid_map),
         "asset": score_assets(a, cfg),
         "tenant": score_tenants(tn, cfg),
         "technician": score_technicians(tc, cfg),
     }
     report = _validate(risks, cfg)
+    tr = risks["ticket"]
+
+    def _has(flag):
+        return tr["flags"].fillna("").apply(lambda s: flag in str(s).split(";"))
+
+    # baseline-source distribution among tickets that fired fast_resolution (exact)
+    fired = tr[_has("fast_resolution")]
+    src_counts = fired["baseline_source"].value_counts().to_dict()
+    extra = [{"metric": f"fast_resolution.baseline_source.{k}", "value": int(v)}
+             for k, v in src_counts.items()]
+    extra.append({"metric": "fast_resolution.total_fired", "value": int(len(fired))})
+
+    # recent-repeat validation summary
+    dsp = _num(tr["days_since_previous_repair"])
+    win = cfg.recent_repeat_window_days
+    alerts = tr[_has("recent_repeat_fast_resolution")]
+    extra += [
+        {"metric": "recent_repeat.tickets_with_previous_repair", "value": int(dsp.notna().sum())},
+        {"metric": f"recent_repeat.repaired_within_{win}d", "value": int((dsp <= win).sum())},
+        {"metric": "recent_repeat.alerts", "value": int(len(alerts))},
+    ]
+    for q, lbl in [(.25, "p25"), (.5, "p50"), (.75, "p75"), (.9, "p90")]:
+        v = dsp.dropna().quantile(q) if dsp.notna().any() else float("nan")
+        extra.append({"metric": f"recent_repeat.days_between.{lbl}", "value": round(float(v), 1)})
+    if dsp.notna().any():
+        extra += [{"metric": "recent_repeat.days_between.min", "value": round(float(dsp.min()), 1)},
+                  {"metric": "recent_repeat.days_between.max", "value": round(float(dsp.max()), 1)}]
+    report = pd.concat([report, pd.DataFrame(extra)], ignore_index=True)
 
     base.mkdir(parents=True, exist_ok=True)
     for name in risks:
         risks[name].to_csv(base / f"maintenance_{name}_risk.csv", index=False)
+    baseline.to_csv(base / "maintenance_asset_issue_baseline.csv", index=False)
     report.to_csv(base / "maintenance_anomaly_validation.csv", index=False)
+    # dedicated recent-repeat validation summary
+    pd.DataFrame([r for r in extra if str(r["metric"]).startswith("recent_repeat")]) \
+        .to_csv(base / "maintenance_recent_repeat_validation.csv", index=False)
     return risks, report
 
 

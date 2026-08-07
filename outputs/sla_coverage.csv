@@ -1,0 +1,10 @@
+metric,value
+total_tickets,1526
+with_created_at,1526
+with_resolved_at,1504
+with_closed_at,1357
+evaluable_tickets,1504
+resolution_tracked_tickets,447
+excluded_total,22
+excluded_missing_created_at,0
+excluded_missing_resolved_and_closed,22

@@ -2357,7 +2357,13 @@ class DataLoader:
         # 2. Type coercion.
         for col in spec.date_columns:
             if col in df.columns:
-                df[col] = pd.to_datetime(df[col], errors="coerce", utc=False)
+                # format="ISO8601" parses mixed ISO timestamps (with AND without
+                # fractional seconds, e.g. "...:00+00" and "...39.561318+00").
+                # Without it, pandas infers one format and coerces the rest to NaT.
+                # utc=False preserves per-column tz semantics (aware -> UTC-aware,
+                # naive -> naive) exactly as before.
+                df[col] = pd.to_datetime(df[col], errors="coerce", utc=False,
+                                         format="ISO8601")
         for col in spec.numeric_columns:
             if col in df.columns:
                 df[col] = pd.to_numeric(df[col], errors="coerce")

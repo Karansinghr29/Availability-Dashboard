@@ -1,0 +1,10 @@
+metric,value
+recent_repeat.tickets_with_previous_repair,256.0
+recent_repeat.repaired_within_30d,124.0
+recent_repeat.alerts,4.0
+recent_repeat.days_between.p25,4.0
+recent_repeat.days_between.p50,35.1
+recent_repeat.days_between.p75,111.0
+recent_repeat.days_between.p90,225.0
+recent_repeat.days_between.min,0.0
+recent_repeat.days_between.max,507.8

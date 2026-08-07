@@ -1,0 +1,6 @@
+delay_bucket,tickets
+Within SLA,73
+0-6h Late,19
+6-24h Late,143
+24-72h Late,195
+More than 72h Late,794

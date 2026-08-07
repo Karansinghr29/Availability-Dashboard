@@ -1,0 +1,6 @@
+metric,value
+tickets_scored,1505.0
+tickets_evaluated (had baseline + resolution time),0.0
+verification_required,0.0
+normal,1505.0
+fast_ratio_threshold,0.25

@@ -1,0 +1,17 @@
+metric,value
+total_tickets,1504
+within_sla,73
+breached,1151
+breach_pct,76.5
+avg_sla_hours,15.0
+avg_resolution_hours,128.4
+resolution_tracked_tickets,447
+avg_resolution_delay_hours,115.0
+avg_post_resolution_closure_hours,311.3
+avg_closure_hours,604.3
+avg_delay_hours,589.3
+month_exceeded_message,
+operational_alert,False
+operational_alert_message,Average closure time within the configured SLA.
+resolution_alert,True
+resolution_alert_message,Note: Average resolution time has also exceeded the configured SLA for three consecutive months.

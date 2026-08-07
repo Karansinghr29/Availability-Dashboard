@@ -1,0 +1,8 @@
+technician,tickets,within_sla,breached,breach_pct,avg_sla_hours,avg_resolution_hours,avg_closure_hours,avg_delay_hours
+8c42685b-f2df-4dec-96bd-0e77b715e33e,27,0,22,100.0,10.5,165.3,534.9,523.9
+de767fe3-598a-48f9-a49d-6fc0bf405721,2,0,2,100.0,15.0,33.7,154.7,139.7
+e213d0c5-7de3-4f91-b5d4-cda0cd2ade6c,562,10,491,98.0,15.7,0.0,591.9,576.3
+bd081ad6-5fe3-4c1d-a919-81b1055efa19,462,17,283,94.3,13.6,113.1,357.5,343.9
+a55e7168-b152-4072-8b01-0cd4b7e299ca,67,4,41,91.1,15.3,0.6,70.5,55.4
+e4897d45-cba7-4d8a-ade0-d6014ccba68d,10,1,8,88.9,20.2,57.4,689.6,669.8
+d2b6ece0-395c-4c27-9667-6d7ce50b417c,374,41,304,88.1,15.6,0.0,911.3,895.8

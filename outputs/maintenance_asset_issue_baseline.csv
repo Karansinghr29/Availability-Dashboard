@@ -1,0 +1,30 @@
+asset_type,issue_type,baseline_median_hours,n,trustworthy
+Air Conditioner,AC Issues,53.0,78,True
+Air Conditioner,Cleaning Issues,67.525,2,False
+Air Conditioner,Other,60.185,2,False
+Bedside Table,Cleaning Issues,260.73,1,False
+Bedside Table,Furniture,48.400000000000006,12,True
+Cot (Bed Frame),Cleaning Issues,525.39,1,False
+Cot (Bed Frame),Furniture,59.004999999999995,8,True
+Cot (Bed Frame),Other,86.135,2,False
+Cupboard,Cleaning Issues,7.18,1,False
+Cupboard,Furniture,23.06,13,True
+Cupboard,Other,30.97,8,True
+Cupboard,Toilet Issues,80.52,2,False
+Dining Table,Furniture,75.62,1,False
+Fan,Cleaning Issues,43.9,1,False
+Fan,Electrical Issues,26.08,47,True
+Fan,Other,112.74,1,False
+Induction Stove,Kitchen Equipment,382.03,3,False
+Mattress,Furniture,17.66,4,False
+Microwave Oven,Kitchen Equipment,552.09,1,False
+RO Water Purifier,RO Water Issues,43.53,22,True
+Refrigerator,Fridge Issues,39.85,3,False
+Study Table,Furniture,36.769999999999996,2,False
+Table Fan (Wall),Electrical Issues,0.13,1,False
+Washing Machine,Washing machine Issue,24.34,18,True
+Water Heater,Cleaning Issues,27.56,3,False
+Water Heater,Heater Issues,46.61,4,False
+Water Heater,Other,70.49,3,False
+Water Heater,Plumbing,45.48,3,False
+Water Heater,Toilet Issues,38.95,10,True

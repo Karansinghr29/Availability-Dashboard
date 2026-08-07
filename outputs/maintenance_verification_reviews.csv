@@ -1,0 +1,3 @@
+ticket_id,asset_code,severity_level,faster_percentage,review_status,notes,reviewed_at,fake_reason,reviewed_by
+ba000612-08eb-466e-a200-9116b2f0ab0f,VH-FN-C43-0002,Critical,98.2,Pending Review,,2026-08-06T17:27:48,,
+62ec3e07-d588-4248-a406-54abbe7097eb,VH-AC-C43-0001,Critical,98.9,Pending Review,nan,2026-08-06T17:27:53,,nan

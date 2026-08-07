@@ -1,0 +1,15 @@
+asset_type,tickets,within_sla,breached,breach_pct,avg_sla_hours,avg_resolution_hours,avg_closure_hours,avg_delay_hours
+Dining Table,1,0,1,100.0,24.0,75.6,133.5,109.5
+Cot (Bed Frame),11,0,9,100.0,22.2,131.2,549.4,527.6
+Fan,44,0,28,100.0,6.4,69.4,234.4,227.8
+Microwave Oven,1,0,1,100.0,12.0,552.1,587.2,575.2
+Mattress,4,0,3,100.0,24.0,69.1,524.7,500.7
+Induction Stove,3,0,3,100.0,12.0,360.1,535.0,523.0
+Water Heater,25,0,16,100.0,10.5,194.8,406.2,398.1
+Air Conditioner,82,1,47,97.9,12.1,166.3,622.4,610.6
+Washing Machine,19,1,14,93.3,24.0,64.2,372.0,348.0
+RO Water Purifier,24,1,11,91.7,6.0,90.8,303.2,297.2
+Bedside Table,14,1,6,85.7,21.1,176.6,384.3,363.1
+Cupboard,27,3,17,85.0,21.8,62.1,265.3,243.3
+Refrigerator,4,2,2,50.0,12.0,100.5,126.8,114.8
+Study Table,2,1,0,0.0,24.0,36.8,1.0,-23.0
